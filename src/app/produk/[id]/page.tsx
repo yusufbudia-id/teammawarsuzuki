@@ -1,0 +1,366 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { ArrowLeft, Download, Car, Settings, ChevronRight, CheckCircle, Zap, Shield, Users, Wrench, Ruler, Users as UsersIcon, Droplets } from 'lucide-react';
+import { products, ProductType, getProductById } from '@/lib/products-data';
+
+export default function ProductDetailPage() {
+  const params = useParams();
+  const router = useRouter();
+  const [selectedImage, setSelectedImage] = useState(0);
+  const id = parseInt(params.id as string);
+  const product = getProductById(id);
+
+  useEffect(() => {
+    if (!product) {
+      router.push('/produk');
+    }
+  }, [product, router]);
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-xl text-muted-foreground mb-4">Memuat...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  const advantagesIcons = [Zap, Shield, Users, Settings];
+
+  const handleTestDrive = () => {
+    if (!product) return;
+
+    const message = `Halo admin Suzuki!!
+
+Saya ingin memesan Test Drive untuk ${product.name}. Mohon info jadwal dan lokasinya ya..`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
+  };
+
+  const handleAjukanKredit = () => {
+    if (!product) return;
+
+    const message = `Halo admin Suzuki!!
+
+Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit dan persyaratan ya..`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+
+      <main className="flex-1">
+        {/* Breadcrumb */}
+        <section className="bg-muted/30 pt-16 pb-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+              <Link href="/" className="hover:text-primary transition-colors">
+                Home
+              </Link>
+              <ChevronRight className="h-4 w-4" />
+              <Link href="/produk" className="hover:text-primary transition-colors">
+                Produk
+              </Link>
+              <ChevronRight className="h-4 w-4" />
+              <span className="text-foreground font-medium">{product.name}</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Hero Section */}
+        <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+              {/* Image Gallery */}
+              <div className="space-y-4 animate-fade-in">
+                <div className="relative aspect-video rounded-xl overflow-hidden border border-border">
+                  <img
+                    src={product.gallery?.[selectedImage] || product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  {product.gallery?.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(idx)}
+                      className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all ${
+                        selectedImage === idx ? 'border-primary' : 'border-border hover:border-primary/50'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.name} ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Product Info */}
+              <div className="flex flex-col justify-center animate-fade-in stagger-1">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium w-fit mb-4">
+                  {product.category}
+                </span>
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  {product.name}
+                </h1>
+                <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                  {product.description}
+                </p>
+                <div className="flex items-baseline space-x-2 mb-8">
+                  <span className="text-gray-300 text-lg">Mulai</span>
+                  <span className="text-4xl font-bold text-primary">
+                    Rp {product.priceText} Jutaan
+                  </span>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    onClick={handleTestDrive}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8"
+                  >
+                    <Car className="mr-2 h-5 w-5" />
+                    Pesan Test Drive
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary/10 text-lg px-8"
+                  >
+                    <Download className="mr-2 h-5 w-5" />
+                    Download Brosur
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Specifications & Variants Section */}
+        <section className="py-20 md:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16 animate-fade-in">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4">
+                  Spesifikasi & Harga
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Detail {product.name}
+                </h2>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                {/* Specifications - Left Side */}
+                <div className="animate-fade-in stagger-1">
+                  <Card className="border-2 border-border h-full">
+                    <CardContent className="p-8">
+                      <h3 className="text-2xl font-bold text-foreground mb-6">
+                        Spesifikasi Umum
+                      </h3>
+                      <div className="space-y-6">
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <Wrench className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Mesin</p>
+                            <p className="text-foreground font-medium">{product.specifications.engine}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <Settings className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Transmisi</p>
+                            <p className="text-foreground font-medium">{product.specifications.transmission}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <Droplets className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Bahan Bakar</p>
+                            <p className="text-foreground font-medium">{product.specifications.fuel}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <Zap className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Daya Maksimum</p>
+                            <p className="text-foreground font-medium">{product.specifications.power}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <Shield className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Torsi Maksimum</p>
+                            <p className="text-foreground font-medium">{product.specifications.torque}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <UsersIcon className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Kapasitas Tempat Duduk</p>
+                            <p className="text-foreground font-medium">{product.specifications.seating}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <Ruler className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm text-muted-foreground mb-1">Dimensi (P x L x T)</p>
+                            <p className="text-foreground font-medium">{product.specifications.dimensions}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Variant List - Right Side */}
+                <div className="animate-fade-in stagger-2">
+                  <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                    {product.variants.map((variant, idx) => (
+                      <Card
+                        key={idx}
+                        className="border-2 border-border hover:border-primary transition-all duration-300 animate-fade-in"
+                        style={{ animationDelay: `${idx * 50}ms` }}
+                      >
+                        <CardContent className="p-3">
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1">
+                              <h4 className="text-base font-bold text-foreground mb-1">
+                                {variant.name}
+                              </h4>
+                              <p className="text-sm text-muted-foreground line-through mb-1">
+                                {variant.priceOtr}
+                              </p>
+                              <p className="text-xl font-bold text-primary">
+                                {variant.priceNett}
+                              </p>
+                            </div>
+                            <Button
+                              onClick={handleAjukanKredit}
+                              className="bg-primary hover:bg-primary/90 text-primary-foreground whitespace-nowrap text-sm px-4"
+                            >
+                              Ajukan Kredit
+                              <ChevronRight className="ml-2 h-4 w-4" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20 md:py-32 bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16 animate-fade-in">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4">
+                  Fitur Utama
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  Fitur Unggulan {product.name}
+                </h2>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {product.features?.map((feature, idx) => (
+                  <Card
+                    key={idx}
+                    className="border border-border hover-lift animate-fade-in"
+                    style={{ animationDelay: `${idx * 100}ms` }}
+                  >
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <CheckCircle className="h-6 w-6 text-primary" />
+                      </div>
+                      <p className="text-foreground font-medium">{feature}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 md:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Tertarik dengan {product.name}?
+              </h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Hubungi kami sekarang untuk informasi lebih lanjut, penawaran harga terbaik, atau jadwalkan test drive
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/kontak">
+                  <Button
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8"
+                  >
+                    Hubungi Kami
+                    <ChevronRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  onClick={handleTestDrive}
+                  className="bg-white hover:bg-white/90 text-gray-900 text-lg px-8"
+                >
+                  <Car className="mr-2 h-5 w-5" />
+                  Pesan Test Drive
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
