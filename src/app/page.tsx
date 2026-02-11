@@ -36,12 +36,12 @@ export default function HomePage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight animate-fade-in stagger-1">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1">
                 Temukan Mobil Suzuki{' '}
                 <span className="text-primary">Impian Anda</span>
               </h1>
 
-              <p className="text-xl sm:text-2xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2">
                 Dapatkan penawaran terbaik untuk Ertiga, XL7, Carry, Jimny, Baleno, dan S-Presso
                 dengan pelayanan profesional dan dukungan purna jual terpercaya.
               </p>
@@ -56,20 +56,20 @@ export default function HomePage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="/kontak">
+                <Link href="/promo">
                   <Button
                     size="lg"
                     variant="outline"
                     className="border-2 border-white/30 text-blue-500 hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
                   >
-                    Hubungi Kami
+                    Lihat Promo
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-4 pt-4 border-t border-white/10 animate-fade-in stagger-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 pt-8 border-t border-white/10 animate-fade-in stagger-4">
                 <div className="text-center animate-fade-in">
                   <div className="text-3xl md:text-4xl font-bold text-primary mb-2">1000+</div>
                   <div className="text-gray-400 text-sm md:text-base">Unit Terjual</div>

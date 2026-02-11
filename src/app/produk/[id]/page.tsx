@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Download, Car, Settings, ChevronRight, CheckCircle, Zap, Shield, Users, Wrench, Ruler, Users as UsersIcon, Droplets } from 'lucide-react';
+import { Download, Car, Settings, CheckCircle, Zap, Shield, Users, Wrench, Ruler, Users as UsersIcon, Droplets, ChevronRight } from 'lucide-react';
 import { products, ProductType, getProductById } from '@/lib/products-data';
 
 export default function ProductDetailPage() {
@@ -61,28 +61,16 @@ Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit d
     window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
   };
 
+  const handleDownloadBrosur = () => {
+    if (!product?.brochureUrl) return;
+    window.open(product.brochureUrl, '_blank');
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
       <main className="flex-1">
-        {/* Breadcrumb */}
-        <section className="bg-muted/30 pt-16 pb-4">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <Link href="/" className="hover:text-primary transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <Link href="/produk" className="hover:text-primary transition-colors">
-                Produk
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <span className="text-foreground font-medium">{product.name}</span>
-            </div>
-          </div>
-        </section>
-
         {/* Hero Section */}
         <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,6 +134,7 @@ Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit d
                   <Button
                     size="lg"
                     variant="outline"
+                    onClick={handleDownloadBrosur}
                     className="border-primary text-primary hover:bg-primary/10 text-lg px-8"
                   >
                     <Download className="mr-2 h-5 w-5" />

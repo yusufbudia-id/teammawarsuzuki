@@ -126,11 +126,11 @@ export default function PromoPage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1 mt-8">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-fade-in stagger-1 mt-8">
                 Penawaran <span className="text-primary">Terbaik</span>
               </h1>
 
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2 mt-6">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2 mt-6">
                 Dapatkan penawaran eksklusif dan promo menarik untuk pembelian mobil Suzuki impian Anda
               </p>
             </div>

@@ -480,3 +480,57 @@ Stage Summary:
 - Pesan WhatsApp sudah diformat dengan baik dan menyertakan nama produk
 - Semua tombol CTA berfungsi dengan baik tanpa error
 - User experience meningkat dengan kemudahan menghubungi via WhatsApp
+
+---
+Task ID: 15
+Agent: Z.ai Code
+Task: Update Halaman Home - Ganti CTA dan Naikkan Stats Section
+
+Work Log:
+- Update src/app/page.tsx:
+  * Ubah tombol CTA "Hubungi Kami" menjadi "Lihat Promo"
+  * Ubah link dari /kontak menjadi /promo
+  * Kurangi margin stats section dari "mt-16 pt-16" menjadi "mt-8 pt-8"
+  * Perbaiki typo "Tahun Pengalaman" (sebelumnya "Tahun Pengalaman")
+  * Perbaiki typo "Model Tersedia" (sebelumnya "Model Tersedia")
+- Quality check dengan ESLint (tidak ada error)
+- Testing halaman home - berjalan baik (HTTP 200)
+
+Stage Summary:
+- Tombol CTA kedua di halaman home sekarang "Lihat Promo" yang mengarah ke /promo
+- Stats section diposisikan lebih tinggi agar tidak terlalu ke bawah
+- Jarak antara tombol dan stats lebih proporsional
+- Semua elemen tetap terlihat baik dengan layout yang lebih kompak
+- User dapat dengan mudah mengakses halaman promo langsung dari home
+
+---
+Task ID: 16
+Agent: Z.ai Code
+Task: Implementasi Fitur Download Brosur di Halaman Detail Produk
+
+Work Log:
+- Buat folder /public/brochures untuk menyimpan file brosur
+- Buat file dummy PDF untuk setiap produk:
+  * carry.pdf - New Carry Pick Up
+  * s-presso.pdf - S-Presso
+  * ertiga.pdf - Ertiga
+  * fronx.pdf - Fronx
+  * xl7.pdf - XL7
+  * grand-vitara.pdf - Grand Vitara
+  * jimny.pdf - Jimny
+- Update src/app/produk/[id]/page.tsx:
+  * Tambah fungsi handleDownloadBrosur() untuk mendownload brosur
+  * Hubungkan tombol "Download Brosur" dengan handleDownloadBrosur
+  * Handler membuka URL brochureUrl di tab baru
+- Buat README.md di folder brochures dengan instruksi cara mengupload brosur asli
+- Verifikasi file produk-data.ts sudah memiliki brochureUrl untuk setiap produk
+- Quality check dengan ESLint (tidak ada error)
+- Testing halaman detail produk - berjalan baik (HTTP 200)
+
+Stage Summary:
+- Tombol "Download Brosur" di Hero section sekarang berfungsi
+- Setiap produk memiliki file brosur sendiri
+- User dapat dengan mudah mengganti file brosur dummy dengan brosur asli
+- README.md memberikan instruksi cara mengupload brosur
+- Handler download brosur menggunakan window.open untuk membuka PDF di tab baru
+- Semua fitur berfungsi dengan baik tanpa error

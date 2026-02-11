@@ -1,19 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClientBodyProvider } from "@/components/client-body-provider";
 import Script from "next/script";
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Indonesia - Diskon & Penawaran Terbaik",
@@ -88,8 +76,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className={`${poppins.variable} ${geistMono.variable} antialiased bg-background text-foreground no-js`}
+        className="antialiased bg-background text-foreground no-js"
+        style={{ fontFamily: '"Montserrat", sans-serif' }}
         suppressHydrationWarning
       >
         <Script
