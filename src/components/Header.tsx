@@ -17,6 +17,7 @@ export default function Header() {
     { id: 'home', label: 'Home', href: '/' },
     { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
     { id: 'produk', label: 'Produk', href: '/produk' },
+    { id: 'artikel', label: 'Artikel', href: '/artikel' },
     { id: 'testimoni', label: 'Testimoni', href: '/testimoni' },
     { id: 'promo', label: 'Promo', href: '/promo' },
     { id: 'kontak', label: 'Kontak', href: '/kontak' },
