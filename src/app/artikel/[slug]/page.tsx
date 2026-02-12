@@ -1,68 +1,33 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { getArticleBySlug, getRelatedArticles } from '@/lib/articles-data';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Card, CardContent } from '@/components/ui/card';
-import { Calendar, User, Tag, ArrowRight, Clock, Share2 } from 'lucide-react';
-import { getArticleBySlug, getRelatedArticles, ArticleType } from '@/lib/articles-data';
+import { Calendar, User, ArrowLeft, ArrowRight, Share2 } from 'lucide-react';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-export default function ArticleDetailPage() {
-  const params = useParams();
-  const router = useRouter();
-  const slug = params.slug as string;
+export default function ArticleDetail({ params }: { params: { slug: string } }) {
+  // 1. Ambil data artikel
+  const article = getArticleBySlug(params.slug);
 
-  // Get article directly (synchronous)
-  const article = useMemo(() => getArticleBySlug(slug), [slug]);
-
-  // Get related articles
-  const relatedArticles = useMemo(() => {
-    if (!article) return [];
-    return getRelatedArticles(slug, article?.category || '', 5);
-  }, [article, slug]);
-
-  // Redirect if article not found
-  useEffect(() => {
-    if (!article) {
-      router.push('/artikel');
-    }
-  }, [article, router]);
-
+  // 2. Cek jika artikel tidak ada, return 404/Not Found agar tidak error
   if (!article) {
-    return null;
+    return notFound();
   }
 
-  const readingTime = Math.ceil(article.content.split(' ').length / 200);
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: article.title,
-          text: article.excerpt,
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.error('Share failed:', err);
-      }
-    } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link berhasil disalin!');
-    }
-  };
+  // 3. Ambil artikel terkait
+  const relatedArticles = getRelatedArticles(params.slug, article.category);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
-<main className="flex-1">
+      <main className="flex-1">
         {/* --- 1. HERO SECTION (HEADER) --- */}
         {/* Hanya berisi Judul & Meta Data dengan background gelap */}
         <section className="relative py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
-          {/* Hiasan Background (Opsional) */}
+          {/* Hiasan Background */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -mr-20 -mt-20" />
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -ml-20 -mb-20" />
 
@@ -124,7 +89,6 @@ export default function ArticleDetailPage() {
                   <article className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
                     
                     {/* BAGIAN GAMBAR/POSTER (TAMPIL UTUH) */}
-                    {/* Menggunakan p-4 agar ada jarak frame putih di sekeliling gambar */}
                     <div className="p-2 md:p-4">
                       <img
                         src={article.thumbnail}
@@ -166,7 +130,6 @@ export default function ArticleDetailPage() {
                 </div>
 
                 {/* --- KOLOM KANAN: SIDEBAR --- */}
-                {/* (Bagian ini sama persis dengan sebelumnya) */}
                 <div className="lg:col-span-1 animate-fade-in stagger-2">
                   <div className="sticky top-24 space-y-6">
                     <aside>
