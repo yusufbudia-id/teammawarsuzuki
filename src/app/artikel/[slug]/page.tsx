@@ -93,11 +93,12 @@ export default function ArticleDetailPage() {
                 </div>
 
                 {/* Featured Image */}
-                <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                {/* Featured Image */}
+                <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100"> 
                   <img
                     src={article.thumbnail}
                     alt={article.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto block object-contain" // Ubah object-cover menjadi object-contain
                   />
                 </div>
               </div>
