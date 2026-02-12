@@ -1,178 +1,268 @@
-import { getArticleBySlug, getRelatedArticles } from '@/lib/articles-data';
+'use client';
+
+import { useEffect, useMemo } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Calendar, User, Tag, ArrowLeft, Clock, Share2 } from 'lucide-react';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { Card, CardContent } from '@/components/ui/card';
+import { Calendar, User, Tag, ArrowRight, Clock, Share2 } from 'lucide-react';
+import { getArticleBySlug, getRelatedArticles, ArticleType } from '@/lib/articles-data';
 
-export default function ArticleDetail({ params }: { params: { slug: string } }) {
-  // 1. Ambil data artikel berdasarkan slug dari URL
-  const article = getArticleBySlug(params.slug);
+export default function ArticleDetailPage() {
+  const params = useParams();
+  const router = useRouter();
+  const slug = params.slug as string;
 
-  // 2. Jika artikel tidak ditemukan, arahkan ke 404
+  // Get article directly (synchronous)
+  const article = useMemo(() => getArticleBySlug(slug), [slug]);
+
+  // Get related articles
+  const relatedArticles = useMemo(() => {
+    if (!article) return [];
+    return getRelatedArticles(slug, article?.category || '', 5);
+  }, [article, slug]);
+
+  // Redirect if article not found
+  useEffect(() => {
+    if (!article) {
+      router.push('/artikel');
+    }
+  }, [article, router]);
+
   if (!article) {
-    notFound();
+    return null;
   }
 
-  // 3. Ambil artikel terkait untuk bagian bawah halaman
-  const relatedArticles = getRelatedArticles(params.slug, article.category);
+  const readingTime = Math.ceil(article.content.split(' ').length / 200);
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: article.title,
+          text: article.excerpt,
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error('Share failed:', err);
+      }
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link berhasil disalin!');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
-      <main className="flex-1 pb-20">
-        {/* --- HERO IMAGE SECTION (FULL WIDTH) --- */}
-        <div className="relative w-full h-[50vh] md:h-[70vh] min-h-[400px]">
-          {/* Gambar Full */}
-          <img
-            src={article.thumbnail}
-            alt={article.title}
-            className="w-full h-full object-cover"
-          />
-          
-          {/* Overlay Gradient supaya teks di atasnya terbaca (opsional) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
-
-          {/* Tombol Kembali (Absolute di atas gambar) */}
-          <div className="absolute top-8 left-0 w-full z-20">
-            <div className="container mx-auto px-4">
-              <Link 
-                href="/artikel" 
-                className="inline-flex items-center text-white/80 hover:text-white hover:bg-white/10 px-4 py-2 rounded-full transition-all backdrop-blur-sm"
-              >
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                Kembali ke Artikel
-              </Link>
-            </div>
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           </div>
 
-          {/* Judul & Info di dalam Hero (Centered) */}
-          <div className="absolute bottom-0 left-0 w-full z-10 pb-12 md:pb-20">
-            <div className="container mx-auto px-4 text-center">
-              {/* Badge Kategori */}
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm mb-6 shadow-lg">
-                {article.category}
-              </span>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="animate-fade-in">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4">
+                  {article.category}
+                </span>
 
-              {/* Judul Artikel */}
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto drop-shadow-lg">
-                {article.title}
-              </h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                  {article.title}
+                </h1>
 
-              {/* Meta Data (Penulis & Tanggal) */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-gray-200 text-sm md:text-base">
-                <div className="flex items-center gap-2">
-                  <div className="p-1 bg-white/20 rounded-full">
-                    <User className="w-4 h-4" />
+                <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-300 mb-6">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    <span>{new Date(article.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                   </div>
-                  <span>{article.author}</span>
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    <span>{article.author}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    <span>{readingTime} menit baca</span>
+                  </div>
                 </div>
-                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full hidden sm:block" />
-                <div className="flex items-center gap-2">
-                  <div className="p-1 bg-white/20 rounded-full">
-                    <Calendar className="w-4 h-4" />
-                  </div>
-                  <span>
-                    {new Date(article.date).toLocaleDateString('id-ID', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })}
-                  </span>
-                </div>
-                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full hidden sm:block" />
-                <div className="flex items-center gap-2">
-                  <div className="p-1 bg-white/20 rounded-full">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <span>5 menit baca</span>
+
+                {/* Featured Image */}
+                <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                  <img
+                    src={article.thumbnail}
+                    alt={article.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* --- ARTICLE CONTENT SECTION --- */}
-        <div className="container mx-auto px-4 -mt-10 relative z-20">
-          <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-12 border border-gray-100">
-            
-            {/* Render HTML Content dari data */}
-            <article 
-              className="prose prose-lg md:prose-xl max-w-none text-gray-700 
-              prose-headings:text-gray-900 prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4
-              prose-p:leading-relaxed prose-p:mb-6
-              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-            />
+        {/* Article Content & Sidebar */}
+        <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50/50 to-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+                {/* Main Content */}
+                <div className="lg:col-span-2 animate-fade-in">
+                  <article className="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                    {/* Article Body */}
+                    <div
+                      className="prose prose-lg max-w-none"
+                      dangerouslySetInnerHTML={{ __html: article.content }}
+                    />
 
-            {/* Tags */}
-            <div className="mt-12 pt-8 border-t border-gray-100">
-              <div className="flex flex-wrap gap-2 items-center">
-                <Tag className="w-5 h-5 text-gray-400 mr-2" />
-                {article.tags.map((tag, idx) => (
-                  <span 
-                    key={idx} 
-                    className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors cursor-default"
-                  >
-                    #{tag}
-                  </span>
-                ))}
+                    {/* Tags */}
+                    <div className="mt-8 pt-6 border-t">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Tag className="h-5 w-5 text-primary" />
+                        <span className="font-semibold text-foreground">Tags</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {article.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors cursor-pointer"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Share Button */}
+                    <div className="mt-6">
+                      <button
+                        onClick={handleShare}
+                        className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                      >
+                        <Share2 className="h-5 w-5" />
+                        <span>Bagikan Artikel</span>
+                      </button>
+                    </div>
+
+                    {/* Back Button */}
+                    <div className="mt-8 pt-6 border-t">
+                      <Link
+                        href="/artikel"
+                        className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 font-semibold"
+                      >
+                        <ArrowRight className="h-4 w-4 rotate-180" />
+                        <span>Kembali ke Daftar Artikel</span>
+                      </Link>
+                    </div>
+                  </article>
+                </div>
+
+                {/* Sidebar */}
+                <div className="lg:col-span-1 animate-fade-in stagger-2">
+                  <div className="sticky top-24">
+                    <aside>
+                      {/* Related Articles */}
+                      <div className="bg-white rounded-xl shadow-sm p-6">
+                        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                          <span className="w-1 h-6 bg-primary rounded-full"></span>
+                          Artikel Terkait
+                        </h3>
+
+                        {relatedArticles.length > 0 ? (
+                          <div className="space-y-4">
+                            {relatedArticles.map((relatedArticle, idx) => (
+                              <Link
+                                href={`/artikel/${relatedArticle.slug}`}
+                                key={relatedArticle.id}
+                                className="group block animate-fade-in"
+                                style={{ animationDelay: `${idx * 50}ms` }}
+                              >
+                                <div className="flex gap-3">
+                                  <div className="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                                    <img
+                                      src={relatedArticle.thumbnail}
+                                      alt={relatedArticle.title}
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                  </div>
+                                  <div className="flex-1">
+                                    <h4 className="text-sm font-semibold text-foreground mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                                      {relatedArticle.title}
+                                    </h4>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                      <Calendar className="h-3 w-3" />
+                                      <span>{new Date(relatedArticle.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-sm text-muted-foreground">Tidak ada artikel terkait.</p>
+                        )}
+                      </div>
+
+                      {/* Categories Widget */}
+                      <div className="bg-white rounded-xl shadow-sm p-6 mt-6">
+                        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                          <span className="w-1 h-6 bg-primary rounded-full"></span>
+                          Kategori
+                        </h3>
+
+                        <div className="space-y-2">
+                          <Link
+                            href="/artikel"
+                            className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-muted/50 transition-colors"
+                          >
+                            <span className="text-sm font-medium">Review</span>
+                            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">3</span>
+                          </Link>
+                          <Link
+                            href="/artikel"
+                            className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-muted/50 transition-colors"
+                          >
+                            <span className="text-sm font-medium">Tips</span>
+                            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">2</span>
+                          </Link>
+                          <Link
+                            href="/artikel"
+                            className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-muted/50 transition-colors"
+                          >
+                            <span className="text-sm font-medium">Perawatan</span>
+                            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">1</span>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Newsletter Widget */}
+                      <div className="bg-gradient-to-br from-primary to-primary/80 rounded-xl shadow-sm p-6 mt-6 text-white">
+                        <h3 className="text-xl font-bold mb-3">
+                          Berlangganan Newsletter
+                        </h3>
+                        <p className="text-sm text-primary-foreground/90 mb-4">
+                          Dapatkan artikel dan tips otomotif terbaru langsung di inbox Anda.
+                        </p>
+                        <input
+                          type="email"
+                          placeholder="Email Anda"
+                          className="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 mb-3"
+                        />
+                        <button className="w-full py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors">
+                          Berlangganan
+                        </button>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Share Button (Optional UI) */}
-            <div className="mt-8 flex justify-center">
-                <button className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-primary transition-colors font-medium">
-                    <Share2 className="w-4 h-4" />
-                    Bagikan Artikel Ini
-                </button>
-            </div>
           </div>
-        </div>
-
-        {/* --- RELATED ARTICLES SECTION --- */}
-        {relatedArticles.length > 0 && (
-          <section className="container mx-auto px-4 mt-20 max-w-6xl">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-gray-900">Artikel Terkait</h2>
-              <Link href="/artikel" className="text-primary font-medium hover:underline">
-                Lihat Semua
-              </Link>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              {relatedArticles.map((item) => (
-                <Link key={item.id} href={`/artikel/${item.slug}`} className="group">
-                  <div className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                    <div className="aspect-video relative overflow-hidden">
-                      <img 
-                        src={item.thumbnail} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <span className="absolute top-3 left-3 px-2 py-1 bg-black/60 text-white text-xs rounded backdrop-blur-sm">
-                        {item.category}
-                      </span>
-                    </div>
-                    <div className="p-5 flex-1 flex flex-col">
-                      <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm line-clamp-2 mb-4 flex-1">
-                        {item.excerpt}
-                      </p>
-                      <span className="text-xs text-gray-400">
-                        {new Date(item.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+        </section>
       </main>
 
       <Footer />
