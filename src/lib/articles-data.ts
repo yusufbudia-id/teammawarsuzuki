@@ -263,7 +263,68 @@ export const articles: ArticleType[] = [
     tags: ["Keselamatan", "Safety", "Tips"],
     author: "Ahmad Suzuki",
     date: "2025-12-20"
-  }
+  },
+  {
+  id: 7,
+  title: "Promo Suzuki Jimny Terbaru: Harga Spesial Hingga Puluhan Juta untuk Momen Valentine & Imlek",
+  slug: "promo-suzuki-jimny-terbaru-harga-spesial-valentine-imlek",
+  thumbnail: "/images/artikel/promo-jimny.jpg",
+  excerpt: "Manfaatkan promo spesial Suzuki Jimny 3 Doors dan 5 Doors dengan potongan harga hingga puluhan juta. Kesempatan terbaik memiliki SUV legendaris Suzuki.",
+  content: `
+      <p class="mb-4">Suzuki kembali menghadirkan promo menarik untuk Anda yang sedang mencari SUV tangguh dan bergaya. Dalam program spesial momen Valentine dan Imlek, Suzuki memberikan penawaran harga istimewa untuk Suzuki Jimny dengan potongan hingga puluhan juta rupiah.</p>
+
+      <p class="mb-4">Promo ini menjadi kesempatan terbaik bagi pecinta otomotif untuk memiliki Suzuki Jimny 3 Doors maupun 5 Doors dengan harga lebih terjangkau, tanpa mengurangi kualitas, performa, dan fitur unggulan yang dimilikinya.</p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Suzuki Jimny: SUV Legendaris dengan Desain Ikonik</h3>
+      <p class="mb-4">Suzuki Jimny dikenal sebagai SUV legendaris yang memiliki desain boxy khas, tangguh di berbagai medan, dan cocok digunakan baik untuk kebutuhan harian maupun petualangan. Tampilan eksteriornya yang maskulin berpadu dengan interior modern membuat Jimny semakin diminati.</p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Pilihan Varian Jimny</h3>
+      <p class="mb-4"><strong>1. Jimny 3 Doors</strong><br/>
+      Cocok untuk Anda yang menginginkan kendaraan kompak, stylish, dan tangguh untuk penggunaan di dalam kota maupun off-road ringan.</p>
+
+      <p class="mb-4"><strong>2. Jimny 5 Doors</strong><br/>
+      Memiliki ruang kabin lebih luas, cocok untuk keluarga atau perjalanan jauh dengan kenyamanan lebih maksimal tanpa mengurangi performa khas Jimny.</p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Harga Promo Spesial</h3>
+      <p class="mb-4">Melalui program promo terbaru, Suzuki menawarkan harga spesial untuk Jimny mulai dari kisaran Rp 477 jutaan hingga Rp 491 jutaan (OTR, sebelum diskon tambahan). Promo ini berlaku terbatas dan dapat berubah sewaktu-waktu sesuai kebijakan dealer.</p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Keunggulan Suzuki Jimny</h3>
+      <p class="mb-4">Beberapa alasan mengapa Suzuki Jimny menjadi pilihan favorit:</p>
+      <ul class="list-disc ml-6 mb-4">
+        <li>Desain ikonik dan premium</li>
+        <li>Performa tangguh di berbagai medan</li>
+        <li>Sistem penggerak 4WD</li>
+        <li>Ground clearance tinggi</li>
+        <li>Cocok untuk penggunaan harian maupun adventure</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Kenapa Harus Beli Sekarang?</h3>
+      <p class="mb-4">Promo ini merupakan momen terbaik untuk memiliki Jimny karena:</p>
+      <ul class="list-disc ml-6 mb-4">
+        <li>Potongan harga besar hingga puluhan juta</li>
+        <li>Unit terbatas</li>
+        <li>Nilai investasi kendaraan yang stabil</li>
+        <li>Permintaan pasar yang tinggi</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Hubungi Marketing Suzuki Sekarang</h3>
+      <p class="mb-4">Jangan lewatkan kesempatan emas ini. Dapatkan informasi lengkap mengenai promo, simulasi kredit, ketersediaan unit, hingga proses pemesanan dengan menghubungi marketing Suzuki sekarang juga.</p>
+
+      <p class="mb-4">
+        <a href="https://wa.me/628174635218" target="_blank" class="text-blue-600 font-semibold">
+          Klik di sini untuk chat WhatsApp Yusuf Suzuki: 628174635218
+        </a>
+      </p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Kesimpulan</h3>
+      <p class="mb-4">Suzuki Jimny bukan hanya kendaraan, tetapi simbol gaya hidup petualang yang modern. Dengan promo spesial Valentine dan Imlek ini, Anda bisa memiliki SUV impian dengan harga lebih hemat. Segera hubungi tim Suzuki dan amankan unit Anda sebelum promo berakhir.</p>
+    `,
+  category: "Promo",
+  tags: ["Suzuki Jimny", "Promo Suzuki", "SUV", "Jimny 5 Doors", "Jimny 3 Doors"],
+  author: "Yusuf Suzuki",
+  date: "2026-02-12"
+}
+
 ];
 
 // Helper functions
