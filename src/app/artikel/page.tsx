@@ -12,9 +12,17 @@ export default function ArtikelPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const categories = ['Semua', ...getAllCategories()];
 
+  // LOGIKA PENGURUTAN DI SINI:
+  // 1. Kita buat copy array dulu dengan [...articles] agar data asli tidak termutasi
+  // 2. Kita sort berdasarkan tanggal (terbaru - terlama)
+  const sortedArticles = [...articles].sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+  // Filter dilakukan SETELAH data diurutkan
   const filteredArticles = selectedCategory && selectedCategory !== 'Semua'
-    ? articles.filter(article => article.category === selectedCategory)
-    : articles;
+    ? sortedArticles.filter(article => article.category === selectedCategory)
+    : sortedArticles;
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
