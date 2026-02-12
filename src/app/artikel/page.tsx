@@ -103,8 +103,9 @@ export default function ArtikelPage() {
                           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                           {/* Category Badge */}
+
                           <div className="absolute top-4 left-4">
-                            <span className="px-3 py-1.5 text-xs font-semibold text-white bg-black/70 backdrop-blur-sm rounded-full">
+                            <span className="px-3 py-1.5 text-xs font-semibold text-white bg-red-600 backdrop-blur-sm rounded-full">
                               {article.category}
                             </span>
                           </div>
