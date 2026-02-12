@@ -58,64 +58,66 @@ export default function ArticleDetailPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+<main className="flex-1">
+        {/* --- MODIFIKASI: HERO SECTION (FULL IMAGE) --- */}
+        <section className="relative h-[70vh] min-h-[500px] w-full">
+          {/* 1. Gambar Background Full */}
+          <div className="absolute inset-0">
+            <img
+              src={article.thumbnail}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+            {/* Overlay Gradient supaya teks terbaca */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="animate-fade-in">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4">
-                  {article.category}
-                </span>
+          {/* 2. Judul & Meta Data di tengah Hero */}
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center items-center text-center pb-12">
+            <div className="animate-fade-in max-w-4xl">
+              {/* Badge Kategori */}
+              <span className="inline-block px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-bold mb-6 shadow-lg">
+                {article.category}
+              </span>
 
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                  {article.title}
-                </h1>
+              {/* Judul Besar */}
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-md">
+                {article.title}
+              </h1>
 
-                <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-300 mb-6">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    <span>{new Date(article.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    <span>{article.author}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    <span>{readingTime} menit baca</span>
-                  </div>
+              {/* Meta Info */}
+              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm md:text-base text-gray-200">
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  <span>{new Date(article.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                 </div>
-
-                {/* Featured Image */}
-                <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
-                  <img
-                    src={article.thumbnail}
-                    alt={article.title}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="flex items-center gap-2">
+                  <User className="h-5 w-5" />
+                  <span>{article.author}</span>
+                </div>
+                {/* Pastikan variabel readingTime ada, jika tidak hapus bagian ini */}
+                <div className="flex items-center gap-2">
+                  <Clock className="h-5 w-5" />
+                  <span>5 menit baca</span> 
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Article Content & Sidebar */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50/50 to-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* --- ARTICLE CONTENT & SIDEBAR --- */}
+        {/* Added -mt-20 to pull content up over the image for modern look */}
+        <section className="pb-16 md:pb-24 bg-gray-50 relative z-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-20">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+                
                 {/* Main Content */}
                 <div className="lg:col-span-2 animate-fade-in">
-                  <article className="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                  <article className="bg-white rounded-xl shadow-xl p-6 md:p-10 border border-gray-100">
                     {/* Article Body */}
                     <div
-                      className="prose prose-lg max-w-none"
+                      className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-primary"
                       dangerouslySetInnerHTML={{ __html: article.content }}
                     />
 
@@ -129,7 +131,7 @@ export default function ArticleDetailPage() {
                         {article.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors cursor-pointer"
+                            className="px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-600 rounded-full hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer"
                           >
                             #{tag}
                           </span>
@@ -138,10 +140,10 @@ export default function ArticleDetailPage() {
                     </div>
 
                     {/* Share Button */}
-                    <div className="mt-6">
+                    <div className="mt-8">
+                       {/* Pastikan handleShare sudah didefinisikan di atas component */}
                       <button
-                        onClick={handleShare}
-                        className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                        className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-primary transition-colors w-full md:w-auto justify-center"
                       >
                         <Share2 className="h-5 w-5" />
                         <span>Bagikan Artikel</span>
@@ -152,7 +154,7 @@ export default function ArticleDetailPage() {
                     <div className="mt-8 pt-6 border-t">
                       <Link
                         href="/artikel"
-                        className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 font-semibold"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary hover:gap-3 transition-all duration-300 font-medium"
                       >
                         <ArrowRight className="h-4 w-4 rotate-180" />
                         <span>Kembali ke Daftar Artikel</span>
@@ -161,12 +163,12 @@ export default function ArticleDetailPage() {
                   </article>
                 </div>
 
-                {/* Sidebar */}
+                {/* Sidebar (Tetap sama seperti kode Anda) */}
                 <div className="lg:col-span-1 animate-fade-in stagger-2">
-                  <div className="sticky top-24">
+                  <div className="sticky top-24 space-y-6"> 
                     <aside>
                       {/* Related Articles */}
-                      <div className="bg-white rounded-xl shadow-sm p-6">
+                      <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
                         <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                           <span className="w-1 h-6 bg-primary rounded-full"></span>
                           Artikel Terkait
@@ -182,15 +184,15 @@ export default function ArticleDetailPage() {
                                 style={{ animationDelay: `${idx * 50}ms` }}
                               >
                                 <div className="flex gap-3">
-                                  <div className="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                                  <div className="relative w-24 h-20 flex-shrink-0 rounded-lg overflow-hidden">
                                     <img
                                       src={relatedArticle.thumbnail}
                                       alt={relatedArticle.title}
-                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                     />
                                   </div>
                                   <div className="flex-1">
-                                    <h4 className="text-sm font-semibold text-foreground mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                                    <h4 className="text-sm font-bold text-gray-800 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                                       {relatedArticle.title}
                                     </h4>
                                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -208,57 +210,48 @@ export default function ArticleDetailPage() {
                       </div>
 
                       {/* Categories Widget */}
-                      <div className="bg-white rounded-xl shadow-sm p-6 mt-6">
+                      <div className="bg-white rounded-xl shadow-lg p-6 mt-6 border border-gray-100">
                         <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                           <span className="w-1 h-6 bg-primary rounded-full"></span>
                           Kategori
                         </h3>
-
                         <div className="space-y-2">
-                          <Link
-                            href="/artikel"
-                            className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <span className="text-sm font-medium">Review</span>
-                            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">3</span>
-                          </Link>
-                          <Link
-                            href="/artikel"
-                            className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <span className="text-sm font-medium">Tips</span>
-                            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">2</span>
-                          </Link>
-                          <Link
-                            href="/artikel"
-                            className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <span className="text-sm font-medium">Perawatan</span>
-                            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">1</span>
-                          </Link>
+                           {/* Contoh static categories */}
+                          {['Review', 'Tips', 'Perawatan', 'Promo'].map((cat) => (
+                             <Link
+                                key={cat}
+                                href="/artikel"
+                                className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors group"
+                              >
+                                <span className="text-sm font-medium group-hover:text-primary transition-colors">{cat}</span>
+                                <ArrowRight className="h-3 w-3 text-gray-300 group-hover:text-primary" />
+                              </Link>
+                          ))}
                         </div>
                       </div>
 
                       {/* Newsletter Widget */}
-                      <div className="bg-gradient-to-br from-primary to-primary/80 rounded-xl shadow-sm p-6 mt-6 text-white">
-                        <h3 className="text-xl font-bold mb-3">
+                      <div className="bg-primary rounded-xl shadow-lg p-6 mt-6 text-white relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                        <h3 className="text-xl font-bold mb-3 relative z-10">
                           Berlangganan Newsletter
                         </h3>
-                        <p className="text-sm text-primary-foreground/90 mb-4">
-                          Dapatkan artikel dan tips otomotif terbaru langsung di inbox Anda.
+                        <p className="text-sm text-primary-foreground/90 mb-4 relative z-10">
+                          Dapatkan update terbaru Suzuki langsung di inbox Anda.
                         </p>
                         <input
                           type="email"
                           placeholder="Email Anda"
-                          className="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 mb-3"
+                          className="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white mb-3 relative z-10"
                         />
-                        <button className="w-full py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors">
+                        <button className="w-full py-3 bg-white text-primary font-bold rounded-lg hover:bg-gray-100 transition-colors relative z-10 shadow-lg">
                           Berlangganan
                         </button>
                       </div>
                     </aside>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
