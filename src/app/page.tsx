@@ -39,6 +39,7 @@ export default function HomePage() {
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1">
                 Temukan Mobil Suzuki{' '}
+                <br /> {/* <--- Tambahkan ini */}
                 <span className="text-primary">Impian Anda</span>
               </h1>
 
