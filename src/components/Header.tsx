@@ -49,11 +49,11 @@ const handleWhatsAppClick = () => {
     
     const message = encodeURIComponent(`*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`);
     window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
-
+}
   // Get active path from pathname
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
 
-  
+
   return (
     <header
       className={cn(
