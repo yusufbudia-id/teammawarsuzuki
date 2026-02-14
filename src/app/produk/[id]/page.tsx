@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Image Gallery */}
-              <div className="space-y-4 animate-fade-in mt-16 md:mt-0">
+              <div className="space-y-4 animate-fade-in mt-12 md:mt-10">
                 <div className="relative aspect-video rounded-xl overflow-hidden border border-border">
                   <img
                     src={product.gallery?.[selectedImage] || product.image}
