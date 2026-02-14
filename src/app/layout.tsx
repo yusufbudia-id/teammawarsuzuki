@@ -4,8 +4,8 @@ import { ClientBodyProvider } from "@/components/client-body-provider";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Indonesia - Diskon & Penawaran Terbaik",
-  description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Baleno, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
+  title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta Indonesia - Diskon & Penawaran Terbaik",
+  description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Fronx, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
   icons: {
     icon: [
       { url: '/icon.png', sizes: 'any', type: 'image/png' },
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     "Mobil Murah Jogja",
     "Kredit Mobil Suzuki"
   ],
-  authors: [{ name: "Suzuki Dealer Indonesia" }],
-  creator: "Suzuki Dealer Indonesia",
-  publisher: "Suzuki Dealer Indonesia",
+  authors: [{ name: "Suzuki Dealer Jogja Indonesia" }],
+  creator: "Suzuki Dealer Jogja Indonesia",
+  publisher: "Suzuki Dealer Jogja Indonesia",
   robots: {
     index: true,
     follow: true,
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Indonesia - Diskon & Penawaran Terbaik",
-    description: "Promo Suzuki Jogja terbaru 2024! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Baleno, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
+    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta, Indonesia - Diskon & Penawaran Terbaik",
+    description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Fronx, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
     type: "website",
     locale: "id_ID",
     url: "https://suzukijogjamagelang.vercel.app",
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Indonesia - Diskon & Penawaran Terbaik",
-    description: "Promo Suzuki Jogja terbaru 2024! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis.",
+    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta, Indonesia - Diskon & Penawaran Terbaik",
+    description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis.",
     creator: "@suzukiindonesia",
   },
   metadataBase: new URL('https://suzukijogjamagelang.vercel.app'),
