@@ -72,7 +72,7 @@ export default function ProdukPage() {
 
                         {/* Category Badge & Wishlist */}
                         <div className="absolute top-3 left-3 right-3 flex items-start justify-between">
-                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-black/70 backdrop-blur-sm rounded-full">
+                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-red-600 backdrop-blur-sm rounded-full">
                             {product.category}
                           </span>
                           <button

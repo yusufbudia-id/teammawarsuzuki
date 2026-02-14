@@ -42,7 +42,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2">
-                Dapatkan penawaran terbaik untuk Ertiga, XL7, Carry, Jimny, Baleno, dan S-Presso
+                Dapatkan penawaran terbaik untuk Ertiga, XL7, Carry, Jimny, Fronx, dan S-Presso
                 dengan pelayanan profesional dan dukungan purna jual terpercaya.
               </p>
 
