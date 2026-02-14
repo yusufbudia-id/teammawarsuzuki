@@ -60,7 +60,8 @@ export default function ProductDetailPage() {
       const message = `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*. Mohon info jadwal dan lokasinya ya..`;
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
-// 2. MODIFIKASI: Fungsi Ajukan Kredit dengan parameter varian
+  };
+      // 2. MODIFIKASI: Fungsi Ajukan Kredit dengan parameter varian
   const handleAjukanKredit = (variantName?: string) => {
     if (!product) return;
 
