@@ -33,6 +33,26 @@ export default function ProductDetailPage() {
     return waTeam[randomIndex].no;
   };
 
+  // ✅ 1. DATA JSON-LD UNTUK SEO GOOGLE
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product?.name,
+    image: `https://suzukijogjamagelang.vercel.app${product?.image}`,
+    description: product?.description,
+    brand: {
+      '@type': 'Brand',
+      name: 'Suzuki'
+    },
+    offers: {
+      '@type': 'Offer',
+      price: product?.priceText ? parseFloat(product.priceText) * 1000000 : 0,
+      priceCurrency: 'IDR',
+      availability: 'https://schema.org/InStock',
+      url: `https://suzukijogjamagelang.vercel.app/produk/${product?.id}`,
+    },
+  };
+
   useEffect(() => {
     if (!product) {
       router.push('/produk');
@@ -81,8 +101,12 @@ export default function ProductDetailPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      {/* ✅ 2. INJEKSI SCRIPT SEO KE HEAD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
