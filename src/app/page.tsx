@@ -30,7 +30,7 @@ export default function HomePage() {
           <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="max-w-6xl mx-auto text-center space-y-8">
               <div className="inline-block animate-fade-in">
                 <span className="px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium border border-primary/30">
                   Dealer Resmi Suzuki Indonesia
@@ -42,7 +42,7 @@ export default function HomePage() {
                 <span className="text-primary">Impian Anda</span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto animate-fade-in stagger-2">
                 Nikmati pengalaman membeli mobil yang mudah, transparan, dan profesional. Tersedia promo spesial untuk New Ertiga, XL7 Hybrid, Carry Pick-up, Jimny, Fronx, hingga S-Presso. Dukungan after-sales resmi dan harga paling kompetitif di Yogyakarta siap menanti Anda.
               </p>
 
