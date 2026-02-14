@@ -419,7 +419,7 @@ export const articles: ArticleType[] = [
       <h3 class="text-2xl font-bold mt-8 mb-4">Kesimpulan</h3>
       <p class="mb-4">Jika Anda mencari mobil operasional yang badak, pilih <strong>Tipe GL</strong>. Jika ingin merasakan teknologi Hybrid dengan harga rasional, <strong>Tipe GX</strong> adalah rajanya. Namun, jika keselamatan keluarga dan fitur canggih adalah prioritas utama, <strong>Tipe SGX</strong> wajib jadi pilihan. Segera hubungi Yusuf untuk hitungan kredit terbaik!</p>
   `,
-  category: "Ulasan Produk",
+  category: "Review",
   tags: ["Suzuki Fronx", "Spesifikasi Fronx", "Fronx Hybrid", "Harga Suzuki Fronx", "SUV Compact"],
   author: "Yusuf Suzuki",
   date: "2026-02-14"
