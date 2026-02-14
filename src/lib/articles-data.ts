@@ -329,7 +329,7 @@ export const articles: ArticleType[] = [
   id: 8,
   title: "Bedah Spesifikasi Suzuki Fronx: Perbedaan Tipe GL, GX, dan SGX Lengkap",
   slug: "perbedaan-spesifikasi-suzuki-fronx-tipe-gl-gx-sgx",
-  thumbnail: "/images/artikel/beda-tipe-fronx.jpg",
+  thumbnail: "/images/artikel/beda-tipe-fronx.png",
   excerpt: "Bingung memilih varian Suzuki Fronx? Simak perbandingan lengkap fitur, mesin Hybrid, dan spesifikasi antara tipe GL, GX, dan SGX untuk menemukan SUV compact yang paling pas dengan kebutuhan Anda.",
   content: `
       <p class="mb-4">Suzuki Fronx telah menjadi primadona baru di segmen Compact SUV. Dengan desain crossover yang <em>sporty</em> dan efisiensi bahan bakar yang luar biasa berkat teknologi Smart Hybrid, mobil ini menarik perhatian banyak keluarga muda di Indonesia. Namun, bagi calon pembeli, memahami perbedaan spesifikasi antar varian sangatlah penting.</p>
