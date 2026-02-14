@@ -33,7 +33,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-    const waTeam = [
+  const waTeam = [
     { nama: 'Yusuf', no: '6282174635218' },
     { nama: 'Dimas', no: '6287775741091' },
     { nama: 'Bima', no: '6289637144539' },
@@ -42,17 +42,17 @@ export default function Header() {
     { nama: 'Risya', no: '6281818405854' }
   ];
 
-const handleHubungiKami = () => {
+  const handleHubungiKami = () => {
     // Logika untuk memilih nomor secara random
     const randomIndex = Math.floor(Math.random() * waTeam.length);
     const selectedContact = waTeam[randomIndex];
     
     const message = encodeURIComponent(`*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`);
     window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
-}
+  }
+
   // Get active path from pathname
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
-
 
   return (
     <header
@@ -101,56 +101,65 @@ const handleHubungiKami = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Right Side Actions (Button & Menu) */}
+          <div className="flex items-center gap-3 md:gap-4">
+            {/* CTA Button - Sekarang muncul di Mobile & Desktop */}
             <Button
               onClick={handleHubungiKami}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 rounded-full font-semibold transition-all duration-200 hover:shadow-lg hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground 
+                px-4 py-2 text-xs h-9               
+                md:px-8 md:py-6 md:text-base md:h-auto 
+                rounded-full font-semibold transition-all duration-200 hover:shadow-lg hover:scale-105"
             >
               Hubungi Kami
             </Button>
+
+            {/* Mobile Menu Trigger */}
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon" className="hover:bg-accent text-primary">
+                  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[350px]">
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <nav className="flex flex-col space-y-4 mt-12">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={cn(
+                        'text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative border-b-2 border-transparent group',
+                        activePath === item.id
+                          ? 'text-primary font-semibold'
+                          : 'hover:bg-accent hover:text-primary text-muted-foreground'
+                      )}
+                    >
+                      {item.label}
+                      <span className={cn(
+                        'absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300',
+                        activePath === item.id
+                          ? 'w-full bg-primary'
+                          : 'w-0 group-hover:w-full group-hover:bg-primary'
+                      )} />
+                    </Link>
+                  ))}
+                  {/* Tombol duplikat di dalam menu bisa dihapus atau dibiarkan sebagai opsi tambahan */}
+                  <Button 
+                    onClick={() => {
+                      handleHubungiKami();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="bg-green-600 hover:bg-green-700 text-white w-full"
+                  >
+                    Hubungi Kami (WA)
+                  </Button>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
 
-          {/* Mobile Menu */}
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="hover:bg-accent text-primary">
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-              <SheetTitle className="sr-only">Menu</SheetTitle>
-              <nav className="flex flex-col space-y-4 mt-12">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={cn(
-                      'text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative border-b-2 border-transparent group',
-                      activePath === item.id
-                        ? 'text-primary font-semibold'
-                        : 'hover:bg-accent hover:text-primary text-muted-foreground'
-                    )}
-                  >
-                    {item.label}
-                    <span className={cn(
-                      'absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300',
-                      activePath === item.id
-                        ? 'w-full bg-primary'
-                        : 'w-0 group-hover:w-full group-hover:bg-primary'
-                    )} />
-                  </Link>
-                ))}
-                <Button 
-                  onClick={handleHubungiKami}
-                  className="bg-green-600 hover:bg-green-700 text-white"
-                >
-                  Hubungi Kami
-                </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </header>
