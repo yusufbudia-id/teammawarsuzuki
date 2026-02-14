@@ -22,10 +22,6 @@ export default function KontakPage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: defaultMessage });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-const defaultMessage = 'Halo admin Suzuki! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..';
-  const [formData, setFormData] = useState({ name: '', email: '', message: defaultMessage });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   // 2. Fungsi helper untuk mendapatkan nomor random
   const getRandomWANumber = () => {
     const randomIndex = Math.floor(Math.random() * waTeam.length);
