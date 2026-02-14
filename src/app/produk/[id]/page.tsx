@@ -17,6 +17,22 @@ export default function ProductDetailPage() {
   const id = parseInt(params.id as string);
   const product = getProductById(id);
 
+  // 1. Tambahkan daftar tim WA untuk randomisasi
+  const waTeam = [
+    { nama: 'Yusuf', no: '6282174635218' },
+    { nama: 'Dimas', no: '6287775741091' },
+    { nama: 'Bima', no: '6289637144539' },
+    { nama: 'Kafi', no: '6281329095557' },
+    { nama: 'Nabila', no: '6283103278381' },
+    { nama: 'Risya', no: '6281818405854' }
+  ];
+
+  // Helper untuk mendapatkan nomor random
+  const getRandomWANumber = () => {
+    const randomIndex = Math.floor(Math.random() * waTeam.length);
+    return waTeam[randomIndex].no;
+  };
+
   useEffect(() => {
     if (!product) {
       router.push('/produk');
@@ -40,25 +56,21 @@ export default function ProductDetailPage() {
   const advantagesIcons = [Zap, Shield, Users, Settings];
 
   const handleTestDrive = () => {
+      if (!product) return;
+      const message = `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*. Mohon info jadwal dan lokasinya ya..`;
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
+// 2. MODIFIKASI: Fungsi Ajukan Kredit dengan parameter varian
+  const handleAjukanKredit = (variantName?: string) => {
     if (!product) return;
 
-    const message = `Halo admin Suzuki!!
-
-Saya ingin memesan Test Drive untuk ${product.name}. Mohon info jadwal dan lokasinya ya..`;
-
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
-  };
-
-  const handleAjukanKredit = () => {
-    if (!product) return;
-
-    const message = `Halo admin Suzuki!!
-
-Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit dan persyaratan ya..`;
+    // Jika variantName ada, masukkan ke pesan, jika tidak gunakan nama produk umum
+    const targetName = variantName ? `${product.name} - ${variantName}` : product.name;
+    
+    const message = `Halo admin Suzuki!!\n\nSaya tertarik untuk mengajukan kredit untuk unit *${targetName}*. Mohon info simulasi kredit dan persyaratannya ya..`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
   };
 
   const handleDownloadBrosur = () => {
@@ -266,7 +278,7 @@ Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit d
                             </div>
                             {/* UBAH DI SINI: bg-primary menjadi bg-green-600 dan hover:bg-green-700 */}
                             <Button
-                              onClick={handleAjukanKredit}
+                              onClick={() => handleAjukanKredit(variant.name)}
                               className="bg-green-600 hover:bg-green-700 text-white whitespace-nowrap text-sm px-4"
                             >
                               Ajukan Kredit
@@ -278,72 +290,6 @@ Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit d
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-20 md:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16 animate-fade-in">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4">
-                  Fitur Utama
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Fitur Unggulan {product.name}
-                </h2>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {product.features?.map((feature, idx) => (
-                  <Card
-                    key={idx}
-                    className="border border-border hover-lift animate-fade-in"
-                    style={{ animationDelay: `${idx * 100}ms` }}
-                  >
-                    <CardContent className="p-6">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <CheckCircle className="h-6 w-6 text-primary" />
-                      </div>
-                      <p className="text-foreground font-medium">{feature}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 md:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Tertarik dengan {product.name}?
-              </h2>
-              <p className="text-xl text-gray-300 mb-8">
-                Hubungi kami sekarang untuk informasi lebih lanjut, penawaran harga terbaik, atau jadwalkan test drive
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/kontak">
-                  <Button
-                    size="lg"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8"
-                  >
-                    Hubungi Kami
-                    <ChevronRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Button
-                  size="lg"
-                  onClick={handleTestDrive}
-                  className="bg-white hover:bg-white/90 text-gray-900 text-lg px-8"
-                >
-                  <Car className="mr-2 h-5 w-5" />
-                  Pesan Test Drive
-                </Button>
               </div>
             </div>
           </div>
