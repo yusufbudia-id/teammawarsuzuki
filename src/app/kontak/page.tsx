@@ -10,39 +10,54 @@ import { Textarea } from '@/components/ui/textarea';
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function KontakPage() {
+  const waTeam = [
+    { nama: 'Yusuf', no: '6282174635218' },
+    { nama: 'Dimas', no: '6287775741091' },
+    { nama: 'Bima', no: '6289637144539' },
+    { nama: 'Kafi', no: '6281329095557' },
+    { nama: 'Nabila', no: '6283103278381' },
+    { nama: 'Risya', no: '6281818405854' }
+  ];
   const defaultMessage = 'Halo admin Suzuki 👋 saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..';
   const [formData, setFormData] = useState({ name: '', email: '', message: defaultMessage });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+const defaultMessage = 'Halo admin Suzuki! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..';
+  const [formData, setFormData] = useState({ name: '', email: '', message: defaultMessage });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // 2. Fungsi helper untuk mendapatkan nomor random
+  const getRandomWANumber = () => {
+    const randomIndex = Math.floor(Math.random() * waTeam.length);
+    return waTeam[randomIndex].no;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Format pesan lengkap yang akan dikirim ke WhatsApp
-    const fullMessage = `Halo admin Suzuki 👋
-
-saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..
-
----
-${formData.message}`;
-
-    // Encode message untuk URL
+    const fullMessage = `Halo admin Suzuki!!\n\n${formData.message}`;
     const encodedMessage = encodeURIComponent(fullMessage);
+    
+    // 3. Gunakan nomor random saat submit form
+    const randomNo = getRandomWANumber();
+    window.open(`https://wa.me/${randomNo}?text=${encodedMessage}`, '_blank');
 
-    // Buka WhatsApp dengan pesan yang sudah diformat
-    window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
-
-    // Reset form
     setTimeout(() => {
       setIsSubmitting(false);
       setFormData({ name: '', email: '', message: defaultMessage });
     }, 1000);
   };
 
+  // 4. Fungsi untuk tombol chat langsung di bagian bawah
+  const handleDirectChat = () => {
+    const randomNo = getRandomWANumber();
+    const message = encodeURIComponent(defaultMessage);
+    window.open(`https://wa.me/${randomNo}?text=${message}`, '_blank');
+  };
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
@@ -171,7 +186,7 @@ ${formData.message}`;
                           </div>
                           <div>
                             <h4 className="font-semibold text-foreground mb-1">Telepon</h4>
-                            <p className="text-muted-foreground">+62 21 1234 5678</p>
+                            <p className="text-muted-foreground">+62 813 9263 6737</p>
                           </div>
                         </div>
 
@@ -190,9 +205,8 @@ ${formData.message}`;
 
                   {/* WhatsApp Button */}
                   <Button
-                    onClick={() => window.open('https://wa.me/6282174635218', '_blank')}
+                    onClick={handleDirectChat} // Menggunakan fungsi random
                     className="w-full bg-green-600 hover:bg-green-700 text-white h-14 text-lg font-semibold animate-fade-in"
-                    style={{ animationDelay: '200ms' }}
                   >
                     <Phone className="mr-2 h-5 w-5" />
                     Chat via WhatsApp
