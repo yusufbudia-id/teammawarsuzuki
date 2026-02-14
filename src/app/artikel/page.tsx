@@ -56,6 +56,7 @@ export default function ArtikelPage() {
         </section>
 
         {/* Category Filter */}
+        {/* Category Filter */}
         <section className="py-8 bg-muted/30 border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
@@ -66,7 +67,7 @@ export default function ArtikelPage() {
                     onClick={() => setSelectedCategory(category === 'Semua' ? null : category)}
                     className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                       (selectedCategory === null && category === 'Semua') || selectedCategory === category
-                        ? 'bg-primary text-primary-foreground shadow-lg scale-105'
+                        ? 'bg-red-600 text-white shadow-lg scale-105' // UBAH DI SINI: bg-primary -> bg-red-600
                         : 'bg-white text-foreground hover:bg-gray-100 border'
                     }`}
                   >
