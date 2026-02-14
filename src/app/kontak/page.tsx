@@ -212,7 +212,8 @@ export default function KontakPage() {
                   <Card className="border border-border overflow-hidden animate-fade-in" style={{ animationDelay: '300ms' }}>
                     <div className="relative h-64 bg-muted">
                       <iframe
-                        src="https://maps.google.com/maps?q=Suzuki+Mlati+Glondong&output=embed"
+                        title="Lokasi Suzuki Mlati Sumber Baru Mobil"
+                        src="https://maps.google.com/maps?q=Suzuki+Mlati+Sumber+Baru+Mobil+Yogyakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
