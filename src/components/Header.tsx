@@ -53,6 +53,7 @@ const handleWhatsAppClick = () => {
   // Get active path from pathname
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
 
+  
   return (
     <header
       className={cn(
