@@ -84,14 +84,14 @@ export default function Header() {
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  'px-6 py-2 text-sm font-medium transition-all duration-200 relative group',
+                  'px-6 py-2 text-sm transition-all duration-200 relative group', // Hapus 'font-medium' jika ingin benar-benar tipis, atau biarkan standar
                   
-                  // LOGIKA WARNA:
+                  // LOGIKA WARNA (Tanpa font-semibold/bold)
                   activePath === item.id
-                    ? 'text-primary font-semibold' // Jika menu aktif -> Warna Primary (Biru/Merah)
+                    ? 'text-primary' // Menu Aktif: Warna Primary
                     : isScrolled
-                      ? 'text-muted-foreground hover:text-primary' // Jika discroll -> Abu-abu
-                      : 'text-white hover:text-primary' // ✅ Jika di atas -> Putih (UBAH DISINI)
+                      ? 'text-muted-foreground hover:text-primary' // Saat Scroll: Abu-abu
+                      : 'text-white hover:text-primary' // ✅ Saat di Atas: Putih
                 )}
               >
                 {item.label}
