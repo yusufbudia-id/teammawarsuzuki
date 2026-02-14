@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
+
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
