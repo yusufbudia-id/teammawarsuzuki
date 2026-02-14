@@ -85,9 +85,13 @@ export default function Header() {
                 href={item.href}
                 className={cn(
                   'px-6 py-2 text-sm font-medium transition-all duration-200 relative group',
+                  
+                  // LOGIKA WARNA:
                   activePath === item.id
-                    ? 'text-primary font-semibold'
-                    : 'text-muted-foreground hover:text-primary'
+                    ? 'text-primary font-semibold' // Jika menu aktif -> Warna Primary (Biru/Merah)
+                    : isScrolled
+                      ? 'text-muted-foreground hover:text-primary' // Jika discroll -> Abu-abu
+                      : 'text-white hover:text-primary' // ✅ Jika di atas -> Putih (UBAH DISINI)
                 )}
               >
                 {item.label}
@@ -115,9 +119,18 @@ export default function Header() {
             </Button>
 
             {/* Mobile Menu Trigger */}
+            {/* Mobile Menu Trigger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon" className="hover:bg-accent text-primary">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  // LOGIKA WARNA HAMBURGER MENU
+                  className={cn(
+                    "hover:bg-accent",
+                    isScrolled ? "text-primary" : "text-white" // Putih saat di atas, Primary saat discroll
+                  )}
+                >
                   {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>
               </SheetTrigger>
