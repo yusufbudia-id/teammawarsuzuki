@@ -43,8 +43,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in stagger-2">
-                Dapatkan penawaran terbaik untuk Ertiga, XL7, Carry, Jimny, Fronx, dan S-Presso
-                dengan pelayanan profesional dan dukungan purna jual terpercaya.
+                Nikmati pengalaman membeli mobil yang mudah, transparan, dan profesional. Tersedia promo spesial untuk New Ertiga, XL7 Hybrid, Carry Pick-up, Jimny, Fronx, hingga S-Presso. Dukungan after-sales resmi dan harga paling kompetitif di Yogyakarta siap menanti Anda.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
