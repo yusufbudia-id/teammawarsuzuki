@@ -45,11 +45,11 @@ export const products: ProductType[] = [
       'Suspensi kokoh untuk muatan berat',
       'Sudah terbukti keandalannya di lapangan'
     ],
-    image: '/images/suzuki-carry.jpg',
+    image: '/images/carry-1.jpg',
     gallery: [
-      '/images/suzuki-carry.jpg',
-      '/images/suzuki-carry.jpg',
-      '/images/suzuki-carry.jpg'
+      '/images/carry-1.jpg',
+      '/images/carry-2.jpg',
+      '/images/carry-3.jpg'
     ],
     brochureUrl: '/brochures/carry.pdf',
     specifications: {
@@ -112,11 +112,11 @@ export const products: ProductType[] = [
       'Radius putar kecil, mudah parkir',
       'Konsumsi BBM hingga 21 km/liter'
     ],
-    image: '/images/suzuki-spresso.jpg',
+    image: '/images/spresso-1.jpg',
     gallery: [
-      '/images/suzuki-spresso.jpg',
-      '/images/suzuki-spresso.jpg',
-      '/images/suzuki-spresso.jpg'
+      '/images/spresso-1.jpg',
+      '/images/spresso-2.jpg',
+      '/images/spresso-3.jpg'
     ],
     brochureUrl: '/brochures/s-presso.pdf',
     specifications: {
@@ -163,11 +163,11 @@ export const products: ProductType[] = [
       'AC yang dingin',
       'Sudah terbukti di bisnis angkutan'
     ],
-    image: '/images/suzuki-ertiga.jpg',
+    image: '/images/apv-1.jpg',
     gallery: [
-      '/images/suzuki-ertiga.jpg',
-      '/images/suzuki-ertiga.jpg',
-      '/images/suzuki-ertiga.jpg'
+      '/images/apv-1.jpg',
+      '/images/apv-2.jpg',
+      '/images/apv-3.jpg'
     ],
     brochureUrl: '/brochures/apv.pdf',
     specifications: {
@@ -206,11 +206,11 @@ export const products: ProductType[] = [
       'Smart Hybrid Technology',
       'Suspension yang nyaman untuk keluarga'
     ],
-    image: '/images/suzuki-ertiga.jpg',
+    image: '/images/ertiga-1.jpg',
     gallery: [
-      '/images/suzuki-ertiga.jpg',
-      '/images/suzuki-ertiga.jpg',
-      '/images/suzuki-ertiga.jpg'
+      '/images/ertiga-1.jpg',
+      '/images/ertiga-2.jpg',
+      '/images/ertiga-3.jpg'
     ],
     brochureUrl: '/brochures/ertiga.pdf',
     specifications: {
@@ -356,11 +356,11 @@ export const products: ProductType[] = [
       'Auto Climate Control',
       'Ground clearance tinggi 200mm'
     ],
-    image: '/images/suzuki-xl7.jpg',
+    image: '/images/xl7-1.jpg',
     gallery: [
-      '/images/suzuki-xl7.jpg',
-      '/images/suzuki-xl7.jpg',
-      '/images/suzuki-xl7.jpg'
+      '/images/xl7-1.jpg',
+      '/images/xl7-2.jpg',
+      '/images/xl7-3.jpg'
     ],
     brochureUrl: '/brochures/xl7.pdf',
     specifications: {
@@ -455,11 +455,11 @@ export const products: ProductType[] = [
       'Ventilated front seats',
       'ADAS dengan Suzuki Safety Sense 360'
     ],
-    image: '/images/suzuki-xl7.jpg',
+    image: '/images/vitara-1.jpg',
     gallery: [
-      '/images/suzuki-xl7.jpg',
-      '/images/suzuki-xl7.jpg',
-      '/images/suzuki-xl7.jpg'
+      '/images/vitara-1.jpg',
+      '/images/vitara-2.jpg',
+      '/images/vitara-3.jpg'
     ],
     brochureUrl: '/brochures/grand-vitara.pdf',
     specifications: {
@@ -506,11 +506,11 @@ export const products: ProductType[] = [
       'Part-time 4WD dengan low range',
       'Desain ikonik yang timeless'
     ],
-    image: '/images/suzuki-jimny.jpg',
+    image: '/images/jimny-1.jpg',
     gallery: [
-      '/images/suzuki-jimny.jpg',
-      '/images/suzuki-jimny.jpg',
-      '/images/suzuki-jimny.jpg'
+      '/images/jimny-1.jpg',
+      '/images/jimny-2.jpg',
+      '/images/jimny-3.jpg'
     ],
     brochureUrl: '/brochures/jimny.pdf',
     specifications: {
