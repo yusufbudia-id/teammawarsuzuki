@@ -264,9 +264,10 @@ Saya ingin mengajukan kredit untuk ${product.name}. Mohon info simulasi kredit d
                                 {variant.priceNett}
                               </p>
                             </div>
+                            {/* UBAH DI SINI: bg-primary menjadi bg-green-600 dan hover:bg-green-700 */}
                             <Button
                               onClick={handleAjukanKredit}
-                              className="bg-primary hover:bg-primary/90 text-primary-foreground whitespace-nowrap text-sm px-4"
+                              className="bg-green-600 hover:bg-green-700 text-white whitespace-nowrap text-sm px-4"
                             >
                               Ajukan Kredit
                               <ChevronRight className="ml-2 h-4 w-4" />
