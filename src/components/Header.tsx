@@ -42,7 +42,7 @@ export default function Header() {
     { nama: 'Risya', no: '6281818405854' }
   ];
 
-const handleWhatsAppClick = () => {
+const handleHubungiKami = () => {
     // Logika untuk memilih nomor secara random
     const randomIndex = Math.floor(Math.random() * waTeam.length);
     const selectedContact = waTeam[randomIndex];
@@ -143,7 +143,7 @@ const handleWhatsAppClick = () => {
                   </Link>
                 ))}
                 <Button 
-                  onClick={handleWhatsAppClick}
+                  onClick={handleHubungiKami}
                   className="bg-green-600 hover:bg-green-700 text-white"
                 >
                   Hubungi Kami
