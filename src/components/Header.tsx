@@ -107,8 +107,8 @@ export default function Header() {
             <Button
               onClick={handleHubungiKami}
               className="bg-primary hover:bg-primary/90 text-primary-foreground 
-                px-4 py-2 text-xs h-9               
-                md:px-8 md:py-6 md:text-base md:h-auto 
+                h-8 px-4 text-xs                   
+                md:h-10 md:px-6 md:text-sm         
                 rounded-full font-semibold transition-all duration-200 hover:shadow-lg hover:scale-105"
             >
               Hubungi Kami
