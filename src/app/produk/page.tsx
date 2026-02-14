@@ -18,6 +18,17 @@ export default function ProdukPage() {
     }
   };
 
+  // 1. Tambahkan state untuk kategori yang aktif
+const [activeCategory, setActiveCategory] = useState('Semua');
+
+// 2. Ambil daftar kategori secara otomatis dari data produk Anda
+const categories = ['Semua', ...Array.from(new Set(products.map(p => p.category)))];
+
+// 3. Filter produk yang akan ditampilkan
+const filteredProducts = activeCategory === 'Semua' 
+  ? products 
+  : products.filter(p => p.category === activeCategory);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -49,12 +60,33 @@ export default function ProdukPage() {
           </div>
         </section>
 
+        {/* Filter Chips Section */}
+        <section className="py-8 bg-white border-b sticky top-[64px] z-20">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    activeCategory === cat
+                      ? 'bg-red-600 text-white shadow-md scale-105' // Warna merah saat aktif
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200' // Warna abu-abu saat tidak aktif
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Products Grid */}
         <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50/50 to-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                {products.map((product, index) => (
+                {filteredProducts.map((product, index) => (
                   <Link href={`/produk/${product.id}`} key={product.id}>
                     <div
                       className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl"
