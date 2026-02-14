@@ -33,14 +33,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Pesan WhatsApp untuk tombol "Hubungi Kami"
-  const waMessage = `*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`;
+    const waTeam = [
+    { nama: 'Yusuf', no: '6282174635218' },
+    { nama: 'Dimas', no: '6287775741091' },
+    { nama: 'Bima', no: '6289637144539' },
+    { nama: 'Kafi', no: '6281329095557' },
+    { nama: 'Nabila', no: '6283103278381' },
+    { nama: 'Risya', no: '6281818405854' }
+  ];
 
-  // Handle kirim pesan WhatsApp dari header
-  const handleHubungiKami = () => {
-    const encodedMessage = encodeURIComponent(waMessage);
-    window.open(`https://wa.me/6282174635218?text=${encodedMessage}`, '_blank');
-  };
+const handleWhatsAppClick = () => {
+    // Logika untuk memilih nomor secara random
+    const randomIndex = Math.floor(Math.random() * waTeam.length);
+    const selectedContact = waTeam[randomIndex];
+    
+    const message = encodeURIComponent(`*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`);
+    window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
 
   // Get active path from pathname
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
@@ -133,12 +141,9 @@ export default function Header() {
                     )} />
                   </Link>
                 ))}
-                <Button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    handleHubungiKami();
-                  }}
-                  className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full font-semibold"
+                <Button 
+                  onClick={handleWhatsAppClick}
+                  className="bg-green-600 hover:bg-green-700 text-white"
                 >
                   Hubungi Kami
                 </Button>
