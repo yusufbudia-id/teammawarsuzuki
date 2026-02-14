@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
     url: "https://suzukijogjamagelang.vercel.app",
-    siteName: "Suzuki Dealer Indonesia",
+    siteName: "Suzuki Jogja Magelang", // Saran: Sesuaikan agar sama dengan JSON-LD di bawah
   },
   twitter: {
     card: "summary_large_image",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://suzukijogjamagelang.vercel.app'),
   alternates: {
-    canonical: '/', // Ini akan menghasilkan <link rel="canonical" href="https://suzukijogjamagelang.vercel.app/" />
+    canonical: '/', 
   },
 };
 
@@ -74,12 +74,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  // --- TAMBAHAN PENTING (JSON-LD) ---
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Suzuki Jogja Magelang", // Ini nama yang akan muncul di Google menggantikan 'Vercel'
+    "url": "https://suzukijogjamagelang.vercel.app/"
+  };
+  // -----------------------------------
+
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
+        />
+        {/* Masukkan JSON-LD disini */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
