@@ -5,7 +5,7 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Indonesia - Diskon & Penawaran Terbaik",
-  description: "Promo Suzuki Jogja terbaru 2024! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Baleno, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
+  description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Baleno, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
   icons: {
     icon: [
       { url: '/icon.png', sizes: 'any', type: 'image/png' },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description: "Promo Suzuki Jogja terbaru 2024! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Baleno, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
     type: "website",
     locale: "id_ID",
-    url: "https://suzukidealerindonesia.com",
+    url: "https://suzukijogjamagelang.vercel.app",
     siteName: "Suzuki Dealer Indonesia",
   },
   twitter: {
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
     description: "Promo Suzuki Jogja terbaru 2024! Dealer resmi Suzuki Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis.",
     creator: "@suzukiindonesia",
   },
-  metadataBase: new URL('https://suzukidealerindonesia.com'),
+  metadataBase: new URL('https://suzukijogjamagelang.vercel.app'),
   alternates: {
-    canonical: '/',
+    canonical: '/', // Ini akan menghasilkan <link rel="canonical" href="https://suzukijogjamagelang.vercel.app/" />
   },
 };
 
