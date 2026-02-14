@@ -323,6 +323,104 @@ export const articles: ArticleType[] = [
   tags: ["Suzuki Jimny", "Promo Suzuki", "SUV", "Jimny 5 Doors", "Jimny 3 Doors"],
   author: "Yusuf Suzuki",
   date: "2026-02-12"
+},
+
+{
+  id: 8,
+  title: "Bedah Spesifikasi Suzuki Fronx: Perbedaan Tipe GL, GX, dan SGX Lengkap",
+  slug: "perbedaan-spesifikasi-suzuki-fronx-tipe-gl-gx-sgx",
+  thumbnail: "/images/artikel/beda-tipe-fronx.png",
+  excerpt: "Bingung memilih varian Suzuki Fronx? Simak perbandingan lengkap fitur dan spesifikasi antara tipe GL, GX, dan SGX untuk menemukan SUV compact yang paling pas dengan kebutuhan Anda.",
+  content: `
+      <p class="mb-4">Suzuki Fronx telah menjadi primadona baru di segmen Compact SUV. Dengan desain crossover yang <em>sporty</em> dan performa mesin yang efisien, mobil ini menarik perhatian banyak keluarga muda di Indonesia. Namun, bagi calon pembeli, memahami perbedaan antar varian sangatlah penting agar mendapatkan kendaraan yang sesuai dengan <em>budget</em> dan kebutuhan.</p>
+
+      <p class="mb-4">Suzuki menghadirkan Fronx dalam beberapa varian utama, yaitu <strong>GL (Standard)</strong>, <strong>GX (Medium)</strong>, dan <strong>SGX (Highest/Flagship)</strong>. Berikut adalah ulasan mendalam mengenai perbedaan ketiga tipe tersebut.</p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">1. Suzuki Fronx Tipe GL (Varian Entry Level)</h3>
+      <p class="mb-4">Tipe GL hadir sebagai pilihan paling terjangkau bagi Anda yang mengutamakan fungsi dan efisiensi. Meski merupakan varian dasar, Suzuki tetap menyematkan fitur keamanan standar yang mumpuni.</p>
+      <ul class="list-disc ml-6 mb-4">
+        <li><strong>Eksterior:</strong> Menggunakan lampu depan Halogen Projector, velg kaleng (steel wheels) dengan dop, dan antena model pole. Tidak dilengkapi dengan <em>roof rails</em>.</li>
+        <li><strong>Interior:</strong> Jok berbahan fabric standar, AC model putar (manual), dan Head Unit 7 inch standar dengan konektivitas dasar (Bluetooth/USB).</li>
+        <li><strong>Fitur Keamanan:</strong> Dual SRS Airbags, ABS + EBD, dan sensor parkir belakang.</li>
+        <li><strong>Kesimpulan:</strong> Cocok untuk penggunaan operasional harian dengan harga yang sangat kompetitif.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">2. Suzuki Fronx Tipe GX (Varian Menengah)</h3>
+      <p class="mb-4">Tipe GX adalah varian yang paling "<em>Value for Money</em>". Varian ini menyeimbangkan harga dengan peningkatan fitur kenyamanan dan tampilan yang lebih modern.</p>
+      <ul class="list-disc ml-6 mb-4">
+        <li><strong>Eksterior:</strong> Sudah dilengkapi LED Multi-Reflector Headlamps dengan DRL (Daytime Running Light), Velg Alloy 16 inch single tone, dan sudah terpasang <em>roof rails</em> yang menambah kesan SUV.</li>
+        <li><strong>Interior:</strong> Keyless Entry dengan tombol Start/Stop Engine, AC Digital dengan fitur Auto Climate, serta Head Unit 8 inch yang mendukung konektivitas smartphone (Apple CarPlay/Android Auto).</li>
+        <li><strong>Fitur Tambahan:</strong> Kamera mundur, Steering Wheel Audio Control, dan Rear AC Vents untuk kenyamanan penumpang belakang.</li>
+        <li><strong>Kesimpulan:</strong> Pilihan paling rasional untuk keluarga yang menginginkan kenyamanan lebih tanpa harus membayar harga tipe tertinggi.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">3. Suzuki Fronx Tipe SGX (Varian Tertinggi/Flagship)</h3>
+      <p class="mb-4">Tipe SGX dirancang bagi Anda yang tidak ingin kompromi soal teknologi dan kemewahan. Varian ini memiliki semua fitur tipe GX ditambah dengan teknologi canggih terkini.</p>
+      <ul class="list-disc ml-6 mb-4">
+        <li><strong>Eksterior:</strong> Velg Alloy 16 inch Two-Tone Polish yang mewah, UV Cut Glass, dan aksen chrome pada handle pintu serta grill depan yang lebih premium.</li>
+        <li><strong>Interior:</strong> Head Unit 9 inch HD "SmartPlay Pro+", Head Up Display (HUD) yang futuristik, Wireless Charging Dock, dan jok dengan aksen kulit premium serta <em>soft touch material</em> di dashboard.</li>
+        <li><strong>Fitur Keselamatan & Canggih:</strong> Dilengkapi 6 Airbags (Front, Side, Curtain), ESP (Electronic Stability Program), Hill Hold Assist, Kamera 360 derajat, dan Cruise Control.</li>
+        <li><strong>Kesimpulan:</strong> Tipe SGX menawarkan pengalaman berkendara kelas atas dengan fitur keselamatan dan hiburan terlengkap di kelasnya.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Tabel Perbandingan Singkat</h3>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full text-left border-collapse mb-4">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 border">Fitur</th>
+              <th class="p-2 border">Tipe GL</th>
+              <th class="p-2 border">Tipe GX</th>
+              <th class="p-2 border">Tipe SGX</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border">Lampu Depan</td>
+              <td class="p-2 border">Halogen</td>
+              <td class="p-2 border">LED + DRL</td>
+              <td class="p-2 border">LED + DRL Auto</td>
+            </tr>
+            <tr>
+              <td class="p-2 border">Start Engine</td>
+              <td class="p-2 border">Kunci Biasa</td>
+              <td class="p-2 border">Push Button</td>
+              <td class="p-2 border">Push Button</td>
+            </tr>
+            <tr>
+              <td class="p-2 border">Head Unit</td>
+              <td class="p-2 border">7 Inch</td>
+              <td class="p-2 border">8 Inch</td>
+              <td class="p-2 border">9 Inch + 360 Cam</td>
+            </tr>
+             <tr>
+              <td class="p-2 border">Airbags</td>
+              <td class="p-2 border">2</td>
+              <td class="p-2 border">2</td>
+              <td class="p-2 border">6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Dapatkan Penawaran Terbaik Fronx</h3>
+      <p class="mb-4">Sudah menentukan tipe mana yang cocok untuk Anda? Jangan ragu untuk berkonsultasi mengenai simulasi kredit, ketersediaan warna, dan promo diskon terbaru bulan ini.</p>
+
+      <p class="mb-4">Hubungi saya langsung untuk <em>Test Drive</em> dan pemesanan unit:</p>
+
+      <p class="mb-4">
+        <a href="https://wa.me/6282174635218?text=Halo%20Mas%20Yusuf,%20saya%20tertarik%20tanya%20info%20Suzuki%20Fronx" target="_blank" class="inline-block bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300">
+          Chat WhatsApp Yusuf Suzuki: 0821-7463-5218
+        </a>
+      </p>
+
+      <h3 class="text-2xl font-bold mt-8 mb-4">Kesimpulan</h3>
+      <p class="mb-4">Memilih antara GL, GX, atau SGX kembali pada prioritas Anda. Jika budget terbatas namun butuh ketangguhan, GL adalah jawabannya. Jika mencari keseimbangan fitur, GX sangat direkomendasikan. Namun, jika Anda menginginkan teknologi HUD dan keamanan maksimal 6 airbags, tipe SGX adalah investasi terbaik.</p>
+  `,
+  category: "Review",
+  tags: ["Suzuki Fronx", "Spesifikasi Fronx", "Fronx GL", "Fronx GX", "Fronx SGX", "SUV Compact"],
+  author: "Yusuf Suzuki",
+  date: "2026-02-15"
 }
 
 ];
