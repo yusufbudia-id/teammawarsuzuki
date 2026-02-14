@@ -84,14 +84,16 @@ export default function Header() {
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  'px-6 py-2 text-sm font-medium transition-all duration-200 relative group',
+                  // ❌ SEBELUMNYA: 'px-6 py-2 text-sm font-medium transition-all ...'
+                  // ✅ PERBAIKAN: Hapus 'font-medium' agar kembali ke font normal (tipis)
+                  'px-6 py-2 text-sm transition-all duration-200 relative group',
                   
                   // LOGIKA WARNA:
                   activePath === item.id
-                    ? 'text-primary font-semibold' // Jika menu aktif -> Warna Primary (Biru/Merah)
+                    ? 'text-primary font-semibold' // Menu Aktif: Tetap tebal (Semibold)
                     : isScrolled
-                      ? 'text-muted-foreground hover:text-primary' // Jika discroll -> Abu-abu
-                      : 'text-white hover:text-primary' // ✅ Jika di atas -> Putih (UBAH DISINI)
+                      ? 'text-muted-foreground hover:text-primary' // Scroll: Abu-abu (Normal)
+                      : 'text-white hover:text-primary' // Atas: Putih (Normal)
                 )}
               >
                 {item.label}
