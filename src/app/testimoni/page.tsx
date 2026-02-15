@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react'; // Tambahkan baris ini
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
