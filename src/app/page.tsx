@@ -48,30 +48,26 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
-                {/* Tombol Lihat Produk */}
-                <Link href="/produk">
+                {/* Tombol Lihat Produk - Merah Solid */}
+                <Link href="/produk" className="w-full sm:w-auto">
                   <Button
-                    size="lg"
-                    className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-2xl hover:scale-105 w-full sm:w-auto flex items-center justify-center"
+                    className="bg-red-600 hover:bg-red-700 text-white px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[60px] flex items-center justify-center"
                   >
                     Lihat Produk
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
 
-                {/* Tombol Lihat Testimoni */}
-                <Link href="/testimoni">
+                {/* Tombol Lihat Galeri - Putih Solid (Sama Ukuran) */}
+                <Link href="/testimoni" className="w-full sm:w-auto">
                   <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-white/30 text-blue-500 hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto flex items-center justify-center"
+                    className="bg-white hover:bg-gray-100 text-blue-600 px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[60px] flex items-center justify-center shadow-sm"
                   >
-                    Lihat Testimoni
+                    Lihat Galeri
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
               </div>
-
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 pt-8 border-t border-white/10 animate-fade-in stagger-4">
                 <div className="text-center animate-fade-in">
