@@ -48,26 +48,27 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
-                {/* Tombol Lihat Produk - Merah Solid */}
-                <Link href="/produk" className="w-full sm:w-auto">
+                <Link href="/produk">
                   <Button
-                    className="bg-red-600 hover:bg-red-700 text-white px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[50px] flex items-center justify-center"
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-2xl hover:scale-105 w-full sm:w-auto"
                   >
                     Lihat Produk
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-
-                {/* Tombol Lihat Galeri - Putih Solid (Sama Ukuran) */}
-                <Link href="/testimoni" className="w-full sm:w-auto">
+                <Link href="/promo">
                   <Button
-                    className="bg-white hover:bg-gray-100 text-blue-600 px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[50px] flex items-center justify-center shadow-sm"
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white/30 text-blue-500 hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
                   >
-                    Lihat Galeri
+                    Lihat Promo
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
               </div>
+
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 pt-8 border-t border-white/10 animate-fade-in stagger-4">
                 <div className="text-center animate-fade-in">
@@ -83,7 +84,7 @@ export default function HomePage() {
                   <div className="text-gray-400 text-sm md:text-base">Tahun Pengalaman</div>
                 </div>
                 <div className="text-center animate-fade-in stagger-3">
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">8</div>
+                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">6</div>
                   <div className="text-gray-400 text-sm md:text-base">Model Tersedia</div>
                 </div>
               </div>
