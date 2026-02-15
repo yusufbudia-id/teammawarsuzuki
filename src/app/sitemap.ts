@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { products } from '@/lib/products-data'; // Pastikan path data produk benar
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.suzuki-sumberbaru.id'; // Ganti dengan domain asli Anda
+  const baseUrl = 'https://suzukijogjamagelang.vercel.app/'; // Ganti dengan domain asli Anda
 
   // 1. Halaman Statis
   const staticPages = [
