@@ -48,22 +48,25 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
+                {/* Tombol Lihat Produk - Warna Merah */}
                 <Link href="/produk">
                   <Button
                     size="lg"
-                    className="bg-primary hover:bg-primary/90 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-2xl hover:scale-105 w-full sm:w-auto"
+                    className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-2xl hover:scale-105 w-full sm:w-auto"
                   >
                     Lihat Produk
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="/promo">
+
+                {/* Tombol Lihat Testimoni - Outline Putih */}
+                <Link href="/testimoni">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white/30 text-blue-500 hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
+                    className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
                   >
-                    Lihat Promo
+                    Lihat Testimoni
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
