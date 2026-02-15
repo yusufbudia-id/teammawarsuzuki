@@ -84,7 +84,7 @@ export default function HomePage() {
                   <div className="text-gray-400 text-sm md:text-base">Tahun Pengalaman</div>
                 </div>
                 <div className="text-center animate-fade-in stagger-3">
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">6</div>
+                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">8</div>
                   <div className="text-gray-400 text-sm md:text-base">Model Tersedia</div>
                 </div>
               </div>
