@@ -6,11 +6,10 @@ import Footer from '@/components/Footer';
 import { X } from 'lucide-react'; // Pastikan X diimpor
 
 const photos = [
-  { id: 1, src: '/images/galeri-1.jpg', title: 'Pemandangan Laut' },
-  { id: 2, src: '/images/galeri-2.jpg', title: 'Burung di Ranting' },
-  { id: 3, src: '/images/galeri-3.jpg', title: 'Rumah Salju' },
-  { id: 4, src: '/images/galeri-4.jpg', title: 'Burung Kecil' },
-  { id: 5, src: '/images/galeri-5.jpg', title: 'Interior Klasik' },
+  { id: 1, src: '/images/galeri/galeri-1.jpg', title: 'Pemandangan Laut' },
+  { id: 2, src: '/images/galeri/galeri-2.jpg', title: 'Burung di Ranting' },
+  { id: 3, src: '/images/galeri/galeri-3.jpg', title: 'Rumah Salju' },
+  { id: 4, src: '/images/galeri/galeri-4.jpg', title: 'Burung Kecil' },
 ];
 
 export default function TestimoniPage() {
