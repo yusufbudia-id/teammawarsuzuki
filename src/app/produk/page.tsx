@@ -61,7 +61,7 @@ const filteredProducts = activeCategory === 'Semua'
         </section>
 
         {/* Filter Chips Section */}
-        <section className="py-8 bg-white border-b sticky top-[64px] z-20">
+        <section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center gap-3">
               {categories.map((cat) => (
