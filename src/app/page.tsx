@@ -64,7 +64,7 @@ export default function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
+                    className="border-2 border-white/30 text-blue hover:bg-white/10 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
                   >
                     Lihat Testimoni
                     <ArrowRight className="ml-2 h-5 w-5" />
