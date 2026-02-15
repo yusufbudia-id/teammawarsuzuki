@@ -51,7 +51,7 @@ export default function HomePage() {
                 {/* Tombol Lihat Produk - Merah Solid */}
                 <Link href="/produk" className="w-full sm:w-auto">
                   <Button
-                    className="bg-red-600 hover:bg-red-700 text-white px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[60px] flex items-center justify-center"
+                    className="bg-red-600 hover:bg-red-700 text-white px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[50px] flex items-center justify-center"
                   >
                     Lihat Produk
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -61,7 +61,7 @@ export default function HomePage() {
                 {/* Tombol Lihat Galeri - Putih Solid (Sama Ukuran) */}
                 <Link href="/testimoni" className="w-full sm:w-auto">
                   <Button
-                    className="bg-white hover:bg-gray-100 text-blue-600 px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[60px] flex items-center justify-center shadow-sm"
+                    className="bg-white hover:bg-gray-100 text-blue-600 px-8 rounded-full text-lg font-semibold transition-all hover:scale-105 w-full h-[50px] flex items-center justify-center shadow-sm"
                   >
                     Lihat Galeri
                     <ArrowRight className="ml-2 h-5 w-5" />
