@@ -132,4 +132,19 @@ export default function HomePage() {
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       if (e.currentTarget.parentElement) {
-                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs
+                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-400 border border-dashed border-gray-300 p-2 rounded">${partner.name}</span>`;
+                      }
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
