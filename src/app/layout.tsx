@@ -3,9 +3,20 @@ import "./globals.css";
 import { ClientBodyProvider } from "@/components/client-body-provider";
 import Script from "next/script";
 
+// 1. SETUP BASE URL
+// Prioritas: Ambil dari Env Variable, kalau kosong pakai domain baru langsung
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL 
+  ? process.env.NEXT_PUBLIC_BASE_URL 
+  : 'https://www.suzuki-jogja.com'; 
+
 export const metadata: Metadata = {
-  title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta Indonesia - Diskon & Penawaran Terbaik",
-  description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Fronx, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
+  // 2. METADATA BASE (PENTING)
+  // Ini menjadi patokan untuk semua link relatif dan gambar OG
+  metadataBase: new URL(baseUrl),
+
+  title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta Indonesia",
+  description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Fronx, S-Presso.",
+  
   icons: {
     icon: [
       { url: '/icon.png', sizes: 'any', type: 'image/png' },
@@ -16,28 +27,14 @@ export const metadata: Metadata = {
     ],
   },
   keywords: [
-    "Promo Suzuki Jogja",
-    "Dealer Resmi Suzuki Jogja",
-    "Dealer Mobil Suzuki Indonesia",
-    "Harga Suzuki Ertiga",
-    "Harga Suzuki XL7",
-    "Harga Suzuki Carry",
-    "Harga Suzuki Jimny",
-    "Harga Suzuki Baleno",
-    "Harga Suzuki S-Presso",
-    "Promo Bunga 0% Suzuki",
-    "Diskon Mobil Suzuki",
-    "Tukar Tambah Suzuki",
-    "Test Drive Suzuki Gratis",
-    "Garansi Resmi Suzuki",
-    "Dealer Suzuki Terpercaya",
-    "Suzuki Indonesia",
-    "Mobil Murah Jogja",
-    "Kredit Mobil Suzuki"
+    "Promo Suzuki Jogja", "Dealer Resmi Suzuki Jogja", "Harga Suzuki Ertiga", 
+    "Harga Suzuki XL7", "Harga Suzuki Carry", "Harga Suzuki Fronx", 
+    "Suzuki Jogja", "Kredit Mobil Suzuki Jogja"
   ],
-  authors: [{ name: "Suzuki Dealer Jogja Indonesia" }],
-  creator: "Suzuki Dealer Jogja Indonesia",
-  publisher: "Suzuki Dealer Jogja Indonesia",
+  authors: [{ name: "Suzuki Dealer Jogja" }],
+  creator: "Suzuki Dealer Jogja",
+  publisher: "Suzuki Dealer Jogja",
+  
   robots: {
     index: true,
     follow: true,
@@ -49,21 +46,33 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+
+  // 3. OPEN GRAPH (Untuk Tampilan Share WA/FB)
   openGraph: {
-    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta, Indonesia - Diskon & Penawaran Terbaik",
-    description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Fronx, S-Presso. Dapatkan harga terbaik di Jogja sekarang.",
+    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta",
+    description: "Dapatkan promo Suzuki Jogja terbaru 2026. Diskon besar & Bunga 0%.",
     type: "website",
     locale: "id_ID",
-    url: "https://suzukijogjamagelang.vercel.app",
-    siteName: "Suzuki Jogja Magelang", // Saran: Sesuaikan agar sama dengan JSON-LD di bawah
+    url: baseUrl, // Otomatis mengarah ke domain baru
+    siteName: "Suzuki Jogja", 
+    images: [
+      {
+        url: '/opengraph-image.png', // Pastikan kamu punya gambar ini di folder public
+        width: 1200,
+        height: 630,
+        alt: 'Promo Suzuki Jogja',
+      },
+    ],
   },
+  
   twitter: {
     card: "summary_large_image",
-    title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta, Indonesia - Diskon & Penawaran Terbaik",
-    description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis.",
-    creator: "@suzukiindonesia",
+    title: "Promo Suzuki Jogja | Dealer Resmi",
+    description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta.",
+    creator: "@suzukiindonesia", // Bisa diganti akun twittermu jika ada
   },
-  metadataBase: new URL('https://suzukijogjamagelang.vercel.app'),
+
+  // 4. CANONICAL URL (Agar Google tahu ini yang asli)
   alternates: {
     canonical: '/', 
   },
@@ -75,14 +84,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   
-  // --- TAMBAHAN PENTING (JSON-LD) ---
+  // 5. UPGRADE JSON-LD (Schema Markup)
+  // Menggunakan tipe "AutoDealer" agar lebih valid di mata Google Bisnis
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Suzuki Jogja Magelang", // Ini nama yang akan muncul di Google menggantikan 'Vercel'
-    "url": "https://suzukijogjamagelang.vercel.app/"
+    "@type": "AutoDealer", 
+    "name": "Suzuki Jogja",
+    "url": baseUrl,
+    "logo": `${baseUrl}/icon.png`,
+    "description": "Dealer Resmi Suzuki Jogja melayani penjualan mobil baru Suzuki dengan promo terbaik.",
+    "priceRange": "Rp 150.000.000 - Rp 500.000.000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Magelang Km 8", // Boleh dilengkapi nomornya
+      "addressLocality": "Sleman",
+      "addressRegion": "DI Yogyakarta",
+      "addressCountry": "ID"
+    },
+    // Tambahkan nomor WA mu di sini agar orang bisa klik call dari Google
+    "telephone": "+6282174635218", 
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      }
+    ]
   };
-  // -----------------------------------
 
   return (
     <html lang="id" suppressHydrationWarning>
@@ -91,7 +120,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
-        {/* Masukkan JSON-LD disini */}
+        {/* Inject JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
