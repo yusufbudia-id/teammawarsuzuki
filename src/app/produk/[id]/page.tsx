@@ -2,13 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Download, Car, Settings, CheckCircle, Zap, Shield, Users, Wrench, Ruler, Users as UsersIcon, Droplets, ChevronRight } from 'lucide-react';
-import { products, ProductType, getProductById } from '@/lib/products-data';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  Download, Car, Settings, Zap, Shield, 
+  Wrench, Ruler, Users as UsersIcon, 
+  Droplets, ChevronRight, Gift 
+} from 'lucide-react';
+import { products, getProductById } from '@/lib/products-data';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -17,7 +21,6 @@ export default function ProductDetailPage() {
   const id = parseInt(params.id as string);
   const product = getProductById(id);
 
-  // 1. Tambahkan daftar tim WA untuk randomisasi
   const waTeam = [
     { nama: 'Yusuf', no: '6282174635218' },
     { nama: 'Dimas', no: '6287775741091' },
@@ -27,13 +30,11 @@ export default function ProductDetailPage() {
     { nama: 'Risya', no: '6281818405854' }
   ];
 
-  // Helper untuk mendapatkan nomor random
   const getRandomWANumber = () => {
     const randomIndex = Math.floor(Math.random() * waTeam.length);
     return waTeam[randomIndex].no;
   };
 
-  // ✅ 1. DATA JSON-LD UNTUK SEO GOOGLE
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -73,23 +74,19 @@ export default function ProductDetailPage() {
     );
   }
 
-  const advantagesIcons = [Zap, Shield, Users, Settings];
-
   const handleTestDrive = () => {
       if (!product) return;
       const message = `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*. Mohon info jadwal dan lokasinya ya..`;
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
   };
-      // 2. MODIFIKASI: Fungsi Ajukan Kredit dengan parameter varian
-  const handleAjukanKredit = (variantName?: string) => {
+
+  // ✅ Modifikasi: Support untuk wilayah (AB vs AA/R)
+  const handleAjukanKredit = (variantName?: string, region?: string) => {
     if (!product) return;
-
-    // Jika variantName ada, masukkan ke pesan, jika tidak gunakan nama produk umum
-    const targetName = variantName ? `${product.name} - ${variantName}` : product.name;
-    
+    const regionText = region ? ` (${region})` : '';
+    const targetName = variantName ? `${product.name} - ${variantName}${regionText}` : product.name;
     const message = `Halo admin Suzuki!!\n\nSaya tertarik untuk mengajukan kredit untuk unit *${targetName}*. Mohon info simulasi kredit dan persyaratannya ya..`;
-
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
   };
@@ -99,9 +96,39 @@ export default function ProductDetailPage() {
     window.open(product.brochureUrl, '_blank');
   };
 
+  // ✅ Helper Component untuk Kartu Varian
+  const VariantCard = ({ variant, priceData, region, idx }: any) => (
+    <Card
+      className="border-2 border-border hover:border-primary transition-all duration-300 animate-fade-in"
+      style={{ animationDelay: `${idx * 50}ms` }}
+    >
+      <CardContent className="p-3">
+        <div className="flex items-center justify-between">
+          <div className="flex-1">
+            <h4 className="text-base font-bold text-foreground mb-1">
+              {variant.name}
+            </h4>
+            <p className="text-sm text-muted-foreground line-through mb-1">
+              {priceData.priceOtr}
+            </p>
+            <p className="text-xl font-bold text-primary">
+              {priceData.priceNett}
+            </p>
+          </div>
+          <Button
+            onClick={() => handleAjukanKredit(variant.name, region)}
+            className="bg-green-600 hover:bg-green-700 text-white whitespace-nowrap text-sm px-4"
+          >
+            Ajukan Kredit
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* ✅ 2. INJEKSI SCRIPT SEO KE HEAD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -158,7 +185,6 @@ export default function ProductDetailPage() {
                   </span>
                 </div>
 
-                {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     size="lg"
@@ -205,6 +231,7 @@ export default function ProductDetailPage() {
                         Spesifikasi Umum
                       </h3>
                       <div className="space-y-6">
+                        {/* List Spesifikasi Manual agar Rapi */}
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Wrench className="h-6 w-6 text-primary" />
@@ -279,41 +306,69 @@ export default function ProductDetailPage() {
                   </Card>
                 </div>
 
-                {/* Variant List - Right Side */}
+                {/* Variant List - Right Side with Tabs */}
                 <div className="animate-fade-in stagger-2">
-                  <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
-                    {product.variants.map((variant, idx) => (
-                      <Card
-                        key={idx}
-                        className="border-2 border-border hover:border-primary transition-all duration-300 animate-fade-in"
-                        style={{ animationDelay: `${idx * 50}ms` }}
+                  <Tabs defaultValue="plat-ab" className="w-full">
+                    <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-800 p-1 rounded-lg">
+                      <TabsTrigger 
+                        value="plat-ab" 
+                        className="data-[state=active]:bg-primary data-[state=active]:text-white text-gray-400 font-bold"
                       >
-                        <CardContent className="p-3">
-                          <div className="flex items-center justify-between">
-                            <div className="flex-1">
-                              <h4 className="text-base font-bold text-foreground mb-1">
-                                {variant.name}
-                              </h4>
-                              <p className="text-sm text-muted-foreground line-through mb-1">
-                                {variant.priceOtr}
-                              </p>
-                              <p className="text-xl font-bold text-primary">
-                                {variant.priceNett}
-                              </p>
+                        Plat AB (Jogja)
+                      </TabsTrigger>
+                      <TabsTrigger 
+                        value="plat-aa-r" 
+                        className="data-[state=active]:bg-primary data-[state=active]:text-white text-gray-400 font-bold"
+                      >
+                        Plat AA & R (Kedu/Bms)
+                      </TabsTrigger>
+                    </TabsList>
+
+                    {/* Tab Content: Plat AB */}
+                    <TabsContent value="plat-ab" className="mt-0">
+                      <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                        {product.variants.map((variant, idx) => (
+                          <VariantCard 
+                            key={`ab-${idx}`}
+                            idx={idx}
+                            variant={variant}
+                            priceData={variant.priceAB}
+                            region="Plat AB"
+                          />
+                        ))}
+                      </div>
+                    </TabsContent>
+
+                    {/* Tab Content: Plat AA & R */}
+                    <TabsContent value="plat-aa-r" className="mt-0">
+                      <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                        {/* Info Bonus Spesial */}
+                        {product.variants[0]?.bonus && (
+                          <div className="mb-4 p-4 bg-gradient-to-r from-yellow-600/20 to-yellow-900/20 border border-yellow-600/50 rounded-lg flex items-start gap-3">
+                            <Gift className="h-6 w-6 text-yellow-500 flex-shrink-0 mt-1" />
+                            <div>
+                              <h4 className="font-bold text-yellow-500 text-sm mb-1">Special Promo AA & R</h4>
+                              <p className="text-sm text-gray-300">{product.variants[0].bonus}</p>
                             </div>
-                            {/* UBAH DI SINI: bg-primary menjadi bg-green-600 dan hover:bg-green-700 */}
-                            <Button
-                              onClick={() => handleAjukanKredit(variant.name)}
-                              className="bg-green-600 hover:bg-green-700 text-white whitespace-nowrap text-sm px-4"
-                            >
-                              Ajukan Kredit
-                              <ChevronRight className="ml-2 h-4 w-4" />
-                            </Button>
                           </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
+                        )}
+
+                        {product.variants.map((variant, idx) => (
+                          <VariantCard 
+                            key={`aar-${idx}`}
+                            idx={idx}
+                            variant={variant}
+                            priceData={variant.priceAAR}
+                            region="Plat AA/R"
+                          />
+                        ))}
+                        
+                        <p className="text-xs text-muted-foreground mt-4 italic text-center">
+                          *Harga berlaku untuk wilayah Kedu, Banyumas, Cilacap, Purworejo, Kebumen, Temanggung, Wonosobo, Magelang.
+                        </p>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
                 </div>
               </div>
             </div>
