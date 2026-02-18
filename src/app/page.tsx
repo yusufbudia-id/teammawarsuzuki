@@ -4,8 +4,18 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
+// ✅ DAFTAR LOGO LEASING (Format .webp)
+const leasingPartners = [
+  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
+  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
+  { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
+  { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
+  { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
+];
 
 export default function HomePage() {
   return (
@@ -39,7 +49,7 @@ export default function HomePage() {
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1">
                 Temukan Mobil Suzuki{' '}
-                <br /> {/* <--- Tambahkan ini */}
+                <br />
                 <span className="text-primary">Impian Anda</span>
               </h1>
 
@@ -93,9 +103,46 @@ export default function HomePage() {
 
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <ChevronRight className="h-8 w-8 text-gray-400 rotate-90" />
+            <ChevronDown className="h-10 w-10 text-gray-400" />
           </div>
         </section>
+
+        {/* ✅ LEASING PARTNER SECTION */}
+        <section className="py-16 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Leasing Partner Terpercaya
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Kami bekerjasama dengan berbagai lembaga pembiayaan terkemuka untuk memberikan kemudahan dan pilihan terbaik bagi Anda.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 animate-fade-in stagger-1">
+              {leasingPartners.map((partner, index) => (
+                <div 
+                  key={index} 
+                  className="group relative w-32 h-20 md:w-40 md:h-24 flex items-center justify-center p-2 transition-all duration-300"
+                >
+                  <img
+                    src={partner.src}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110"
+                    onError={(e) => {
+                      // Fallback sederhana jika gambar tidak ditemukan
+                      e.currentTarget.style.display = 'none';
+                      if (e.currentTarget.parentElement) {
+                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-400 border border-dashed border-gray-300 p-2 rounded">${partner.name}</span>`;
+                      }
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <Footer />
