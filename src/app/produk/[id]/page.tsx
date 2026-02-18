@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product?.name,
-    image: `https://suzukijogjamagelang.vercel.app${product?.image}`,
+    image: `https://www.suzuki-jogja.com${product?.image}`,
     description: product?.description,
     brand: {
       '@type': 'Brand',
@@ -49,7 +49,7 @@ export default function ProductDetailPage() {
       price: product?.priceText ? parseFloat(product.priceText) * 1000000 : 0,
       priceCurrency: 'IDR',
       availability: 'https://schema.org/InStock',
-      url: `https://suzukijogjamagelang.vercel.app/produk/${product?.id}`,
+      url: `https://www.suzuki-jogja.com/produk/${product?.id}`,
     },
   };
 

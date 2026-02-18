@@ -5,7 +5,7 @@ import { articles } from '@/lib/articles-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Tips: Hapus slash di akhir URL ini agar tidak double slash nanti
-  const baseUrl = 'https://suzukijogjamagelang.vercel.app'; 
+  const baseUrl = 'https://www.suzuki-jogja.com/'; 
 
   // --- 1. Halaman Statis ---
   const staticPages = [

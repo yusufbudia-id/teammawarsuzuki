@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://www.suzuki-sumberbaru.id/sitemap.xml',
+    sitemap: 'https://www.suzuki-jogja.com/sitemap.xml',
   };
 }
