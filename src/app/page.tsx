@@ -4,17 +4,16 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronDown } from 'lucide-react';
 
 // ✅ DAFTAR LOGO LEASING (Format .webp)
 const leasingPartners = [
-  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
-  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
+  { name: 'Suzuki Finance', src: '/images/leasing/suzuki-finance.webp' },
+  { name: 'BCA Finance', src: '/images/leasing/bca-finance.webp' },
   { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
   { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
-  { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
+  { name: 'Oto Finance', src: '/images/leasing/oto.webp' },
   { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
-  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
 ];
 
 export default function HomePage() {
@@ -107,7 +106,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ✅ LEASING PARTNER SECTION */}
+        {/* ✅ LEASING PARTNER SECTION - LOGO BERWARNA */}
         <section className="py-16 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 animate-fade-in">
@@ -123,29 +122,14 @@ export default function HomePage() {
               {leasingPartners.map((partner, index) => (
                 <div 
                   key={index} 
-                  className="group relative w-32 h-20 md:w-40 md:h-24 flex items-center justify-center p-2 transition-all duration-300"
+                  className="group relative w-32 h-20 md:w-40 md:h-24 flex items-center justify-center p-2 transition-all duration-300 hover:scale-110"
                 >
                   <img
                     src={partner.src}
                     alt={partner.name}
-                    className="max-w-full max-h-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110"
+                    // ✅ Perubahan di sini: class grayscale dan opacity dihapus agar logo tetap berwarna
+                    className="max-w-full max-h-full object-contain transition-all duration-300"
                     onError={(e) => {
-                      // Fallback sederhana jika gambar tidak ditemukan
                       e.currentTarget.style.display = 'none';
                       if (e.currentTarget.parentElement) {
-                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-400 border border-dashed border-gray-300 p-2 rounded">${partner.name}</span>`;
-                      }
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      <Footer />
-    </div>
-  );
-}
+                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs
