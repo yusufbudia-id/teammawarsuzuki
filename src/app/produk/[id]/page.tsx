@@ -14,6 +14,17 @@ import {
 } from 'lucide-react';
 import { products, getProductById } from '@/lib/products-data';
 
+// ✅ DAFTAR LOGO LEASING (Sama seperti Home)
+const leasingPartners = [
+  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
+  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
+  { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
+  { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
+  { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
+];
+
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -324,10 +335,9 @@ export default function ProductDetailPage() {
 
                     {/* Tab Content: Plat AB */}
                     <TabsContent value="plat-ab" className="mt-0">
-                      {/* ✅ SCROLL DIHAPUS: class "max-h-[600px] overflow-y-auto" sudah dibuang */}
                       <div className="space-y-3">
                         
-                        {/* ✅ INFO BONUS DI TAMBAHKAN DI PLAT AB JUGA */}
+                        {/* Info Bonus Plat AB */}
                         {product.variants[0]?.bonus && (
                           <div className="mb-4 p-4 bg-gradient-to-r from-blue-600/20 to-blue-900/20 border border-blue-600/50 rounded-lg flex items-start gap-3">
                             <Gift className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
@@ -352,9 +362,8 @@ export default function ProductDetailPage() {
 
                     {/* Tab Content: Plat AA & R */}
                     <TabsContent value="plat-aa-r" className="mt-0">
-                      {/* ✅ SCROLL DIHAPUS */}
                       <div className="space-y-3">
-                        {/* Info Bonus Spesial */}
+                        {/* Info Bonus AA/R */}
                         {product.variants[0]?.bonus && (
                           <div className="mb-4 p-4 bg-gradient-to-r from-yellow-600/20 to-yellow-900/20 border border-yellow-600/50 rounded-lg flex items-start gap-3">
                             <Gift className="h-6 w-6 text-yellow-500 flex-shrink-0 mt-1" />
@@ -383,6 +392,41 @@ export default function ProductDetailPage() {
                   </Tabs>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ✅ LEASING PARTNER SECTION */}
+        <section className="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Leasing Partner Terpercaya
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Kami bekerjasama dengan berbagai lembaga pembiayaan terkemuka untuk memberikan kemudahan dan pilihan terbaik bagi Anda.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 animate-fade-in stagger-1">
+              {leasingPartners.map((partner, index) => (
+                <div 
+                  key={index} 
+                  className="group relative w-32 h-20 md:w-40 md:h-24 flex items-center justify-center p-2 transition-all duration-300 hover:scale-110"
+                >
+                  <img
+                    src={partner.src}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain transition-all duration-300"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      if (e.currentTarget.parentElement) {
+                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-400 border border-dashed border-gray-300 p-2 rounded">${partner.name}</span>`;
+                      }
+                    }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
