@@ -8,12 +8,13 @@ import { ArrowRight, ChevronRight, ChevronDown } from 'lucide-react';
 
 // ✅ DAFTAR LOGO LEASING (Format .webp)
 const leasingPartners = [
-  { name: 'Suzuki Finance', src: '/images/leasing/suzuki-finance.webp' },
-  { name: 'BCA Finance', src: '/images/leasing/bca-finance.webp' },
+  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
+  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
   { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
   { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
-  { name: 'Oto Finance', src: '/images/leasing/oto.webp' },
+  { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
   { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
 ];
 
 export default function HomePage() {
