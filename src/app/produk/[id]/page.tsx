@@ -81,7 +81,6 @@ export default function ProductDetailPage() {
       window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
   };
 
-  // ✅ Modifikasi: Support untuk wilayah (AB vs AA/R)
   const handleAjukanKredit = (variantName?: string, region?: string) => {
     if (!product) return;
     const regionText = region ? ` (${region})` : '';
@@ -96,7 +95,7 @@ export default function ProductDetailPage() {
     window.open(product.brochureUrl, '_blank');
   };
 
-  // ✅ Helper Component untuk Kartu Varian
+  // Helper Component untuk Kartu Varian
   const VariantCard = ({ variant, priceData, region, idx }: any) => (
     <Card
       className="border-2 border-border hover:border-primary transition-all duration-300 animate-fade-in"
@@ -231,7 +230,6 @@ export default function ProductDetailPage() {
                         Spesifikasi Umum
                       </h3>
                       <div className="space-y-6">
-                        {/* List Spesifikasi Manual agar Rapi */}
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Wrench className="h-6 w-6 text-primary" />
@@ -326,7 +324,20 @@ export default function ProductDetailPage() {
 
                     {/* Tab Content: Plat AB */}
                     <TabsContent value="plat-ab" className="mt-0">
-                      <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                      {/* ✅ SCROLL DIHAPUS: class "max-h-[600px] overflow-y-auto" sudah dibuang */}
+                      <div className="space-y-3">
+                        
+                        {/* ✅ INFO BONUS DI TAMBAHKAN DI PLAT AB JUGA */}
+                        {product.variants[0]?.bonus && (
+                          <div className="mb-4 p-4 bg-gradient-to-r from-blue-600/20 to-blue-900/20 border border-blue-600/50 rounded-lg flex items-start gap-3">
+                            <Gift className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
+                            <div>
+                              <h4 className="font-bold text-blue-500 text-sm mb-1">Promo Spesial Plat AB</h4>
+                              <p className="text-sm text-gray-300">{product.variants[0].bonus}</p>
+                            </div>
+                          </div>
+                        )}
+
                         {product.variants.map((variant, idx) => (
                           <VariantCard 
                             key={`ab-${idx}`}
@@ -341,7 +352,8 @@ export default function ProductDetailPage() {
 
                     {/* Tab Content: Plat AA & R */}
                     <TabsContent value="plat-aa-r" className="mt-0">
-                      <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                      {/* ✅ SCROLL DIHAPUS */}
+                      <div className="space-y-3">
                         {/* Info Bonus Spesial */}
                         {product.variants[0]?.bonus && (
                           <div className="mb-4 p-4 bg-gradient-to-r from-yellow-600/20 to-yellow-900/20 border border-yellow-600/50 rounded-lg flex items-start gap-3">
