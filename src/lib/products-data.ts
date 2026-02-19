@@ -360,7 +360,7 @@ export const products: ProductType[] = [
         bonus: 'iPhone 17 Pro Max + garansi baterai + garansi mesin'
       },
       {
-        name: 'MC GLX AT (Two Tone)',
+        name: 'MC GLX AT Two Tone',
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.5L Hybrid',
@@ -428,8 +428,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 477.400.000', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 496.200.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp 477.400.000', priceNett: 'Rp 477.400.000' },
+        priceAAR: { priceOtr: 'Rp 496.200.000', priceNett: 'Rp 496.200.000' },
         bonus: 'Free KF V-Kool'
       },
       {
@@ -437,8 +437,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 491.100.000', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 510.400.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp 491.100.000', priceNett: 'Rp 491.100.000' },
+        priceAAR: { priceOtr: 'Rp 510.400.000', priceNett: 'Rp 510.400.000' },
         bonus: 'iPad Air / hadiah setara'
       },
       {
@@ -446,8 +446,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: '-', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 499.200.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 499.200.000', priceNett: 'Rp 499.200.000' },
         bonus: 'iPad Air / hadiah setara'
       },
       {
@@ -455,8 +455,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 494.100.000', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 511.900.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp 494.100.000', priceNett: 'Rp 494.100.000' },
+        priceAAR: { priceOtr: 'Rp 511.900.000', priceNett: 'Rp 511.900.000' },
         bonus: 'Free KF V-Kool'
       },
       {
@@ -464,8 +464,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 505.500.000', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 526.300.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp 505.500.000', priceNett: 'Rp 505.500.000' },
+        priceAAR: { priceOtr: 'Rp 526.300.000', priceNett: 'Rp 526.300.000' },
         bonus: 'iPad Air / hadiah setara'
       },
       {
@@ -473,8 +473,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: '-', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 514.900.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 514.900.000', priceNett: 'Rp 514.900.000' },
         bonus: 'Free KF V-Kool'
       },
       {
@@ -482,8 +482,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 508.500.000', priceNett: '-' },
-        priceAAR: { priceOtr: 'Rp 529.300.000', priceNett: '-' },
+        priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 508.500.000' },
+        priceAAR: { priceOtr: 'Rp 529.300.000', priceNett: 'Rp 529.300.000' },
         bonus: 'iPad Air / hadiah setara'
       }
     ]
