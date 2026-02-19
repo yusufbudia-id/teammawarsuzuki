@@ -45,7 +45,7 @@ export const products: ProductType[] = [
     description: 'Pickup legendaris dengan AC dan Power Steering, tangguh dan irit untuk bisnis.',
     features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
     advantages: [
-      'Mesin 1.5L yang tangguh dan irit bahan bakar',
+      'Mesin K15C-C 1.5L yang tangguh dan makin irit bahan bakar',
       'Kapasitas bak terbesar di kelasnya',
       'AC dan Power Steering untuk kenyamanan maksimal',
       'Radius putar terkecil 4.7m, sangat lincah',
@@ -55,11 +55,11 @@ export const products: ProductType[] = [
     gallery: ['/images/carry-1.jpg', '/images/carry-2.jpg', '/images/carry-3.jpg'],
     brochureUrl: '/brochures/carry.pdf',
     specifications: {
-      engine: 'G15A, 1.492 cc, 4 Silinder',
+      engine: 'K15C-C, 1.462 cc, 4 Silinder',
       transmission: '5-Speed Manual',
       fuel: 'Bensin',
-      power: '78.8 PS / 5.500 rpm',
-      torque: '135 Nm / 4.500 rpm',
+      power: '97 PS / 5.600 rpm',
+      torque: '135 Nm / 4.400 rpm',
       seating: '3 Penumpang',
       dimensions: '4.195 x 1.660 x 1.860 mm'
     },
@@ -68,7 +68,7 @@ export const products: ProductType[] = [
         name: 'FD (Flat Deck)',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
-        engine: '1.492 cc',
+        engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 181.250.000', priceNett: 'Rp 149.250.000' },
         priceAAR: { priceOtr: 'Rp 187.000.000', priceNett: 'Rp 153.000.000' },
         bonus: 'Logam mulia + free keur + free service + garansi mesin'
@@ -77,7 +77,7 @@ export const products: ProductType[] = [
         name: 'WD (Wide Deck)',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
-        engine: '1.492 cc',
+        engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 182.350.000', priceNett: 'Rp 150.350.000' },
         priceAAR: { priceOtr: 'Rp 188.100.000', priceNett: 'Rp 154.100.000' },
         bonus: 'Logam mulia + free keur + free service + garansi mesin'
@@ -86,7 +86,7 @@ export const products: ProductType[] = [
         name: 'FD AC PS',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
-        engine: '1.492 cc',
+        engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 189.250.000', priceNett: 'Rp 155.250.000' },
         priceAAR: { priceOtr: 'Rp 195.300.000', priceNett: 'Rp 161.300.000' },
         bonus: 'Logam mulia + free keur + free service + garansi mesin'
@@ -95,7 +95,7 @@ export const products: ProductType[] = [
         name: 'WD AC PS',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
-        engine: '1.492 cc',
+        engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 190.150.000', priceNett: 'Rp 156.150.000' },
         priceAAR: { priceOtr: 'Rp 196.200.000', priceNett: 'Rp 162.200.000' },
         bonus: 'Logam mulia + free keur + free service + garansi mesin'
@@ -112,20 +112,20 @@ export const products: ProductType[] = [
     advantages: [
       'Transmisi AGS (Auto Gear Shift) - mudah digunakan',
       'Desain SUV yang gagah dan modern',
-      'Mesin 1.0L K10B irit dan bertenaga',
-      'Konsumsi BBM hingga 21 km/liter'
+      'Mesin 1.0L K10C Dual Jet lebih irit dan responsif',
+      'Konsumsi BBM sangat efisien untuk dalam kota'
     ],
     image: '/images/spresso-1.jpg',
     gallery: ['/images/spresso-1.jpg', '/images/spresso-2.jpg', '/images/spresso-3.jpg'],
     brochureUrl: '/brochures/s-presso.pdf',
     specifications: {
-      engine: 'K10B, 998 cc, 3 Silinder',
+      engine: 'K10C Dual Jet, 998 cc, 3 Silinder',
       transmission: '5-Speed Manual / AGS',
       fuel: 'Bensin',
-      power: '67 PS / 6.000 rpm',
-      torque: '90 Nm / 3.500 rpm',
+      power: '66.6 PS / 5.500 rpm',
+      torque: '89 Nm / 3.500 rpm',
       seating: '5 Penumpang',
-      dimensions: '3.665 x 1.520 x 1.550 mm'
+      dimensions: '3.565 x 1.520 x 1.565 mm'
     },
     variants: [
       {
@@ -154,26 +154,26 @@ export const products: ProductType[] = [
     category: 'Commercial',
     priceText: '180',
     description: 'Blind van multifungsi untuk bisnis dan logistik, luas dan irit bahan bakar.',
-    features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.6L', 'Multifungsi'],
-    advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin 1.6L G15A'],
+    features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.5L', 'Multifungsi'],
+    advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin tangguh G15A'],
     image: '/images/apv-1.jpg',
     gallery: ['/images/apv-1.jpg', '/images/apv-2.jpg'],
     brochureUrl: '/brochures/apv.pdf',
     specifications: {
-      engine: 'G15A, 1.590 cc, 4 Silinder',
+      engine: 'G15A, 1.492 cc, 4 Silinder',
       transmission: '5-Speed Manual',
       fuel: 'Bensin',
-      power: '92 PS / 5.500 rpm',
-      torque: '126 Nm / 4.500 rpm',
+      power: '92.4 PS / 6.000 rpm',
+      torque: '126 Nm / 3.000 rpm',
       seating: 'Cargo',
-      dimensions: '4.390 x 1.650 x 1.855 mm'
+      dimensions: '4.155 x 1.655 x 1.865 mm'
     },
     variants: [
       {
         name: 'Blind Van',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
-        engine: '1.590 cc',
+        engine: '1.492 cc',
         priceAB: { priceOtr: 'Rp 184.500.000', priceNett: 'Rp 181.500.000' },
         priceAAR: { priceOtr: 'Rp 191.900.000', priceNett: 'Rp 188.900.000' },
         bonus: 'Free service + garansi mesin'
@@ -195,7 +195,7 @@ export const products: ProductType[] = [
       engine: 'K15B, 1.462 cc, 4 Silinder',
       transmission: '4-Speed AT / 5-Speed MT',
       fuel: 'Bensin',
-      power: '103 PS / 6.000 rpm',
+      power: '104.7 PS / 6.000 rpm',
       torque: '138 Nm / 4.400 rpm',
       seating: '7 Penumpang',
       dimensions: '4.395 x 1.735 x 1.690 mm'
@@ -331,7 +331,7 @@ export const products: ProductType[] = [
       engine: 'K15B, 1.462 cc, 4 Silinder',
       transmission: '4-Speed AT / 5-Speed MT',
       fuel: 'Bensin',
-      power: '103 PS / 6.000 rpm',
+      power: '104.7 PS / 6.000 rpm',
       torque: '138 Nm / 4.400 rpm',
       seating: '7 Penumpang',
       dimensions: '4.450 x 1.775 x 1.710 mm'
@@ -400,25 +400,25 @@ export const products: ProductType[] = [
     priceText: '390',
     description: 'SUV premium dengan mesin hybrid bertenaga dan fitur mewah.',
     features: ['Mesin Hybrid', 'Panoramic Sunroof', '360 Camera'],
-    advantages: ['Smart Hybrid 2.0L', 'ADAS Suzuki Safety Sense', 'Ventilated Seats'],
+    advantages: ['Smart Hybrid 1.5L', 'ADAS Suzuki Safety Sense', 'Ventilated Seats'],
     image: '/images/vitara-1.jpg',
     gallery: ['/images/vitara-1.jpg', '/images/vitara-2.jpg'],
     brochureUrl: '/brochures/grand-vitara.pdf',
     specifications: {
-      engine: '2.0L K15C Dual Jet Hybrid',
+      engine: '1.5L K15C Dual Jet + SHVS',
       transmission: '6-Speed Automatic',
       fuel: 'Bensin',
-      power: '140 PS / 6.000 rpm',
-      torque: '200 Nm / 4.400 rpm',
+      power: '103.06 PS / 6.000 rpm',
+      torque: '136.8 Nm / 4.400 rpm',
       seating: '5 Penumpang',
-      dimensions: '4.345 x 1.795 x 1.630 mm'
+      dimensions: '4.345 x 1.795 x 1.645 mm'
     },
     variants: [
       {
         name: 'MC GLX AT One Tone',
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
-        engine: '2.0L Hybrid',
+        engine: '1.5L Hybrid',
         priceAB: { priceOtr: 'Rp 427.400.000', priceNett: 'Rp 399.400.000' },
         priceAAR: { priceOtr: 'Rp 445.000.000', priceNett: 'Rp 417.000.000' },
         bonus: 'iPhone 17 Pro Max + garansi baterai + garansi mesin'
@@ -427,7 +427,7 @@ export const products: ProductType[] = [
         name: 'MC GLX AT Two Tone',
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
-        engine: '2.0L Hybrid',
+        engine: '1.5L Hybrid',
         priceAB: { priceOtr: 'Rp 430.400.000', priceNett: 'Rp 402.400.000' },
         priceAAR: { priceOtr: 'Rp 448.000.000', priceNett: 'Rp 420.000.000' },
         bonus: 'iPhone 17 Pro Max + garansi baterai + garansi mesin'
@@ -441,25 +441,25 @@ export const products: ProductType[] = [
     priceText: '470',
     description: 'SUV off-road ikonik dengan kemampuan ekstrem.',
     features: ['4x4 Genuine', 'Ladder Frame', 'Rigid Axle'],
-    advantages: ['Part-time 4WD', 'Approach angle 37°', 'Desain timeless'],
+    advantages: ['Part-time 4WD (ALLGRIP PRO)', 'Approach angle 37°', 'Desain timeless'],
     image: '/images/jimny-1.jpg',
     gallery: ['/images/jimny-1.jpg', '/images/jimny-2.jpg'],
     brochureUrl: '/brochures/jimny.pdf',
     specifications: {
-      engine: 'R06A, 1.5L, 4 Silinder',
+      engine: 'K15B, 1.462 cc, 4 Silinder',
       transmission: '4-Speed AT / 5-Speed MT',
       fuel: 'Bensin',
       power: '102 PS / 6.000 rpm',
       torque: '130 Nm / 4.000 rpm',
       seating: '4 Penumpang',
-      dimensions: '3.645 x 1.645 x 1.720 mm'
+      dimensions: '3.625 x 1.645 x 1.720 mm'
     },
     variants: [
       {
         name: '3 Door One Tone MT',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
-        engine: '1.5L',
+        engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 477.400.000', priceNett: 'Rp 477.400.000' },
         priceAAR: { priceOtr: 'Rp 496.200.000', priceNett: 'Rp 496.200.000' },
         bonus: 'Free KF V-Kool'
@@ -468,7 +468,7 @@ export const products: ProductType[] = [
         name: '3 Door One Tone AT',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
-        engine: '1.5L',
+        engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 491.100.000', priceNett: 'Rp 491.100.000' },
         priceAAR: { priceOtr: 'Rp 510.400.000', priceNett: 'Rp 510.400.000' },
         bonus: 'iPad Air / hadiah setara'
