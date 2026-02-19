@@ -195,7 +195,7 @@ export const products: ProductType[] = [
         fuel: 'Bensin',
         engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 324.200.000', priceNett: 'Rp 298.200.000' },
-        priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 337.000.000', priceNett: 'Rp 311.000.000' },
         bonus: 'iPhone 17 Pro Max + free service + garansi'
       },
       {
@@ -204,7 +204,7 @@ export const products: ProductType[] = [
         fuel: 'Bensin',
         engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 326.200.000', priceNett: 'Rp 300.200.000' },
-        priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 339.000.000', priceNett: 'Rp 313.000.000' },
         bonus: 'iPhone 17 Pro Max + free service + garansi'
       },
       {
@@ -213,7 +213,7 @@ export const products: ProductType[] = [
         fuel: 'Bensin',
         engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 328.200.000', priceNett: 'Rp 302.200.000' },
-        priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 341.000.000', priceNett: 'Rp 315.000.000' },
         bonus: 'iPhone 17 Pro Max + free service + garansi'
       }
     ]
@@ -360,7 +360,7 @@ export const products: ProductType[] = [
         bonus: 'iPhone 17 Pro Max + garansi baterai + garansi mesin'
       },
       {
-        name: 'MC GLX AT (Two Tone)',
+        name: 'MC GLX AT Two Tone',
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.5L Hybrid',
@@ -442,12 +442,21 @@ export const products: ProductType[] = [
         bonus: 'iPad Air / hadiah setara'
       },
       {
+        name: '3 Door Two Tone AT',
+        transmission: '4-Speed Automatic',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 499.200.000', priceNett: 'Rp 499.200.000' },
+        bonus: 'iPad Air / hadiah setara'
+      },
+      {
         name: '5 Door One Tone MT',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 494.100.000', priceNett: 'Rp 494.100.000' },
-        priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 511.900.000', priceNett: 'Rp 511.900.000' },
         bonus: 'Free KF V-Kool'
       },
       {
@@ -456,8 +465,17 @@ export const products: ProductType[] = [
         fuel: 'Bensin',
         engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 505.500.000', priceNett: 'Rp 505.500.000' },
-        priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 526.300.000', priceNett: 'Rp 526.300.000' },
         bonus: 'iPad Air / hadiah setara'
+      },
+      {
+        name: '5 Door Two Tone MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 514.900.000', priceNett: 'Rp 514.900.000' },
+        bonus: 'Free KF V-Kool'
       },
       {
         name: '5 Door Two Tone AT',
@@ -465,7 +483,7 @@ export const products: ProductType[] = [
         fuel: 'Bensin',
         engine: '1.462 cc',
         priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 508.500.000' },
-        priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
+        priceAAR: { priceOtr: 'Rp 529.300.000', priceNett: 'Rp 529.300.000' },
         bonus: 'iPad Air / hadiah setara'
       }
     ]
