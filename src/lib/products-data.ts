@@ -38,7 +38,7 @@ export interface ProductType {
 
 export const products: ProductType[] = [
   {
-    id: 1,
+    id: 3,
     name: 'New Carry Pick Up',
     category: 'Pickup',
     priceText: '140',
@@ -103,7 +103,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 2,
+    id: 4,
     name: 'S-Presso',
     category: 'City Car',
     priceText: '160',
@@ -149,7 +149,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 3,
+    id: 6,
     name: 'APV',
     category: 'Commercial',
     priceText: '180',
@@ -181,7 +181,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 4,
+    id: 8,
     name: 'Ertiga',
     category: 'MPV',
     priceText: '240',
@@ -240,7 +240,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 5,
+    id: 1,
     name: 'Fronx',
     category: 'SUV',
     priceText: '250',
@@ -317,7 +317,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 6,
+    id: 2,
     name: 'XL7',
     category: 'SUV',
     priceText: '240',
@@ -394,7 +394,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 7,
+    id: 5,
     name: 'Grand Vitara',
     category: 'SUV',
     priceText: '390',
@@ -435,7 +435,7 @@ export const products: ProductType[] = [
     ]
   },
   {
-    id: 8,
+    id: 7,
     name: 'Jimny',
     category: 'SUV Off-Road',
     priceText: '470',
