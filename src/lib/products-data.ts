@@ -38,208 +38,6 @@ export interface ProductType {
 
 export const products: ProductType[] = [
   {
-    id: 3,
-    name: 'New Carry Pick Up',
-    category: 'Pickup',
-    priceText: '140',
-    description: 'Pickup legendaris dengan AC dan Power Steering, tangguh dan irit untuk bisnis.',
-    features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
-    advantages: [
-      'Mesin K15C-C 1.5L yang tangguh dan makin irit bahan bakar',
-      'Kapasitas bak terbesar di kelasnya',
-      'AC dan Power Steering untuk kenyamanan maksimal',
-      'Radius putar terkecil 4.7m, sangat lincah',
-      'Sudah terbukti keandalannya di lapangan'
-    ],
-    image: '/images/carry-1.jpg',
-    gallery: ['/images/carry-1.jpg', '/images/carry-2.jpg', '/images/carry-3.jpg'],
-    brochureUrl: '/brochures/carry.pdf',
-    specifications: {
-      engine: 'K15C-C, 1.462 cc, 4 Silinder',
-      transmission: '5-Speed Manual',
-      fuel: 'Bensin',
-      power: '97 PS / 5.600 rpm',
-      torque: '135 Nm / 4.400 rpm',
-      seating: '3 Penumpang',
-      dimensions: '4.195 x 1.660 x 1.860 mm'
-    },
-    variants: [
-      {
-        name: 'FD',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 181.250.000', priceNett: 'Rp 147.250.000' },
-        priceAAR: { priceOtr: 'Rp 187.000.000', priceNett: 'Rp 153.000.000' },
-        bonus: 'Logam mulia + free keur + free service + garansi mesin'
-      },
-      {
-        name: 'WD',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 182.350.000', priceNett: 'Rp 148.350.000' },
-        priceAAR: { priceOtr: 'Rp 188.100.000', priceNett: 'Rp 154.100.000' },
-        bonus: 'Logam mulia + free keur + free service + garansi mesin'
-      },
-      {
-        name: 'FD AC PS',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 189.250.000', priceNett: 'Rp 155.250.000' },
-        priceAAR: { priceOtr: 'Rp 195.300.000', priceNett: 'Rp 161.300.000' },
-        bonus: 'Logam mulia + free keur + free service + garansi mesin'
-      },
-      {
-        name: 'WD AC PS',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 190.150.000', priceNett: 'Rp 156.150.000' },
-        priceAAR: { priceOtr: 'Rp 196.200.000', priceNett: 'Rp 162.200.000' },
-        bonus: 'Logam mulia + free keur + free service + garansi mesin'
-      }
-    ]
-  },
-  {
-    id: 4,
-    name: 'S-Presso',
-    category: 'City Car',
-    priceText: '160',
-    description: 'City car kompak dengan transmisi otomatis AGS, praktis dan irit untuk mobilitas urban.',
-    features: ['AGS Auto', 'Kompak & Lincah', 'Mesin Irit', 'Mudah Parkir'],
-    advantages: [
-      'Transmisi AGS (Auto Gear Shift) - mudah digunakan',
-      'Desain SUV yang gagah dan modern',
-      'Mesin 1.0L K10C Dual Jet lebih irit dan responsif',
-      'Konsumsi BBM sangat efisien untuk dalam kota'
-    ],
-    image: '/images/spresso-1.jpg',
-    gallery: ['/images/spresso-1.jpg', '/images/spresso-2.jpg', '/images/spresso-3.jpg'],
-    brochureUrl: '/brochures/s-presso.pdf',
-    specifications: {
-      engine: 'K10C Dual Jet, 998 cc, 3 Silinder',
-      transmission: '5-Speed Manual / AGS',
-      fuel: 'Bensin',
-      power: '66.6 PS / 5.500 rpm',
-      torque: '89 Nm / 3.500 rpm',
-      seating: '5 Penumpang',
-      dimensions: '3.565 x 1.520 x 1.565 mm'
-    },
-    variants: [
-      {
-        name: 'MT',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '998 cc',
-        priceAB: { priceOtr: 'Rp 182.250.000', priceNett: 'Rp 166.250.000' },
-        priceAAR: { priceOtr: 'Rp 188.900.000', priceNett: 'Rp 172.900.000' },
-        bonus: 'Suzuki NEX + kaca film + garansi mesin'
-      },
-      {
-        name: 'AGS',
-        transmission: 'AGS (Auto Gear Shift)',
-        fuel: 'Bensin',
-        engine: '998 cc',
-        priceAB: { priceOtr: 'Rp 192.250.000', priceNett: 'Rp 176.250.000' },
-        priceAAR: { priceOtr: 'Rp 199.400.000', priceNett: 'Rp 183.400.000' },
-        bonus: 'Suzuki NEX + kaca film + garansi mesin'
-      }
-    ]
-  },
-  {
-    id: 6,
-    name: 'APV',
-    category: 'Commercial',
-    priceText: '180',
-    description: 'Blind van multifungsi untuk bisnis dan logistik, luas dan irit bahan bakar.',
-    features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.5L', 'Multifungsi'],
-    advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin tangguh G15A'],
-    image: '/images/apv-1.jpg',
-    gallery: ['/images/apv-1.jpg', '/images/apv-2.jpg'],
-    brochureUrl: '/brochures/apv.pdf',
-    specifications: {
-      engine: 'G15A, 1.492 cc, 4 Silinder',
-      transmission: '5-Speed Manual',
-      fuel: 'Bensin',
-      power: '92.4 PS / 6.000 rpm',
-      torque: '126 Nm / 3.000 rpm',
-      seating: 'Cargo',
-      dimensions: '4.155 x 1.655 x 1.865 mm'
-    },
-    variants: [
-      {
-        name: 'Blind Van',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 184.500.000', priceNett: 'Rp 181.500.000' },
-        priceAAR: { priceOtr: 'Rp 191.900.000', priceNett: 'Rp 188.900.000' },
-        bonus: 'Free service + garansi mesin'
-      }
-    ]
-  },
-  {
-    id: 8,
-    name: 'Ertiga',
-    category: 'MPV',
-    priceText: '240',
-    description: 'MPV keluarga yang legendaris dengan kenyamanan dan kualitas terbaik.',
-    features: ['7 Kursi Nyaman', 'Mesin 1.5L', 'Smart Hybrid'],
-    advantages: ['Kabin luas', 'Smart Hybrid Technology', 'Suspensi nyaman'],
-    image: '/images/ertiga-1.jpg',
-    gallery: ['/images/ertiga-1.jpg', '/images/ertiga-2.jpg'],
-    brochureUrl: '/brochures/ertiga.pdf',
-    specifications: {
-      engine: 'K15B, 1.462 cc, 4 Silinder',
-      transmission: '4-Speed AT / 5-Speed MT',
-      fuel: 'Bensin',
-      power: '104.7 PS / 6.000 rpm',
-      torque: '138 Nm / 4.400 rpm',
-      seating: '7 Penumpang',
-      dimensions: '4.395 x 1.735 x 1.690 mm'
-    },
-    variants: [
-      {
-        name: 'GL MT',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 268.150.000', priceNett: 'Rp 242.150.000' },
-        priceAAR: { priceOtr: 'Rp 279.000.000', priceNett: 'Rp 253.000.000' },
-        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
-      },
-      {
-        name: 'GL AT',
-        transmission: '4-Speed Automatic',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 279.200.000', priceNett: 'Rp 253.200.000' },
-        priceAAR: { priceOtr: 'Rp 290.700.000', priceNett: 'Rp 264.700.000' },
-        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
-      },
-      {
-        name: 'GX MT',
-        transmission: '5-Speed Manual',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 283.250.000', priceNett: 'Rp 257.250.000' },
-        priceAAR: { priceOtr: 'Rp 293.200.000', priceNett: 'Rp 267.200.000' },
-        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
-      },
-      {
-        name: 'GX AT',
-        transmission: '4-Speed Automatic',
-        fuel: 'Bensin',
-        engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 294.400.000', priceNett: 'Rp 268.400.000' },
-        priceAAR: { priceOtr: 'Rp 304.800.000', priceNett: 'Rp 278.800.000' },
-        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
-      }
-    ]
-  },
-  {
     id: 1,
     name: 'Fronx',
     category: 'SUV',
@@ -421,6 +219,117 @@ export const products: ProductType[] = [
     ]
   },
   {
+    id: 3,
+    name: 'New Carry Pick Up',
+    category: 'Pickup',
+    priceText: '140',
+    description: 'Pickup legendaris dengan AC dan Power Steering, tangguh dan irit untuk bisnis.',
+    features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
+    advantages: [
+      'Mesin K15C-C 1.5L yang tangguh dan makin irit bahan bakar',
+      'Kapasitas bak terbesar di kelasnya',
+      'AC dan Power Steering untuk kenyamanan maksimal',
+      'Radius putar terkecil 4.7m, sangat lincah',
+      'Sudah terbukti keandalannya di lapangan'
+    ],
+    image: '/images/carry-1.jpg',
+    gallery: ['/images/carry-1.jpg', '/images/carry-2.jpg', '/images/carry-3.jpg'],
+    brochureUrl: '/brochures/carry.pdf',
+    specifications: {
+      engine: 'K15C-C, 1.462 cc, 4 Silinder',
+      transmission: '5-Speed Manual',
+      fuel: 'Bensin',
+      power: '97 PS / 5.600 rpm',
+      torque: '135 Nm / 4.400 rpm',
+      seating: '3 Penumpang',
+      dimensions: '4.195 x 1.660 x 1.860 mm'
+    },
+    variants: [
+      {
+        name: 'FD',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 181.250.000', priceNett: 'Rp 147.250.000' },
+        priceAAR: { priceOtr: 'Rp 187.000.000', priceNett: 'Rp 153.000.000' },
+        bonus: 'Logam mulia + free keur + free service + garansi mesin'
+      },
+      {
+        name: 'WD',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 182.350.000', priceNett: 'Rp 148.350.000' },
+        priceAAR: { priceOtr: 'Rp 188.100.000', priceNett: 'Rp 154.100.000' },
+        bonus: 'Logam mulia + free keur + free service + garansi mesin'
+      },
+      {
+        name: 'FD AC PS',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 189.250.000', priceNett: 'Rp 155.250.000' },
+        priceAAR: { priceOtr: 'Rp 195.300.000', priceNett: 'Rp 161.300.000' },
+        bonus: 'Logam mulia + free keur + free service + garansi mesin'
+      },
+      {
+        name: 'WD AC PS',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 190.150.000', priceNett: 'Rp 156.150.000' },
+        priceAAR: { priceOtr: 'Rp 196.200.000', priceNett: 'Rp 162.200.000' },
+        bonus: 'Logam mulia + free keur + free service + garansi mesin'
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: 'S-Presso',
+    category: 'City Car',
+    priceText: '160',
+    description: 'City car kompak dengan transmisi otomatis AGS, praktis dan irit untuk mobilitas urban.',
+    features: ['AGS Auto', 'Kompak & Lincah', 'Mesin Irit', 'Mudah Parkir'],
+    advantages: [
+      'Transmisi AGS (Auto Gear Shift) - mudah digunakan',
+      'Desain SUV yang gagah dan modern',
+      'Mesin 1.0L K10C Dual Jet lebih irit dan responsif',
+      'Konsumsi BBM sangat efisien untuk dalam kota'
+    ],
+    image: '/images/spresso-1.jpg',
+    gallery: ['/images/spresso-1.jpg', '/images/spresso-2.jpg', '/images/spresso-3.jpg'],
+    brochureUrl: '/brochures/s-presso.pdf',
+    specifications: {
+      engine: 'K10C Dual Jet, 998 cc, 3 Silinder',
+      transmission: '5-Speed Manual / AGS',
+      fuel: 'Bensin',
+      power: '66.6 PS / 5.500 rpm',
+      torque: '89 Nm / 3.500 rpm',
+      seating: '5 Penumpang',
+      dimensions: '3.565 x 1.520 x 1.565 mm'
+    },
+    variants: [
+      {
+        name: 'MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '998 cc',
+        priceAB: { priceOtr: 'Rp 182.250.000', priceNett: 'Rp 166.250.000' },
+        priceAAR: { priceOtr: 'Rp 188.900.000', priceNett: 'Rp 172.900.000' },
+        bonus: 'Suzuki NEX + kaca film + garansi mesin'
+      },
+      {
+        name: 'AGS',
+        transmission: 'AGS (Auto Gear Shift)',
+        fuel: 'Bensin',
+        engine: '998 cc',
+        priceAB: { priceOtr: 'Rp 192.250.000', priceNett: 'Rp 176.250.000' },
+        priceAAR: { priceOtr: 'Rp 199.400.000', priceNett: 'Rp 183.400.000' },
+        bonus: 'Suzuki NEX + kaca film + garansi mesin'
+      }
+    ]
+  },
+  {
     id: 5,
     name: 'Grand Vitara',
     category: 'SUV',
@@ -458,6 +367,38 @@ export const products: ProductType[] = [
         priceAB: { priceOtr: 'Rp 430.400.000', priceNett: 'Rp 402.400.000' },
         priceAAR: { priceOtr: 'Rp 448.000.000', priceNett: 'Rp 420.000.000' },
         bonus: 'iPhone 17 Pro Max + garansi baterai + garansi mesin'
+      }
+    ]
+  },
+  {
+    id: 6,
+    name: 'APV',
+    category: 'Commercial',
+    priceText: '180',
+    description: 'Blind van multifungsi untuk bisnis dan logistik, luas dan irit bahan bakar.',
+    features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.5L', 'Multifungsi'],
+    advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin tangguh G15A'],
+    image: '/images/apv-1.jpg',
+    gallery: ['/images/apv-1.jpg', '/images/apv-2.jpg'],
+    brochureUrl: '/brochures/apv.pdf',
+    specifications: {
+      engine: 'G15A, 1.492 cc, 4 Silinder',
+      transmission: '5-Speed Manual',
+      fuel: 'Bensin',
+      power: '92.4 PS / 6.000 rpm',
+      torque: '126 Nm / 3.000 rpm',
+      seating: 'Cargo',
+      dimensions: '4.155 x 1.655 x 1.865 mm'
+    },
+    variants: [
+      {
+        name: 'Blind Van',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.492 cc',
+        priceAB: { priceOtr: 'Rp 184.500.000', priceNett: 'Rp 181.500.000' },
+        priceAAR: { priceOtr: 'Rp 191.900.000', priceNett: 'Rp 188.900.000' },
+        bonus: 'Free service + garansi mesin'
       }
     ]
   },
@@ -526,6 +467,65 @@ export const products: ProductType[] = [
         priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 508.500.000' },
         priceAAR: { priceOtr: 'Rp -', priceNett: 'Rp -' },
         bonus: 'iPad Air / hadiah setara'
+      }
+    ]
+  },
+  {
+    id: 8,
+    name: 'Ertiga',
+    category: 'MPV',
+    priceText: '240',
+    description: 'MPV keluarga yang legendaris dengan kenyamanan dan kualitas terbaik.',
+    features: ['7 Kursi Nyaman', 'Mesin 1.5L', 'Smart Hybrid'],
+    advantages: ['Kabin luas', 'Smart Hybrid Technology', 'Suspensi nyaman'],
+    image: '/images/ertiga-1.jpg',
+    gallery: ['/images/ertiga-1.jpg', '/images/ertiga-2.jpg'],
+    brochureUrl: '/brochures/ertiga.pdf',
+    specifications: {
+      engine: 'K15B, 1.462 cc, 4 Silinder',
+      transmission: '4-Speed AT / 5-Speed MT',
+      fuel: 'Bensin',
+      power: '104.7 PS / 6.000 rpm',
+      torque: '138 Nm / 4.400 rpm',
+      seating: '7 Penumpang',
+      dimensions: '4.395 x 1.735 x 1.690 mm'
+    },
+    variants: [
+      {
+        name: 'GL MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 268.150.000', priceNett: 'Rp 242.150.000' },
+        priceAAR: { priceOtr: 'Rp 279.000.000', priceNett: 'Rp 253.000.000' },
+        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
+      },
+      {
+        name: 'GL AT',
+        transmission: '4-Speed Automatic',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 279.200.000', priceNett: 'Rp 253.200.000' },
+        priceAAR: { priceOtr: 'Rp 290.700.000', priceNett: 'Rp 264.700.000' },
+        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
+      },
+      {
+        name: 'GX MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 283.250.000', priceNett: 'Rp 257.250.000' },
+        priceAAR: { priceOtr: 'Rp 293.200.000', priceNett: 'Rp 267.200.000' },
+        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
+      },
+      {
+        name: 'GX AT',
+        transmission: '4-Speed Automatic',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 294.400.000', priceNett: 'Rp 268.400.000' },
+        priceAAR: { priceOtr: 'Rp 304.800.000', priceNett: 'Rp 278.800.000' },
+        bonus: 'iPhone 17 Pro Max + KF + free service + garansi'
       }
     ]
   }
