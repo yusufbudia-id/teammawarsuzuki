@@ -25,6 +25,22 @@ export default function ProdukPage() {
     ? products
     : products.filter(p => p.category === activeCategory);
 
+  // === BARU: Fungsi untuk menentukan nilai promo berdasarkan nama mobil ===
+  const getPromoInfo = (productName: string) => {
+    const name = productName.toLowerCase();
+    
+    if (name.includes('fronx')) return { label: 'DISKON', value: '17 JT' };
+    if (name.includes('xl7')) return { label: 'DISKON', value: '28 JT' };
+    if (name.includes('carry')) return { label: 'DISKON', value: '37 JT' };
+    if (name.includes('vitara')) return { label: 'DISKON', value: '28 JT' };
+    if (name.includes('presso')) return { label: 'DISKON', value: '16 JT' };
+    if (name.includes('ertiga')) return { label: 'DISKON', value: '26 JT' };
+    if (name.includes('apv')) return { label: 'DISKON', value: '5 JT' };
+    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: '50 JT' };
+    
+    return null; // Mengembalikan null jika tidak ada promo yang cocok
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -82,79 +98,83 @@ export default function ProdukPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                {filteredProducts.map((product, index) => (
-                  <Link href={`/produk/${product.id}`} key={product.id}>
-                    <div
-                      className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl flex flex-col h-full"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      {/* Product Image Section */}
-                      <div className="relative aspect-[4/3] overflow-hidden shrink-0">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-700 ease-out"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {filteredProducts.map((product, index) => {
+                  // Ambil data promo untuk produk ini
+                  const promo = getPromoInfo(product.name);
 
-                        {/* Category Badge & Wishlist */}
-                        <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
-                          {/* === DIUBAH: bg-red-600 menjadi bg-blue-600 === */}
-                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 backdrop-blur-sm rounded-full shadow-sm">
-                            {product.category}
-                          </span>
-                          {/* ============================================= */}
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              toggleWishlist(product.id);
-                            }}
-                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn"
-                          >
-                            <Heart
-                              className={`h-5 w-5 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 group-hover/btn:text-red-500'}`}
-                              strokeWidth={2}
-                            />
-                          </button>
+                  return (
+                    <Link href={`/produk/${product.id}`} key={product.id}>
+                      <div
+                        className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl flex flex-col h-full"
+                        style={{ animationDelay: `${index * 100}ms` }}
+                      >
+                        {/* Product Image Section */}
+                        <div className="relative aspect-[4/3] overflow-hidden shrink-0">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-700 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                          {/* Category Badge & Wishlist */}
+                          <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
+                            <span className="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 backdrop-blur-sm rounded-full shadow-sm">
+                              {product.category}
+                            </span>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                toggleWishlist(product.id);
+                              }}
+                              className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn"
+                            >
+                              <Heart
+                                className={`h-5 w-5 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 group-hover/btn:text-red-500'}`}
+                                strokeWidth={2}
+                              />
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Card Content */}
+                        <div className="p-4 flex justify-between items-end gap-3 flex-grow">
+                          {/* Text Container */}
+                          <div className="flex-1">
+                            <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 text-left group-hover:text-primary transition-colors duration-300 tracking-tight line-clamp-1">
+                              {product.name}
+                            </h3>
+
+                            <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+                              Mulai
+                            </div>
+
+                            <div className="text-left">
+                              <span className="text-xl md:text-2xl font-bold text-primary">
+                                {product.priceText}
+                              </span>
+                              <span className="text-sm md:text-base font-semibold text-foreground ml-2">Jutaan</span>
+                            </div>
+                          </div>
+
+                          {/* Dynamic Circular Discount Badge */}
+                          {promo && (
+                            <div className="flex-shrink-0 mb-1">
+                              <div className="w-14 h-14 md:w-16 md:h-16 bg-red-600 rounded-full shadow-lg flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 group-hover:-rotate-0 transition-all duration-300 border-2 border-white">
+                                <span className="text-[9px] md:text-[10px] font-bold text-white/90 leading-none mb-0.5">
+                                  {promo.label}
+                                </span>
+                                <span className="text-sm md:text-base font-extrabold text-white leading-none">
+                                  {promo.value}
+                                </span>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
-
-                      {/* Card Content */}
-                      <div className="p-4 flex justify-between items-end gap-3 flex-grow">
-                        {/* Text Container */}
-                        <div className="flex-1">
-                          <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 text-left group-hover:text-primary transition-colors duration-300 tracking-tight line-clamp-1">
-                            {product.name}
-                          </h3>
-
-                          <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-                            Mulai
-                          </div>
-
-                          <div className="text-left">
-                            <span className="text-xl md:text-2xl font-bold text-primary">
-                              {product.priceText}
-                            </span>
-                            <span className="text-sm md:text-base font-semibold text-foreground ml-2">Jutaan</span>
-                          </div>
-                        </div>
-
-                        {/* Circular Discount Badge */}
-                        <div className="flex-shrink-0 mb-1">
-                          <div className="w-14 h-14 md:w-16 md:h-16 bg-red-600 rounded-full shadow-lg flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 group-hover:-rotate-0 transition-all duration-300 border-2 border-white">
-                            <span className="text-[9px] md:text-[10px] font-bold text-white/90 leading-none mb-0.5">
-                              DISKON
-                            </span>
-                            <span className="text-sm md:text-base font-extrabold text-white leading-none">
-                              20%
-                            </span>
-                          </div>
-                        </div>
-                        {/* ======================= */}
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
