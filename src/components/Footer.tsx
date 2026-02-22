@@ -95,7 +95,7 @@ export default function Footer() {
               </li>
               <li className="flex justify-between">
                 <span>Minggu</span>
-                <span className="font-medium">Tutup</span>
+                <span className="font-medium">09:00 - 15:00</span>
               </li>
             </ul>
             <Button
