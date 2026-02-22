@@ -99,9 +99,11 @@ export default function ProdukPage() {
 
                         {/* Category Badge & Wishlist */}
                         <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
-                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-red-600 backdrop-blur-sm rounded-full shadow-sm">
+                          {/* === DIUBAH: bg-red-600 menjadi bg-blue-600 === */}
+                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 backdrop-blur-sm rounded-full shadow-sm">
                             {product.category}
                           </span>
+                          {/* ============================================= */}
                           <button
                             onClick={(e) => {
                               e.preventDefault();
@@ -117,7 +119,7 @@ export default function ProdukPage() {
                         </div>
                       </div>
 
-                      {/* Card Content - Modified Layout */}
+                      {/* Card Content */}
                       <div className="p-4 flex justify-between items-end gap-3 flex-grow">
                         {/* Text Container */}
                         <div className="flex-1">
@@ -137,7 +139,7 @@ export default function ProdukPage() {
                           </div>
                         </div>
 
-                        {/* === BARU: Circular Discount Badge === */}
+                        {/* Circular Discount Badge */}
                         <div className="flex-shrink-0 mb-1">
                           <div className="w-14 h-14 md:w-16 md:h-16 bg-red-600 rounded-full shadow-lg flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 group-hover:-rotate-0 transition-all duration-300 border-2 border-white">
                             <span className="text-[9px] md:text-[10px] font-bold text-white/90 leading-none mb-0.5">
@@ -148,7 +150,7 @@ export default function ProdukPage() {
                             </span>
                           </div>
                         </div>
-                        {/* ===================================== */}
+                        {/* ======================= */}
                       </div>
                     </div>
                   </Link>
