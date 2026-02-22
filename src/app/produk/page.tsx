@@ -18,16 +18,12 @@ export default function ProdukPage() {
     }
   };
 
-  // 1. Tambahkan state untuk kategori yang aktif
-const [activeCategory, setActiveCategory] = useState('Semua');
+  const [activeCategory, setActiveCategory] = useState('Semua');
+  const categories = ['Semua', ...Array.from(new Set(products.map(p => p.category)))];
 
-// 2. Ambil daftar kategori secara otomatis dari data produk Anda
-const categories = ['Semua', ...Array.from(new Set(products.map(p => p.category)))];
-
-// 3. Filter produk yang akan ditampilkan
-const filteredProducts = activeCategory === 'Semua' 
-  ? products 
-  : products.filter(p => p.category === activeCategory);
+  const filteredProducts = activeCategory === 'Semua'
+    ? products
+    : products.filter(p => p.category === activeCategory);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -70,8 +66,8 @@ const filteredProducts = activeCategory === 'Semua'
                   onClick={() => setActiveCategory(cat)}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeCategory === cat
-                      ? 'bg-red-600 text-white shadow-md scale-105' // Warna merah saat aktif
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200' // Warna abu-abu saat tidak aktif
+                      ? 'bg-red-600 text-white shadow-md scale-105'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
                   {cat}
@@ -89,22 +85,21 @@ const filteredProducts = activeCategory === 'Semua'
                 {filteredProducts.map((product, index) => (
                   <Link href={`/produk/${product.id}`} key={product.id}>
                     <div
-                      className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl"
+                      className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl flex flex-col h-full"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
-                      {/* Product Image Section - Full Bleed */}
-                      <div className="relative aspect-[4/3] overflow-hidden">
+                      {/* Product Image Section */}
+                      <div className="relative aspect-[4/3] overflow-hidden shrink-0">
                         <img
                           src={product.image}
                           alt={product.name}
                           className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-700 ease-out"
                         />
-                        {/* Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         {/* Category Badge & Wishlist */}
-                        <div className="absolute top-3 left-3 right-3 flex items-start justify-between">
-                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-red-600 backdrop-blur-sm rounded-full">
+                        <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
+                          <span className="px-3 py-1.5 text-xs font-semibold text-white bg-red-600 backdrop-blur-sm rounded-full shadow-sm">
                             {product.category}
                           </span>
                           <button
@@ -112,35 +107,48 @@ const filteredProducts = activeCategory === 'Semua'
                               e.preventDefault();
                               toggleWishlist(product.id);
                             }}
-                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group"
+                            className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn"
                           >
-                            <Heart 
-                              className={`h-5 w-5 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 group-hover:text-red-500'}`} 
+                            <Heart
+                              className={`h-5 w-5 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 group-hover/btn:text-red-500'}`}
                               strokeWidth={2}
                             />
                           </button>
                         </div>
                       </div>
 
-                      {/* Card Content */}
-                      <div className="p-4">
-                        {/* Product Name */}
-                        <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 text-left group-hover:text-primary transition-colors duration-300 tracking-tight">
-                          {product.name}
-                        </h3>
+                      {/* Card Content - Modified Layout */}
+                      <div className="p-4 flex justify-between items-end gap-3 flex-grow">
+                        {/* Text Container */}
+                        <div className="flex-1">
+                          <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 text-left group-hover:text-primary transition-colors duration-300 tracking-tight line-clamp-1">
+                            {product.name}
+                          </h3>
 
-                        {/* Price Label */}
-                        <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-                          Mulai
+                          <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+                            Mulai
+                          </div>
+
+                          <div className="text-left">
+                            <span className="text-xl md:text-2xl font-bold text-primary">
+                              {product.priceText}
+                            </span>
+                            <span className="text-sm md:text-base font-semibold text-foreground ml-2">Jutaan</span>
+                          </div>
                         </div>
 
-                        {/* Price */}
-                        <div className="text-left">
-                          <span className="text-xl md:text-2xl font-bold text-primary">
-                            {product.priceText}
-                          </span>
-                          <span className="text-sm md:text-base font-semibold text-foreground ml-2">Jutaan</span>
+                        {/* === BARU: Circular Discount Badge === */}
+                        <div className="flex-shrink-0 mb-1">
+                          <div className="w-14 h-14 md:w-16 md:h-16 bg-red-600 rounded-full shadow-lg flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 group-hover:-rotate-0 transition-all duration-300 border-2 border-white">
+                            <span className="text-[9px] md:text-[10px] font-bold text-white/90 leading-none mb-0.5">
+                              DISKON
+                            </span>
+                            <span className="text-sm md:text-base font-extrabold text-white leading-none">
+                              20%
+                            </span>
+                          </div>
                         </div>
+                        {/* ===================================== */}
                       </div>
                     </div>
                   </Link>
