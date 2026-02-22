@@ -232,9 +232,11 @@ export default function ProductDetailPage() {
                 </h2>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-                {/* Specifications - Left Side */}
-                <div className="animate-fade-in stagger-1">
+              {/* ✅ GRID DIUBAH DI SINI DENGAN GRID-COLS-1 dan PENGGUNAAN ORDER */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                
+                {/* Specifications - Tampil di bawah pada mobile (order-2), kiri pada desktop (lg:order-1) */}
+                <div className="order-2 lg:order-1 animate-fade-in stagger-1">
                   <Card className="border-2 border-border h-full">
                     <CardContent className="p-8">
                       <h3 className="text-2xl font-bold text-foreground mb-6">
@@ -315,8 +317,8 @@ export default function ProductDetailPage() {
                   </Card>
                 </div>
 
-                {/* Variant List - Right Side with Tabs */}
-                <div className="animate-fade-in stagger-2">
+                {/* Variant List / Harga - Tampil di ATAS pada mobile (order-1), kanan pada desktop (lg:order-2) */}
+                <div className="order-1 lg:order-2 animate-fade-in stagger-2">
                   <Tabs defaultValue="plat-ab" className="w-full">
                     <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-800 p-1 rounded-lg">
                       <TabsTrigger 
@@ -392,6 +394,7 @@ export default function ProductDetailPage() {
                   </Tabs>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
