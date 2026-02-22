@@ -7,6 +7,16 @@ import { products } from '@/lib/products-data';
 import Link from 'next/link';
 import { useState } from 'react';
 
+const leasingPartners = [
+  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
+  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
+  { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
+  { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
+  { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
+];
+
 export default function ProdukPage() {
   const [wishlist, setWishlist] = useState<number[]>([]);
 
@@ -25,7 +35,6 @@ export default function ProdukPage() {
     ? products
     : products.filter(p => p.category === activeCategory);
 
-  // === BARU: Fungsi untuk menentukan nilai promo berdasarkan nama mobil ===
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
     
@@ -38,7 +47,7 @@ export default function ProdukPage() {
     if (name.includes('apv')) return { label: 'DISKON', value: '5 JT' };
     if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: '50 JT' };
     
-    return null; // Mengembalikan null jika tidak ada promo yang cocok
+    return null;
   };
 
   return (
@@ -82,7 +91,7 @@ export default function ProdukPage() {
                   onClick={() => setActiveCategory(cat)}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeCategory === cat
-                      ? 'bg-red-600 text-white shadow-md scale-105'
+                      ? 'bg-blue-600 text-white shadow-md scale-105'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
@@ -94,12 +103,11 @@ export default function ProdukPage() {
         </section>
 
         {/* Products Grid */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50/50 to-background">
+        <section className="py-16 bg-gradient-to-b from-gray-50/50 to-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
                 {filteredProducts.map((product, index) => {
-                  // Ambil data promo untuk produk ini
                   const promo = getPromoInfo(product.name);
 
                   return (
@@ -139,7 +147,6 @@ export default function ProdukPage() {
 
                         {/* Card Content */}
                         <div className="p-4 flex justify-between items-end gap-3 flex-grow">
-                          {/* Text Container */}
                           <div className="flex-1">
                             <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 text-left group-hover:text-primary transition-colors duration-300 tracking-tight line-clamp-1">
                               {product.name}
@@ -179,6 +186,42 @@ export default function ProdukPage() {
             </div>
           </div>
         </section>
+
+        {/* SECTION LEASING PARTNER DIPINDAH KE SINI */}
+        <section className="py-16 md:py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Leasing Partner Terpercaya
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Kami bekerjasama dengan berbagai lembaga pembiayaan terkemuka untuk memberikan kemudahan cicilan bagi pembelian mobil baru Anda.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 animate-fade-in stagger-1">
+              {leasingPartners.map((partner, index) => (
+                <div 
+                  key={index} 
+                  className="group relative w-32 h-20 md:w-40 md:h-24 flex items-center justify-center p-2 transition-all duration-300 hover:scale-110"
+                >
+                  <img
+                    src={partner.src}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain transition-all duration-300"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      if (e.currentTarget.parentElement) {
+                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-400 border border-dashed border-gray-300 p-2 rounded">${partner.name}</span>`;
+                      }
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <Footer />
