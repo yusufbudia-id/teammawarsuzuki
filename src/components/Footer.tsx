@@ -14,7 +14,26 @@ const navItems = [
   { id: 'kontak', label: 'Kontak', href: '/kontak' },
 ];
 
+// Pindahkan data tim WA ke luar atau dalam komponen
+const waTeam = [
+  { nama: 'Yusuf', no: '6282174635218' },
+  { nama: 'Dimas', no: '6287775741091' },
+  { nama: 'Bima', no: '6289637144539' },
+  { nama: 'Kafi', no: '6281329095557' },
+  { nama: 'Nabila', no: '6283103278381' },
+  { nama: 'Risya', no: '6281818405854' }
+];
+
 export default function Footer() {
+  // Fungsi untuk handle klik WA yang merandom nomor
+  const handleChatWA = () => {
+    const randomIndex = Math.floor(Math.random() * waTeam.length);
+    const selectedContact = waTeam[randomIndex];
+    
+    const message = encodeURIComponent(`*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`);
+    window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
+  };
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -98,9 +117,10 @@ export default function Footer() {
                 <span className="font-medium">09:00 - 15:00</span>
               </li>
             </ul>
+            {/* Tombol yang sudah diubah logic-nya, UI tetap sama */}
             <Button
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
-              onClick={() => window.open('https://wa.me/6282174635218', '_blank')}
+              onClick={handleChatWA}
             >
               Chat WhatsApp
             </Button>
