@@ -21,7 +21,7 @@ const waTeam = [
   { nama: 'Bima', no: '6289637144539' },
   { nama: 'Kafi', no: '6281329095557' },
   { nama: 'Nabila', no: '6283103278381' },
-  { nama: 'Risya', no: '6281818405854' }
+  { nama: 'Melly', no: '62895417267981' }
 ];
 
 export default function Footer() {

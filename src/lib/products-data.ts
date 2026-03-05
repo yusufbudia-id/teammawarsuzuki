@@ -15,6 +15,7 @@ export interface ProductVariant {
 
 export interface ProductType {
   id: number;
+  slug: string;           // ✅ BARU: Menambahkan definisi slug
   name: string;
   category: string;
   priceText: string;
@@ -39,6 +40,7 @@ export interface ProductType {
 export const products: ProductType[] = [
   {
     id: 1,
+    slug: 'suzuki-fronx-jogja', // ✅ BARU
     name: 'Fronx',
     category: 'SUV',
     priceText: '250',
@@ -116,6 +118,7 @@ export const products: ProductType[] = [
   },
   {
     id: 2,
+    slug: 'suzuki-xl7-jogja', // ✅ BARU
     name: 'XL7 Hybrid',
     category: 'SUV',
     priceText: '240',
@@ -220,6 +223,7 @@ export const products: ProductType[] = [
   },
   {
     id: 3,
+    slug: 'suzuki-carry-pickup-jogja', // ✅ BARU
     name: 'New Carry Pick Up',
     category: 'Pickup',
     priceText: '140',
@@ -285,6 +289,7 @@ export const products: ProductType[] = [
   },
   {
     id: 4,
+    slug: 'suzuki-s-presso-jogja', // ✅ BARU
     name: 'S-Presso',
     category: 'City Car',
     priceText: '160',
@@ -331,6 +336,7 @@ export const products: ProductType[] = [
   },
   {
     id: 5,
+    slug: 'suzuki-grand-vitara-jogja', // ✅ BARU
     name: 'Grand Vitara',
     category: 'SUV',
     priceText: '390',
@@ -372,6 +378,7 @@ export const products: ProductType[] = [
   },
   {
     id: 6,
+    slug: 'suzuki-apv-jogja', // ✅ BARU
     name: 'APV',
     category: 'Commercial',
     priceText: '180',
@@ -404,6 +411,7 @@ export const products: ProductType[] = [
   },
   {
     id: 7,
+    slug: 'suzuki-jimny-jogja', // ✅ BARU
     name: 'Jimny',
     category: 'SUV Off-Road',
     priceText: '470',
@@ -490,6 +498,7 @@ export const products: ProductType[] = [
   },
   {
     id: 8,
+    slug: 'suzuki-ertiga-jogja', // ✅ BARU
     name: 'Ertiga',
     category: 'MPV',
     priceText: '240',
@@ -549,6 +558,12 @@ export const products: ProductType[] = [
   }
 ];
 
+// Fungsi lama tetap ada (opsional, jika masih dibutuhkan di komponen lain)
 export function getProductById(id: number): ProductType | undefined {
   return products.find(product => product.id === id);
+}
+
+// ✅ BARU: Fungsi untuk mencari berdasarkan slug
+export function getProductBySlug(slug: string): ProductType | undefined {
+  return products.find(product => product.slug === slug);
 }

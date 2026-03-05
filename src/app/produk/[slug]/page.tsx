@@ -12,9 +12,9 @@ import {
   Wrench, Ruler, Users as UsersIcon, 
   Droplets, ChevronRight, Gift 
 } from 'lucide-react';
-import { products, getProductById } from '@/lib/products-data';
+// ✅ UBAH: Import getProductBySlug alih-alih getProductById
+import { products, getProductBySlug } from '@/lib/products-data';
 
-// ✅ DAFTAR LOGO LEASING (Sama seperti Home)
 const leasingPartners = [
   { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
   { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
@@ -29,8 +29,11 @@ export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(0);
-  const id = parseInt(params.id as string);
-  const product = getProductById(id);
+  
+  // ✅ UBAH: Mengambil parameter sebagai string (slug) bukan parseInt
+  // Asumsi nama folder diubah dari [id] menjadi [slug]
+  const slug = params.slug as string; 
+  const product = getProductBySlug(slug);
 
   const waTeam = [
     { nama: 'Yusuf', no: '6282174635218' },
@@ -38,7 +41,7 @@ export default function ProductDetailPage() {
     { nama: 'Bima', no: '6289637144539' },
     { nama: 'Kafi', no: '6281329095557' },
     { nama: 'Nabila', no: '6283103278381' },
-    { nama: 'Risya', no: '6281818405854' }
+    { nama: 'Melly', no: '62895417267981' }
   ];
 
   const getRandomWANumber = () => {
@@ -61,7 +64,8 @@ export default function ProductDetailPage() {
       price: product?.priceText ? parseFloat(product.priceText) * 1000000 : 0,
       priceCurrency: 'IDR',
       availability: 'https://schema.org/InStock',
-      url: `https://www.suzuki-jogja.com/produk/${product?.id}`,
+      // ✅ UBAH: URL menggunakan slug produk
+      url: `https://www.suzuki-jogja.com/produk/${slug}`,
     },
   };
 
@@ -106,7 +110,6 @@ export default function ProductDetailPage() {
     window.open(product.brochureUrl, '_blank');
   };
 
-  // Helper Component untuk Kartu Varian
   const VariantCard = ({ variant, priceData, region, idx }: any) => (
     <Card
       className="border-2 border-border hover:border-primary transition-all duration-300 animate-fade-in"
@@ -145,6 +148,7 @@ export default function ProductDetailPage() {
       />
       <Header />
       <main className="flex-1">
+        {/* ... (Hero Section dan spesifikasi tetap sama persis) ... */}
         {/* Hero Section */}
         <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -232,10 +236,9 @@ export default function ProductDetailPage() {
                 </h2>
               </div>
 
-              {/* ✅ GRID DIUBAH DI SINI DENGAN GRID-COLS-1 dan PENGGUNAAN ORDER */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 
-                {/* Specifications - Tampil di bawah pada mobile (order-2), kiri pada desktop (lg:order-1) */}
+                {/* Specifications */}
                 <div className="order-2 lg:order-1 animate-fade-in stagger-1">
                   <Card className="border-2 border-border h-full">
                     <CardContent className="p-8">
@@ -317,7 +320,7 @@ export default function ProductDetailPage() {
                   </Card>
                 </div>
 
-                {/* Variant List / Harga - Tampil di ATAS pada mobile (order-1), kanan pada desktop (lg:order-2) */}
+                {/* Variant List / Harga */}
                 <div className="order-1 lg:order-2 animate-fade-in stagger-2">
                   <Tabs defaultValue="plat-ab" className="w-full">
                     <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-800 p-1 rounded-lg">
@@ -338,8 +341,6 @@ export default function ProductDetailPage() {
                     {/* Tab Content: Plat AB */}
                     <TabsContent value="plat-ab" className="mt-0">
                       <div className="space-y-3">
-                        
-                        {/* Info Bonus Plat AB */}
                         {product.variants[0]?.bonus && (
                           <div className="mb-4 p-4 bg-gradient-to-r from-blue-600/20 to-blue-900/20 border border-blue-600/50 rounded-lg flex items-start gap-3">
                             <Gift className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
@@ -365,7 +366,6 @@ export default function ProductDetailPage() {
                     {/* Tab Content: Plat AA & R */}
                     <TabsContent value="plat-aa-r" className="mt-0">
                       <div className="space-y-3">
-                        {/* Info Bonus AA/R */}
                         {product.variants[0]?.bonus && (
                           <div className="mb-4 p-4 bg-gradient-to-r from-yellow-600/20 to-yellow-900/20 border border-yellow-600/50 rounded-lg flex items-start gap-3">
                             <Gift className="h-6 w-6 text-yellow-500 flex-shrink-0 mt-1" />
@@ -399,7 +399,7 @@ export default function ProductDetailPage() {
           </div>
         </section>
 
-        {/* ✅ LEASING PARTNER SECTION */}
+        {/* Leasing Partner Section */}
         <section className="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 animate-fade-in">
