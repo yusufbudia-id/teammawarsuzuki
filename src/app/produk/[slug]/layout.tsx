@@ -7,10 +7,12 @@ type Props = {
 };
 
 // Fungsi ini akan berjalan di server (Server-Side) khusus untuk men-generate SEO
+// PERBAIKAN UNTUK NEXT.JS TERBARU
 export async function generateMetadata(
-  { params }: Props
+  { params }: { params: Promise<{ slug: string }> } // <--- Ubah bagian ini
 ): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+  const resolvedParams = await params; // <--- Tambahkan await
+  const product = getProductBySlug(resolvedParams.slug);
 
   if (!product) {
     return {
