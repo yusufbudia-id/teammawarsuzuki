@@ -47,14 +47,12 @@ export default function ProductDetailPage() {
     return waTeam[randomIndex].no;
   };
 
-  useEffect(() => {
-    if (!product) {
-      router.push('/produk');
-    } else {
-      // ✅ SEO 1: Mengubah Title Tag secara dinamis
-      document.title = `Harga Suzuki ${product.name} Jogja 2026 | Promo & Kredit Terbaru`;
-    }
-  }, [product, router]);
+  // ✅ UBAH MENJADI SEPERTI INI
+    useEffect(() => {
+      if (!product) {
+        router.push('/produk');
+      }
+    }, [product, router]);
 
   if (!product) {
     return (
