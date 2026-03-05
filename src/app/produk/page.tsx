@@ -111,7 +111,8 @@ export default function ProdukPage() {
                   const promo = getPromoInfo(product.name);
 
                   return (
-                    <Link href={`/produk/${product.id}`} key={product.id}>
+                    {/* ✅ PERUBAHAN ADA DI BARIS BAWAH INI: Menggunakan product.slug */}
+                    <Link href={`/produk/${product.slug}`} key={product.slug}>
                       <div
                         className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl flex flex-col h-full"
                         style={{ animationDelay: `${index * 100}ms` }}
