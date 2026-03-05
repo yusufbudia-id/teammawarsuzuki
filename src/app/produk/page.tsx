@@ -110,8 +110,8 @@ export default function ProdukPage() {
                 {filteredProducts.map((product, index) => {
                   const promo = getPromoInfo(product.name);
 
+                  // ✅ PERUBAHAN ADA DI BARIS BAWAH INI (Komentar dipindah ke luar return)
                   return (
-                    {/* ✅ PERUBAHAN ADA DI BARIS BAWAH INI: Menggunakan product.slug */}
                     <Link href={`/produk/${product.slug}`} key={product.slug}>
                       <div
                         className="overflow-hidden border-0 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer animate-fade-in group bg-white rounded-xl flex flex-col h-full"
