@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // --- 2. Halaman Dinamis (Produk) ---
   const productPages = products.map((product) => ({
     // Pastikan URL pattern sesuai (misal: /produk/1 atau /produk/nama-mobil)
-    url: `${baseUrl}/produk/${product.id}`,
+    url: `${baseUrl}/produk/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
