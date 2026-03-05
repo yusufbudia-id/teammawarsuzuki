@@ -7,12 +7,12 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from 'next/link';
 import { 
   Download, Car, Settings, Zap, Shield, 
   Wrench, Ruler, Users as UsersIcon, 
-  Droplets, ChevronRight, Gift 
+  Droplets, ChevronRight, Gift, HelpCircle 
 } from 'lucide-react';
-// ✅ UBAH: Import getProductBySlug alih-alih getProductById
 import { products, getProductBySlug } from '@/lib/products-data';
 
 const leasingPartners = [
@@ -30,8 +30,6 @@ export default function ProductDetailPage() {
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(0);
   
-  // ✅ UBAH: Mengambil parameter sebagai string (slug) bukan parseInt
-  // Asumsi nama folder diubah dari [id] menjadi [slug]
   const slug = params.slug as string; 
   const product = getProductBySlug(slug);
 
@@ -49,29 +47,12 @@ export default function ProductDetailPage() {
     return waTeam[randomIndex].no;
   };
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product?.name,
-    image: `https://www.suzuki-jogja.com${product?.image}`,
-    description: product?.description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Suzuki'
-    },
-    offers: {
-      '@type': 'Offer',
-      price: product?.priceText ? parseFloat(product.priceText) * 1000000 : 0,
-      priceCurrency: 'IDR',
-      availability: 'https://schema.org/InStock',
-      // ✅ UBAH: URL menggunakan slug produk
-      url: `https://www.suzuki-jogja.com/produk/${slug}`,
-    },
-  };
-
   useEffect(() => {
     if (!product) {
       router.push('/produk');
+    } else {
+      // ✅ SEO 1: Mengubah Title Tag secara dinamis
+      document.title = `Harga Suzuki ${product.name} Jogja 2026 | Promo & Kredit Terbaru`;
     }
   }, [product, router]);
 
@@ -89,25 +70,38 @@ export default function ProductDetailPage() {
     );
   }
 
+  // ✅ SEO 4: Mengambil 3 produk lain untuk internal linking
+  const otherProducts = products.filter(p => p.id !== product.id).slice(0, 3);
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: `https://www.suzuki-jogja.com${product.image}`,
+    description: product.description,
+    brand: {
+      '@type': 'Brand',
+      name: 'Suzuki'
+    },
+    offers: {
+      '@type': 'Offer',
+      price: product.priceText ? parseFloat(product.priceText) * 1000000 : 0,
+      priceCurrency: 'IDR',
+      availability: 'https://schema.org/InStock',
+      url: `https://www.suzuki-jogja.com/produk/${slug}`,
+    },
+  };
+
   const handleTestDrive = () => {
-      if (!product) return;
       const message = `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*. Mohon info jadwal dan lokasinya ya..`;
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
+      window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   const handleAjukanKredit = (variantName?: string, region?: string) => {
-    if (!product) return;
     const regionText = region ? ` (${region})` : '';
     const targetName = variantName ? `${product.name} - ${variantName}${regionText}` : product.name;
     const message = `Halo admin Suzuki!!\n\nSaya tertarik untuk mengajukan kredit untuk unit *${targetName}*. Mohon info simulasi kredit dan persyaratannya ya..`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${getRandomWANumber()}?text=${encodedMessage}`, '_blank');
-  };
-
-  const handleDownloadBrosur = () => {
-    if (!product?.brochureUrl) return;
-    window.open(product.brochureUrl, '_blank');
+    window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   const VariantCard = ({ variant, priceData, region, idx }: any) => (
@@ -148,7 +142,6 @@ export default function ProductDetailPage() {
       />
       <Header />
       <main className="flex-1">
-        {/* ... (Hero Section dan spesifikasi tetap sama persis) ... */}
         {/* Hero Section */}
         <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -186,12 +179,23 @@ export default function ProductDetailPage() {
                 <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium w-fit mb-4">
                   {product.category}
                 </span>
+                
+                {/* ✅ SEO 2: Heading H1 yang jelas dan kuat */}
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  {product.name}
+                  Suzuki {product.name} Jogja – Harga, Spesifikasi & Promo Kredit
                 </h1>
-                <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                
+                <p className="text-lg text-gray-300 mb-4 leading-relaxed">
                   {product.description}
                 </p>
+
+                {/* ✅ SEO 3: Section Keyword Lokal */}
+                <div className="bg-gray-800/50 border border-gray-700 p-4 rounded-lg mb-6">
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Suzuki {product.name} Jogja merupakan kendaraan pilihan yang banyak diminati masyarakat Yogyakarta dan sekitarnya. Dealer Suzuki Jogja menyediakan berbagai promo menarik untuk Anda, seperti diskon harga maksimal, DP ringan, serta cicilan kredit yang terjangkau.
+                  </p>
+                </div>
+
                 <div className="flex items-baseline space-x-2 mb-8">
                   <span className="text-gray-300 text-lg">Mulai</span>
                   <span className="text-4xl font-bold text-primary">
@@ -208,15 +212,17 @@ export default function ProductDetailPage() {
                     <Car className="mr-2 h-5 w-5" />
                     Pesan Test Drive
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={handleDownloadBrosur}
-                    className="border-primary text-primary hover:bg-primary/10 text-lg px-8"
-                  >
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Brosur
-                  </Button>
+                  {product.brochureUrl && (
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      onClick={() => window.open(product.brochureUrl, '_blank')}
+                      className="border-primary text-primary hover:bg-primary/10 text-lg px-8"
+                    >
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Brosur
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
@@ -224,20 +230,16 @@ export default function ProductDetailPage() {
         </section>
 
         {/* Specifications & Variants Section */}
-        <section className="py-20 md:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+        <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16 animate-fade-in">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4">
-                  Spesifikasi & Harga
-                </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Detail {product.name}
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                
                 {/* Specifications */}
                 <div className="order-2 lg:order-1 animate-fade-in stagger-1">
                   <Card className="border-2 border-border h-full">
@@ -255,7 +257,6 @@ export default function ProductDetailPage() {
                             <p className="text-foreground font-medium">{product.specifications.engine}</p>
                           </div>
                         </div>
-
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Settings className="h-6 w-6 text-primary" />
@@ -265,7 +266,6 @@ export default function ProductDetailPage() {
                             <p className="text-foreground font-medium">{product.specifications.transmission}</p>
                           </div>
                         </div>
-
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Droplets className="h-6 w-6 text-primary" />
@@ -275,7 +275,6 @@ export default function ProductDetailPage() {
                             <p className="text-foreground font-medium">{product.specifications.fuel}</p>
                           </div>
                         </div>
-
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Zap className="h-6 w-6 text-primary" />
@@ -285,7 +284,6 @@ export default function ProductDetailPage() {
                             <p className="text-foreground font-medium">{product.specifications.power}</p>
                           </div>
                         </div>
-
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Shield className="h-6 w-6 text-primary" />
@@ -295,7 +293,6 @@ export default function ProductDetailPage() {
                             <p className="text-foreground font-medium">{product.specifications.torque}</p>
                           </div>
                         </div>
-
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <UsersIcon className="h-6 w-6 text-primary" />
@@ -305,7 +302,6 @@ export default function ProductDetailPage() {
                             <p className="text-foreground font-medium">{product.specifications.seating}</p>
                           </div>
                         </div>
-
                         <div className="flex items-start">
                           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
                             <Ruler className="h-6 w-6 text-primary" />
@@ -338,7 +334,6 @@ export default function ProductDetailPage() {
                       </TabsTrigger>
                     </TabsList>
 
-                    {/* Tab Content: Plat AB */}
                     <TabsContent value="plat-ab" className="mt-0">
                       <div className="space-y-3">
                         {product.variants[0]?.bonus && (
@@ -350,20 +345,12 @@ export default function ProductDetailPage() {
                             </div>
                           </div>
                         )}
-
                         {product.variants.map((variant, idx) => (
-                          <VariantCard 
-                            key={`ab-${idx}`}
-                            idx={idx}
-                            variant={variant}
-                            priceData={variant.priceAB}
-                            region="Plat AB"
-                          />
+                          <VariantCard key={`ab-${idx}`} idx={idx} variant={variant} priceData={variant.priceAB} region="Plat AB" />
                         ))}
                       </div>
                     </TabsContent>
 
-                    {/* Tab Content: Plat AA & R */}
                     <TabsContent value="plat-aa-r" className="mt-0">
                       <div className="space-y-3">
                         {product.variants[0]?.bonus && (
@@ -375,17 +362,9 @@ export default function ProductDetailPage() {
                             </div>
                           </div>
                         )}
-
                         {product.variants.map((variant, idx) => (
-                          <VariantCard 
-                            key={`aar-${idx}`}
-                            idx={idx}
-                            variant={variant}
-                            priceData={variant.priceAAR}
-                            region="Plat AA/R"
-                          />
+                          <VariantCard key={`aar-${idx}`} idx={idx} variant={variant} priceData={variant.priceAAR} region="Plat AA/R" />
                         ))}
-                        
                         <p className="text-xs text-muted-foreground mt-4 italic text-center">
                           *Harga berlaku untuk wilayah Kedu, Banyumas, Cilacap, Purworejo, Kebumen, Temanggung, Wonosobo, Magelang.
                         </p>
@@ -394,7 +373,64 @@ export default function ProductDetailPage() {
                   </Tabs>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
+        {/* ✅ SEO 5: FAQ Section yang Ramah Mesin Pencari */}
+        <section className="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                FAQ (Pertanyaan Seputar Suzuki {product.name})
+              </h2>
+            </div>
+            <div className="space-y-4">
+              <Card className="border border-gray-200 dark:border-gray-800 shadow-sm">
+                <CardContent className="p-5 flex items-start gap-4">
+                  <HelpCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-2">Berapa harga Suzuki {product.name} di Jogja?</h4>
+                    <p className="text-gray-600 dark:text-gray-400">Harga Suzuki {product.name} Jogja saat ini dibanderol mulai dari kisaran Rp {product.priceText} Jutaan. Harga dapat berubah sewaktu-waktu sesuai dengan program dan promo yang sedang berjalan.</p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border border-gray-200 dark:border-gray-800 shadow-sm">
+                <CardContent className="p-5 flex items-start gap-4">
+                  <HelpCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-2">Apakah ada promo kredit Suzuki {product.name}?</h4>
+                    <p className="text-gray-600 dark:text-gray-400">Tentu saja. Dealer Suzuki Jogja menawarkan berbagai kemudahan pembiayaan, mulai dari DP ringan, cicilan terjangkau, hingga bonus aksesoris eksklusif untuk pembelian secara kredit maupun tunai.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* ✅ SEO 4: Internal Links ke Produk Lain */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Lihat Mobil Suzuki Lainnya</h3>
+              <Link href="/produk" className="text-primary hover:underline text-sm font-medium">Lihat Semua →</Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {otherProducts.map((other) => (
+                <Link href={`/produk/${other.slug}`} key={other.id}>
+                  <Card className="hover:border-primary transition-colors cursor-pointer border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+                    <CardContent className="p-4 flex items-center gap-4">
+                      <div className="w-20 h-16 rounded overflow-hidden flex-shrink-0">
+                        <img src={other.image} alt={other.name} className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">{other.name}</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Mulai Rp {other.priceText} Jt</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -421,12 +457,6 @@ export default function ProductDetailPage() {
                     src={partner.src}
                     alt={partner.name}
                     className="max-w-full max-h-full object-contain transition-all duration-300"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      if (e.currentTarget.parentElement) {
-                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-400 border border-dashed border-gray-300 p-2 rounded">${partner.name}</span>`;
-                      }
-                    }}
                   />
                 </div>
               ))}
@@ -434,7 +464,6 @@ export default function ProductDetailPage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
