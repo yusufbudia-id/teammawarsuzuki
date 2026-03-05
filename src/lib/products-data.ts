@@ -15,7 +15,7 @@ export interface ProductVariant {
 
 export interface ProductType {
   id: number;
-  slug: string;           // ✅ BARU: Menambahkan definisi slug
+  slug: string;
   name: string;
   category: string;
   priceText: string;
@@ -40,11 +40,11 @@ export interface ProductType {
 export const products: ProductType[] = [
   {
     id: 1,
-    slug: 'suzuki-fronx-jogja', // ✅ BARU
+    slug: 'suzuki-fronx-jogja',
     name: 'Fronx',
     category: 'SUV',
     priceText: '250',
-    description: 'SUV tangguh dengan desain modern dan fitur safety lengkap.',
+    description: 'Suzuki Fronx hadir sebagai SUV crossover yang memadukan desain tangguh, gaya modern, dan performa lincah untuk jalanan perkotaan. Dilengkapi dengan teknologi Mild Hybrid yang efisien dan fitur keselamatan terkini, Fronx adalah pilihan tepat bagi Anda yang berjiwa muda dan menginginkan kendaraan stylish sekaligus irit bahan bakar untuk menemani aktivitas dinamis sehari-hari.',
     features: ['Mesin 1.5L', 'Desain Modern', 'Mild Hybrid'],
     advantages: ['Sunroof panoramic', '360-degree camera', 'Mild hybrid'],
     image: '/images/fronx-1.jpg',
@@ -118,11 +118,11 @@ export const products: ProductType[] = [
   },
   {
     id: 2,
-    slug: 'suzuki-xl7-jogja', // ✅ BARU
+    slug: 'suzuki-xl7-jogja',
     name: 'XL7 Hybrid',
     category: 'SUV',
     priceText: '240',
-    description: 'SUV premium keluarga dengan tampilan mewah dan kenyamanan maksimal.',
+    description: 'Nikmati perjalanan bersama keluarga dengan Suzuki XL7 Hybrid, SUV 7-seater sejati yang menawarkan perpaduan sempurna antara ketangguhan dan kemewahan. Dengan ground clearance tinggi, kabin lapang, serta teknologi Smart Hybrid Vehicle by Suzuki (SHVS), XL7 memastikan setiap petualangan keluarga Anda terasa lebih premium, efisien, dan ramah lingkungan di berbagai medan.',
     features: ['Captain Seat', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Design premium', 'Electronic Stability Program (ESP)', 'Ground clearance 200mm'],
     image: '/images/xl7-1.jpg',
@@ -223,11 +223,11 @@ export const products: ProductType[] = [
   },
   {
     id: 3,
-    slug: 'suzuki-carry-pickup-jogja', // ✅ BARU
+    slug: 'suzuki-carry-pickup-jogja',
     name: 'New Carry Pick Up',
     category: 'Pickup',
     priceText: '140',
-    description: 'Pickup legendaris dengan AC dan Power Steering, tangguh dan irit untuk bisnis.',
+    description: 'Dikenal sebagai "Rajanya Pick Up" di Indonesia, New Carry Pick Up adalah mitra bisnis paling tangguh yang siap mendukung kesuksesan usaha Anda. Dibekali ruang kargo yang paling luas di kelasnya, sasis tebal yang tangguh, serta mesin K15C-C yang sangat irit, mobil ini menjamin biaya perawatan yang hemat sekaligus keuntungan maksimal untuk segala jenis perniagaan.',
     features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
     advantages: [
       'Mesin K15C-C 1.5L yang tangguh dan makin irit bahan bakar',
@@ -289,11 +289,11 @@ export const products: ProductType[] = [
   },
   {
     id: 4,
-    slug: 'suzuki-s-presso-jogja', // ✅ BARU
+    slug: 'suzuki-s-presso-jogja',
     name: 'S-Presso',
     category: 'City Car',
     priceText: '160',
-    description: 'City car kompak dengan transmisi otomatis AGS, praktis dan irit untuk mobilitas urban.',
+    description: 'S-Presso adalah city car kompak dengan desain bold bergaya SUV yang dirancang khusus untuk menaklukkan padatnya jalanan kota. Menawarkan ground clearance tinggi, visibilitas berkendara yang sangat baik, dan opsi transmisi AGS yang praktis, mobil ini sangat gesit dan mudah diparkir. Solusi sempurna bagi Anda yang mencari kendaraan harian yang fun to drive dan super hemat BBM.',
     features: ['AGS Auto', 'Kompak & Lincah', 'Mesin Irit', 'Mudah Parkir'],
     advantages: [
       'Transmisi AGS (Auto Gear Shift) - mudah digunakan',
@@ -336,11 +336,11 @@ export const products: ProductType[] = [
   },
   {
     id: 5,
-    slug: 'suzuki-grand-vitara-jogja', // ✅ BARU
+    slug: 'suzuki-grand-vitara-jogja',
     name: 'Grand Vitara',
     category: 'SUV',
     priceText: '390',
-    description: 'SUV premium dengan mesin hybrid bertenaga dan fitur mewah.',
+    description: 'Kembalinya sang legenda, Suzuki Grand Vitara kini tampil lebih elegan dan futuristik dengan teknologi Smart Hybrid kelas atas. Kendaraan flagship SUV ini dirancang khusus bagi Anda yang menghargai kenyamanan premium, dilengkapi dengan Panoramic Sunroof, kamera 360 derajat, ventilated seats, dan fitur cerdas lainnya untuk memberikan pengalaman berkendara yang eksklusif dan penuh kebanggaan.',
     features: ['Mesin Hybrid', 'Panoramic Sunroof', '360 Camera'],
     advantages: ['Smart Hybrid 1.5L', 'ADAS Suzuki Safety Sense', 'Ventilated Seats'],
     image: '/images/vitara-1.jpg',
@@ -378,11 +378,11 @@ export const products: ProductType[] = [
   },
   {
     id: 6,
-    slug: 'suzuki-apv-jogja', // ✅ BARU
+    slug: 'suzuki-apv-jogja',
     name: 'APV',
     category: 'Commercial',
     priceText: '180',
-    description: 'Blind van multifungsi untuk bisnis dan logistik, luas dan irit bahan bakar.',
+    description: 'Suzuki APV Blind Van adalah solusi kendaraan komersial multifungsi yang dirancang untuk memaksimalkan efisiensi operasional dan logistik bisnis Anda. Menawarkan kapasitas kabin kargo yang sangat lega dan aman, akses bongkar muat yang praktis, serta performa mesin legendaris G15A yang sudah teruji ketangguhannya melibas berbagai rute perniagaan dengan muatan penuh.',
     features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.5L', 'Multifungsi'],
     advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin tangguh G15A'],
     image: '/images/apv-1.jpg',
@@ -411,11 +411,11 @@ export const products: ProductType[] = [
   },
   {
     id: 7,
-    slug: 'suzuki-jimny-jogja', // ✅ BARU
+    slug: 'suzuki-jimny-jogja',
     name: 'Jimny',
     category: 'SUV Off-Road',
     priceText: '470',
-    description: 'SUV off-road ikonik dengan kemampuan ekstrem.',
+    description: 'Ikon off-road sejati yang tak lekang oleh waktu. Suzuki Jimny diciptakan untuk para petualang dengan sistem penggerak 4x4 ALLGRIP PRO, sasis ladder frame yang solid, dan suspensi rigid axle yang siap menaklukkan rintangan alam terekstrem. Desainnya yang timeless menjadikannya bukan sekadar mobil fungsional, melainkan juga simbol gaya hidup dan kebebasan berkendara Anda.',
     features: ['4x4 Genuine', 'Ladder Frame', 'Rigid Axle'],
     advantages: ['Part-time 4WD (ALLGRIP PRO)', 'Approach angle 37°', 'Desain timeless'],
     image: '/images/jimny-1.jpg',
@@ -498,11 +498,11 @@ export const products: ProductType[] = [
   },
   {
     id: 8,
-    slug: 'suzuki-ertiga-jogja', // ✅ BARU
+    slug: 'suzuki-ertiga-jogja',
     name: 'Ertiga',
     category: 'MPV',
     priceText: '240',
-    description: 'MPV keluarga yang legendaris dengan kenyamanan dan kualitas terbaik.',
+    description: 'Suzuki All New Ertiga adalah MPV keluarga idaman yang selalu mengutamakan kenyamanan di setiap perjalanan. Menawarkan ruang kabin yang mewah dan senyap, konfigurasi 7 tempat duduk yang lapang, serta efisiensi bahan bakar luar biasa berkat teknologi Smart Hybrid terkini. Pilihan yang paling cerdas dan value-for-money untuk menemani setiap momen berharga bersama keluarga.',
     features: ['7 Kursi Nyaman', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Kabin luas', 'Smart Hybrid Technology', 'Suspensi nyaman'],
     image: '/images/ertiga-1.jpg',
@@ -558,12 +558,10 @@ export const products: ProductType[] = [
   }
 ];
 
-// Fungsi lama tetap ada (opsional, jika masih dibutuhkan di komponen lain)
 export function getProductById(id: number): ProductType | undefined {
   return products.find(product => product.id === id);
 }
 
-// ✅ BARU: Fungsi untuk mencari berdasarkan slug
 export function getProductBySlug(slug: string): ProductType | undefined {
   return products.find(product => product.slug === slug);
 }
