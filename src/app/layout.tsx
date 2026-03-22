@@ -72,10 +72,9 @@ export const metadata: Metadata = {
     creator: "@suzukiindonesia", // Bisa diganti akun twittermu jika ada
   },
 
-  // 4. CANONICAL URL (Agar Google tahu ini yang asli)
-  alternates: {
-    canonical: '/', 
-  },
+  // 4. CANONICAL URL TELAH DIHAPUS
+  // Bagian alternates: { canonical: '/' } dihapus dari sini 
+  // agar sub-halaman tidak terbaca sebagai duplikat homepage oleh Google.
 };
 
 export default function RootLayout({

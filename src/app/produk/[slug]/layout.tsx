@@ -2,16 +2,15 @@ import { Metadata } from 'next';
 import { getProductBySlug } from '@/lib/products-data';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>; // <--- Disamakan dengan metadata agar konsisten
   children: React.ReactNode;
 };
 
 // Fungsi ini akan berjalan di server (Server-Side) khusus untuk men-generate SEO
-// PERBAIKAN UNTUK NEXT.JS TERBARU
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> } // <--- Ubah bagian ini
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const resolvedParams = await params; // <--- Tambahkan await
+  const resolvedParams = await params;
   const product = getProductBySlug(resolvedParams.slug);
 
   if (!product) {
@@ -22,15 +21,19 @@ export async function generateMetadata(
   }
 
   return {
-    // ✅ Title Tag yang sangat kuat untuk SEO lokal
     title: `Harga Suzuki ${product.name} Jogja 2026 | Promo & Kredit Terbaru`,
-    // ✅ Meta Description dengan keyword target
     description: `Dapatkan informasi harga, spesifikasi, dan promo kredit terbaru untuk Suzuki ${product.name} di Jogja. Promo DP ringan dan cicilan murah hanya di dealer resmi Suzuki Jogja.`,
-    // ✅ Open Graph agar tampilan link bagus saat di-share ke WhatsApp/Facebook
+    
+    // ✅ Tambahkan Canonical URL di sini agar Google tahu URL aslinya
+    alternates: {
+      canonical: `/produk/${resolvedParams.slug}`, 
+      // Next.js otomatis menggabungkannya dengan metadataBase dari Root Layout
+    },
+
     openGraph: {
       title: `Harga Suzuki ${product.name} Jogja 2026 | Promo & Kredit Terbaru`,
       description: `Promo kredit dan harga terbaru Suzuki ${product.name} wilayah Jogja dan sekitarnya.`,
-      url: `https://www.suzuki-jogja.com/produk/${params.slug}`,
+      url: `https://www.suzuki-jogja.com/produk/${resolvedParams.slug}`, // ✅ DIPERBAIKI (pakai resolvedParams)
       siteName: 'Suzuki Jogja',
       images: [
         {
@@ -47,7 +50,6 @@ export async function generateMetadata(
 }
 
 export default function ProductLayout({ children }: Props) {
-  // Komponen ini hanya membungkus page.tsx yang sudah ada
   return (
     <>
       {children}
