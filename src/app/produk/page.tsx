@@ -14,7 +14,7 @@ const leasingPartners = [
   { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
   { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
   { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
-  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
+  { name: 'Indomobil Finance', src: '/images/leasing/imfi.webp' }, // ✅ Typo nama leasing sudah diperbaiki
 ];
 
 export default function ProdukPage() {
@@ -110,7 +110,6 @@ export default function ProdukPage() {
                 {filteredProducts.map((product, index) => {
                   const promo = getPromoInfo(product.name);
 
-                  // ✅ PERUBAHAN ADA DI BARIS BAWAH INI (Komentar dipindah ke luar return)
                   return (
                     <Link href={`/produk/${product.slug}`} key={product.slug}>
                       <div
@@ -134,9 +133,11 @@ export default function ProdukPage() {
                             <button
                               onClick={(e) => {
                                 e.preventDefault();
+                                e.stopPropagation(); // ✅ PERBAIKAN: Mencegah error hidrasi & klik menembus Link
                                 toggleWishlist(product.id);
                               }}
-                              className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn"
+                              className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn relative z-20" 
+                              // ✅ PERBAIKAN: Tambahan relative z-20 agar posisi kliknya aman
                             >
                               <Heart
                                 className={`h-5 w-5 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 group-hover/btn:text-red-500'}`}
@@ -188,7 +189,7 @@ export default function ProdukPage() {
           </div>
         </section>
 
-        {/* SECTION LEASING PARTNER DIPINDAH KE SINI */}
+        {/* Leasing Partner Section */}
         <section className="py-16 md:py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 animate-fade-in">
