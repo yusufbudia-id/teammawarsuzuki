@@ -4,8 +4,8 @@ import { products } from '@/lib/products-data';
 import { articles } from '@/lib/articles-data'; 
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Tips: Hapus slash di akhir URL ini agar tidak double slash nanti
-  const baseUrl = 'https://www.suzuki-jogja.com/'; 
+  // Slash di akhir sudah dihapus untuk mencegah double slash (//) pada URL
+  const baseUrl = 'https://www.suzuki-jogja.com'; 
 
   // --- 1. Halaman Statis ---
   const staticPages = [
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // --- 2. Halaman Dinamis (Produk) ---
   const productPages = products.map((product) => ({
-    // Pastikan URL pattern sesuai (misal: /produk/1 atau /produk/nama-mobil)
+    // Pastikan URL pattern sesuai (misal: /produk/suzuki-xl7-jogja)
     url: `${baseUrl}/produk/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
