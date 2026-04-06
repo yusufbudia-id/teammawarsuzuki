@@ -33,7 +33,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-    const waTeam = [
+  const waTeam = [
     { nama: 'Yusuf', no: '6282174635218' },
     { nama: 'Dimas', no: '6287775741091' },
     { nama: 'Bima', no: '6289637144539' },
