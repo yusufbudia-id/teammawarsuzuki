@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
-// Metadata yang diperkuat untuk jajaran flagship (XL7, Fronx) dan niaga (Carry, Mobil Box)
 export const metadata: Metadata = {
   title: 'Promo Suzuki Jogja: XL7 Hybrid, Fronx, Carry & Mobil Box',
-  description: 'Dealer Resmi Suzuki Jogja. Dapatkan promo diskon puluhan juta, simulasi kredit ringan, dan harga OTR terbaik untuk Suzuki XL7 Hybrid, Fronx, Carry Pickup, Mobil Box, dan Mobil MBG.',
+  // Shortened to 154 characters to prevent truncation in Google Search
+  description: 'Dealer Resmi Suzuki Jogja. Dapatkan promo diskon puluhan juta, simulasi kredit ringan & harga OTR terbaik untuk XL7 Hybrid, Fronx, Carry & Mobil Box.',
   keywords: [
     'dealer suzuki jogja',
     'promo suzuki xl7 jogja',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Promo Suzuki Jogja: XL7 Hybrid, Fronx, Carry & Mobil Box',
-    description: 'Dealer Resmi Suzuki Jogja memberikan penawaran kredit ringan dan diskon puluhan juta untuk XL7, Fronx, hingga kendaraan perniagaan Anda.',
+    description: 'Dealer Resmi Suzuki Jogja memberikan penawaran kredit ringan dan diskon puluhan juta untuk kendaraan pribadi dan niaga Anda.',
     url: 'https://www.suzuki-jogja.com',
     siteName: 'Suzuki Jogja',
     locale: 'id_ID',
