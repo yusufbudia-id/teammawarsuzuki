@@ -44,7 +44,8 @@ export const products: ProductType[] = [
     name: 'Fronx',
     category: 'SUV',
     priceText: '250',
-    description: 'Suzuki Fronx hadir sebagai SUV crossover yang memadukan desain tangguh, gaya modern, dan performa lincah untuk jalanan perkotaan. Dilengkapi dengan teknologi Mild Hybrid yang efisien dan fitur keselamatan terkini, Fronx adalah pilihan tepat bagi Anda yang berjiwa muda dan menginginkan kendaraan stylish sekaligus irit bahan bakar untuk menemani aktivitas dinamis sehari-hari.',
+    // PENAMBAHAN LSI KEYWORDS: "simulasi cicilan", "DP ringan", "syarat kredit mobil baru"
+    description: 'Suzuki Fronx hadir sebagai SUV crossover yang memadukan desain tangguh, gaya modern, dan performa lincah untuk jalanan perkotaan. Dilengkapi dengan teknologi Mild Hybrid yang efisien dan fitur keselamatan terkini, Fronx adalah pilihan tepat bagi Anda yang berjiwa muda. Dapatkan kemudahan memiliki mobil baru dengan simulasi cicilan Suzuki Fronx yang terjangkau, DP ringan, serta syarat kredit mobil baru yang mudah hanya di Dealer Suzuki Jogja.',
     features: ['Mesin 1.5L', 'Desain Modern', 'Mild Hybrid'],
     advantages: ['Sunroof panoramic', '360-degree camera', 'Mild hybrid'],
     image: '/images/fronx-1.jpg',
@@ -122,7 +123,8 @@ export const products: ProductType[] = [
     name: 'XL7 Hybrid',
     category: 'SUV',
     priceText: '240',
-    description: 'Nikmati perjalanan bersama keluarga dengan Suzuki XL7 Hybrid, SUV 7-seater sejati yang menawarkan perpaduan sempurna antara ketangguhan dan kemewahan. Dengan ground clearance tinggi, kabin lapang, serta teknologi Smart Hybrid Vehicle by Suzuki (SHVS), XL7 memastikan setiap petualangan keluarga Anda terasa lebih premium, efisien, dan ramah lingkungan di berbagai medan.',
+    // PENAMBAHAN LSI KEYWORDS: "harga OTR", "test drive"
+    description: 'Nikmati perjalanan bersama keluarga dengan Suzuki XL7 Hybrid, SUV 7-seater sejati yang menawarkan perpaduan sempurna antara ketangguhan dan kemewahan. Dengan ground clearance tinggi, kabin lapang, serta teknologi Smart Hybrid Vehicle by Suzuki (SHVS), XL7 memastikan setiap petualangan keluarga Anda terasa lebih premium dan efisien. Hubungi kami untuk info harga OTR Suzuki XL7 Jogja terbaru dan jadwalkan test drive Anda hari ini.',
     features: ['Captain Seat', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Design premium', 'Electronic Stability Program (ESP)', 'Ground clearance 200mm'],
     image: '/images/xl7-1.jpg',
@@ -227,7 +229,8 @@ export const products: ProductType[] = [
     name: 'New Carry Pick Up',
     category: 'Pickup',
     priceText: '140',
-    description: 'Dikenal sebagai "Rajanya Pick Up" di Indonesia, New Carry Pick Up adalah mitra bisnis paling tangguh yang siap mendukung kesuksesan usaha Anda. Dibekali ruang kargo yang paling luas di kelasnya, sasis tebal yang tangguh, serta mesin K15C-C yang sangat irit, mobil ini menjamin biaya perawatan yang hemat sekaligus keuntungan maksimal untuk segala jenis perniagaan.',
+    // PENAMBAHAN LSI KEYWORDS: "kredit mobil bak", "usaha"
+    description: 'Dikenal sebagai "Rajanya Pick Up" di Indonesia, New Carry Pick Up adalah mitra bisnis paling tangguh yang siap mendukung kesuksesan usaha Anda. Dibekali ruang kargo yang paling luas di kelasnya, sasis tebal, serta mesin K15C-C yang sangat irit, mobil ini menjamin keuntungan maksimal. Tersedia promo paket kredit mobil bak ringan untuk memajukan perniagaan Anda di wilayah Jogja dan sekitarnya.',
     features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
     advantages: [
       'Mesin K15C-C 1.5L yang tangguh dan makin irit bahan bakar',
