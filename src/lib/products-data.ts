@@ -44,7 +44,6 @@ export const products: ProductType[] = [
     name: 'Fronx',
     category: 'SUV',
     priceText: '250',
-    // PENAMBAHAN LSI KEYWORDS: "simulasi cicilan", "DP ringan", "syarat kredit mobil baru"
     description: 'Suzuki Fronx hadir sebagai SUV crossover yang memadukan desain tangguh, gaya modern, dan performa lincah untuk jalanan perkotaan. Dilengkapi dengan teknologi Mild Hybrid yang efisien dan fitur keselamatan terkini, Fronx adalah pilihan tepat bagi Anda yang berjiwa muda. Dapatkan kemudahan memiliki mobil baru dengan simulasi cicilan Suzuki Fronx yang terjangkau, DP ringan, serta syarat kredit mobil baru yang mudah hanya di Dealer Suzuki Jogja.',
     features: ['Mesin 1.5L', 'Desain Modern', 'Mild Hybrid'],
     advantages: ['Sunroof panoramic', '360-degree camera', 'Mild hybrid'],
@@ -123,7 +122,6 @@ export const products: ProductType[] = [
     name: 'XL7 Hybrid',
     category: 'SUV',
     priceText: '240',
-    // PENAMBAHAN LSI KEYWORDS: "harga OTR", "test drive"
     description: 'Nikmati perjalanan bersama keluarga dengan Suzuki XL7 Hybrid, SUV 7-seater sejati yang menawarkan perpaduan sempurna antara ketangguhan dan kemewahan. Dengan ground clearance tinggi, kabin lapang, serta teknologi Smart Hybrid Vehicle by Suzuki (SHVS), XL7 memastikan setiap petualangan keluarga Anda terasa lebih premium dan efisien. Hubungi kami untuk info harga OTR Suzuki XL7 Jogja terbaru dan jadwalkan test drive Anda hari ini.',
     features: ['Captain Seat', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Design premium', 'Electronic Stability Program (ESP)', 'Ground clearance 200mm'],
@@ -229,7 +227,6 @@ export const products: ProductType[] = [
     name: 'New Carry Pick Up',
     category: 'Pickup',
     priceText: '140',
-    // PENAMBAHAN LSI KEYWORDS: "kredit mobil bak", "usaha"
     description: 'Dikenal sebagai "Rajanya Pick Up" di Indonesia, New Carry Pick Up adalah mitra bisnis paling tangguh yang siap mendukung kesuksesan usaha Anda. Dibekali ruang kargo yang paling luas di kelasnya, sasis tebal, serta mesin K15C-C yang sangat irit, mobil ini menjamin keuntungan maksimal. Tersedia promo paket kredit mobil bak ringan untuk memajukan perniagaan Anda di wilayah Jogja dan sekitarnya.',
     features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
     advantages: [
@@ -296,7 +293,8 @@ export const products: ProductType[] = [
     name: 'S-Presso',
     category: 'City Car',
     priceText: '160',
-    description: 'S-Presso adalah city car kompak dengan desain bold bergaya SUV yang dirancang khusus untuk menaklukkan padatnya jalanan kota. Menawarkan ground clearance tinggi, visibilitas berkendara yang sangat baik, dan opsi transmisi AGS yang praktis, mobil ini sangat gesit dan mudah diparkir. Solusi sempurna bagi Anda yang mencari kendaraan harian yang fun to drive dan super hemat BBM.',
+    // PENAMBAHAN LSI KEYWORDS S-PRESSO: "city car murah", "kredit mobil tanpa riba", "promo akhir tahun/bulan ini"
+    description: 'S-Presso adalah city car kompak dengan desain bold bergaya SUV yang dirancang khusus untuk menaklukkan padatnya jalanan kota. Menawarkan ground clearance tinggi, visibilitas berkendara yang sangat baik, dan opsi transmisi AGS yang praktis. Solusi sempurna bagi Anda yang mencari city car murah dan super hemat BBM. Konsultasikan kebutuhan Anda untuk mendapatkan promo kredit mobil Suzuki S-Presso dengan cicilan ringan bulan ini.',
     features: ['AGS Auto', 'Kompak & Lincah', 'Mesin Irit', 'Mudah Parkir'],
     advantages: [
       'Transmisi AGS (Auto Gear Shift) - mudah digunakan',
@@ -343,7 +341,8 @@ export const products: ProductType[] = [
     name: 'Grand Vitara',
     category: 'SUV',
     priceText: '390',
-    description: 'Kembalinya sang legenda, Suzuki Grand Vitara kini tampil lebih elegan dan futuristik dengan teknologi Smart Hybrid kelas atas. Kendaraan flagship SUV ini dirancang khusus bagi Anda yang menghargai kenyamanan premium, dilengkapi dengan Panoramic Sunroof, kamera 360 derajat, ventilated seats, dan fitur cerdas lainnya untuk memberikan pengalaman berkendara yang eksklusif dan penuh kebanggaan.',
+    // PENAMBAHAN LSI KEYWORDS GRAND VITARA: "SUV Premium", "promo diskon besar", "kredit mobil mewah"
+    description: 'Kembalinya sang legenda, Suzuki Grand Vitara kini tampil lebih elegan dan futuristik dengan teknologi Smart Hybrid kelas atas. SUV premium ini dirancang khusus bagi Anda yang menghargai kenyamanan eksklusif, dilengkapi dengan Panoramic Sunroof dan fitur cerdas lainnya. Hubungi Dealer Resmi Suzuki Jogja sekarang untuk mengamankan promo diskon besar dan dapatkan penawaran kredit mobil mewah dengan bunga spesial.',
     features: ['Mesin Hybrid', 'Panoramic Sunroof', '360 Camera'],
     advantages: ['Smart Hybrid 1.5L', 'ADAS Suzuki Safety Sense', 'Ventilated Seats'],
     image: '/images/vitara-1.jpg',
@@ -385,7 +384,8 @@ export const products: ProductType[] = [
     name: 'APV',
     category: 'Commercial',
     priceText: '180',
-    description: 'Suzuki APV Blind Van adalah solusi kendaraan komersial multifungsi yang dirancang untuk memaksimalkan efisiensi operasional dan logistik bisnis Anda. Menawarkan kapasitas kabin kargo yang sangat lega dan aman, akses bongkar muat yang praktis, serta performa mesin legendaris G15A yang sudah teruji ketangguhannya melibas berbagai rute perniagaan dengan muatan penuh.',
+    // PENAMBAHAN LSI KEYWORDS APV: "kredit mobil operasional", "jual mobil box/blind van", "harga niaga"
+    description: 'Suzuki APV Blind Van adalah solusi kendaraan komersial multifungsi yang dirancang untuk memaksimalkan efisiensi operasional dan logistik bisnis Anda. Menawarkan kapasitas kabin kargo yang lega dan performa mesin legendaris G15A yang tangguh. Kami menyediakan program kredit mobil operasional khusus untuk pengusaha dengan harga niaga terbaik. Jual mobil blind van Suzuki dengan jaminan pelayanan after-sales terpercaya di Yogyakarta.',
     features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.5L', 'Multifungsi'],
     advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin tangguh G15A'],
     image: '/images/apv-1.jpg',
@@ -418,7 +418,8 @@ export const products: ProductType[] = [
     name: 'Jimny',
     category: 'SUV Off-Road',
     priceText: '470',
-    description: 'Ikon off-road sejati yang tak lekang oleh waktu. Suzuki Jimny diciptakan untuk para petualang dengan sistem penggerak 4x4 ALLGRIP PRO, sasis ladder frame yang solid, dan suspensi rigid axle yang siap menaklukkan rintangan alam terekstrem. Desainnya yang timeless menjadikannya bukan sekadar mobil fungsional, melainkan juga simbol gaya hidup dan kebebasan berkendara Anda.',
+    // PENAMBAHAN LSI KEYWORDS JIMNY: "indent Suzuki Jimny", "harga on the road (OTR)", "mobil offroad"
+    description: 'Ikon off-road sejati yang tak lekang oleh waktu. Suzuki Jimny diciptakan untuk para petualang dengan sistem penggerak 4x4 ALLGRIP PRO dan sasis ladder frame yang solid. Desainnya yang timeless menjadikannya simbol gaya hidup kebebasan berkendara Anda. Hubungi tim sales kami untuk informasi ketersediaan unit, proses indent Suzuki Jimny yang cepat, serta daftar harga On The Road (OTR) terbaru untuk wilayah Jateng & DIY.',
     features: ['4x4 Genuine', 'Ladder Frame', 'Rigid Axle'],
     advantages: ['Part-time 4WD (ALLGRIP PRO)', 'Approach angle 37°', 'Desain timeless'],
     image: '/images/jimny-1.jpg',
@@ -505,7 +506,8 @@ export const products: ProductType[] = [
     name: 'Ertiga',
     category: 'MPV',
     priceText: '240',
-    description: 'Suzuki All New Ertiga adalah MPV keluarga idaman yang selalu mengutamakan kenyamanan di setiap perjalanan. Menawarkan ruang kabin yang mewah dan senyap, konfigurasi 7 tempat duduk yang lapang, serta efisiensi bahan bakar luar biasa berkat teknologi Smart Hybrid terkini. Pilihan yang paling cerdas dan value-for-money untuk menemani setiap momen berharga bersama keluarga.',
+    // PENAMBAHAN LSI KEYWORDS ERTIGA: "mobil keluarga murah", "kredit mobil MPV", "DP termurah"
+    description: 'Suzuki All New Ertiga adalah MPV keluarga idaman yang selalu mengutamakan kenyamanan di setiap perjalanan. Menawarkan ruang kabin yang mewah, konfigurasi 7 tempat duduk yang lapang, serta efisiensi bahan bakar luar biasa berkat teknologi Smart Hybrid. Wujudkan impian memiliki mobil keluarga tangguh dengan penawaran kredit mobil MPV cicilan ringan dan pilihan DP termurah dari Dealer Resmi Suzuki Jogja.',
     features: ['7 Kursi Nyaman', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Kabin luas', 'Smart Hybrid Technology', 'Suspensi nyaman'],
     image: '/images/ertiga-1.jpg',
