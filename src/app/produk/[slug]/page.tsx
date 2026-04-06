@@ -82,7 +82,6 @@ export default function ProductDetailPage() {
     window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  // Fungsi untuk menghitung "Hemat Rp XX Juta"
   const getSavings = (otr: string, nett: string) => {
     const numOtr = parseInt(otr.replace(/[^0-9]/g, ''));
     const numNett = parseInt(nett.replace(/[^0-9]/g, ''));
@@ -93,10 +92,8 @@ export default function ProductDetailPage() {
     return null;
   };
 
-  // Komponen Kartu Varian dengan Price Anchoring (Desain Premium)
   const VariantCard = ({ variant, priceData, region, idx }: any) => {
     const savings = getSavings(priceData.priceOtr, priceData.priceNett);
-    // Logika untuk menyembunyikan harga coret jika angkanya sama persis dengan nett
     const showOtr = priceData.priceOtr !== priceData.priceNett;
     
     return (
@@ -152,7 +149,6 @@ export default function ProductDetailPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               
-              {/* Image Gallery */}
               <div className="space-y-4 animate-fade-in mt-12 md:mt-10">
                 <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
                   <img
@@ -180,7 +176,6 @@ export default function ProductDetailPage() {
                 </div>
               </div>
 
-              {/* Product Info (SEO Optimized) */}
               <div className="flex flex-col justify-center animate-fade-in stagger-1">
                 <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold tracking-wider uppercase w-fit mb-5 backdrop-blur-sm border border-white/10">
                   {product.category}
@@ -194,7 +189,6 @@ export default function ProductDetailPage() {
                   {product.description}
                 </p>
 
-                {/* Section Keyword Lokal */}
                 <div className="bg-gray-800/40 border border-gray-700/50 p-5 rounded-2xl mb-8 backdrop-blur-md">
                   <p className="text-sm text-gray-400 leading-relaxed">
                     Suzuki {product.name} Jogja merupakan kendaraan pilihan yang banyak diminati masyarakat Yogyakarta dan sekitarnya. Nikmati promo eksklusif diskon maksimal, DP ringan, serta cicilan kredit yang terjangkau.
@@ -208,7 +202,8 @@ export default function ProductDetailPage() {
                   </span>
                 </div>
 
-                <div className="hidden md:flex flex-col sm:flex-row gap-4">
+                {/* PERBAIKAN: Menghapus hidden agar tampil di HP juga */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-2">
                   <Button
                     size="lg"
                     onClick={handleTestDrive}
@@ -235,7 +230,7 @@ export default function ProductDetailPage() {
           </div>
         </section>
 
-        {/* BAGIAN BAWAH - DAFTAR HARGA & SPESIFIKASI (DESAIN PREMIUM) */}
+        {/* BAGIAN BAWAH - DAFTAR HARGA & SPESIFIKASI */}
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-gray-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
@@ -251,12 +246,10 @@ export default function ProductDetailPage() {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
                 
-                {/* Variant List / Harga (Kiri/Utama) */}
                 <div className="lg:col-span-7 order-1 animate-fade-in stagger-1">
                   <div className="w-full">
                     <Tabs defaultValue="plat-ab" className="w-full">
                       
-                      {/* Desain Tabs Premium ala Segmented Control */}
                       <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-200/60 dark:bg-slate-800/50 p-1.5 rounded-2xl">
                         <TabsTrigger 
                           value="plat-ab" 
@@ -316,7 +309,6 @@ export default function ProductDetailPage() {
                   </div>
                 </div>
 
-                {/* Specifications (Kanan/Samping - Lengket di layar) */}
                 <div className="lg:col-span-5 order-2 animate-fade-in stagger-2">
                   <div className="bg-white dark:bg-gray-900/80 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-gray-800 overflow-hidden sticky top-28">
                     <div className="p-6 md:p-8 border-b border-slate-100 dark:border-gray-800/60 flex items-center gap-3">
@@ -333,43 +325,50 @@ export default function ProductDetailPage() {
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <Wrench className="w-4 h-4 text-slate-400" /> Mesin
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.engine}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.engine}</span>
                         </div>
                         <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <Settings className="w-4 h-4 text-slate-400" /> Transmisi
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.transmission}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.transmission}</span>
                         </div>
                         <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <Droplets className="w-4 h-4 text-slate-400" /> Bahan Bakar
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.fuel}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.fuel}</span>
                         </div>
                         <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <Zap className="w-4 h-4 text-slate-400" /> Tenaga
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.power}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.power}</span>
                         </div>
                         <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <Shield className="w-4 h-4 text-slate-400" /> Torsi
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.torque}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.torque}</span>
                         </div>
                         <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <UsersIcon className="w-4 h-4 text-slate-400" /> Kapasitas
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.seating}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.seating}</span>
                         </div>
                         <div className="flex items-center justify-between py-3">
                           <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
                             <Ruler className="w-4 h-4 text-slate-400" /> Dimensi
                           </span>
-                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right">{product.specifications.dimensions}</span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.dimensions}</span>
                         </div>
                       </div>
                     </div>
@@ -477,25 +476,63 @@ export default function ProductDetailPage() {
       </main>
       <Footer />
 
-      {/* STICKY BOTTOM ACTION BAR (Khusus Mobile) */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-t border-slate-200 dark:border-gray-800 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] z-50 md:hidden flex gap-3 animate-fade-in">
+      {/* PERBAIKAN STICKY BOTTOM BAR: Menambahkan ikon brosur khusus untuk tampilan Mobile */}
+      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-slate-200 dark:border-gray-800 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] z-50 md:hidden flex gap-2 animate-fade-in">
+        {product.brochureUrl && (
+          <Button 
+            onClick={() => window.open(product.brochureUrl, '_blank')} 
+            variant="outline" 
+            className="px-3 border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-300 font-bold h-12 rounded-xl"
+            title="Unduh Brosur"
+          >
+            <Download className="w-5 h-5" />
+          </Button>
+        )}
         <Button 
           onClick={handleTestDrive} 
           variant="outline" 
           className="flex-1 border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-300 font-bold h-12 rounded-xl"
         >
-          <Car className="w-5 h-5 mr-2" />
-          Test Drive
+          <Car className="w-5 h-5 sm:mr-2 mr-1" />
+          <span className="text-xs sm:text-sm">Test Drive</span>
         </Button>
         <Button 
           onClick={() => handleAjukanKredit()} 
           className="flex-1 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold h-12 rounded-xl shadow-md"
         >
-          <MessageCircle className="w-5 h-5 mr-2" />
-          Chat WA
+          <MessageCircle className="w-5 h-5 sm:mr-2 mr-1" />
+          <span className="text-xs sm:text-sm">Chat WA</span>
         </Button>
       </div>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": `Berapa harga Suzuki ${product.name} di Jogja?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Harga Suzuki ${product.name} Jogja saat ini dibanderol mulai dari kisaran Rp ${product.priceText} Jutaan. Harga dapat berubah sewaktu-waktu sesuai dengan program dan promo yang sedang berjalan.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Apakah ada promo kredit Suzuki ${product.name}?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Tentu saja. Dealer Suzuki Jogja menawarkan berbagai kemudahan pembiayaan, mulai dari DP ringan, cicilan terjangkau, hingga bonus aksesoris eksklusif untuk pembelian secara kredit maupun tunai.`
+                }
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }
+
