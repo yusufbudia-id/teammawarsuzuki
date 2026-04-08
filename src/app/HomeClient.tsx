@@ -64,17 +64,16 @@ export default function HomeClient() {
                 </span>
               </div>
 
-              {/* Perbaikan H1 untuk SEO Lokal */}
+              {/* PERBAIKAN: H1 untuk SEO Lokal (Match dengan Title) */}
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1">
-                Dealer Resmi Suzuki Jogja <br />
-                <span className="text-primary">Promo Harga Terbaik</span>
+                Promo Suzuki Jogja <br />
+                <span className="text-primary">XL7 Hybrid, Fronx & Carry Box</span>
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto animate-fade-in stagger-2">
                 Nikmati pengalaman membeli mobil yang mudah, transparan, dan profesional. Tersedia promo spesial untuk New Ertiga, XL7 Hybrid, Carry Pick-up, Jimny, Fronx, hingga S-Presso. Dukungan after-sales resmi dan harga paling kompetitif di Yogyakarta siap menanti Anda.
               </p>
 
-              {/* Perbaikan Anchor Text pada Tombol */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
                 <Link href="#produk-unggulan">
                   <Button
@@ -130,7 +129,6 @@ export default function HomeClient() {
             <div className="max-w-7xl mx-auto">
               <div className="flex justify-between items-end mb-10">
                 <div>
-                  {/* Perbaikan H2 untuk SEO */}
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Harga & Promo Mobil Suzuki Terbaru</h2>
                   <p className="text-gray-600">Jelajahi mobil Suzuki terpopuler kami bulan ini.</p>
                 </div>
@@ -143,7 +141,6 @@ export default function HomeClient() {
                 {featuredProducts.map((product, index) => {
                   const promo = getPromoInfo(product.name);
                   
-                  {/* Perbaikan URL Slug: Membaca product.slug (jika ada), kalau belum ada fallback ke product.id */}
                   const productUrl = `/produk/${(product as any).slug || product.id}`;
 
                   return (
@@ -153,7 +150,6 @@ export default function HomeClient() {
                         style={{ animationDelay: `${index * 100}ms` }}
                       >
                         <div className="relative aspect-[4/3] overflow-hidden shrink-0">
-                          {/* Mengganti tag img dengan komponen Image Next.js */}
                           <Image
                             src={product.image}
                             alt={`Promo Harga ${product.name} Jogja`}
@@ -214,6 +210,26 @@ export default function HomeClient() {
                   </Button>
                 </Link>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PERBAIKAN: SECTION SEO / DESKRIPSI DEALER (Untuk memenuhi target 250 kata & Keyword) */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto space-y-6 text-gray-600 text-sm sm:text-base leading-relaxed">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                Pusat Promo Suzuki Jogja & Magelang Terlengkap
+              </h2>
+              <p>
+                Selamat datang di website representatif Dealer Resmi Suzuki. Jika Anda sedang mencari informasi terkait <strong>Promo Suzuki Jogja</strong> dengan diskon terbesar dan simulasi kredit paling ringan, Anda berada di tempat yang tepat. Kami melayani pembelian kendaraan baik untuk kebutuhan mobil penumpang pribadi maupun armada niaga perusahaan Anda dengan cakupan wilayah Yogyakarta, Sleman, Bantul, Gunungkidul, Kulon Progo, hingga area Magelang dan sekitarnya.
+              </p>
+              <p>
+                Untuk Anda yang mendambakan kenyamanan dan teknologi terkini bersama keluarga, lini produk SUV dan MPV kami siap menemani perjalanan Anda. Nikmati efisiensi bahan bakar ekstra dengan <strong>XL7 Hybrid</strong> dan Ertiga Hybrid, atau tampil lebih tangguh dan modern di jalanan perkotaan bersama <strong>Fronx</strong> dan Grand Vitara. Setiap pembelian mobil penumpang akan mendapatkan berbagai bonus aksesoris menarik serta garansi mesin resmi dari Suzuki Indonesia.
+              </p>
+              <p>
+                Tidak hanya kendaraan penumpang, kami juga sangat memahami kebutuhan para pengusaha dan pebisnis. Oleh karena itu, kami memberikan penawaran harga OTR dan cicilan termurah untuk kendaraan niaga. Suzuki <strong>Carry</strong> Pick Up telah terbukti selama puluhan tahun sebagai rajanya mobil niaga di Indonesia. Kami juga menyediakan varian <strong>Mobil Box</strong> dari Suzuki Carry yang sangat cocok untuk memaksimalkan efisiensi logistik dan distribusi barang usaha Anda. Hubungi tim sales kami sekarang juga untuk mendapatkan pelayanan test drive langsung di rumah Anda.
+              </p>
             </div>
           </div>
         </section>
