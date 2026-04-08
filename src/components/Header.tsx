@@ -13,10 +13,11 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // PERBAIKAN SEO: Label disesuaikan sedikit agar lebih unik dan tetap ringkas
   const navItems = [
     { id: 'home', label: 'Home', href: '/' },
     { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
-    { id: 'produk', label: 'Produk', href: '/produk' },
+    { id: 'produk', label: 'Katalog', href: '/produk' },
     { id: 'artikel', label: 'Artikel', href: '/artikel' },
     { id: 'testimoni', label: 'Testimoni', href: '/testimoni' },
     { id: 'promo', label: 'Promo', href: '/promo' },
@@ -44,9 +45,7 @@ export default function Header() {
     { nama: 'Indah', no: '6282135245314' }
   ];
 
-
   const handleHubungiKami = () => {
-    // Logika untuk memilih nomor secara random
     const randomIndex = Math.floor(Math.random() * waTeam.length);
     const selectedContact = waTeam[randomIndex];
     
@@ -74,7 +73,7 @@ export default function Header() {
             <div className="flex items-center justify-center">
               <img
                 src="/suzuki-logo.png"
-                alt="Suzuki Logo"
+                alt="Dealer Resmi Suzuki Jogja" // PERBAIKAN SEO: Alt text menjadi keyword lokal yang kuat
                 className="h-10 w-auto"
               />
             </div>
@@ -87,16 +86,12 @@ export default function Header() {
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  // ❌ SEBELUMNYA: 'px-6 py-2 text-sm font-medium transition-all ...'
-                  // ✅ PERBAIKAN: Hapus 'font-medium' agar kembali ke font normal (tipis)
                   'px-6 py-2 text-sm transition-all duration-200 relative group',
-                  
-                  // LOGIKA WARNA:
                   activePath === item.id
-                    ? 'text-primary font-semibold' // Menu Aktif: Tetap tebal (Semibold)
+                    ? 'text-primary font-semibold'
                     : isScrolled
-                      ? 'text-muted-foreground hover:text-primary' // Scroll: Abu-abu (Normal)
-                      : 'text-white hover:text-primary' // Atas: Putih (Normal)
+                      ? 'text-muted-foreground hover:text-primary'
+                      : 'text-white hover:text-primary'
                 )}
               >
                 {item.label}
@@ -112,7 +107,6 @@ export default function Header() {
 
           {/* Right Side Actions (Button & Menu) */}
           <div className="flex items-center gap-3 md:gap-4">
-            {/* CTA Button - Sekarang muncul di Mobile & Desktop */}
             <Button
               onClick={handleHubungiKami}
               className="bg-primary hover:bg-primary/90 text-primary-foreground 
@@ -124,23 +118,22 @@ export default function Header() {
             </Button>
 
             {/* Mobile Menu Trigger */}
-            {/* Mobile Menu Trigger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  // LOGIKA WARNA HAMBURGER MENU
+                  aria-label="Buka Menu Navigasi" // PERBAIKAN Aksesibilitas & SEO
                   className={cn(
                     "hover:bg-accent",
-                    isScrolled ? "text-primary" : "text-white" // Putih saat di atas, Primary saat discroll
+                    isScrolled ? "text-primary" : "text-white"
                   )}
                 >
                   {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetTitle className="sr-only">Menu Navigasi Suzuki</SheetTitle>
                 <nav className="flex flex-col space-y-4 mt-12">
                   {navItems.map((item) => (
                     <Link
@@ -163,7 +156,6 @@ export default function Header() {
                       )} />
                     </Link>
                   ))}
-                  {/* Tombol duplikat di dalam menu bisa dihapus atau dibiarkan sebagai opsi tambahan */}
                   <Button 
                     onClick={() => {
                       handleHubungiKami();
@@ -177,7 +169,6 @@ export default function Header() {
               </SheetContent>
             </Sheet>
           </div>
-
         </div>
       </div>
     </header>
