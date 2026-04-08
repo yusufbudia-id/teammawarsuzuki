@@ -5,30 +5,28 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-const navItems = [
-  { id: 'home', label: 'Home', href: '/' },
-  { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
-  { id: 'produk', label: 'Produk', href: '/produk' },
-  { id: 'testimoni', label: 'Testimoni', href: '/testimoni' },
-  { id: 'promo', label: 'Promo', href: '/promo' },
-  { id: 'kontak', label: 'Kontak', href: '/kontak' },
+// PERBAIKAN: Mengubah teks label agar berbeda dengan menu Header untuk menghindari peringatan duplikat anchor text
+const footerNavItems = [
+  { id: 'home', label: 'Beranda Suzuki Jogja', href: '/' },
+  { id: 'tentang-kami', label: 'Profil Dealer Kami', href: '/tentang-kami' },
+  { id: 'produk', label: 'Katalog Kendaraan', href: '/produk' },
+  { id: 'testimoni', label: 'Review Pelanggan', href: '/testimoni' },
+  { id: 'promo', label: 'Info Promo Terbaru', href: '/promo' },
+  { id: 'kontak', label: 'Hubungi Sales', href: '/kontak' },
 ];
 
-// Pindahkan data tim WA ke luar atau dalam komponen
-  const waTeam = [
-    { nama: 'Yusuf', no: '6282174635218' },
-    { nama: 'Dimas', no: '6287775741091' },
-    { nama: 'Bima', no: '6289637144539' },
-    { nama: 'Kafi', no: '6281329095557' },
-    { nama: 'Nabila', no: '6283103278381' },
-    { nama: 'Melly', no: '62895417267981' },
-    { nama: 'Alma', no: '6282134148101' },
-    { nama: 'Indah', no: '6282135245314' }
-  ];
-
+const waTeam = [
+  { nama: 'Yusuf', no: '6282174635218' },
+  { nama: 'Dimas', no: '6287775741091' },
+  { nama: 'Bima', no: '6289637144539' },
+  { nama: 'Kafi', no: '6281329095557' },
+  { nama: 'Nabila', no: '6283103278381' },
+  { nama: 'Melly', no: '62895417267981' },
+  { nama: 'Alma', no: '6282134148101' },
+  { nama: 'Indah', no: '6282135245314' }
+];
 
 export default function Footer() {
-  // Fungsi untuk handle klik WA yang merandom nomor
   const handleChatWA = () => {
     const randomIndex = Math.floor(Math.random() * waTeam.length);
     const selectedContact = waTeam[randomIndex];
@@ -46,7 +44,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <img
                 src="/suzuki-logo.png"
-                alt="Suzuki"
+                alt="Logo Suzuki Jogja Footer" // PERBAIKAN: Alt text dibedakan sedikit dari header
                 className="h-12 w-auto"
               />
             </Link>
@@ -69,9 +67,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Navigasi</h4>
+            <h4 className="text-lg font-semibold text-foreground">Pintasan Cepat</h4>
             <ul className="space-y-2">
-              {navItems.map((item) => (
+              {footerNavItems.map((item) => (
                 <li key={item.id}>
                   <Link
                     href={item.href}
@@ -120,7 +118,6 @@ export default function Footer() {
                 <span className="font-medium">09:00 - 15:00</span>
               </li>
             </ul>
-            {/* Tombol yang sudah diubah logic-nya, UI tetap sama */}
             <Button
               className="w-full bg-green-600 hover:bg-green-700 text-white mt-4"
               onClick={handleChatWA}
