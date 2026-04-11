@@ -136,6 +136,26 @@ export default function RootLayout({
         >
           {`document.body.classList.remove('no-js');`}
         </Script>
+
+        {/* --- GOOGLE ADS TAG MULAI DI SINI --- */}
+        <Script 
+          strategy="afterInteractive" 
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18062500429" 
+        />
+        <Script 
+          id="google-ads-tag" 
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18062500429');
+            `,
+          }}
+        />
+        {/* --- GOOGLE ADS TAG SELESAI --- */}
+
         <ClientBodyProvider>
           {children}
         </ClientBodyProvider>
