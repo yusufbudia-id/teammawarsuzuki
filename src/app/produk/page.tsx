@@ -14,7 +14,7 @@ const leasingPartners = [
   { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
   { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
   { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
-  { name: 'Indomobil Finance', src: '/images/leasing/imfi.webp' }, // ✅ Typo nama leasing sudah diperbaiki
+  { name: 'Indomobil Finance', src: '/images/leasing/imfi.webp' },
 ];
 
 export default function ProdukPage() {
@@ -38,14 +38,15 @@ export default function ProdukPage() {
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
     
-    if (name.includes('fronx')) return { label: 'DISKON', value: '17 JT' };
-    if (name.includes('xl7')) return { label: 'DISKON', value: '28 JT' };
-    if (name.includes('carry')) return { label: 'DISKON', value: '37 JT' };
-    if (name.includes('vitara')) return { label: 'DISKON', value: '28 JT' };
+    // Perhitungan diskon berdasarkan selisih OTR dan Nett di data CSV terbaru
+    if (name.includes('fronx')) return { label: 'DISKON', value: '14 JT' };
+    if (name.includes('xl7')) return { label: 'DISKON', value: '21 JT' };
+    if (name.includes('carry')) return { label: 'DISKON', value: '34 JT' };
+    if (name.includes('vitara')) return { label: 'DISKON', value: '43 JT' };
     if (name.includes('presso')) return { label: 'DISKON', value: '16 JT' };
     if (name.includes('ertiga')) return { label: 'DISKON', value: '26 JT' };
-    if (name.includes('apv')) return { label: 'DISKON', value: '5 JT' };
-    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: '50 JT' };
+    if (name.includes('apv')) return { label: 'DISKON', value: '3 JT' };
+    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: '20 JT' }; // Mengambil nilai Voucher MAP 20 Juta
     
     return null;
   };
@@ -133,11 +134,10 @@ export default function ProdukPage() {
                             <button
                               onClick={(e) => {
                                 e.preventDefault();
-                                e.stopPropagation(); // ✅ PERBAIKAN: Mencegah error hidrasi & klik menembus Link
+                                e.stopPropagation();
                                 toggleWishlist(product.id);
                               }}
                               className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn relative z-20" 
-                              // ✅ PERBAIKAN: Tambahan relative z-20 agar posisi kliknya aman
                             >
                               <Heart
                                 className={`h-5 w-5 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 group-hover/btn:text-red-500'}`}
