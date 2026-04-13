@@ -56,7 +56,7 @@ export default function HomeClient() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-32">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/suzuki-hero.jpg"
+              src="/hero/suzuki-hero.webp"
               alt="Showroom Dealer Mobil Suzuki Jogja"
               fill
               priority
