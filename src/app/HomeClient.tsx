@@ -33,7 +33,7 @@ export default function HomeClient() {
     if (name.includes('xl7')) return { label: 'DISKON', value: '21 JT' };
     if (name.includes('ertiga')) return { label: 'DISKON', value: '26 JT' };
     if (name.includes('presso')) return { label: 'DISKON', value: '16 JT' };
-    if (name.includes('fronx')) return { label: 'DISKON', value: '10 JT' };
+    if (name.includes('fronx')) return { label: 'DISKON', value: '16 JT' };
     if (name.includes('apv')) return { label: 'DISKON', value: '3 JT' };
     if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: 'Aksesoris' };
     return null;
@@ -53,7 +53,7 @@ export default function HomeClient() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-32">
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/suzuki-hero.jpg"
@@ -68,15 +68,15 @@ export default function HomeClient() {
           <div className="absolute top-20 right-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-6xl mx-auto text-center space-y-8">
+          {/* Menambahkan w-full dan mb-16 agar tidak menabrak ikon panah bawah */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-16">
+            <div className="max-w-6xl mx-auto text-center space-y-8 md:space-y-10">
               <div className="inline-block animate-fade-in">
                 <span className="px-4 py-2 rounded-full bg-blue-600/20 text-blue-300 text-sm font-semibold border border-blue-500/30 tracking-wide">
                   Dealer Resmi Suzuki Jogja & Sekitarnya
                 </span>
               </div>
 
-              {/* Perbaikan Font: Menghapus extrabold & tracking-tight agar Manrope terlihat elegan */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1 tracking-wide">
                 Promo Suzuki Jogja <br />
                 <span className="text-blue-500">XL7 Hybrid, Fronx & Carry Box</span>
@@ -97,7 +97,6 @@ export default function HomeClient() {
                   </Button>
                 </Link>
                 <Link href="/kontak">
-                  {/* Perbaikan CTA: Menggunakan bg-white/10 dan !text-white agar tidak tertimpa class default shadcn */}
                   <Button
                     size="lg"
                     className="bg-white/10 backdrop-blur-md border-2 border-white/40 !text-white hover:bg-white hover:!text-slate-900 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto flex items-center justify-center"
@@ -108,8 +107,8 @@ export default function HomeClient() {
                 </Link>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-8 border-t border-white/10 animate-fade-in stagger-4">
+              {/* Stats - mt-12 diperbesar menjadi mt-16 agar lebih lega */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-white/10 animate-fade-in stagger-4">
                 {[
                   { value: '1000+', label: 'Unit Terjual' },
                   { value: '500+', label: 'Pelanggan Puas' },
@@ -117,8 +116,7 @@ export default function HomeClient() {
                   { value: '8', label: 'Model Tersedia' }
                 ].map((stat, idx) => (
                   <div key={idx} className="text-center">
-                    {/* Perbaikan Font */}
-                    <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-1">{stat.value}</div>
+                    <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">{stat.value}</div>
                     <div className="text-slate-400 text-sm md:text-base font-medium">{stat.label}</div>
                   </div>
                 ))}
