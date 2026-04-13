@@ -66,7 +66,7 @@ export default function HomeClient() {
           </div>
 
           {/* Variasi Efek Glow: Menambahkan variasi warna pada glow */}
-          <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
+          <div className="absolute top-20 right-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
 
           {/* Menambahkan w-full dan mb-16 agar tidak menabrak ikon panah bawah */}
