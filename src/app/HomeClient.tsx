@@ -65,21 +65,24 @@ export default function HomeClient() {
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-black/95" />
           </div>
 
-          <div className="absolute top-20 right-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
+          {/* Variasi Efek Glow: Menambahkan variasi warna pada glow */}
+          <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
 
           {/* Menambahkan w-full dan mb-16 agar tidak menabrak ikon panah bawah */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-16">
             <div className="max-w-6xl mx-auto text-center space-y-8 md:space-y-10">
               <div className="inline-block animate-fade-in">
-                <span className="px-4 py-2 rounded-full bg-blue-600/20 text-blue-300 text-sm font-semibold border border-blue-500/30 tracking-wide">
+                {/* Perubahan pada Badge: Menggunakan warna Amber/Emas agar kontras */}
+                <span className="px-4 py-2 rounded-full bg-amber-500/20 text-amber-300 text-sm font-semibold border border-amber-500/30 tracking-wide">
                   Dealer Resmi Suzuki Jogja & Sekitarnya
                 </span>
               </div>
 
+              {/* Perubahan warna aksen pada judul agar lebih terang (blue-400) */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1 tracking-wide">
                 Promo Suzuki Jogja <br />
-                <span className="text-blue-500">XL7 Hybrid, Fronx & Carry Box</span>
+                <span className="text-blue-400">XL7 Hybrid, Fronx & Carry Box</span>
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto animate-fade-in stagger-2 font-light leading-relaxed">
@@ -88,9 +91,10 @@ export default function HomeClient() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
                 <Link href="#produk-unggulan">
+                  {/* Perubahan CTA Utama: Gradien Orange-Amber agar "Pop Out" */}
                   <Button
                     size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-1 w-full sm:w-auto"
+                    className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1 w-full sm:w-auto border-0"
                   >
                     Klaim Promo Bulan Ini
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -107,7 +111,7 @@ export default function HomeClient() {
                 </Link>
               </div>
 
-              {/* Stats - mt-12 diperbesar menjadi mt-16 agar lebih lega */}
+              {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-white/10 animate-fade-in stagger-4">
                 {[
                   { value: '1000+', label: 'Unit Terjual' },
@@ -116,8 +120,11 @@ export default function HomeClient() {
                   { value: '8', label: 'Model Tersedia' }
                 ].map((stat, idx) => (
                   <div key={idx} className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">{stat.value}</div>
-                    <div className="text-slate-400 text-sm md:text-base font-medium">{stat.label}</div>
+                    {/* Perubahan pada Angka Stats: Menggunakan efek gradien text */}
+                    <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-300 text-transparent bg-clip-text mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-slate-300 text-sm md:text-base font-medium">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -136,7 +143,6 @@ export default function HomeClient() {
               
               <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
                 <div className="text-center md:text-left">
-                  {/* Perbaikan Font */}
                   <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Eksplorasi Mobil Suzuki</h2>
                   <p className="text-slate-600 text-lg">Temukan kendaraan yang paling pas untuk kebutuhan Anda.</p>
                 </div>
@@ -214,7 +220,6 @@ export default function HomeClient() {
                           </div>
                           <div className="flex items-baseline text-blue-600">
                             <span className="text-sm font-bold mr-1">Rp</span>
-                            {/* Perbaikan Font: Menghapus font-black & tracking-tight */}
                             <span className="text-2xl font-bold">{product.priceText}</span>
                             <span className="text-sm font-bold ml-1">Jutaan</span>
                           </div>
@@ -227,7 +232,6 @@ export default function HomeClient() {
                             </div>
                             <div>
                               <p className="text-[10px] font-bold text-red-600/80 uppercase leading-none mb-1">Potongan Spesial</p>
-                              {/* Perbaikan Font */}
                               <p className="text-sm font-bold text-red-600 leading-none">{promo.label} {promo.value}</p>
                             </div>
                           </div>
@@ -274,7 +278,6 @@ export default function HomeClient() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
-                {/* Perbaikan Font */}
                 <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
                   Pusat Promo Suzuki Jogja & Magelang Terlengkap
                 </h2>
