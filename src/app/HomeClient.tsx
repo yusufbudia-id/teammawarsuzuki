@@ -27,13 +27,13 @@ export default function HomeClient() {
 
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
-    if (name.includes('fronx')) return { label: 'DISKON', value: '17 JT' };
-    if (name.includes('xl7')) return { label: 'DISKON', value: '28 JT' };
-    if (name.includes('carry')) return { label: 'DISKON', value: '37 JT' };
-    if (name.includes('vitara')) return { label: 'DISKON', value: '28 JT' };
+    if (name.includes('fronx')) return { label: 'DISKON', value: '14 JT' };
+    if (name.includes('xl7')) return { label: 'DISKON', value: '21 JT' };
+    if (name.includes('carry')) return { label: 'DISKON', value: '34 JT' };
+    if (name.includes('vitara')) return { label: 'DISKON', value: '43 JT' };
     if (name.includes('presso')) return { label: 'DISKON', value: '16 JT' };
     if (name.includes('ertiga')) return { label: 'DISKON', value: '26 JT' };
-    if (name.includes('apv')) return { label: 'DISKON', value: '5 JT' };
+    if (name.includes('apv')) return { label: 'DISKON', value: '3 JT' };
     if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: '50 JT' };
     return null;
   };
