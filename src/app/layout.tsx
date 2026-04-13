@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
+// Import Manrope dari next/font/google
+import { Manrope } from 'next/font/google';
 import "./globals.css";
 import { ClientBodyProvider } from "@/components/client-body-provider";
 import Script from "next/script";
 
+// Inisialisasi font Manrope
+const manrope = Manrope({ 
+  subsets: ['latin'],
+  // Pilih ketebalan yang dibutuhkan, hindari yang terlalu tebal jika tidak perlu
+  weight: ['300', '400', '500', '600', '700', '800'], 
+  variable: '--font-manrope', // Buat variabel CSS kustom
+});
+
 // 1. SETUP BASE URL
-// Prioritas: Ambil dari Env Variable, kalau kosong pakai domain baru langsung
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL 
   ? process.env.NEXT_PUBLIC_BASE_URL 
   : 'https://www.suzuki-jogja.com'; 
 
 export const metadata: Metadata = {
-  // 2. METADATA BASE (PENTING)
-  // Ini menjadi patokan untuk semua link relatif dan gambar OG
   metadataBase: new URL(baseUrl),
-
   title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta Indonesia",
   description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta Indonesia menawarkan diskon besar, bunga 0%, dan paket servis gratis untuk Ertiga, XL7, Carry, Jimny, Fronx, S-Presso.",
   
@@ -31,8 +37,8 @@ export const metadata: Metadata = {
     "Harga Suzuki XL7", "Harga Suzuki Carry", "Harga Suzuki Fronx", 
     "Suzuki Jogja", "Kredit Mobil Suzuki Jogja"
   ],
-  authors: [{ name: "Suzuki Dealer Jogja" }],
-  creator: "Suzuki Dealer Jogja",
+  authors: [{ name: "Yusuf Suzuki Dealer Jogja" }], // Update Author ke nama kamu
+  creator: "Yusuf Suzuki Dealer Jogja",
   publisher: "Suzuki Dealer Jogja",
   
   robots: {
@@ -47,17 +53,16 @@ export const metadata: Metadata = {
     },
   },
 
-  // 3. OPEN GRAPH (Untuk Tampilan Share WA/FB)
   openGraph: {
     title: "Promo Suzuki Jogja | Dealer Resmi Mobil Suzuki Yogyakarta",
     description: "Dapatkan promo Suzuki Jogja terbaru 2026. Diskon besar & Bunga 0%.",
     type: "website",
     locale: "id_ID",
-    url: baseUrl, // Otomatis mengarah ke domain baru
+    url: baseUrl, 
     siteName: "Suzuki Jogja", 
     images: [
       {
-        url: '/opengraph-image.png', // Pastikan kamu punya gambar ini di folder public
+        url: '/opengraph-image.png', 
         width: 1200,
         height: 630,
         alt: 'Promo Suzuki Jogja',
@@ -69,12 +74,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Promo Suzuki Jogja | Dealer Resmi",
     description: "Promo Suzuki Jogja terbaru 2026! Dealer resmi Suzuki Yogyakarta.",
-    creator: "@suzukiindonesia", // Bisa diganti akun twittermu jika ada
+    creator: "@suzukiindonesia", 
   },
-
-  // 4. CANONICAL URL TELAH DIHAPUS
-  // Bagian alternates: { canonical: '/' } dihapus dari sini 
-  // agar sub-halaman tidak terbaca sebagai duplikat homepage oleh Google.
 };
 
 export default function RootLayout({
@@ -83,8 +84,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   
-  // 5. UPGRADE JSON-LD (Schema Markup)
-  // Menggunakan tipe "AutoDealer" agar lebih valid di mata Google Bisnis
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AutoDealer", 
@@ -95,12 +94,12 @@ export default function RootLayout({
     "priceRange": "Rp 150.000.000 - Rp 500.000.000",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jl. Magelang Km 8", // Boleh dilengkapi nomornya
+      "streetAddress": "Jl. Magelang Km 8", 
       "addressLocality": "Sleman",
       "addressRegion": "DI Yogyakarta",
       "addressCountry": "ID"
     },
-    // Tambahkan nomor WA mu di sini agar orang bisa klik call dari Google
+    // Nomor WA sudah diupdate sesuai profil kamu
     "telephone": "+6282174635218", 
     "openingHoursSpecification": [
       {
@@ -113,21 +112,20 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="id" suppressHydrationWarning>
+    // Tambahkan variabel manrope ke tag html
+    <html lang="id" suppressHydrationWarning className={`${manrope.variable}`}>
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
+        {/* Tag link Google Fonts untuk Montserrat DIHAPUS, diganti dengan next/font */}
+        
         {/* Inject JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+      {/* Terapkan font-sans di sini, yang akan memicu Manrope jika dikonfigurasi di Tailwind */}
       <body
-        className="antialiased bg-background text-foreground no-js"
-        style={{ fontFamily: '"Montserrat", sans-serif' }}
+        className="antialiased bg-background text-foreground no-js font-sans"
         suppressHydrationWarning
       >
         <Script
