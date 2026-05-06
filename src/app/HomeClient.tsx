@@ -62,48 +62,48 @@ export default function HomeClient() {
               priority
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-black/95" />
+            {/* TEMA TEGAS & PROFESIONAL: Indigo pekat sebagai dasar */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/95 via-blue-900/90 to-indigo-950/95" />
           </div>
 
-          {/* Variasi Efek Glow: Menambahkan variasi warna pada glow */}
-          <div className="absolute top-20 right-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+          {/* TEMA CERIA: Variasi efek glow teal dan kuning */}
+          <div className="absolute top-20 right-10 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-yellow-400/15 rounded-full blur-3xl" />
 
-          {/* Menambahkan w-full dan mb-16 agar tidak menabrak ikon panah bawah */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-16">
             <div className="max-w-6xl mx-auto text-center space-y-8 md:space-y-10">
               <div className="inline-block animate-fade-in">
-                {/* Perubahan pada Badge: Menggunakan warna Amber/Emas agar kontras */}
-                <span className="px-4 py-2 rounded-full bg-amber-500/20 text-amber-300 text-sm font-semibold border border-amber-500/30 tracking-wide">
+                {/* Badge: Kuning cerah untuk menarik perhatian namun tetap terstruktur */}
+                <span className="px-4 py-2 rounded-full bg-yellow-400/20 text-yellow-300 text-sm font-bold border border-yellow-400/30 tracking-wide uppercase">
                   Dealer Resmi Suzuki Jogja & Sekitarnya
                 </span>
               </div>
 
-              {/* Perubahan warna aksen pada judul agar lebih terang (blue-400) */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1 tracking-wide">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight animate-fade-in stagger-1 tracking-wide">
                 Promo Suzuki Jogja <br />
-                <span className="text-blue-400">XL7 Hybrid, Fronx & Carry Box</span>
+                {/* Aksen Kuning untuk kesan Ceria & Tegas */}
+                <span className="text-yellow-400">XL7 Hybrid, Fronx & Carry Box</span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto animate-fade-in stagger-2 font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-indigo-100 max-w-3xl mx-auto animate-fade-in stagger-2 font-medium leading-relaxed">
                 Nikmati pengalaman membeli mobil yang mudah, transparan, dan profesional. Tersedia promo spesial hingga puluhan juta rupiah. Dukungan after-sales resmi dan harga paling kompetitif di Yogyakarta siap menanti Anda.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
                 <Link href="#produk-unggulan">
-                  {/* Perubahan CTA Utama: Gradien Orange-Amber agar "Pop Out" */}
+                  {/* CTA Utama: Kuning Solid dengan Teks Biru Gelap (Tegas & Ceria) */}
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-6 rounded-full text-lg font-semibold transition-all hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1 w-full sm:w-auto border-0"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-indigo-950 px-8 py-6 rounded-full text-lg font-extrabold transition-all hover:shadow-lg hover:shadow-yellow-400/40 hover:-translate-y-1 w-full sm:w-auto border-0"
                   >
                     Klaim Promo Bulan Ini
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="ml-2 h-5 w-5 stroke-[3px]" />
                   </Button>
                 </Link>
                 <Link href="/kontak">
                   <Button
                     size="lg"
-                    className="bg-white/10 backdrop-blur-md border-2 border-white/40 !text-white hover:bg-white hover:!text-slate-900 px-8 py-6 rounded-full text-lg font-semibold transition-all w-full sm:w-auto flex items-center justify-center"
+                    className="bg-white/10 backdrop-blur-md border-2 border-white/40 !text-white hover:bg-white hover:!text-indigo-950 px-8 py-6 rounded-full text-lg font-bold transition-all w-full sm:w-auto flex items-center justify-center"
                   >
                     <Calculator className="mr-2 h-5 w-5" />
                     Hitung Simulasi Kredit
@@ -112,7 +112,7 @@ export default function HomeClient() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-white/10 animate-fade-in stagger-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-indigo-400/20 animate-fade-in stagger-4">
                 {[
                   { value: '1000+', label: 'Unit Terjual' },
                   { value: '500+', label: 'Pelanggan Puas' },
@@ -120,11 +120,11 @@ export default function HomeClient() {
                   { value: '8', label: 'Model Tersedia' }
                 ].map((stat, idx) => (
                   <div key={idx} className="text-center">
-                    {/* Perubahan pada Angka Stats: Menggunakan efek gradien text */}
-                    <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-300 text-transparent bg-clip-text mb-2">
+                    {/* Angka Stats dengan warna kuning solid yang ceria */}
+                    <div className="text-3xl md:text-4xl font-extrabold text-yellow-400 mb-2 drop-shadow-sm">
                       {stat.value}
                     </div>
-                    <div className="text-slate-300 text-sm md:text-base font-medium">{stat.label}</div>
+                    <div className="text-indigo-100 text-sm md:text-base font-semibold">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -132,7 +132,7 @@ export default function HomeClient() {
           </div>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-10 w-10 text-slate-400" />
+            <ChevronDown className="h-10 w-10 text-yellow-400/70" />
           </div>
         </section>
 
@@ -143,8 +143,8 @@ export default function HomeClient() {
               
               <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
                 <div className="text-center md:text-left">
-                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Eksplorasi Mobil Suzuki</h2>
-                  <p className="text-slate-600 text-lg">Temukan kendaraan yang paling pas untuk kebutuhan Anda.</p>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-950 mb-3">Eksplorasi Mobil Suzuki</h2>
+                  <p className="text-slate-600 text-lg font-medium">Temukan kendaraan yang paling pas untuk kebutuhan Anda.</p>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-2">
@@ -152,10 +152,10 @@ export default function HomeClient() {
                     <button
                       key={cat}
                       onClick={() => setActiveFilter(cat)}
-                      className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                      className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                         activeFilter === cat 
-                        ? 'bg-blue-600 text-white shadow-md' 
-                        : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' 
+                        : 'bg-white text-slate-600 border-2 border-slate-200 hover:border-indigo-400 hover:text-indigo-600'
                       }`}
                     >
                       {cat}
@@ -172,11 +172,11 @@ export default function HomeClient() {
                   return (
                     <div
                       key={product.id}
-                      className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full animate-fade-in"
+                      className="group bg-white rounded-2xl overflow-hidden border-2 border-slate-100 shadow-sm hover:shadow-xl hover:shadow-indigo-600/10 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full animate-fade-in"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
                       <Link href={productUrl} className="relative aspect-[4/3] overflow-hidden shrink-0 block">
-                        <div className="absolute inset-0 bg-slate-100/50 group-hover:bg-slate-100/80 transition-colors z-0"></div>
+                        <div className="absolute inset-0 bg-indigo-50/50 group-hover:bg-indigo-100/30 transition-colors z-0"></div>
                         <Image
                           src={product.image}
                           alt={`Promo Harga ${product.name} Jogja`}
@@ -185,7 +185,7 @@ export default function HomeClient() {
                         />
                         
                         <div className="absolute top-4 left-4 z-20">
-                          <span className="px-3 py-1 text-xs font-bold text-slate-700 bg-white/90 backdrop-blur-md rounded-md border border-slate-200/50 uppercase tracking-wider">
+                          <span className="px-3 py-1 text-xs font-extrabold text-indigo-900 bg-white/90 backdrop-blur-md rounded-md border border-indigo-100 uppercase tracking-wider shadow-sm">
                             {product.category}
                           </span>
                         </div>
@@ -198,53 +198,53 @@ export default function HomeClient() {
                           className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-sm flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn"
                         >
                           <Heart
-                            className={`h-4 w-4 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-slate-400 group-hover/btn:text-red-500'}`}
+                            className={`h-4 w-4 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-rose-500 text-rose-500' : 'text-slate-400 group-hover/btn:text-rose-500'}`}
                             strokeWidth={2.5}
                           />
                         </button>
                       </Link>
 
-                      <div className="p-5 flex flex-col flex-grow">
+                      <div className="p-5 flex flex-col flex-grow border-t border-slate-50">
                         <Link href={productUrl}>
-                          <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-300 line-clamp-1">
+                          <h3 className="text-xl font-extrabold text-indigo-950 mb-1 group-hover:text-indigo-600 transition-colors duration-300 line-clamp-1">
                             {product.name}
                           </h3>
                         </Link>
                         
                         <div className="mt-3 mb-4">
-                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Harga Mulai</p>
+                          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">Harga Mulai</p>
                           <div className="flex items-baseline gap-1">
                             <span className="text-sm font-medium text-slate-400 line-through mr-1">
                               Rp {parseInt(product.priceText) + 20} Jt
                             </span>
                           </div>
-                          <div className="flex items-baseline text-blue-600">
+                          <div className="flex items-baseline text-indigo-600">
                             <span className="text-sm font-bold mr-1">Rp</span>
-                            <span className="text-2xl font-bold">{product.priceText}</span>
+                            <span className="text-2xl font-extrabold">{product.priceText}</span>
                             <span className="text-sm font-bold ml-1">Jutaan</span>
                           </div>
                         </div>
 
                         {promo && (
-                          <div className="mt-auto mb-4 bg-red-50 border border-red-100 rounded-lg p-2.5 flex items-center gap-3">
-                            <div className="bg-red-600 text-white rounded-md p-1.5 shrink-0">
+                          <div className="mt-auto mb-4 bg-rose-50 border border-rose-100 rounded-xl p-2.5 flex items-center gap-3">
+                            <div className="bg-rose-500 text-white rounded-lg p-2 shrink-0 shadow-sm shadow-rose-500/20">
                               <Tag className="w-4 h-4" />
                             </div>
                             <div>
-                              <p className="text-[10px] font-bold text-red-600/80 uppercase leading-none mb-1">Potongan Spesial</p>
-                              <p className="text-sm font-bold text-red-600 leading-none">{promo.label} {promo.value}</p>
+                              <p className="text-[10px] font-extrabold text-rose-600/80 uppercase leading-none mb-1">Potongan Spesial</p>
+                              <p className="text-sm font-extrabold text-rose-600 leading-none">{promo.label} {promo.value}</p>
                             </div>
                           </div>
                         )}
 
                         <div className="grid grid-cols-2 gap-2 mt-auto">
                           <Link href={productUrl} className="w-full">
-                            <Button variant="outline" className="w-full bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-blue-600 text-sm font-semibold h-11">
+                            <Button variant="outline" className="w-full bg-white border-2 border-slate-200 text-indigo-950 hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-700 text-sm font-bold h-11 transition-colors">
                               Detail
                             </Button>
                           </Link>
                           <Link href="/kontak" className="w-full">
-                            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold h-11 shadow-md shadow-blue-500/20">
+                            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold h-11 shadow-md shadow-indigo-600/20">
                               Hitung DP
                             </Button>
                           </Link>
@@ -263,9 +263,9 @@ export default function HomeClient() {
 
               <div className="mt-12 text-center">
                 <Link href="/produk">
-                  <Button variant="outline" className="px-8 rounded-full border-2 border-slate-200 text-slate-600 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 font-bold transition-all h-12">
+                  <Button variant="outline" className="px-8 rounded-full border-2 border-slate-200 text-indigo-950 hover:border-indigo-600 hover:text-indigo-600 hover:bg-indigo-50 font-extrabold transition-all h-12">
                     Lihat Seluruh Katalog Suzuki
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-2 w-4 h-4 stroke-[3px]" />
                   </Button>
                 </Link>
               </div>
@@ -278,10 +278,10 @@ export default function HomeClient() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-indigo-950">
                   Pusat Promo Suzuki Jogja & Magelang Terlengkap
                 </h2>
-                <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+                <div className="w-20 h-1.5 bg-gradient-to-r from-yellow-400 to-teal-400 mx-auto mt-4 rounded-full"></div>
               </div>
               
               <div 
@@ -289,15 +289,15 @@ export default function HomeClient() {
                   isSeoExpanded ? 'max-h-[1000px]' : 'max-h-32'
                 }`}
               >
-                <div className="space-y-4 text-slate-600 text-base leading-relaxed text-justify md:text-left">
+                <div className="space-y-4 text-slate-600 text-base font-medium leading-relaxed text-justify md:text-left">
                   <p>
-                    Selamat datang di website representatif Dealer Resmi Suzuki. Jika Anda sedang mencari informasi terkait <strong>Promo Suzuki Jogja</strong> dengan diskon terbesar dan simulasi kredit paling ringan, Anda berada di tempat yang tepat. Kami melayani pembelian kendaraan baik untuk kebutuhan mobil penumpang pribadi maupun armada niaga perusahaan Anda dengan cakupan wilayah Yogyakarta, Sleman, Bantul, Gunungkidul, Kulon Progo, hingga area Magelang dan sekitarnya.
+                    Selamat datang di website representatif Dealer Resmi Suzuki. Jika Anda sedang mencari informasi terkait <strong className="text-indigo-900">Promo Suzuki Jogja</strong> dengan diskon terbesar dan simulasi kredit paling ringan, Anda berada di tempat yang tepat. Kami melayani pembelian kendaraan baik untuk kebutuhan mobil penumpang pribadi maupun armada niaga perusahaan Anda dengan cakupan wilayah Yogyakarta, Sleman, Bantul, Gunungkidul, Kulon Progo, hingga area Magelang dan sekitarnya.
                   </p>
                   <p>
-                    Untuk Anda yang mendambakan kenyamanan dan teknologi terkini bersama keluarga, lini produk SUV dan MPV kami siap menemani perjalanan Anda. Nikmati efisiensi bahan bakar ekstra dengan <strong>XL7 Hybrid</strong> dan Ertiga Hybrid, atau tampil lebih tangguh dan modern di jalanan perkotaan bersama <strong>Fronx</strong> dan Grand Vitara. Setiap pembelian mobil penumpang akan mendapatkan berbagai bonus aksesoris menarik serta garansi mesin resmi dari Suzuki Indonesia.
+                    Untuk Anda yang mendambakan kenyamanan dan teknologi terkini bersama keluarga, lini produk SUV dan MPV kami siap menemani perjalanan Anda. Nikmati efisiensi bahan bakar ekstra dengan <strong className="text-indigo-900">XL7 Hybrid</strong> dan Ertiga Hybrid, atau tampil lebih tangguh dan modern di jalanan perkotaan bersama <strong className="text-indigo-900">Fronx</strong> dan Grand Vitara. Setiap pembelian mobil penumpang akan mendapatkan berbagai bonus aksesoris menarik serta garansi mesin resmi dari Suzuki Indonesia.
                   </p>
                   <p>
-                    Tidak hanya kendaraan penumpang, kami juga sangat memahami kebutuhan para pengusaha dan pebisnis. Oleh karena itu, kami memberikan penawaran harga OTR dan cicilan termurah untuk kendaraan niaga. Suzuki <strong>Carry</strong> Pick Up telah terbukti selama puluhan tahun sebagai rajanya mobil niaga di Indonesia. Kami juga menyediakan varian <strong>Mobil Box</strong> dari Suzuki Carry yang sangat cocok untuk memaksimalkan efisiensi logistik dan distribusi barang usaha Anda. Hubungi tim sales kami sekarang juga untuk mendapatkan pelayanan test drive langsung di rumah Anda.
+                    Tidak hanya kendaraan penumpang, kami juga sangat memahami kebutuhan para pengusaha dan pebisnis. Oleh karena itu, kami memberikan penawaran harga OTR dan cicilan termurah untuk kendaraan niaga. Suzuki <strong className="text-indigo-900">Carry</strong> Pick Up telah terbukti selama puluhan tahun sebagai rajanya mobil niaga di Indonesia. Kami juga menyediakan varian <strong className="text-indigo-900">Mobil Box</strong> dari Suzuki Carry yang sangat cocok untuk memaksimalkan efisiensi logistik dan distribusi barang usaha Anda. Hubungi tim sales kami sekarang juga untuk mendapatkan pelayanan test drive langsung di rumah Anda.
                   </p>
                 </div>
                 
@@ -309,12 +309,12 @@ export default function HomeClient() {
               <div className="mt-6 text-center">
                 <button
                   onClick={() => setIsSeoExpanded(!isSeoExpanded)}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-semibold text-sm transition-colors duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold text-sm transition-colors duration-300"
                 >
                   {isSeoExpanded ? (
-                    <>Tutup Ringkasan <ChevronUp className="w-4 h-4" /></>
+                    <>Tutup Ringkasan <ChevronUp className="w-4 h-4 stroke-[3px]" /></>
                   ) : (
-                    <>Baca Selengkapnya <ChevronDown className="w-4 h-4" /></>
+                    <>Baca Selengkapnya <ChevronDown className="w-4 h-4 stroke-[3px]" /></>
                   )}
                 </button>
               </div>
