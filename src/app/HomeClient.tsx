@@ -192,7 +192,8 @@ export default function HomeClient() {
             </div>
 
             {/* Grid Produk Baru: Bersih, Kotak, Fokus pada Tipografi */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Grid Produk Baru: Edge-to-Edge Premium Layout */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
               {displayProducts.map((product, index) => {
                 const promo = getPromoInfo(product.name);
                 const productUrl = `/produk/${(product as any).slug || product.id}`;
@@ -200,71 +201,76 @@ export default function HomeClient() {
                 return (
                   <div
                     key={product.id}
-                    className="group bg-white rounded-3xl p-4 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 flex flex-col"
+                    className="group relative bg-white rounded-[2rem] overflow-hidden border border-slate-200 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 flex flex-col"
                   >
-                    {/* Image Area - Rounded dan Playful Background */}
-                    <div className="relative aspect-[4/3] rounded-2xl bg-slate-50 overflow-hidden mb-6 group-hover:bg-blue-50 transition-colors">
+                    {/* Image Section - Gambar Full Edge-to-Edge */}
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                       <Link href={productUrl} className="block w-full h-full">
                         <Image
                           src={product.image}
                           alt={product.name}
                           fill
-                          className="object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                         />
+                        {/* Overlay gelap halus yang muncul saat di-hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       </Link>
-                      
-                      {/* Kategori Badge */}
-                      <div className="absolute top-4 left-4 bg-white/80 backdrop-blur px-3 py-1.5 rounded-xl">
-                        <span className="text-xs font-extrabold text-slate-700 uppercase">{product.category}</span>
-                      </div>
 
-                      {/* Wishlist Heart - Floating */}
+                      {/* Wishlist Button - Mengambang di atas gambar */}
                       <button
                         onClick={(e) => { e.preventDefault(); toggleWishlist(product.id); }}
-                        className="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-sm"
+                        className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-sm z-10"
                       >
                         <Heart className={`w-5 h-5 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-slate-400'}`} />
                       </button>
+
+                      {/* Category Badge - Sudut kiri atas */}
+                      <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl z-10">
+                        <span className="text-[10px] font-black text-white uppercase tracking-wider">{product.category}</span>
+                      </div>
                     </div>
 
-                    {/* Informasi Teks - Tegas & Bersih */}
-                    <div className="flex-1 px-2 flex flex-col">
-                      <Link href={productUrl}>
-                        <h3 className="text-2xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
+                    {/* Content Section */}
+                    <div className="p-6 flex-1 flex flex-col relative">
+                      
+                      {/* Floating Promo Badge - Aksen Playful & Konversi */}
+                      {promo && (
+                        <div className="absolute -top-6 right-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-4 py-2 rounded-2xl shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300 border-2 border-white z-20">
+                          <span className="text-[9px] font-black uppercase block leading-none mb-1 opacity-80">{promo.label}</span>
+                          <span className="text-sm font-black leading-none">{promo.value}</span>
+                        </div>
+                      )}
+
+                      <Link href={productUrl} className="block mb-2 mt-2">
+                        <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">
                           {product.name}
                         </h3>
                       </Link>
                       
-                      <div className="mt-3 mb-6">
-                        <p className="text-sm font-bold text-slate-400 mb-1">Mulai Dari</p>
+                      <div className="mb-6">
+                        <p className="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">Harga OTR</p>
                         <div className="flex items-start text-slate-900">
-                          <span className="text-base font-bold mt-1 mr-1">Rp</span>
+                          <span className="text-sm font-bold mt-1.5 mr-1 text-slate-500">Rp</span>
                           <span className="text-3xl font-black tracking-tight">{product.priceText}</span>
-                          <span className="text-base font-bold ml-1 mt-1 text-slate-500">Jt</span>
+                          <span className="text-sm font-bold ml-1 mt-1.5 text-slate-500">Jt</span>
                         </div>
                       </div>
 
-                      {/* Promo Area */}
-                      {promo && (
-                        <div className="mt-auto mb-4 bg-amber-100/50 border border-amber-200/50 rounded-2xl p-3 flex justify-between items-center">
-                          <span className="text-xs font-bold text-amber-700 uppercase tracking-wide">{promo.label}</span>
-                          <span className="text-sm font-black text-amber-600">{promo.value}</span>
-                        </div>
-                      )}
-
-                      {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-2 mt-auto">
-                        <Link href={productUrl}>
-                          <Button variant="outline" className="w-full rounded-xl border-slate-200 text-slate-700 hover:bg-slate-50 font-bold h-12">
-                            Detail
-                          </Button>
-                        </Link>
-                        <Link href="/kontak">
-                          <Button className="w-full rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold h-12 transition-colors">
+                      {/* Tombol Aksi - Layout Asimetris Modern */}
+                      <div className="mt-auto flex items-center gap-3">
+                        <Link href="/kontak" className="flex-1">
+                          <Button className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 transition-all shadow-md shadow-blue-600/20 group-hover:shadow-blue-600/40">
                             Hitung DP
                           </Button>
                         </Link>
+                        <Link href={productUrl}>
+                          <Button variant="outline" size="icon" className="w-12 h-12 rounded-xl border-slate-200 text-slate-600 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all group/btn">
+                            {/* Ikon panah miring yang akan lurus saat di-hover */}
+                            <ArrowRight className="w-5 h-5 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-300" />
+                          </Button>
+                        </Link>
                       </div>
+
                     </div>
                   </div>
                 );
