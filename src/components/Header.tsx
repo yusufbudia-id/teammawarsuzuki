@@ -13,6 +13,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // PERBAIKAN SEO: Label disesuaikan sedikit agar lebih unik dan tetap ringkas
   const navItems = [
     { id: 'home', label: 'Home', href: '/' },
     { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
@@ -23,6 +24,7 @@ export default function Header() {
     { id: 'kontak', label: 'Kontak', href: '/kontak' },
   ];
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -51,13 +53,14 @@ export default function Header() {
     window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
   }
 
+  // Get active path from pathname
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-indigo-100' : 'bg-transparent'
+        isScrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +73,7 @@ export default function Header() {
             <div className="flex items-center justify-center">
               <img
                 src="/suzuki-logo.png"
-                alt="Dealer Resmi Suzuki Jogja"
+                alt="Dealer Resmi Suzuki Jogja" // PERBAIKAN SEO: Alt text menjadi keyword lokal yang kuat
                 className="h-10 w-auto"
               />
             </div>
@@ -85,29 +88,31 @@ export default function Header() {
                 className={cn(
                   'px-6 py-2 text-sm transition-all duration-200 relative group',
                   activePath === item.id
-                    ? (isScrolled ? 'text-indigo-900 font-bold' : 'text-yellow-400 font-bold')
-                    : (isScrolled ? 'text-slate-600 hover:text-indigo-900' : 'text-white/90 hover:text-yellow-400')
+                    ? 'text-primary font-semibold'
+                    : isScrolled
+                      ? 'text-muted-foreground hover:text-primary'
+                      : 'text-white hover:text-primary'
                 )}
               >
                 {item.label}
                 <span className={cn(
                   'absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300',
                   activePath === item.id
-                    ? (isScrolled ? 'w-full bg-indigo-600' : 'w-full bg-yellow-400')
-                    : (isScrolled ? 'w-0 group-hover:w-full group-hover:bg-indigo-600' : 'w-0 group-hover:w-full group-hover:bg-yellow-400')
+                    ? 'w-full bg-primary'
+                    : 'w-0 group-hover:w-full group-hover:bg-primary'
                 )} />
               </Link>
             ))}
           </nav>
 
-          {/* Right Side Actions */}
+          {/* Right Side Actions (Button & Menu) */}
           <div className="flex items-center gap-3 md:gap-4">
             <Button
               onClick={handleHubungiKami}
-              className="bg-yellow-400 hover:bg-yellow-500 text-indigo-950 shadow-sm
+              className="bg-primary hover:bg-primary/90 text-primary-foreground 
                 h-8 px-4 text-xs                   
                 md:h-10 md:px-6 md:text-sm         
-                rounded-full font-extrabold transition-all duration-200 hover:shadow-md hover:shadow-yellow-400/40 hover:scale-105"
+                rounded-full font-semibold transition-all duration-200 hover:shadow-lg hover:scale-105"
             >
               Hubungi Kami
             </Button>
@@ -118,10 +123,10 @@ export default function Header() {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  aria-label="Buka Menu Navigasi"
+                  aria-label="Buka Menu Navigasi" // PERBAIKAN Aksesibilitas & SEO
                   className={cn(
-                    "hover:bg-indigo-50",
-                    isScrolled ? "text-indigo-950" : "text-white"
+                    "hover:bg-accent",
+                    isScrolled ? "text-primary" : "text-white"
                   )}
                 >
                   {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -136,26 +141,30 @@ export default function Header() {
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
-                        'text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative group',
+                        'text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative border-b-2 border-transparent group',
                         activePath === item.id
-                          ? 'text-indigo-700 bg-indigo-50 font-bold'
-                          : 'hover:bg-slate-50 hover:text-indigo-600 text-slate-600'
+                          ? 'text-primary font-semibold'
+                          : 'hover:bg-accent hover:text-primary text-muted-foreground'
                       )}
                     >
                       {item.label}
+                      <span className={cn(
+                        'absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300',
+                        activePath === item.id
+                          ? 'w-full bg-primary'
+                          : 'w-0 group-hover:w-full group-hover:bg-primary'
+                      )} />
                     </Link>
                   ))}
-                  <div className="pt-4 border-t border-slate-100">
-                    <Button 
-                      onClick={() => {
-                        handleHubungiKami();
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold w-full rounded-xl"
-                    >
-                      Hubungi Kami (WA)
-                    </Button>
-                  </div>
+                  <Button 
+                    onClick={() => {
+                      handleHubungiKami();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="bg-green-600 hover:bg-green-700 text-white w-full"
+                  >
+                    Hubungi Kami (WA)
+                  </Button>
                 </nav>
               </SheetContent>
             </Sheet>
