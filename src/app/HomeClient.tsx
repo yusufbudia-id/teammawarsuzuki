@@ -73,7 +73,8 @@ export default function HomeClient() {
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </Link>
-                  <Link href="/kontak">
+                  {/* UPDATE: Arahkan ke link eksternal simulasi kredit */}
+                  <Link href="https://www.suzukiautojogja.com/simulasi-kredit" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" variant="outline" className="w-full sm:w-auto h-16 px-8 rounded-2xl border-2 border-slate-200 text-slate-700 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-700 font-bold text-lg transition-all">
                       <Calculator className="mr-2 w-5 h-5" />
                       Hitung Kredit
@@ -191,7 +192,6 @@ export default function HomeClient() {
               </div>
             </div>
 
-            {/* Grid Produk Baru: Bersih, Kotak, Fokus pada Tipografi */}
             {/* Grid Produk Baru: Edge-to-Edge Premium Layout */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
               {displayProducts.map((product, index) => {
@@ -258,6 +258,7 @@ export default function HomeClient() {
 
                       {/* Tombol Aksi - Layout Asimetris Modern */}
                       <div className="mt-auto flex items-center gap-3">
+                        {/* UPDATE: Hitung DP dikembalikan ke /kontak */}
                         <Link href="/kontak" className="flex-1">
                           <Button className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 transition-all shadow-md shadow-blue-600/20 group-hover:shadow-blue-600/40">
                             Hitung DP
