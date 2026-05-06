@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-// Import Manrope dari next/font/google
-import { Manrope } from 'next/font/google';
+// Import Plus Jakarta Sans dari next/font/google
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import "./globals.css";
 import { ClientBodyProvider } from "@/components/client-body-provider";
 import Script from "next/script";
 
-// Inisialisasi font Manrope
-const manrope = Manrope({ 
+// Inisialisasi font Plus Jakarta Sans
+const jakartaSans = Plus_Jakarta_Sans({ 
   subsets: ['latin'],
-  // Pilih ketebalan yang dibutuhkan, hindari yang terlalu tebal jika tidak perlu
+  // Pilih ketebalan yang dibutuhkan untuk desain Modern UI / Playful Corporate
   weight: ['300', '400', '500', '600', '700', '800'], 
-  variable: '--font-manrope', // Buat variabel CSS kustom
+  variable: '--font-jakarta', // Buat variabel CSS kustom
 });
 
 // 1. SETUP BASE URL
@@ -112,21 +112,19 @@ export default function RootLayout({
   };
 
   return (
-    // Tambahkan variabel manrope ke tag html
-    <html lang="id" suppressHydrationWarning className={`${manrope.variable}`}>
+    // Terapkan variabel font Plus Jakarta Sans ke tag html
+    <html lang="id" suppressHydrationWarning className={`${jakartaSans.variable}`}>
       <head>
-        {/* Tag link Google Fonts untuk Montserrat DIHAPUS, diganti dengan next/font */}
-        
         {/* Inject JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      {/* Terapkan font-sans di sini, yang akan memicu Manrope jika dikonfigurasi di Tailwind */}
+      {/* Font akan di-trigger oleh konfigurasi Tailwind font-sans yang merujuk pada CSS variabel */}
       <body
         className="antialiased bg-background text-foreground no-js font-sans"
-        suppressHydrationWarning
+        suppHydrationWarning
       >
         <Script
           id="remove-no-js"
