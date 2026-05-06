@@ -135,7 +135,7 @@ export default function HomeClient() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-bold text-slate-500">Diskon Hingga</p>
-                      <p className="text-2xl font-black text-red-600">21 Jt</p>
+                      <p className="text-2xl font-black text-red-600">33 Jt</p>
                     </div>
                   </div>
                 </div>
