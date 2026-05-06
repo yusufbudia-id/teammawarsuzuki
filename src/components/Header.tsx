@@ -38,7 +38,6 @@ export default function Header() {
     { nama: 'Bima', no: '6289637144539' },
     { nama: 'Kafi', no: '6281329095557' },
     { nama: 'Nabila', no: '6283103278381' },
-    { nama: 'Melly', no: '62895417267981' },
     { nama: 'Alma', no: '6282134148101' },
     { nama: 'Indah', no: '6282135245314' }
   ];
