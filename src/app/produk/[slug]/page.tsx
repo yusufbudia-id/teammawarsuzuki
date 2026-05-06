@@ -36,7 +36,7 @@ export default function ProductDetailPage() {
 
   const waTeam = [
     { nama: 'Yusuf', no: '6282174635218' },
-    { nama: 'Dimas', no: '6287775741091' },
+    { nama: 'Egy', no: '6281327260515' },
     { nama: 'Bima', no: '6289637144539' },
     { nama: 'Kafi', no: '6281329095557' },
     { nama: 'Nabila', no: '6283103278381' },
