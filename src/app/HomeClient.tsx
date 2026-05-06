@@ -101,9 +101,7 @@ export default function HomeClient() {
                           </div>
                         ))}
                       </div>
-                      <div className="text-sm font-bold text-slate-600">
-                        Dipercaya oleh <span className="text-blue-600 text-lg font-black">500+</span><br/>Keluarga di Jogja
-                      </div>
+                      
                     </div>
                   <div className="text-sm font-bold text-slate-600">
                     Dipercaya oleh <span className="text-blue-600 text-lg font-black">500+</span><br/>Keluarga di Jogja
