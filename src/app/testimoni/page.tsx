@@ -160,24 +160,28 @@ export default function TestimoniPage() {
           </div>
         </section>
 
-        {/* CTA BOTTOM / PENYAMBUNG FOOTER */}
-        <section className="pt-24 pb-40 lg:pb-52 bg-blue-600 rounded-t-[3rem] lg:rounded-t-[5rem] mt-20 relative z-0 overflow-hidden">
-          {/* Dekorasi Background CTA */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl opacity-10 translate-y-1/2 -translate-x-1/2"></div>
+        {/* CTA BOTTOM / PENYAMBUNG FOOTER - Diperbaiki agar Footer kontras */}
+        <section className="pt-24 pb-40 lg:pb-52 bg-white rounded-t-[3rem] lg:rounded-t-[5rem] border-t border-slate-100 mt-20 relative z-0">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto bg-blue-600 rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl shadow-blue-900/10 text-center animate-fade-in">
+              {/* Dekorasi Background CTA */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl opacity-10 translate-y-1/2 -translate-x-1/2"></div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center animate-fade-in">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
-              Siap Menjadi Bagian dari <br className="hidden sm:block" /> Keluarga Suzuki?
-            </h2>
-            <p className="text-blue-100 font-medium text-lg max-w-2xl mx-auto mb-10">
-              Jangan tunda lagi. Hubungi tim sales kami sekarang untuk mendapatkan promo spesial dan layanan test drive langsung di rumah Anda.
-            </p>
-            <Link href="/kontak">
-              <Button className="bg-amber-400 hover:bg-amber-500 text-slate-900 h-14 px-10 rounded-full font-black text-lg shadow-xl shadow-amber-400/20 hover:scale-105 transition-all">
-                Konsultasi Sekarang <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
+                  Siap Menjadi Bagian dari <br className="hidden sm:block" /> Keluarga Suzuki?
+                </h2>
+                <p className="text-blue-100 font-medium text-lg max-w-2xl mx-auto mb-10">
+                  Jangan tunda lagi. Hubungi tim sales kami sekarang untuk mendapatkan promo spesial dan layanan test drive langsung di rumah Anda.
+                </p>
+                <Link href="/kontak">
+                  <Button className="bg-amber-400 hover:bg-amber-500 text-slate-900 h-14 px-10 rounded-full font-black text-lg shadow-xl shadow-amber-400/20 hover:scale-105 transition-all">
+                    Konsultasi Sekarang <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
