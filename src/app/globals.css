@@ -2,6 +2,10 @@
 @import "tw-animate-css";
 
 @theme inline {
+  /* 👇 TAMBAHKAN SATU BARIS INI DI SINI 👇 */
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* ======================================= */
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -17,6 +21,7 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+  /* ... sisa variabel warna Anda di bawahnya ... */
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
