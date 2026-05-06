@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronDown, Heart, Calculator, Tag, ChevronUp } from 'lucide-react';
+import { ArrowRight, Calculator, Sparkles, CheckCircle2, ChevronDown, Heart } from 'lucide-react';
 import { products } from '@/lib/products-data';
 import { useState, useMemo } from 'react';
 
@@ -14,309 +14,313 @@ export default function HomeClient() {
   const [activeFilter, setActiveFilter] = useState('Semua');
   const [isSeoExpanded, setIsSeoExpanded] = useState(false);
 
-  // Daftar kategori untuk Filter Cepat
   const categories = ['Semua', 'SUV', 'MPV', 'City Car', 'Pickup'];
 
   const toggleWishlist = (id: number) => {
-    if (wishlist.includes(id)) {
-      setWishlist(wishlist.filter(item => item !== id));
-    } else {
-      setWishlist([...wishlist, id]);
-    }
+    setWishlist(prev => 
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
   };
 
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
-    // Nominal disesuaikan kembali dengan Promo Primadona April 2026
-    if (name.includes('vitara')) return { label: 'DISKON', value: '43 JT' };
-    if (name.includes('carry')) return { label: 'DISKON', value: '34 JT' };
-    if (name.includes('xl7')) return { label: 'DISKON', value: '21 JT' };
-    if (name.includes('ertiga')) return { label: 'DISKON', value: '26 JT' };
-    if (name.includes('presso')) return { label: 'DISKON', value: '16 JT' };
-    if (name.includes('fronx')) return { label: 'DISKON', value: '16 JT' };
-    if (name.includes('apv')) return { label: 'DISKON', value: '3 JT' };
-    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: 'Aksesoris' };
+    if (name.includes('vitara')) return { label: 'Diskon', value: '43 Juta' };
+    if (name.includes('carry')) return { label: 'Diskon', value: '34 Juta' };
+    if (name.includes('xl7')) return { label: 'Diskon', value: '21 Juta' };
+    if (name.includes('ertiga')) return { label: 'Diskon', value: '26 Juta' };
+    if (name.includes('presso')) return { label: 'Diskon', value: '16 Juta' };
+    if (name.includes('fronx')) return { label: 'Diskon', value: '16 Juta' };
+    if (name.includes('apv')) return { label: 'Diskon', value: '3 Juta' };
+    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'Special', value: 'Bonus Aksesoris' };
     return null;
   };
 
-  // Logika Filter Cepat
   const displayProducts = useMemo(() => {
-    if (activeFilter === 'Semua') {
-      return products.slice(0, 8); 
-    }
+    if (activeFilter === 'Semua') return products.slice(0, 8); 
     return products.filter(p => p.category?.toLowerCase() === activeFilter.toLowerCase());
   }, [activeFilter]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#F4F7F9] font-sans selection:bg-amber-400 selection:text-slate-900">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-32">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/hero/suzuki-hero.webp"
-              alt="Showroom Dealer Mobil Suzuki Jogja"
-              fill
-              priority
-              className="object-cover"
-            />
-            {/* TEMA TEGAS & PROFESIONAL: Indigo pekat sebagai dasar */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/95 via-blue-900/90 to-indigo-950/95" />
-          </div>
+        
+        {/* NEW HERO SECTION: Split Layout + Modern Shapes */}
+        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-white rounded-b-[3rem] lg:rounded-b-[5rem] shadow-sm">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+              
+              {/* Kiri: Tipografi & CTA (Tegas & Profesional) */}
+              <div className="max-w-2xl space-y-8 z-10 relative">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-bold text-sm border border-blue-100 animate-fade-in">
+                  <Sparkles className="w-4 h-4 text-amber-500" />
+                  <span>Promo Spesial Jogja 2026</span>
+                </div>
+                
+                <h1 className="text-5xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight animate-fade-in stagger-1">
+                  Mulai Perjalanan Baru Bersama <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-400">Suzuki.</span>
+                </h1>
+                
+                <p className="text-lg text-slate-600 font-medium leading-relaxed animate-fade-in stagger-2">
+                  Dapatkan penawaran terbaik untuk <strong>XL7 Hybrid, Fronx,</strong> dan armada <strong>Carry</strong>. Proses cepat, transparan, dan DP bisa disesuaikan dengan budget Anda.
+                </p>
 
-          {/* TEMA CERIA: Variasi efek glow teal dan kuning */}
-          <div className="absolute top-20 right-10 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-yellow-400/15 rounded-full blur-3xl" />
+                <div className="flex flex-col sm:flex-row gap-4 animate-fade-in stagger-3">
+                  <Link href="#katalog">
+                    <Button size="lg" className="w-full sm:w-auto h-16 px-8 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-1">
+                      Lihat Promo Kendaraan
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </Link>
+                  <Link href="/kontak">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto h-16 px-8 rounded-2xl border-2 border-slate-200 text-slate-700 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-700 font-bold text-lg transition-all">
+                      <Calculator className="mr-2 w-5 h-5" />
+                      Hitung Kredit
+                    </Button>
+                  </Link>
+                </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-16">
-            <div className="max-w-6xl mx-auto text-center space-y-8 md:space-y-10">
-              <div className="inline-block animate-fade-in">
-                {/* Badge: Kuning cerah untuk menarik perhatian namun tetap terstruktur */}
-                <span className="px-4 py-2 rounded-full bg-yellow-400/20 text-yellow-300 text-sm font-bold border border-yellow-400/30 tracking-wide uppercase">
-                  Dealer Resmi Suzuki Jogja & Sekitarnya
-                </span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight animate-fade-in stagger-1 tracking-wide">
-                Promo Suzuki Jogja <br />
-                {/* Aksen Kuning untuk kesan Ceria & Tegas */}
-                <span className="text-yellow-400">XL7 Hybrid, Fronx & Carry Box</span>
-              </h1>
-
-              <p className="text-base sm:text-lg md:text-xl text-indigo-100 max-w-3xl mx-auto animate-fade-in stagger-2 font-medium leading-relaxed">
-                Nikmati pengalaman membeli mobil yang mudah, transparan, dan profesional. Tersedia promo spesial hingga puluhan juta rupiah. Dukungan after-sales resmi dan harga paling kompetitif di Yogyakarta siap menanti Anda.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in stagger-3">
-                <Link href="#produk-unggulan">
-                  {/* CTA Utama: Kuning Solid dengan Teks Biru Gelap (Tegas & Ceria) */}
-                  <Button
-                    size="lg"
-                    className="bg-yellow-400 hover:bg-yellow-500 text-indigo-950 px-8 py-6 rounded-full text-lg font-extrabold transition-all hover:shadow-lg hover:shadow-yellow-400/40 hover:-translate-y-1 w-full sm:w-auto border-0"
-                  >
-                    Klaim Promo Bulan Ini
-                    <ArrowRight className="ml-2 h-5 w-5 stroke-[3px]" />
-                  </Button>
-                </Link>
-                <Link href="/kontak">
-                  <Button
-                    size="lg"
-                    className="bg-white/10 backdrop-blur-md border-2 border-white/40 !text-white hover:bg-white hover:!text-indigo-950 px-8 py-6 rounded-full text-lg font-bold transition-all w-full sm:w-auto flex items-center justify-center"
-                  >
-                    <Calculator className="mr-2 h-5 w-5" />
-                    Hitung Simulasi Kredit
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-indigo-400/20 animate-fade-in stagger-4">
-                {[
-                  { value: '1000+', label: 'Unit Terjual' },
-                  { value: '500+', label: 'Pelanggan Puas' },
-                  { value: '10+', label: 'Tahun Pengalaman' },
-                  { value: '8', label: 'Model Tersedia' }
-                ].map((stat, idx) => (
-                  <div key={idx} className="text-center">
-                    {/* Angka Stats dengan warna kuning solid yang ceria */}
-                    <div className="text-3xl md:text-4xl font-extrabold text-yellow-400 mb-2 drop-shadow-sm">
-                      {stat.value}
-                    </div>
-                    <div className="text-indigo-100 text-sm md:text-base font-semibold">{stat.label}</div>
+                <div className="flex items-center gap-6 pt-4 animate-fade-in stagger-4">
+                  <div className="flex -space-x-4">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden relative">
+                        <Image src={`/avatars/user-${i}.jpg`} alt="User" fill className="object-cover" unoptimized fallback={<div className="w-full h-full bg-blue-100"></div>} />
+                      </div>
+                    ))}
                   </div>
+                  <div className="text-sm font-bold text-slate-600">
+                    Dipercaya oleh <span className="text-blue-600 text-lg font-black">500+</span><br/>Keluarga di Jogja
+                  </div>
+                </div>
+              </div>
+
+              {/* Kanan: Visual Dinamis (Ceria) */}
+              <div className="relative h-[400px] lg:h-[600px] w-full animate-fade-in stagger-2">
+                {/* Latar Belakang Shape Ceria */}
+                <div className="absolute inset-0 bg-amber-400 rounded-[3rem] rotate-3 scale-95 origin-bottom-right transition-transform hover:rotate-6 duration-500"></div>
+                <div className="absolute inset-0 bg-blue-600 rounded-[3rem] -rotate-3 scale-95 origin-top-left transition-transform hover:-rotate-6 duration-500"></div>
+                
+                {/* Kontainer Gambar Utama */}
+                <div className="absolute inset-0 bg-slate-100 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl">
+                  <Image
+                    src="/hero/suzuki-hero.webp"
+                    alt="Suzuki XL7 Promo"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  {/* Overlay Gradient Halus */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                  
+                  {/* Floating Badge di dalam gambar */}
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md rounded-2xl p-4 flex items-center justify-between shadow-lg">
+                    <div>
+                      <p className="text-sm font-bold text-slate-500">Promo Unggulan</p>
+                      <p className="text-xl font-black text-slate-900">XL7 Hybrid</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-bold text-slate-500">Diskon Hingga</p>
+                      <p className="text-2xl font-black text-red-600">21 Jt</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* NEW SECTION: Fitur Layanan (Bento Box Style) */}
+        <section className="py-12 -mt-12 relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Proses Cepat & Mudah', desc: 'Data dibantu sampai approval leasing.', color: 'bg-blue-600 text-white' },
+              { title: 'Bebas Pilih Leasing', desc: 'Kerjasama dengan banyak lembaga pembiayaan terpercaya.', color: 'bg-amber-400 text-slate-900' },
+              { title: 'Layanan Test Drive', desc: 'Mobil kami antar ke rumah atau kantor Anda.', color: 'bg-slate-900 text-white' },
+            ].map((feature, idx) => (
+              <div key={idx} className={`${feature.color} p-8 rounded-3xl shadow-lg hover:-translate-y-2 transition-transform duration-300`}>
+                <CheckCircle2 className="w-8 h-8 mb-4 opacity-80" />
+                <h3 className="text-xl font-black mb-2">{feature.title}</h3>
+                <p className="font-medium opacity-90">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* NEW CATALOG SECTION: Modern App-Like Grid */}
+        <section id="katalog" className="py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Header Katalog & Filter */}
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mb-16">
+              <div className="text-center lg:text-left">
+                <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Pilih Mobil Impianmu</h2>
+                <p className="text-lg text-slate-600 font-medium">Temukan spesifikasi dan promo yang paling pas untuk Anda.</p>
+              </div>
+
+              {/* Filter Ceria dengan gaya "Pill" besar */}
+              <div className="flex flex-wrap justify-center gap-3 bg-white p-2 rounded-full shadow-sm border border-slate-200">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
+                      activeFilter === cat 
+                      ? 'bg-blue-600 text-white shadow-md' 
+                      : 'bg-transparent text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    {cat}
+                  </button>
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-10 w-10 text-yellow-400/70" />
-          </div>
-        </section>
+            {/* Grid Produk Baru: Bersih, Kotak, Fokus pada Tipografi */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {displayProducts.map((product, index) => {
+                const promo = getPromoInfo(product.name);
+                const productUrl = `/produk/${(product as any).slug || product.id}`;
 
-        {/* SECTION PRODUK UNGGULAN */}
-        <section id="produk-unggulan" className="py-20 md:py-28">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
-                <div className="text-center md:text-left">
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-950 mb-3">Eksplorasi Mobil Suzuki</h2>
-                  <p className="text-slate-600 text-lg font-medium">Temukan kendaraan yang paling pas untuk kebutuhan Anda.</p>
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-2">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setActiveFilter(cat)}
-                      className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
-                        activeFilter === cat 
-                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' 
-                        : 'bg-white text-slate-600 border-2 border-slate-200 hover:border-indigo-400 hover:text-indigo-600'
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                {displayProducts.map((product, index) => {
-                  const promo = getPromoInfo(product.name);
-                  const productUrl = `/produk/${(product as any).slug || product.id}`;
-
-                  return (
-                    <div
-                      key={product.id}
-                      className="group bg-white rounded-2xl overflow-hidden border-2 border-slate-100 shadow-sm hover:shadow-xl hover:shadow-indigo-600/10 hover:border-indigo-200 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full animate-fade-in"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      <Link href={productUrl} className="relative aspect-[4/3] overflow-hidden shrink-0 block">
-                        <div className="absolute inset-0 bg-indigo-50/50 group-hover:bg-indigo-100/30 transition-colors z-0"></div>
+                return (
+                  <div
+                    key={product.id}
+                    className="group bg-white rounded-3xl p-4 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 flex flex-col"
+                  >
+                    {/* Image Area - Rounded dan Playful Background */}
+                    <div className="relative aspect-[4/3] rounded-2xl bg-slate-50 overflow-hidden mb-6 group-hover:bg-blue-50 transition-colors">
+                      <Link href={productUrl} className="block w-full h-full">
                         <Image
                           src={product.image}
-                          alt={`Promo Harga ${product.name} Jogja`}
+                          alt={product.name}
                           fill
-                          className="object-cover relative z-10 group-hover:scale-110 transition-transform duration-700 ease-out p-4"
+                          className="object-contain p-4 group-hover:scale-110 transition-transform duration-500"
                         />
-                        
-                        <div className="absolute top-4 left-4 z-20">
-                          <span className="px-3 py-1 text-xs font-extrabold text-indigo-900 bg-white/90 backdrop-blur-md rounded-md border border-indigo-100 uppercase tracking-wider shadow-sm">
-                            {product.category}
-                          </span>
-                        </div>
-
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            toggleWishlist(product.id);
-                          }}
-                          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-sm flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 group/btn"
-                        >
-                          <Heart
-                            className={`h-4 w-4 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-rose-500 text-rose-500' : 'text-slate-400 group-hover/btn:text-rose-500'}`}
-                            strokeWidth={2.5}
-                          />
-                        </button>
                       </Link>
+                      
+                      {/* Kategori Badge */}
+                      <div className="absolute top-4 left-4 bg-white/80 backdrop-blur px-3 py-1.5 rounded-xl">
+                        <span className="text-xs font-extrabold text-slate-700 uppercase">{product.category}</span>
+                      </div>
 
-                      <div className="p-5 flex flex-col flex-grow border-t border-slate-50">
-                        <Link href={productUrl}>
-                          <h3 className="text-xl font-extrabold text-indigo-950 mb-1 group-hover:text-indigo-600 transition-colors duration-300 line-clamp-1">
-                            {product.name}
-                          </h3>
-                        </Link>
-                        
-                        <div className="mt-3 mb-4">
-                          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">Harga Mulai</p>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-sm font-medium text-slate-400 line-through mr-1">
-                              Rp {parseInt(product.priceText) + 20} Jt
-                            </span>
-                          </div>
-                          <div className="flex items-baseline text-indigo-600">
-                            <span className="text-sm font-bold mr-1">Rp</span>
-                            <span className="text-2xl font-extrabold">{product.priceText}</span>
-                            <span className="text-sm font-bold ml-1">Jutaan</span>
-                          </div>
-                        </div>
+                      {/* Wishlist Heart - Floating */}
+                      <button
+                        onClick={(e) => { e.preventDefault(); toggleWishlist(product.id); }}
+                        className="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-sm"
+                      >
+                        <Heart className={`w-5 h-5 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-slate-400'}`} />
+                      </button>
+                    </div>
 
-                        {promo && (
-                          <div className="mt-auto mb-4 bg-rose-50 border border-rose-100 rounded-xl p-2.5 flex items-center gap-3">
-                            <div className="bg-rose-500 text-white rounded-lg p-2 shrink-0 shadow-sm shadow-rose-500/20">
-                              <Tag className="w-4 h-4" />
-                            </div>
-                            <div>
-                              <p className="text-[10px] font-extrabold text-rose-600/80 uppercase leading-none mb-1">Potongan Spesial</p>
-                              <p className="text-sm font-extrabold text-rose-600 leading-none">{promo.label} {promo.value}</p>
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="grid grid-cols-2 gap-2 mt-auto">
-                          <Link href={productUrl} className="w-full">
-                            <Button variant="outline" className="w-full bg-white border-2 border-slate-200 text-indigo-950 hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-700 text-sm font-bold h-11 transition-colors">
-                              Detail
-                            </Button>
-                          </Link>
-                          <Link href="/kontak" className="w-full">
-                            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold h-11 shadow-md shadow-indigo-600/20">
-                              Hitung DP
-                            </Button>
-                          </Link>
+                    {/* Informasi Teks - Tegas & Bersih */}
+                    <div className="flex-1 px-2 flex flex-col">
+                      <Link href={productUrl}>
+                        <h3 className="text-2xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
+                          {product.name}
+                        </h3>
+                      </Link>
+                      
+                      <div className="mt-3 mb-6">
+                        <p className="text-sm font-bold text-slate-400 mb-1">Mulai Dari</p>
+                        <div className="flex items-start text-slate-900">
+                          <span className="text-base font-bold mt-1 mr-1">Rp</span>
+                          <span className="text-3xl font-black tracking-tight">{product.priceText}</span>
+                          <span className="text-base font-bold ml-1 mt-1 text-slate-500">Jt</span>
                         </div>
                       </div>
+
+                      {/* Promo Area */}
+                      {promo && (
+                        <div className="mt-auto mb-4 bg-amber-100/50 border border-amber-200/50 rounded-2xl p-3 flex justify-between items-center">
+                          <span className="text-xs font-bold text-amber-700 uppercase tracking-wide">{promo.label}</span>
+                          <span className="text-sm font-black text-amber-600">{promo.value}</span>
+                        </div>
+                      )}
+
+                      {/* Action Buttons */}
+                      <div className="grid grid-cols-2 gap-2 mt-auto">
+                        <Link href={productUrl}>
+                          <Button variant="outline" className="w-full rounded-xl border-slate-200 text-slate-700 hover:bg-slate-50 font-bold h-12">
+                            Detail
+                          </Button>
+                        </Link>
+                        <Link href="/kontak">
+                          <Button className="w-full rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold h-12 transition-colors">
+                            Hitung DP
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
+            </div>
 
-              {displayProducts.length === 0 && (
-                <div className="text-center py-12 text-slate-500 font-medium">
-                  Mobil untuk kategori {activeFilter} belum tersedia.
-                </div>
-              )}
-
-              <div className="mt-12 text-center">
-                <Link href="/produk">
-                  <Button variant="outline" className="px-8 rounded-full border-2 border-slate-200 text-indigo-950 hover:border-indigo-600 hover:text-indigo-600 hover:bg-indigo-50 font-extrabold transition-all h-12">
-                    Lihat Seluruh Katalog Suzuki
-                    <ArrowRight className="ml-2 w-4 h-4 stroke-[3px]" />
-                  </Button>
-                </Link>
-              </div>
+            <div className="mt-16 text-center">
+              <Link href="/produk">
+                <Button className="rounded-full bg-white border-2 border-slate-200 text-slate-900 hover:border-slate-900 px-10 h-14 text-lg font-bold transition-all shadow-sm">
+                  Tampilkan Semua Kendaraan
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* SECTION SEO */}
-        <section className="py-16 bg-white border-t border-slate-100 relative">
+        {/* NEW SEO SECTION: Editorial / Magazine Layout */}
+        <section className="py-24 bg-white rounded-t-[3rem] lg:rounded-t-[5rem] border-t border-slate-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-indigo-950">
-                  Pusat Promo Suzuki Jogja & Magelang Terlengkap
-                </h2>
-                <div className="w-20 h-1.5 bg-gradient-to-r from-yellow-400 to-teal-400 mx-auto mt-4 rounded-full"></div>
-              </div>
+            <div className="max-w-5xl mx-auto">
               
-              <div 
-                className={`relative overflow-hidden transition-all duration-700 ease-in-out ${
-                  isSeoExpanded ? 'max-h-[1000px]' : 'max-h-32'
-                }`}
-              >
-                <div className="space-y-4 text-slate-600 text-base font-medium leading-relaxed text-justify md:text-left">
-                  <p>
-                    Selamat datang di website representatif Dealer Resmi Suzuki. Jika Anda sedang mencari informasi terkait <strong className="text-indigo-900">Promo Suzuki Jogja</strong> dengan diskon terbesar dan simulasi kredit paling ringan, Anda berada di tempat yang tepat. Kami melayani pembelian kendaraan baik untuk kebutuhan mobil penumpang pribadi maupun armada niaga perusahaan Anda dengan cakupan wilayah Yogyakarta, Sleman, Bantul, Gunungkidul, Kulon Progo, hingga area Magelang dan sekitarnya.
-                  </p>
-                  <p>
-                    Untuk Anda yang mendambakan kenyamanan dan teknologi terkini bersama keluarga, lini produk SUV dan MPV kami siap menemani perjalanan Anda. Nikmati efisiensi bahan bakar ekstra dengan <strong className="text-indigo-900">XL7 Hybrid</strong> dan Ertiga Hybrid, atau tampil lebih tangguh dan modern di jalanan perkotaan bersama <strong className="text-indigo-900">Fronx</strong> dan Grand Vitara. Setiap pembelian mobil penumpang akan mendapatkan berbagai bonus aksesoris menarik serta garansi mesin resmi dari Suzuki Indonesia.
-                  </p>
-                  <p>
-                    Tidak hanya kendaraan penumpang, kami juga sangat memahami kebutuhan para pengusaha dan pebisnis. Oleh karena itu, kami memberikan penawaran harga OTR dan cicilan termurah untuk kendaraan niaga. Suzuki <strong className="text-indigo-900">Carry</strong> Pick Up telah terbukti selama puluhan tahun sebagai rajanya mobil niaga di Indonesia. Kami juga menyediakan varian <strong className="text-indigo-900">Mobil Box</strong> dari Suzuki Carry yang sangat cocok untuk memaksimalkan efisiensi logistik dan distribusi barang usaha Anda. Hubungi tim sales kami sekarang juga untuk mendapatkan pelayanan test drive langsung di rumah Anda.
-                  </p>
+              <div className="grid lg:grid-cols-12 gap-12 items-start">
+                {/* Heading Area */}
+                <div className="lg:col-span-5">
+                  <div className="sticky top-24">
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-6">
+                      Partner Otomotif Terpercaya Anda di Yogyakarta.
+                    </h2>
+                    <div className="w-20 h-2 bg-blue-600 rounded-full mb-6"></div>
+                    <p className="text-lg text-slate-500 font-medium">
+                      Informasi resmi seputar produk, promo, dan layanan purna jual Suzuki.
+                    </p>
+                  </div>
                 </div>
-                
-                {!isSeoExpanded && (
-                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-                )}
-              </div>
 
-              <div className="mt-6 text-center">
-                <button
-                  onClick={() => setIsSeoExpanded(!isSeoExpanded)}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold text-sm transition-colors duration-300"
-                >
-                  {isSeoExpanded ? (
-                    <>Tutup Ringkasan <ChevronUp className="w-4 h-4 stroke-[3px]" /></>
-                  ) : (
-                    <>Baca Selengkapnya <ChevronDown className="w-4 h-4 stroke-[3px]" /></>
-                  )}
-                </button>
+                {/* Content Area */}
+                <div className="lg:col-span-7">
+                  <div className={`relative overflow-hidden transition-all duration-700 ${isSeoExpanded ? 'max-h-[2000px]' : 'max-h-60'}`}>
+                    <div className="space-y-6 text-slate-600 text-lg leading-relaxed font-medium">
+                      <p>
+                        Selamat datang di portal informasi resmi Dealer Suzuki. Jika Anda mencari informasi akurat mengenai <strong>Promo Suzuki Jogja</strong>, harga OTR terbaru, hingga simulasi kredit teringan, kami siap melayani Anda. Area jangkauan kami mencakup seluruh wilayah Yogyakarta, Sleman, Bantul, Gunungkidul, Kulon Progo, hingga Magelang.
+                      </p>
+                      
+                      <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 my-8">
+                        <h4 className="text-xl font-black text-slate-900 mb-3">Mobil Penumpang Modern</h4>
+                        <p>Dambakan kenyamanan dan efisiensi bersama keluarga? Lini produk SUV dan MPV kami seperti <strong>XL7 Hybrid</strong> dan Ertiga Hybrid menawarkan teknologi pintar ramah lingkungan. Atau tampil beda di jalanan perkotaan bersama <strong>Fronx</strong> dan Grand Vitara.</p>
+                      </div>
+
+                      <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                        <h4 className="text-xl font-black text-slate-900 mb-3">Ketangguhan Armada Niaga</h4>
+                        <p>Untuk mendukung laju bisnis Anda, kami memberikan kemudahan kepemilikan armada niaga. Suzuki <strong>Carry Pick Up</strong> terbukti legendaris. Kami juga sedia <strong>Mobil Box</strong> dari basis Carry yang ideal untuk keamanan distribusi barang.</p>
+                      </div>
+                    </div>
+                    
+                    {!isSeoExpanded && (
+                      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                    )}
+                  </div>
+
+                  <button
+                    onClick={() => setIsSeoExpanded(!isSeoExpanded)}
+                    className="mt-8 flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors bg-blue-50 px-6 py-3 rounded-full"
+                  >
+                    {isSeoExpanded ? (
+                      <>Tutup Ringkasan <ChevronDown className="w-5 h-5 rotate-180" /></>
+                    ) : (
+                      <>Baca Selengkapnya <ChevronDown className="w-5 h-5" /></>
+                    )}
+                  </button>
+                </div>
               </div>
 
             </div>
