@@ -82,13 +82,29 @@ export default function HomeClient() {
                 </div>
 
                 <div className="flex items-center gap-6 pt-4 animate-fade-in stagger-4">
-                  <div className="flex -space-x-4">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden relative">
-                        <Image src={`/avatars/user-${i}.jpg`} alt="User" fill className="object-cover" unoptimized fallback={<div className="w-full h-full bg-blue-100"></div>} />
+                  <div className="flex items-center gap-6 pt-4 animate-fade-in stagger-4">
+                      <div className="flex -space-x-4">
+                        {[
+                          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80",
+                          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80",
+                          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=100&q=80",
+                          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+                        ].map((url, i) => (
+                          <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden relative shadow-sm">
+                            <Image 
+                              src={url} 
+                              alt={`Pelanggan Suzuki Jogja ${i + 1}`} 
+                              fill 
+                              className="object-cover" 
+                              unoptimized 
+                            />
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                      <div className="text-sm font-bold text-slate-600">
+                        Dipercaya oleh <span className="text-blue-600 text-lg font-black">500+</span><br/>Keluarga di Jogja
+                      </div>
+                    </div>
                   <div className="text-sm font-bold text-slate-600">
                     Dipercaya oleh <span className="text-blue-600 text-lg font-black">500+</span><br/>Keluarga di Jogja
                   </div>
