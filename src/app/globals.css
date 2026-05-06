@@ -44,7 +44,6 @@
 :root {
   --radius: 0.625rem;
 
-  /* Font: Montserrat */
   /* Suzuki Brand Colors */
   --suzuki-blue: oklch(0.55 0.15 240);
   --suzuki-dark: oklch(0.2 0 0);
@@ -128,7 +127,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Montserrat", sans-serif;
   }
   html {
     scroll-behavior: smooth;
@@ -260,4 +258,3 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
