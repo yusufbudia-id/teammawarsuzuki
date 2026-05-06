@@ -10,10 +10,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // TAMBAHKAN KONFIGURASI FONT DI SINI
+      // PERUBAHAN ADA DI SINI 👇
       fontFamily: {
-        sans: ['var(--font-manrope)', 'sans-serif'],
+        sans: ['var(--font-jakarta)', 'sans-serif'],
       },
+      // ==========================
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
