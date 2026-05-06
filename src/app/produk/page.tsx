@@ -40,8 +40,8 @@ export default function ProdukPage() {
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
     
-    if (name.includes('fronx')) return { label: 'Diskon', value: '14 Jt' };
-    if (name.includes('xl7')) return { label: 'Diskon', value: '21 Jt' };
+    if (name.includes('fronx')) return { label: 'Diskon', value: '16 Jt' };
+    if (name.includes('xl7')) return { label: 'Diskon', value: '33 Jt' };
     if (name.includes('carry')) return { label: 'Diskon', value: '34 Jt' };
     if (name.includes('vitara')) return { label: 'Diskon', value: '43 Jt' };
     if (name.includes('presso')) return { label: 'Diskon', value: '16 Jt' };
