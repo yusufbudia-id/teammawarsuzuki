@@ -13,7 +13,6 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // PERBAIKAN SEO: Label disesuaikan sedikit agar lebih unik dan tetap ringkas
   const navItems = [
     { id: 'home', label: 'Home', href: '/' },
     { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
@@ -24,7 +23,6 @@ export default function Header() {
     { id: 'kontak', label: 'Kontak', href: '/kontak' },
   ];
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -53,68 +51,59 @@ export default function Header() {
     window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
   }
 
-  // Get active path from pathname
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+        isScrolled 
+          ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-slate-100 py-2' 
+          : 'bg-transparent py-4'
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center space-x-2 hover:scale-105 transition-transform duration-200"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-200"
           >
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm border border-slate-100">
               <img
                 src="/suzuki-logo.png"
-                alt="Dealer Resmi Suzuki Jogja" // PERBAIKAN SEO: Alt text menjadi keyword lokal yang kuat
-                className="h-10 w-auto"
+                alt="Dealer Resmi Suzuki Jogja"
+                className="h-8 w-auto"
               />
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          {/* Desktop Navigation (Gaya Pill Modern) */}
+          <nav className="hidden md:flex items-center space-x-1 bg-white/50 backdrop-blur-md px-2 py-1.5 rounded-full border border-slate-200 shadow-sm">
             {navItems.map((item) => (
               <Link
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  'px-6 py-2 text-sm transition-all duration-200 relative group',
+                  'px-5 py-2 text-sm font-bold transition-all duration-300 rounded-full',
                   activePath === item.id
-                    ? 'text-primary font-semibold'
-                    : isScrolled
-                      ? 'text-muted-foreground hover:text-primary'
-                      : 'text-white hover:text-primary'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                 )}
               >
                 {item.label}
-                <span className={cn(
-                  'absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300',
-                  activePath === item.id
-                    ? 'w-full bg-primary'
-                    : 'w-0 group-hover:w-full group-hover:bg-primary'
-                )} />
               </Link>
             ))}
           </nav>
 
-          {/* Right Side Actions (Button & Menu) */}
+          {/* Right Side Actions */}
           <div className="flex items-center gap-3 md:gap-4">
             <Button
               onClick={handleHubungiKami}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground 
-                h-8 px-4 text-xs                   
-                md:h-10 md:px-6 md:text-sm         
-                rounded-full font-semibold transition-all duration-200 hover:shadow-lg hover:scale-105"
+              className="bg-amber-400 hover:bg-amber-500 text-slate-900 
+                h-10 px-6 text-sm rounded-full font-black tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/30 hover:-translate-y-0.5 hidden sm:flex"
             >
-              Hubungi Kami
+              Tanya Promo WA
             </Button>
 
             {/* Mobile Menu Trigger */}
@@ -123,48 +112,41 @@ export default function Header() {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  aria-label="Buka Menu Navigasi" // PERBAIKAN Aksesibilitas & SEO
-                  className={cn(
-                    "hover:bg-accent",
-                    isScrolled ? "text-primary" : "text-white"
-                  )}
+                  aria-label="Buka Menu"
+                  className="bg-white text-slate-900 rounded-full shadow-sm border border-slate-200 hover:bg-slate-100"
                 >
-                  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                  {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px]">
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] rounded-l-[2rem] border-l-0">
                 <SheetTitle className="sr-only">Menu Navigasi Suzuki</SheetTitle>
-                <nav className="flex flex-col space-y-4 mt-12">
+                <nav className="flex flex-col space-y-2 mt-12">
                   {navItems.map((item) => (
                     <Link
                       key={item.id}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
-                        'text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative border-b-2 border-transparent group',
+                        'text-left px-5 py-4 rounded-2xl text-base font-bold transition-all duration-200',
                         activePath === item.id
-                          ? 'text-primary font-semibold'
-                          : 'hover:bg-accent hover:text-primary text-muted-foreground'
+                          ? 'bg-blue-50 text-blue-600'
+                          : 'hover:bg-slate-50 text-slate-600'
                       )}
                     >
                       {item.label}
-                      <span className={cn(
-                        'absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300',
-                        activePath === item.id
-                          ? 'w-full bg-primary'
-                          : 'w-0 group-hover:w-full group-hover:bg-primary'
-                      )} />
                     </Link>
                   ))}
-                  <Button 
-                    onClick={() => {
-                      handleHubungiKami();
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="bg-green-600 hover:bg-green-700 text-white w-full"
-                  >
-                    Hubungi Kami (WA)
-                  </Button>
+                  <div className="pt-6 mt-6 border-t border-slate-100">
+                    <Button 
+                      onClick={() => {
+                        handleHubungiKami();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold w-full h-14 rounded-2xl text-lg"
+                    >
+                      Chat WhatsApp
+                    </Button>
+                  </div>
                 </nav>
               </SheetContent>
             </Sheet>
