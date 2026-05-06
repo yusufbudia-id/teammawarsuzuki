@@ -5,14 +5,14 @@ import { useParams, useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from 'next/link';
-import Image from 'next/image';
 import { 
   Download, Car, Settings, Zap, Shield, 
   Wrench, Ruler, Users as UsersIcon, 
   Droplets, ChevronRight, Gift, HelpCircle, 
-  MessageCircle, Sparkles, Star
+  MessageCircle
 } from 'lucide-react';
 import { products, getProductBySlug } from '@/lib/products-data';
 
@@ -23,7 +23,7 @@ const leasingPartners = [
   { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
   { name: 'Oto Finance', src: '/images/leasing/muf.webp' },
   { name: 'Clipan Finance', src: '/images/leasing/clipan.webp' },
-  { name: 'Indomobil Finance', src: '/images/leasing/imfi.webp' },
+  { name: 'Clipan Finance', src: '/images/leasing/imfi.webp' },
 ];
 
 export default function ProductDetailPage() {
@@ -44,6 +44,7 @@ export default function ProductDetailPage() {
     { nama: 'Indah', no: '6282135245314' }
   ];
 
+
   const getRandomWANumber = () => {
     const randomIndex = Math.floor(Math.random() * waTeam.length);
     return waTeam[randomIndex].no;
@@ -55,98 +56,173 @@ export default function ProductDetailPage() {
     }
   }, [product, router]);
 
-  if (!product) return null;
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-xl text-muted-foreground mb-4">Memuat data kendaraan...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   const otherProducts = products.filter(p => p.id !== product.id).slice(0, 3);
 
-  const handleAction = (type: 'drive' | 'credit', variant?: string) => {
-    const msg = type === 'drive' 
-      ? `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*.`
-      : `Halo admin Suzuki!!\n\nSaya tertarik info kredit unit *${product.name}${variant ? ' - ' + variant : ''}*.`;
-    window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(msg)}`, '_blank');
+  const handleTestDrive = () => {
+      const message = `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*. Mohon info jadwal dan lokasinya ya..`;
+      window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const handleAjukanKredit = (variantName?: string, region?: string) => {
+    const regionText = region ? ` (${region})` : '';
+    const targetName = variantName ? `${product.name} - ${variantName}${regionText}` : product.name;
+    const message = `Halo admin Suzuki!!\n\nSaya tertarik untuk mengajukan kredit untuk unit *${targetName}*. Mohon info simulasi kredit dan penawaran terbaiknya ya..`;
+    window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const getSavings = (otr: string, nett: string) => {
+    const numOtr = parseInt(otr.replace(/[^0-9]/g, ''));
+    const numNett = parseInt(nett.replace(/[^0-9]/g, ''));
+    if (numOtr > numNett) {
+      const diff = numOtr - numNett;
+      return `Hemat Rp ${(diff / 1000000).toLocaleString('id-ID')} Jt`;
+    }
+    return null;
   };
 
   const VariantCard = ({ variant, priceData, region, idx }: any) => {
-    const otr = parseInt(priceData.priceOtr.replace(/[^0-9]/g, ''));
-    const nett = parseInt(priceData.priceNett.replace(/[^0-9]/g, ''));
-    const savings = otr > nett ? `Hemat Rp ${((otr - nett) / 1000000).toLocaleString('id-ID')} Jt` : null;
-
+    const savings = getSavings(priceData.priceOtr, priceData.priceNett);
+    const showOtr = priceData.priceOtr !== priceData.priceNett;
+    
     return (
-      <div 
-        className="bg-white rounded-2xl p-5 md:p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 group flex flex-col md:flex-row md:items-center justify-between gap-4 animate-fade-in"
-        style={{ animationDelay: `${idx * 100}ms` }}
+      <Card
+        className="border-0 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] dark:bg-gray-900/80 dark:shadow-none dark:border dark:border-gray-800 transition-all duration-300 transform hover:-translate-y-1 rounded-2xl bg-white mb-4"
+        style={{ animationDelay: `${idx * 50}ms` }}
       >
-        <div className="space-y-1">
-          <h4 className="text-xl font-black text-slate-900 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{variant.name}</h4>
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-slate-400 line-through">{priceData.priceOtr}</span>
-            {savings && <span className="bg-red-50 text-red-600 text-[10px] font-black px-2 py-0.5 rounded-full border border-red-100 uppercase">{savings}</span>}
+        <CardContent className="p-5 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div className="flex-1">
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
+                {variant.name}
+              </h4>
+              
+              <div className="flex items-center gap-2 mb-1 min-h-[24px]">
+                {showOtr && (
+                  <p className="text-sm font-medium text-slate-400 dark:text-slate-500 line-through decoration-slate-300 dark:decoration-slate-600">
+                    {priceData.priceOtr}
+                  </p>
+                )}
+                {savings && (
+                  <span className="text-[11px] font-bold text-red-600 bg-red-50 dark:bg-red-900/20 px-2.5 py-0.5 rounded-full border border-red-100 dark:border-red-800/30">
+                    {savings}
+                  </span>
+                )}
+              </div>
+              
+              <p className="text-2xl font-black text-slate-800 dark:text-slate-200 tracking-tighter">
+                {priceData.priceNett}
+              </p>
+            </div>
+            
+            <Button
+              onClick={() => handleAjukanKredit(variant.name, region)}
+              className="w-full sm:w-auto bg-[#25D366] hover:bg-[#1DA851] text-white font-bold whitespace-nowrap shadow-sm hover:shadow-md transition-all rounded-xl h-11 px-6"
+            >
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Chat Sales
+            </Button>
           </div>
-          <div className="text-2xl font-black text-slate-900 tracking-tighter">
-            <span className="text-sm font-bold mr-1">Rp</span>{priceData.priceNett}
-          </div>
-        </div>
-        <Button onClick={() => handleAction('credit', variant.name)} className="bg-blue-600 hover:bg-blue-700 text-white font-black rounded-xl h-12 px-8 shadow-lg shadow-blue-600/20">
-          <MessageCircle className="mr-2 w-5 h-5" /> HUBUNGI SALES
-        </Button>
-      </div>
+        </CardContent>
+      </Card>
     );
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F7F9] font-sans selection:bg-amber-400 selection:text-slate-900">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-black pb-20 md:pb-0 relative">
       <Header />
       <main className="flex-1">
         
-        {/* HERO DETAIL SECTION */}
-        <section className="relative pt-32 pb-20 bg-slate-950 overflow-hidden">
-          <div className="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
-            <Image src="/hero/suzuki-hero.webp" alt="Background" fill className="object-cover blur-sm" />
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* BAGIAN ATAS (HERO SECTION) */}
+        <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               
-              {/* Image Gallery */}
-              <div className="space-y-4 animate-fade-in">
-                <div className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden border-4 border-white/10 shadow-2xl bg-slate-900">
-                  <Image src={product.gallery?.[selectedImage] || product.image} alt={product.name} fill className="object-contain p-4 md:p-8" />
-                  <div className="absolute top-6 left-6 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                    <span className="text-white text-xs font-black uppercase tracking-widest">{product.category}</span>
-                  </div>
+              <div className="space-y-4 animate-fade-in mt-12 md:mt-10">
+                <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
+                  <img
+                    src={product.gallery?.[selectedImage] || product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+                <div className="grid grid-cols-3 gap-3">
                   {product.gallery?.map((img, idx) => (
-                    <button key={idx} onClick={() => setSelectedImage(idx)} className={`relative w-24 md:w-32 aspect-video rounded-2xl overflow-hidden border-2 transition-all shrink-0 ${selectedImage === idx ? 'border-amber-400 scale-105 shadow-lg' : 'border-white/10 opacity-50 hover:opacity-100'}`}>
-                      <Image src={img} alt="Thumb" fill className="object-cover" />
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(idx)}
+                      className={`relative aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                        selectedImage === idx ? 'border-blue-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.name} ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Product Intro */}
-              <div className="text-white space-y-8 animate-fade-in stagger-1">
-                <div className="flex items-center gap-2 text-amber-400 font-black text-sm uppercase tracking-widest">
-                  <Sparkles className="w-5 h-5" /> <span>Unit Ready Stock</span>
-                </div>
-                <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none">
-                  SUZUKI <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">{product.name}</span>
+              <div className="flex flex-col justify-center animate-fade-in stagger-1">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold tracking-wider uppercase w-fit mb-5 backdrop-blur-sm border border-white/10">
+                  {product.category}
+                </span>
+                
+                <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
+                  Suzuki {product.name} Jogja
                 </h1>
-                <p className="text-lg md:text-xl text-slate-300 font-medium leading-relaxed max-w-xl border-l-4 border-blue-600 pl-6">
+                
+                <p className="text-lg text-gray-300 mb-6 leading-relaxed font-light">
                   {product.description}
                 </p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-slate-400 font-bold uppercase text-sm">Harga Mulai</span>
-                  <div className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-                    <span className="text-xl font-bold mr-1">Rp</span>{product.priceText}<span className="text-xl font-bold ml-1 text-slate-400">Jutaan</span>
-                  </div>
+
+                <div className="bg-gray-800/40 border border-gray-700/50 p-5 rounded-2xl mb-8 backdrop-blur-md">
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Suzuki {product.name} Jogja merupakan kendaraan pilihan yang banyak diminati masyarakat Yogyakarta dan sekitarnya. Nikmati promo eksklusif diskon maksimal, DP ringan, serta cicilan kredit yang terjangkau.
+                  </p>
                 </div>
-                <div className="flex flex-wrap gap-4">
-                  <Button onClick={() => handleAction('drive')} className="bg-white text-slate-950 hover:bg-amber-400 transition-colors h-14 px-8 rounded-2xl font-black text-lg shadow-xl">
-                    <Car className="mr-2 w-6 h-6" /> TEST DRIVE
+
+                <div className="flex items-baseline space-x-3 mb-8">
+                  <span className="text-gray-400 text-lg font-medium">Mulai</span>
+                  <span className="text-4xl font-black text-white tracking-tighter">
+                    Rp {product.priceText} <span className="text-2xl font-bold text-gray-400">Jt</span>
+                  </span>
+                </div>
+
+                {/* PERBAIKAN: Menghapus hidden agar tampil di HP juga */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-2">
+                  <Button
+                    size="lg"
+                    onClick={handleTestDrive}
+                    className="bg-white text-slate-900 hover:bg-gray-100 text-lg px-8 rounded-xl shadow-lg font-bold"
+                  >
+                    <Car className="mr-2 h-5 w-5" />
+                    Pesan Test Drive
                   </Button>
                   {product.brochureUrl && (
-                    <Button onClick={() => window.open(product.brochureUrl, '_blank')} variant="outline" className="border-white/20 text-white hover:bg-white/10 h-14 px-8 rounded-2xl font-black text-lg backdrop-blur-sm">
-                      <Download className="mr-2 w-6 h-6" /> BROSUR
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      onClick={() => window.open(product.brochureUrl, '_blank')}
+                      className="border-gray-600 text-white hover:bg-gray-800 hover:text-white text-lg px-8 rounded-xl bg-transparent"
+                    >
+                      <Download className="mr-2 h-5 w-5" />
+                      Unduh Brosur
                     </Button>
                   )}
                 </div>
@@ -156,94 +232,245 @@ export default function ProductDetailPage() {
           </div>
         </section>
 
-        {/* PRICING & SPEC SECTION */}
-        <section className="py-24 relative z-20 -mt-10">
+        {/* BAGIAN BAWAH - DAFTAR HARGA & SPESIFIKASI */}
+        <section className="py-16 md:py-24 bg-slate-50 dark:bg-gray-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-12">
+            <div className="max-w-7xl mx-auto">
               
-              {/* Left: Prices */}
-              <div className="lg:col-span-8 space-y-8 animate-fade-in stagger-2">
-                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100">
-                  <Tabs defaultValue="plat-ab">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
-                      <h2 className="text-3xl font-black text-slate-900 tracking-tight">DAFTAR HARGA OTR</h2>
-                      <TabsList className="bg-slate-100 p-1.5 rounded-2xl h-auto">
-                        <TabsTrigger value="plat-ab" className="rounded-xl px-6 py-3 font-black uppercase text-xs data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-blue-600">Plat AB (Jogja)</TabsTrigger>
-                        <TabsTrigger value="plat-aa-r" className="rounded-xl px-6 py-3 font-black uppercase text-xs data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-blue-600">Plat AA & R</TabsTrigger>
+              <div className="text-center mb-14 animate-fade-in">
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
+                  Daftar Harga & Spesifikasi
+                </h2>
+                <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                  Pilih varian {product.name} yang paling sesuai dengan gaya Anda. Nikmati penawaran khusus wilayah DIY & Jawa Tengah.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                
+                <div className="lg:col-span-7 order-1 animate-fade-in stagger-1">
+                  <div className="w-full">
+                    <Tabs defaultValue="plat-ab" className="w-full">
+                      
+                      <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-200/60 dark:bg-slate-800/50 p-1.5 rounded-2xl">
+                        <TabsTrigger 
+                          value="plat-ab" 
+                          className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white data-[state=active]:shadow-sm font-bold py-3 text-slate-500 transition-all duration-300"
+                        >
+                          Plat AB (Jogja)
+                        </TabsTrigger>
+                        <TabsTrigger 
+                          value="plat-aa-r" 
+                          className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white data-[state=active]:shadow-sm font-bold py-3 text-slate-500 transition-all duration-300"
+                        >
+                          Plat AA & R (Kedu/Bms)
+                        </TabsTrigger>
                       </TabsList>
-                    </div>
 
-                    <TabsContent value="plat-ab" className="space-y-4">
-                      {product.variants.map((v, i) => <VariantCard key={i} idx={i} variant={v} priceData={v.priceAB} region="AB" />)}
-                    </TabsContent>
-                    <TabsContent value="plat-aa-r" className="space-y-4">
-                      {product.variants.map((v, i) => <VariantCard key={i} idx={i} variant={v} priceData={v.priceAAR} region="AA/R" />)}
-                      <p className="text-xs text-slate-400 font-bold mt-4 text-center">*Wilayah Kedu, Banyumas, Magelang & sekitarnya</p>
-                    </TabsContent>
-                  </Tabs>
-                </div>
-              </div>
+                      <TabsContent value="plat-ab" className="mt-0 outline-none">
+                        <div className="space-y-2">
+                          {product.variants[0]?.bonus && (
+                            <div className="mb-6 p-5 bg-gradient-to-br from-amber-50 to-yellow-50/50 dark:from-amber-950/30 dark:to-yellow-900/10 border border-amber-200/60 dark:border-amber-800/30 rounded-2xl flex items-start gap-4 shadow-sm">
+                              <div className="bg-amber-100 dark:bg-amber-900/50 p-2 rounded-lg">
+                                <Gift className="h-6 w-6 text-amber-600 dark:text-amber-500 flex-shrink-0" />
+                              </div>
+                              <div>
+                                <h4 className="font-extrabold text-amber-900 dark:text-amber-400 text-sm mb-1 uppercase tracking-wider">Super Promo Bulan Ini</h4>
+                                <p className="text-sm font-medium text-amber-800/80 dark:text-amber-200/80">{product.variants[0].bonus}</p>
+                              </div>
+                            </div>
+                          )}
+                          {product.variants.map((variant, idx) => (
+                            <VariantCard key={`ab-${idx}`} idx={idx} variant={variant} priceData={variant.priceAB} region="Plat AB" />
+                          ))}
+                        </div>
+                      </TabsContent>
 
-              {/* Right: Spec Info */}
-              <div className="lg:col-span-4 animate-fade-in stagger-3">
-                <div className="bg-slate-900 rounded-[3rem] p-8 md:p-10 text-white shadow-2xl sticky top-28">
-                  <div className="flex items-center gap-3 mb-8">
-                    <Settings className="w-8 h-8 text-blue-500" />
-                    <h3 className="text-2xl font-black tracking-tight">SPESIFIKASI</h3>
+                      <TabsContent value="plat-aa-r" className="mt-0 outline-none">
+                        <div className="space-y-2">
+                          {product.variants[0]?.bonus && (
+                            <div className="mb-6 p-5 bg-gradient-to-br from-amber-50 to-yellow-50/50 dark:from-amber-950/30 dark:to-yellow-900/10 border border-amber-200/60 dark:border-amber-800/30 rounded-2xl flex items-start gap-4 shadow-sm">
+                              <div className="bg-amber-100 dark:bg-amber-900/50 p-2 rounded-lg">
+                                <Gift className="h-6 w-6 text-amber-600 dark:text-amber-500 flex-shrink-0" />
+                              </div>
+                              <div>
+                                <h4 className="font-extrabold text-amber-900 dark:text-amber-400 text-sm mb-1 uppercase tracking-wider">Super Promo Wilayah Jateng</h4>
+                                <p className="text-sm font-medium text-amber-800/80 dark:text-amber-200/80">{product.variants[0].bonus}</p>
+                              </div>
+                            </div>
+                          )}
+                          {product.variants.map((variant, idx) => (
+                            <VariantCard key={`aar-${idx}`} idx={idx} variant={variant} priceData={variant.priceAAR} region="Plat AA/R" />
+                          ))}
+                          <p className="text-xs text-slate-400 mt-6 text-center px-4 font-medium">
+                            *Harga OTR berlaku untuk wilayah Kedu, Banyumas, Cilacap, Purworejo, Kebumen, Temanggung, Wonosobo, dan Magelang.
+                          </p>
+                        </div>
+                      </TabsContent>
+                    </Tabs>
                   </div>
-                  <div className="space-y-6">
-                    {[
-                      { label: 'Mesin', val: product.specifications.engine, icon: <Wrench className="w-4 h-4" /> },
-                      { label: 'Transmisi', val: product.specifications.transmission, icon: <Settings className="w-4 h-4" /> },
-                      { label: 'Tenaga', val: product.specifications.power, icon: <Zap className="w-4 h-4" /> },
-                      { label: 'Kapasitas', val: product.specifications.seating, icon: <UsersIcon className="w-4 h-4" /> },
-                      { label: 'Dimensi', val: product.specifications.dimensions, icon: <Ruler className="w-4 h-4" /> }
-                    ].map((s, i) => (
-                      <div key={i} className="border-b border-white/5 pb-4 flex justify-between items-start gap-4">
-                        <span className="text-slate-400 text-sm font-bold uppercase flex items-center gap-2">{s.icon} {s.label}</span>
-                        <span className="text-right font-black text-sm text-blue-400">{s.val}</span>
+                </div>
+
+                <div className="lg:col-span-5 order-2 animate-fade-in stagger-2">
+                  <div className="bg-white dark:bg-gray-900/80 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-gray-800 overflow-hidden sticky top-28">
+                    <div className="p-6 md:p-8 border-b border-slate-100 dark:border-gray-800/60 flex items-center gap-3">
+                      <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-xl">
+                        <Settings className="w-5 h-5 text-slate-700 dark:text-slate-300" />
                       </div>
-                    ))}
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+                        Spesifikasi Teknis
+                      </h3>
+                    </div>
+                    <div className="p-6 md:p-8">
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <Wrench className="w-4 h-4 text-slate-400" /> Mesin
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.engine}</span>
+                        </div>
+                        <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <Settings className="w-4 h-4 text-slate-400" /> Transmisi
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.transmission}</span>
+                        </div>
+                        <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <Droplets className="w-4 h-4 text-slate-400" /> Bahan Bakar
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.fuel}</span>
+                        </div>
+                        <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <Zap className="w-4 h-4 text-slate-400" /> Tenaga
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.power}</span>
+                        </div>
+                        <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <Shield className="w-4 h-4 text-slate-400" /> Torsi
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.torque}</span>
+                        </div>
+                        <div className="flex items-center justify-between py-3 border-b border-slate-50 dark:border-gray-800/40">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <UsersIcon className="w-4 h-4 text-slate-400" /> Kapasitas
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.seating}</span>
+                        </div>
+                        <div className="flex items-center justify-between py-3">
+                          <span className="text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-3">
+                            <Ruler className="w-4 h-4 text-slate-400" /> Dimensi
+                          </span>
+                          <span className="hidden"> : </span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-100 text-right ml-4">{product.specifications.dimensions}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ & TRANSITION SECTION */}
-        <section className="pt-24 pb-40 lg:pb-52 bg-white rounded-t-[3rem] lg:rounded-t-[5rem] relative z-0 border-t border-slate-100">
+        {/* FAQ Section */}
+        <section className="py-16 bg-white dark:bg-black border-t border-slate-100 dark:border-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4">Pertanyaan Populer</h2>
-              <div className="w-20 h-2 bg-blue-600 rounded-full mx-auto"></div>
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-3 tracking-tight">
+                Pertanyaan Seputar Suzuki {product.name}
+              </h2>
             </div>
-            <div className="space-y-6">
-              {[
-                { q: `Berapa harga Suzuki ${product.name} di Jogja?`, a: `Harga mulai Rp ${product.priceText} Jutaan OTR Yogyakarta. Dapatkan promo diskon dan cashback spesial hanya melalui dealer resmi kami.` },
-                { q: `Apakah bisa kredit DP minim?`, a: `Sangat bisa. Kami bekerjasama dengan banyak leasing untuk menyediakan paket kredit DP mulai 10% atau angsuran ringan yang bisa disesuaikan.` }
-              ].map((faq, i) => (
-                <div key={i} className="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 hover:border-blue-200 transition-colors">
-                  <h4 className="text-xl font-black text-slate-900 mb-4 flex items-center gap-3"><HelpCircle className="text-blue-600" /> {faq.q}</h4>
-                  <p className="text-slate-600 font-medium leading-relaxed pl-9">{faq.a}</p>
-                </div>
+            <div className="space-y-4">
+              <Card className="border-0 shadow-sm bg-slate-50 dark:bg-gray-900/50 rounded-2xl">
+                <CardContent className="p-6 flex items-start gap-5">
+                  <div className="bg-slate-200 dark:bg-slate-800 p-2 rounded-full flex-shrink-0">
+                    <HelpCircle className="h-5 w-5 text-slate-600 dark:text-slate-300" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-2 text-lg">Berapa harga Suzuki {product.name} di Jogja?</h4>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Harga Suzuki {product.name} Jogja saat ini dibanderol mulai dari kisaran Rp {product.priceText} Jutaan. Harga dapat berubah sewaktu-waktu sesuai dengan program dan promo yang sedang berjalan.</p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-0 shadow-sm bg-slate-50 dark:bg-gray-900/50 rounded-2xl">
+                <CardContent className="p-6 flex items-start gap-5">
+                  <div className="bg-slate-200 dark:bg-slate-800 p-2 rounded-full flex-shrink-0">
+                    <HelpCircle className="h-5 w-5 text-slate-600 dark:text-slate-300" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-2 text-lg">Apakah ada promo kredit Suzuki {product.name}?</h4>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Tentu saja. Dealer Suzuki Jogja menawarkan berbagai kemudahan pembiayaan, mulai dari DP ringan, cicilan terjangkau, hingga bonus aksesoris eksklusif untuk pembelian secara kredit maupun tunai.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Internal Links (Produk Lain) */}
+        <section className="py-16 bg-slate-50 dark:bg-gray-950 border-t border-slate-200 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Lihat Mobil Lainnya</h3>
+              <Link href="/produk" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-bold flex items-center">
+                Lihat Semua <ChevronRight className="w-4 h-4 ml-1"/>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {otherProducts.map((other) => (
+                <Link href={`/produk/${other.slug}`} key={other.id}>
+                  <Card className="border-0 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-white dark:bg-gray-900 group rounded-2xl overflow-hidden">
+                    <CardContent className="p-5 flex items-center gap-5">
+                      <div className="w-28 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-slate-100 dark:bg-slate-800">
+                        <img src={other.image} alt={other.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">{other.name}</h4>
+                        <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1">Mulai Rp {other.priceText} Jt</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Leasing Partner Section */}
+        <section className="py-16 bg-white dark:bg-gray-900 border-t border-slate-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-3 tracking-tight">
+                Mitra Pembiayaan Terpercaya
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                Kami bekerjasama dengan lembaga pembiayaan terkemuka untuk memberikan kemudahan bagi Anda.
+              </p>
+            </div>
             
-            <div className="mt-20 flex flex-col items-center">
-               <h3 className="text-2xl font-black text-slate-900 mb-8">EKSPLORASI MODEL LAIN</h3>
-               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-                  {otherProducts.map(other => (
-                    <Link href={`/produk/${other.slug}`} key={other.id} className="group bg-slate-50 p-6 rounded-[2rem] border border-slate-100 hover:bg-blue-600 hover:border-blue-600 transition-all duration-500">
-                      <div className="relative aspect-video mb-4 rounded-xl overflow-hidden bg-white">
-                        <Image src={other.image} alt={other.name} fill className="object-contain p-2 group-hover:scale-110 transition-transform" />
-                      </div>
-                      <h4 className="font-black text-slate-900 group-hover:text-white transition-colors">{other.name}</h4>
-                      <p className="text-sm font-bold text-slate-400 group-hover:text-blue-100">Rp {other.priceText} Jt-an</p>
-                    </Link>
-                  ))}
-               </div>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-14 animate-fade-in stagger-1 opacity-70">
+              {leasingPartners.map((partner, index) => (
+                <div 
+                  key={index} 
+                  className="group relative w-28 h-16 md:w-36 md:h-20 flex items-center justify-center p-2 transition-all duration-300 hover:scale-110 hover:opacity-100 cursor-pointer"
+                >
+                  <img
+                    src={partner.src}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -251,16 +478,63 @@ export default function ProductDetailPage() {
       </main>
       <Footer />
 
-      {/* MOBILE STICKY BAR */}
-      <div className="fixed bottom-4 left-4 right-4 bg-slate-950/90 backdrop-blur-xl border border-white/10 p-3 rounded-[2rem] shadow-2xl z-[60] md:hidden flex gap-2 items-center animate-fade-in">
-        <Button onClick={() => handleAction('drive')} variant="outline" className="flex-1 border-white/20 text-white h-14 rounded-2xl font-black text-xs uppercase tracking-widest bg-transparent">
-          <Car className="w-5 h-5 mr-2 text-blue-500" /> Test Drive
+      {/* PERBAIKAN STICKY BOTTOM BAR: Menambahkan ikon brosur khusus untuk tampilan Mobile */}
+      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-slate-200 dark:border-gray-800 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] z-50 md:hidden flex gap-2 animate-fade-in">
+        {product.brochureUrl && (
+          <Button 
+            onClick={() => window.open(product.brochureUrl, '_blank')} 
+            variant="outline" 
+            className="px-3 border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-300 font-bold h-12 rounded-xl"
+            title="Unduh Brosur"
+          >
+            <Download className="w-5 h-5" />
+          </Button>
+        )}
+        <Button 
+          onClick={handleTestDrive} 
+          variant="outline" 
+          className="flex-1 border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-300 font-bold h-12 rounded-xl"
+        >
+          <Car className="w-5 h-5 sm:mr-2 mr-1" />
+          <span className="text-xs sm:text-sm">Test Drive</span>
         </Button>
-        <Button onClick={() => handleAction('credit')} className="flex-[1.5] bg-blue-600 hover:bg-blue-700 text-white h-14 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg">
-          <MessageCircle className="w-5 h-5 mr-2" /> Tanya Promo
+        <Button 
+          onClick={() => handleAjukanKredit()} 
+          className="flex-1 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold h-12 rounded-xl shadow-md"
+        >
+          <MessageCircle className="w-5 h-5 sm:mr-2 mr-1" />
+          <span className="text-xs sm:text-sm">Chat WA</span>
         </Button>
       </div>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": `Berapa harga Suzuki ${product.name} di Jogja?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Harga Suzuki ${product.name} Jogja saat ini dibanderol mulai dari kisaran Rp ${product.priceText} Jutaan. Harga dapat berubah sewaktu-waktu sesuai dengan program dan promo yang sedang berjalan.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Apakah ada promo kredit Suzuki ${product.name}?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Tentu saja. Dealer Suzuki Jogja menawarkan berbagai kemudahan pembiayaan, mulai dari DP ringan, cicilan terjangkau, hingga bonus aksesoris eksklusif untuk pembelian secara kredit maupun tunai.`
+                }
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }
+
