@@ -26,7 +26,7 @@ export default function HomeClient() {
     const name = productName.toLowerCase();
     if (name.includes('vitara')) return { label: 'Diskon', value: '43 Juta' };
     if (name.includes('carry')) return { label: 'Diskon', value: '34 Juta' };
-    if (name.includes('xl7')) return { label: 'Diskon', value: '21 Juta' };
+    if (name.includes('xl7')) return { label: 'Diskon', value: '33 Juta' };
     if (name.includes('ertiga')) return { label: 'Diskon', value: '26 Juta' };
     if (name.includes('presso')) return { label: 'Diskon', value: '16 Juta' };
     if (name.includes('fronx')) return { label: 'Diskon', value: '16 Juta' };
