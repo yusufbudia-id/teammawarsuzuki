@@ -2,10 +2,12 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Heart, ArrowRight } from 'lucide-react';
+import { Heart, ArrowRight, Sparkles, Calculator } from 'lucide-react';
 import { products } from '@/lib/products-data';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 const leasingPartners = [
   { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
@@ -19,6 +21,7 @@ const leasingPartners = [
 
 export default function ProdukPage() {
   const [wishlist, setWishlist] = useState<number[]>([]);
+  const [activeCategory, setActiveCategory] = useState('Semua');
 
   const toggleWishlist = (id: number) => {
     if (wishlist.includes(id)) {
@@ -28,7 +31,6 @@ export default function ProdukPage() {
     }
   };
 
-  const [activeCategory, setActiveCategory] = useState('Semua');
   const categories = ['Semua', ...Array.from(new Set(products.map(p => p.category)))];
 
   const filteredProducts = activeCategory === 'Semua'
@@ -38,181 +40,191 @@ export default function ProdukPage() {
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
     
-    // Perhitungan diskon berdasarkan selisih OTR dan Nett di data CSV terbaru
-    if (name.includes('fronx')) return { label: 'DISKON', value: '14 JT' };
-    if (name.includes('xl7')) return { label: 'DISKON', value: '21 JT' };
-    if (name.includes('carry')) return { label: 'DISKON', value: '34 JT' };
-    if (name.includes('vitara')) return { label: 'DISKON', value: '43 JT' };
-    if (name.includes('presso')) return { label: 'DISKON', value: '16 JT' };
-    if (name.includes('ertiga')) return { label: 'DISKON', value: '26 JT' };
-    if (name.includes('apv')) return { label: 'DISKON', value: '3 JT' };
-    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'BONUS', value: '20 JT' }; // Mengambil nilai Voucher MAP 20 Juta
+    // Perhitungan diskon berdasarkan selisih OTR dan Nett
+    if (name.includes('fronx')) return { label: 'Diskon', value: '14 Jt' };
+    if (name.includes('xl7')) return { label: 'Diskon', value: '21 Jt' };
+    if (name.includes('carry')) return { label: 'Diskon', value: '34 Jt' };
+    if (name.includes('vitara')) return { label: 'Diskon', value: '43 Jt' };
+    if (name.includes('presso')) return { label: 'Diskon', value: '16 Jt' };
+    if (name.includes('ertiga')) return { label: 'Diskon', value: '26 Jt' };
+    if (name.includes('apv')) return { label: 'Diskon', value: '3 Jt' };
+    if (name.includes('jimny') || name.includes('jimnny')) return { label: 'Bonus', value: 'Aksesoris' }; 
     
     return null;
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-[#F4F7F9] font-sans selection:bg-amber-400 selection:text-slate-900">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-28 md:pb-36 bg-gradient-to-br from-slate-900 via-slate-800 to-black overflow-hidden">
-          {/* Subtle Background Pattern/Glow */}
-          <div className="absolute inset-0 z-0 opacity-20">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent" />
-            <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
-          </div>
+        
+        {/* HERO SECTION - Playful Corporate Style */}
+        <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 bg-white rounded-b-[3rem] lg:rounded-b-[5rem] shadow-sm z-20 overflow-hidden">
+          {/* Latar Belakang Shape Ceria */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50 rounded-full blur-3xl opacity-50 translate-y-1/3 -translate-x-1/3"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block animate-fade-in">
-                <span className="px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold border border-blue-500/30 tracking-wide">
-                  Katalog Kendaraan
-                </span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-bold text-sm border border-blue-100 animate-fade-in mb-6">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Katalog Lengkap Suzuki 2026</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in stagger-1 mt-8 tracking-wide">
-                Pilihan Mobil <span className="text-blue-400">Suzuki</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight animate-fade-in stagger-1">
+                Pilih Armada <br className="hidden sm:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-400">Terbaik Anda.</span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto animate-fade-in stagger-2 mt-6 font-light">
-                Temukan mobil Suzuki impian Anda dengan harga terbaik dan penawaran eksklusif khusus bulan ini.
+              <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in stagger-2 mt-6">
+                Temukan spesifikasi lengkap, fitur canggih, dan penawaran diskon eksklusif untuk setiap model mobil Suzuki impian Anda.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Floating Filter Chips Section */}
-        <section className="relative z-20 -mt-10 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-4 md:p-6 flex flex-wrap justify-center gap-3">
+        {/* CATALOG SECTION */}
+        <section className="py-16 relative z-10 -mt-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Filter Chips - Floating effect */}
+            <div className="flex flex-wrap justify-center gap-3 bg-white/80 backdrop-blur-md p-3 rounded-[2rem] shadow-lg shadow-slate-200/50 border border-slate-100 max-w-fit mx-auto mb-16 animate-fade-in stagger-3 relative z-30">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
+                  className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
                     activeCategory === cat
-                      ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 scale-105'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-800'
+                      ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20 scale-105'
+                      : 'bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
                   {cat}
                 </button>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* Products Grid */}
-        <section className="py-16 md:py-20 bg-slate-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+              
+              {/* Product Grid - Premium Edge-to-Edge Design */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
                 {filteredProducts.map((product, index) => {
                   const promo = getPromoInfo(product.name);
+                  const productUrl = `/produk/${(product as any).slug || product.id}`;
 
                   return (
-                    <Link href={`/produk/${product.slug}`} key={product.slug} className="block h-full group">
-                      <div
-                        className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full animate-fade-in"
-                        style={{ animationDelay: `${index * 50}ms` }}
-                      >
-                        {/* Product Image Section */}
-                        <div className="relative aspect-[4/3] overflow-hidden shrink-0 bg-slate-100">
-                          <img
+                    <div
+                      key={product.id}
+                      className="group relative bg-white rounded-[2rem] overflow-hidden border border-slate-200 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 flex flex-col animate-fade-in"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      {/* Image Section - Gambar Full Edge-to-Edge */}
+                      <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
+                        <Link href={productUrl} className="block w-full h-full">
+                          <Image
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover block group-hover:scale-110 transition-transform duration-700 ease-out p-2"
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          {/* Overlay gelap halus yang muncul saat di-hover */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Link>
 
-                          {/* Category Badge & Wishlist */}
-                          <div className="absolute top-4 left-4 right-4 flex items-start justify-between z-10">
-                            <span className="px-3 py-1 text-xs font-bold text-slate-700 bg-white/90 backdrop-blur-md rounded-md border border-slate-200/50 uppercase tracking-wider shadow-sm">
-                              {product.category}
-                            </span>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                toggleWishlist(product.id);
-                              }}
-                              className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-sm flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 relative z-20" 
-                            >
-                              <Heart
-                                className={`h-4 w-4 transition-all duration-300 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-slate-400 hover:text-red-500'}`}
-                                strokeWidth={2.5}
-                              />
-                            </button>
-                          </div>
-                        </div>
+                        {/* Wishlist Button - Mengambang di atas gambar */}
+                        <button
+                          onClick={(e) => { e.preventDefault(); toggleWishlist(product.id); }}
+                          className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-sm z-10"
+                        >
+                          <Heart className={`w-5 h-5 ${wishlist.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-slate-400'}`} />
+                        </button>
 
-                        {/* Card Content */}
-                        <div className="p-5 flex flex-col flex-grow">
-                          <div className="flex justify-between items-start gap-3">
-                            <div className="flex-1">
-                              <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300 tracking-tight line-clamp-1">
-                                {product.name}
-                              </h3>
-
-                              <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                Harga Mulai
-                              </div>
-
-                              <div className="flex items-baseline text-blue-600">
-                                <span className="text-sm font-bold mr-1 text-slate-900">Rp</span>
-                                <span className="text-2xl font-bold">{product.priceText}</span>
-                                <span className="text-sm font-bold ml-1 text-slate-900">Jutaan</span>
-                              </div>
-                            </div>
-
-                            {/* Dynamic Circular Discount Badge */}
-                            {promo && (
-                              <div className="flex-shrink-0 mt-2">
-                                <div className="w-14 h-14 bg-red-600 rounded-full shadow-lg shadow-red-500/30 flex flex-col items-center justify-center transform -rotate-12 group-hover:scale-110 group-hover:-rotate-0 transition-all duration-300 border-2 border-white">
-                                  <span className="text-[9px] font-bold text-white/90 leading-none mb-0.5 uppercase">
-                                    {promo.label}
-                                  </span>
-                                  <span className="text-sm font-extrabold text-white leading-none">
-                                    {promo.value}
-                                  </span>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-
-                          {/* CTA Divider Section */}
-                          <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-bold text-blue-600 opacity-80 group-hover:opacity-100 transition-opacity">
-                            <span>Lihat Spesifikasi</span>
-                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
-                          </div>
+                        {/* Category Badge - Sudut kiri atas */}
+                        <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl z-10">
+                          <span className="text-[10px] font-black text-white uppercase tracking-wider">{product.category}</span>
                         </div>
                       </div>
-                    </Link>
+
+                      {/* Content Section */}
+                      <div className="p-6 flex-1 flex flex-col relative">
+                        
+                        {/* Floating Promo Badge - Aksen Playful & Konversi */}
+                        {promo && (
+                          <div className="absolute -top-6 right-6 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-4 py-2 rounded-2xl shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300 border-2 border-white z-20">
+                            <span className="text-[9px] font-black uppercase block leading-none mb-1 opacity-80">{promo.label}</span>
+                            <span className="text-sm font-black leading-none">{promo.value}</span>
+                          </div>
+                        )}
+
+                        <Link href={productUrl} className="block mb-2 mt-2">
+                          <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+                            {product.name}
+                          </h3>
+                        </Link>
+                        
+                        <div className="mb-6">
+                          <p className="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">Harga OTR</p>
+                          <div className="flex items-start text-slate-900">
+                            <span className="text-sm font-bold mt-1.5 mr-1 text-slate-500">Rp</span>
+                            <span className="text-3xl font-black tracking-tight">{product.priceText}</span>
+                            <span className="text-sm font-bold ml-1 mt-1.5 text-slate-500">Jt</span>
+                          </div>
+                        </div>
+
+                        {/* Tombol Aksi - Layout Asimetris Modern */}
+                        <div className="mt-auto flex items-center gap-3">
+                          <Link href="/kontak" className="flex-1">
+                            <Button className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 transition-all shadow-md shadow-blue-600/20 group-hover:shadow-blue-600/40">
+                              Hitung DP
+                            </Button>
+                          </Link>
+                          <Link href={productUrl}>
+                            <Button variant="outline" size="icon" className="w-12 h-12 rounded-xl border-slate-200 text-slate-600 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all group/btn">
+                              {/* Ikon panah miring yang akan lurus saat di-hover */}
+                              <ArrowRight className="w-5 h-5 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-300" />
+                            </Button>
+                          </Link>
+                        </div>
+
+                      </div>
+                    </div>
                   );
                 })}
               </div>
 
+              {/* Empty State */}
               {filteredProducts.length === 0 && (
-                <div className="text-center py-20 text-slate-500 font-medium bg-white rounded-2xl border border-slate-100 shadow-sm mt-8">
-                  Kendaraan untuk kategori {activeCategory} belum tersedia.
+                <div className="text-center py-20 bg-white rounded-[3rem] border border-slate-100 shadow-sm mt-8 animate-fade-in">
+                  <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calculator className="w-10 h-10 text-slate-300" />
+                  </div>
+                  <h3 className="text-xl font-black text-slate-900 mb-2">Belum Tersedia</h3>
+                  <p className="text-slate-500 font-medium">
+                    Kendaraan untuk kategori <span className="text-blue-600 font-bold">{activeCategory}</span> belum tersedia saat ini.
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    className="mt-6 rounded-full border-slate-200 font-bold"
+                    onClick={() => setActiveCategory('Semua')}
+                  >
+                    Lihat Semua Kendaraan
+                  </Button>
                 </div>
               )}
             </div>
           </div>
         </section>
 
-        {/* Leasing Partner Section */}
-        <section className="py-16 md:py-24 bg-white border-t border-slate-200">
+        {/* LEASING PARTNER SECTION */}
+        <section className="py-24 bg-white rounded-t-[3rem] lg:rounded-t-[5rem] border-t border-slate-100 mt-12 relative z-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10 animate-fade-in">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-                Leasing Partner Terpercaya
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                Partner Pembiayaan Terpercaya
               </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto font-medium">
-                Kami bekerjasama dengan berbagai lembaga pembiayaan terkemuka untuk memberikan kemudahan cicilan bagi pembelian mobil baru Anda.
+              <p className="text-slate-500 max-w-2xl mx-auto font-medium text-lg">
+                Proses kredit lebih mudah dan aman berkat dukungan lembaga pembiayaan resmi dan terkemuka di Indonesia.
               </p>
             </div>
             
@@ -220,7 +232,7 @@ export default function ProdukPage() {
               {leasingPartners.map((partner, index) => (
                 <div 
                   key={index} 
-                  className="group relative w-28 h-16 md:w-36 md:h-20 flex items-center justify-center p-2 transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
+                  className="group relative w-28 h-16 md:w-36 md:h-20 flex items-center justify-center p-3 transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-slate-200/50"
                 >
                   <img
                     src={partner.src}
@@ -229,7 +241,7 @@ export default function ProdukPage() {
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       if (e.currentTarget.parentElement) {
-                        e.currentTarget.parentElement.innerHTML = `<span class="text-xs font-bold text-slate-400 border border-dashed border-slate-300 p-2 rounded text-center w-full">${partner.name}</span>`;
+                        e.currentTarget.parentElement.innerHTML = `<span class="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-full">${partner.name}</span>`;
                       }
                     }}
                   />
