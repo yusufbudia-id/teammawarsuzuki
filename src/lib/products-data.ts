@@ -43,7 +43,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-fronx-jogja',
     name: 'Fronx',
     category: 'SUV',
-    priceText: '250',
+    priceText: '252',
     description: 'Suzuki Fronx hadir sebagai SUV crossover yang memadukan desain tangguh, gaya modern, dan performa lincah untuk jalanan perkotaan. Dilengkapi dengan teknologi Mild Hybrid yang efisien dan fitur keselamatan terkini, Fronx adalah pilihan tepat bagi Anda yang berjiwa muda. Dapatkan kemudahan memiliki mobil baru dengan simulasi cicilan Suzuki Fronx yang terjangkau, DP ringan, serta syarat kredit mobil baru yang mudah hanya di Dealer Suzuki Jogja.',
     features: ['Mesin 1.5L', 'Desain Modern', 'Mild Hybrid'],
     advantages: ['Sunroof panoramic', '360-degree camera', 'Mild hybrid'],
@@ -97,7 +97,7 @@ export const products: ProductType[] = [
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
       {
-        name: 'SGX AT',
+        name: 'SGX AT (One Tone)',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
@@ -106,7 +106,7 @@ export const products: ProductType[] = [
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
       {
-        name: 'SGX AT Two Tone',
+        name: 'SGX AT (Two Tone)',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
@@ -121,7 +121,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-xl7-jogja',
     name: 'XL7 Hybrid',
     category: 'SUV',
-    priceText: '240',
+    priceText: '253',
     description: 'Nikmati perjalanan bersama keluarga dengan Suzuki XL7 Hybrid, SUV 7-seater sejati yang menawarkan perpaduan sempurna antara ketangguhan dan kemewahan. Dengan ground clearance tinggi, kabin lapang, serta teknologi Smart Hybrid Vehicle by Suzuki (SHVS), XL7 memastikan setiap petualangan keluarga Anda terasa lebih premium dan efisien. Hubungi kami untuk info harga OTR Suzuki XL7 Jogja terbaru dan jadwalkan test drive Anda hari ini.',
     features: ['Captain Seat', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Design premium', 'Electronic Stability Program (ESP)', 'Ground clearance 200mm'],
@@ -184,6 +184,15 @@ export const products: ProductType[] = [
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
       {
+        name: 'Alpha MT (2 Tone)',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.462 cc',
+        priceAB: { priceOtr: 'Rp 314.500.000', priceNett: 'Rp 293.500.000' },
+        priceAAR: { priceOtr: 'Rp 326.900.000', priceNett: 'Rp 305.900.000' },
+        bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
+      },
+      {
         name: 'Alpha AT',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
@@ -193,7 +202,7 @@ export const products: ProductType[] = [
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
       {
-        name: 'Alpha AT Two Tone',
+        name: 'Alpha AT (2 Tone)',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
@@ -211,7 +220,7 @@ export const products: ProductType[] = [
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
       {
-        name: 'Alpha AT Kuro Two Tone',
+        name: 'Alpha AT Kuro (2 Tone)',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
@@ -223,10 +232,10 @@ export const products: ProductType[] = [
   },
   {
     id: 3,
-    slug: 'suzuki-carry-pickup-jogja',
+    slug: 'suz-carry-pickup-jogja',
     name: 'New Carry Pick Up',
     category: 'Pickup',
-    priceText: '140',
+    priceText: '147',
     description: 'Dikenal sebagai "Rajanya Pick Up" di Indonesia, New Carry Pick Up adalah mitra bisnis paling tangguh yang siap mendukung kesuksesan usaha Anda. Dibekali ruang kargo yang paling luas di kelasnya, sasis tebal, serta mesin K15C-C yang sangat irit, mobil ini menjamin keuntungan maksimal. Tersedia promo paket kredit mobil bak ringan untuk memajukan perniagaan Anda di wilayah Jogja dan sekitarnya.',
     features: ['Kapasitas Besar', 'AC & PS', 'Mesin 1.5L', 'Durable'],
     advantages: [
@@ -292,7 +301,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-s-presso-jogja',
     name: 'S-Presso',
     category: 'City Car',
-    priceText: '160',
+    priceText: '166',
     description: 'S-Presso adalah city car kompak dengan desain bold bergaya SUV yang dirancang khusus untuk menaklukkan padatnya jalanan kota. Menawarkan ground clearance tinggi, visibilitas berkendara yang sangat baik, dan opsi transmisi AGS yang praktis. Solusi sempurna bagi Anda yang mencari city car murah dan super hemat BBM. Konsultasikan kebutuhan Anda untuk mendapatkan promo kredit mobil Suzuki S-Presso dengan cicilan ringan bulan ini.',
     features: ['AGS Auto', 'Kompak & Lincah', 'Mesin Irit', 'Mudah Parkir'],
     advantages: [
@@ -319,7 +328,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '998 cc',
-        priceAB: { priceOtr: 'Rp 182.250.000', priceNett: 'Rp 166.250.000' },
+        priceAB: { priceOtr: 'Rp 182.500.000', priceNett: 'Rp 166.500.000' },
         priceAAR: { priceOtr: 'Rp 188.900.000', priceNett: 'Rp 172.900.000' },
         bonus: 'E-Money / MAP Rp 2.000.000*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -328,7 +337,7 @@ export const products: ProductType[] = [
         transmission: 'AGS (Auto Gear Shift)',
         fuel: 'Bensin',
         engine: '998 cc',
-        priceAB: { priceOtr: 'Rp 192.250.000', priceNett: 'Rp 176.250.000' },
+        priceAB: { priceOtr: 'Rp 193.800.000', priceNett: 'Rp 177.800.000' },
         priceAAR: { priceOtr: 'Rp 199.400.000', priceNett: 'Rp 183.400.000' },
         bonus: 'E-Money / MAP Rp 2.000.000*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       }
@@ -339,7 +348,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-grand-vitara-jogja',
     name: 'Grand Vitara',
     category: 'SUV',
-    priceText: '390',
+    priceText: '384',
     description: 'Kembalinya sang legenda, Suzuki Grand Vitara kini tampil lebih elegan dan futuristik dengan teknologi Smart Hybrid kelas atas. SUV premium ini dirancang khusus bagi Anda yang menghargai kenyamanan eksklusif, dilengkapi dengan Panoramic Sunroof dan fitur cerdas lainnya. Hubungi Dealer Resmi Suzuki Jogja sekarang untuk mengamankan promo diskon besar dan dapatkan penawaran kredit mobil mewah dengan bunga spesial.',
     features: ['Mesin Hybrid', 'Panoramic Sunroof', '360 Camera'],
     advantages: ['Smart Hybrid 1.5L', 'ADAS Suzuki Safety Sense', 'Ventilated Seats'],
@@ -348,7 +357,7 @@ export const products: ProductType[] = [
     brochureUrl: '/brochures/grand-vitara.pdf',
     specifications: {
       engine: '1.5L K15C Dual Jet + SHVS',
-      transmission: '6-Speed Automatic / 5-Speed Manual',
+      transmission: '6-Speed Automatic',
       fuel: 'Bensin',
       power: '103.06 PS / 6.000 rpm',
       torque: '136.8 Nm / 4.400 rpm',
@@ -357,8 +366,8 @@ export const products: ProductType[] = [
     },
     variants: [
       {
-        name: 'MC GLX MT',
-        transmission: '5-Speed Manual',
+        name: 'MC GLX AT (One Tone)',
+        transmission: '6-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.5L Hybrid',
         priceAB: { priceOtr: 'Rp 427.400.000', priceNett: 'Rp 384.400.000' },
@@ -366,7 +375,7 @@ export const products: ProductType[] = [
         bonus: 'Suzuki Burgman* + KF 3 M*, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
       {
-        name: 'MC GLX AT Two Tone',
+        name: 'MC GLX AT (Two Tone)',
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.5L Hybrid',
@@ -381,8 +390,8 @@ export const products: ProductType[] = [
     slug: 'suzuki-apv-jogja',
     name: 'APV',
     category: 'Commercial',
-    priceText: '180',
-    description: 'Suzuki APV Blind Van adalah solusi kendaraan komersial multifungsi yang dirancang untuk memaksimalkan efisiensi operasional dan logistik bisnis Anda. Menawarkan kapasitas kabin kargo yang lega dan performa mesin legendaris G15A yang tangguh. Kami menyediakan program kredit mobil operasional khusus untuk pengusaha dengan harga niaga terbaik. Jual mobil blind van Suzuki dengan jaminan pelayanan after-sales terpercaya di Yogyakarta.',
+    priceText: '183',
+    description: 'Suzuki APV adalah solusi kendaraan komersial multifungsi yang dirancang untuk memaksimalkan efisiensi operasional dan logistik bisnis Anda. Menawarkan kapasitas kabin kargo yang lega dan performa mesin legendaris G15A yang tangguh. Kami menyediakan program kredit mobil operasional khusus untuk pengusaha dengan harga niaga terbaik. Jual mobil niaga Suzuki dengan jaminan pelayanan after-sales terpercaya di Yogyakarta.',
     features: ['Blind Van', 'Kapasitas Besar', 'Mesin 1.5L', 'Multifungsi'],
     advantages: ['Kapasitas muatan sangat luas', 'Pintu geser untuk akses mudah', 'Mesin tangguh G15A'],
     image: '/images/apv-1.jpg',
@@ -394,7 +403,7 @@ export const products: ProductType[] = [
       fuel: 'Bensin',
       power: '92.4 PS / 6.000 rpm',
       torque: '126 Nm / 3.000 rpm',
-      seating: 'Cargo',
+      seating: 'Cargo / 8 Penumpang',
       dimensions: '4.155 x 1.655 x 1.865 mm'
     },
     variants: [
@@ -403,8 +412,44 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 184.500.000', priceNett: 'Rp 181.500.000' },
+        priceAB: { priceOtr: 'Rp 186.000.000', priceNett: 'Rp 183.000.000' },
         priceAAR: { priceOtr: 'Rp 192.000.000', priceNett: 'Rp 189.000.000' },
+        bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
+      },
+      {
+        name: 'GE MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.492 cc',
+        priceAB: { priceOtr: 'Rp 227.500.000', priceNett: 'Rp 224.500.000' },
+        priceAAR: { priceOtr: 'Rp 235.000.000', priceNett: 'Rp 232.000.000' },
+        bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
+      },
+      {
+        name: 'GL MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.492 cc',
+        priceAB: { priceOtr: 'Rp 235.500.000', priceNett: 'Rp 232.500.000' },
+        priceAAR: { priceOtr: 'Rp 243.000.000', priceNett: 'Rp 240.000.000' },
+        bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
+      },
+      {
+        name: 'GX MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.492 cc',
+        priceAB: { priceOtr: 'Rp 249.500.000', priceNett: 'Rp 246.500.000' },
+        priceAAR: { priceOtr: 'Rp 257.000.000', priceNett: 'Rp 254.000.000' },
+        bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
+      },
+      {
+        name: 'SGX MT',
+        transmission: '5-Speed Manual',
+        fuel: 'Bensin',
+        engine: '1.492 cc',
+        priceAB: { priceOtr: 'Rp 253.000.000', priceNett: 'Rp 250.000.000' },
+        priceAAR: { priceOtr: 'Rp 260.500.000', priceNett: 'Rp 257.500.000' },
         bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       }
     ]
@@ -414,7 +459,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-jimny-jogja',
     name: 'Jimny',
     category: 'SUV Off-Road',
-    priceText: '470',
+    priceText: '467',
     description: 'Ikon off-road sejati yang tak lekang oleh waktu. Suzuki Jimny diciptakan untuk para petualang dengan sistem penggerak 4x4 ALLGRIP PRO dan sasis ladder frame yang solid. Desainnya yang timeless menjadikannya simbol gaya hidup kebebasan berkendara Anda. Hubungi tim sales kami untuk informasi ketersediaan unit, proses indent Suzuki Jimny yang cepat, serta daftar harga On The Road (OTR) terbaru untuk wilayah Jateng & DIY.',
     features: ['4x4 Genuine', 'Ladder Frame', 'Rigid Axle'],
     advantages: ['Part-time 4WD (ALLGRIP PRO)', 'Approach angle 37°', 'Desain timeless'],
@@ -436,8 +481,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 477.400.000', priceNett: 'Rp 477.400.000' },
-        priceAAR: { priceOtr: 'Rp 496.200.000', priceNett: 'Rp 496.200.000' },
+        priceAB: { priceOtr: 'Rp 477.400.000', priceNett: 'Rp 467.400.000' },
+        priceAAR: { priceOtr: 'Rp 496.200.000', priceNett: 'Rp 486.200.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
       {
@@ -445,8 +490,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 491.100.000', priceNett: 'Rp 491.100.000' },
-        priceAAR: { priceOtr: 'Rp 510.400.000', priceNett: 'Rp 510.400.000' },
+        priceAB: { priceOtr: 'Rp 491.100.000', priceNett: 'Rp 481.100.000' },
+        priceAAR: { priceOtr: 'Rp 510.400.000', priceNett: 'Rp 500.400.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
       {
@@ -454,8 +499,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 480.400.000', priceNett: 'Rp 480.400.000' },
-        priceAAR: { priceOtr: 'Rp 499.200.000', priceNett: 'Rp 499.200.000' },
+        priceAB: { priceOtr: 'Rp 480.400.000', priceNett: 'Rp 470.400.000' },
+        priceAAR: { priceOtr: 'Rp 499.200.000', priceNett: 'Rp 489.200.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
       {
@@ -463,8 +508,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 494.100.000', priceNett: 'Rp 494.100.000' },
-        priceAAR: { priceOtr: 'Rp 513.500.000', priceNett: 'Rp 513.500.000' },
+        priceAB: { priceOtr: 'Rp 494.100.000', priceNett: 'Rp 484.100.000' },
+        priceAAR: { priceOtr: 'Rp 513.500.000', priceNett: 'Rp 503.500.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
       {
@@ -472,8 +517,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 491.800.000', priceNett: 'Rp 491.800.000' },
-        priceAAR: { priceOtr: 'Rp 511.900.000', priceNett: 'Rp 511.900.000' },
+        priceAB: { priceOtr: 'Rp 491.800.000', priceNett: 'Rp 481.800.000' },
+        priceAAR: { priceOtr: 'Rp 511.900.000', priceNett: 'Rp 501.900.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       },
       {
@@ -481,8 +526,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 505.500.000', priceNett: 'Rp 505.500.000' },
-        priceAAR: { priceOtr: 'Rp 526.300.000', priceNett: 'Rp 526.300.000' },
+        priceAB: { priceOtr: 'Rp 505.500.000', priceNett: 'Rp 495.500.000' },
+        priceAAR: { priceOtr: 'Rp 526.300.000', priceNett: 'Rp 516.300.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       },
       {
@@ -490,8 +535,8 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 494.800.000', priceNett: 'Rp 494.800.000' },
-        priceAAR: { priceOtr: 'Rp 514.900.000', priceNett: 'Rp 514.900.000' },
+        priceAB: { priceOtr: 'Rp 494.800.000', priceNett: 'Rp 484.800.000' },
+        priceAAR: { priceOtr: 'Rp 514.900.000', priceNett: 'Rp 504.900.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       },
       {
@@ -499,8 +544,8 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 508.500.000' },
-        priceAAR: { priceOtr: 'Rp 529.300.000', priceNett: 'Rp 529.300.000' },
+        priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 498.500.000' },
+        priceAAR: { priceOtr: 'Rp 529.300.000', priceNett: 'Rp 519.300.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       }
     ]
@@ -510,7 +555,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-ertiga-jogja',
     name: 'Ertiga',
     category: 'MPV',
-    priceText: '240',
+    priceText: '242',
     description: 'Suzuki All New Ertiga adalah MPV keluarga idaman yang selalu mengutamakan kenyamanan di setiap perjalanan. Menawarkan ruang kabin yang mewah, konfigurasi 7 tempat duduk yang lapang, serta efisiensi bahan bakar luar biasa berkat teknologi Smart Hybrid. Wujudkan impian memiliki mobil keluarga tangguh dengan penawaran kredit mobil MPV cicilan ringan dan pilihan DP termurah dari Dealer Resmi Suzuki Jogja.',
     features: ['7 Kursi Nyaman', 'Mesin 1.5L', 'Smart Hybrid'],
     advantages: ['Kabin luas', 'Smart Hybrid Technology', 'Suspensi nyaman'],
@@ -546,7 +591,7 @@ export const products: ProductType[] = [
         bonus: 'Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
       {
-        name: 'GX MT',
+        name: 'GX MT (Hybrid)',
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
@@ -555,7 +600,7 @@ export const products: ProductType[] = [
         bonus: 'Logam Mulia*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
       {
-        name: 'GX AT',
+        name: 'GX AT (Hybrid)',
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
