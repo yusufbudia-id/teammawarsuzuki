@@ -97,7 +97,7 @@ export default function Header() {
                 Tanya Promo WA
               </Button>
 
-              {/* Mobile Menu Trigger (Hanya muncul jika bukan di halaman detail produk agar tidak ganda dengan Bottom Bar) */}
+              {/* Mobile Menu Trigger */}
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild className="md:hidden">
                   <Button 
@@ -146,42 +146,42 @@ export default function Header() {
         </div>
       </header>
 
-      {/* GLOBAL MOBILE BOTTOM NAVIGATION */}
+      {/* GLOBAL MOBILE BOTTOM NAVIGATION - LIGHT THEME */}
       {!isProductDetailPage && (
         <div className="fixed bottom-4 left-4 right-4 z-50 md:hidden animate-in slide-in-from-bottom-8 duration-500">
-          <div className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-[2rem] shadow-2xl p-2 flex justify-between items-center gap-1">
+          <div className="bg-white/95 backdrop-blur-xl border border-slate-200/60 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-2 flex justify-between items-center gap-1">
             
             <Link 
               href="/" 
               className={cn(
-                "flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl transition-colors",
-                activePath === 'home' ? 'text-white' : 'text-slate-500 hover:text-slate-300'
+                "flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl transition-all",
+                activePath === 'home' ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600'
               )}
             >
-              <Home className={cn("w-5 h-5 mb-1", activePath === 'home' ? 'text-blue-400 fill-blue-400/20' : '')} />
-              <span className="text-[10px] font-bold tracking-wider">Home</span>
+              <Home className={cn("w-5 h-5 mb-1", activePath === 'home' ? 'fill-blue-100' : '')} />
+              <span className="text-[10px] font-black tracking-wider uppercase">Home</span>
             </Link>
 
             <Link 
               href="/produk" 
               className={cn(
-                "flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl transition-colors",
-                activePath === 'produk' ? 'text-white' : 'text-slate-500 hover:text-slate-300'
+                "flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl transition-all",
+                activePath === 'produk' ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600'
               )}
             >
-              <Grid className={cn("w-5 h-5 mb-1", activePath === 'produk' ? 'text-blue-400 fill-blue-400/20' : '')} />
-              <span className="text-[10px] font-bold tracking-wider">Katalog</span>
+              <Grid className={cn("w-5 h-5 mb-1", activePath === 'produk' ? 'fill-blue-100' : '')} />
+              <span className="text-[10px] font-black tracking-wider uppercase">Katalog</span>
             </Link>
 
             <Link 
               href="/promo" 
               className={cn(
-                "flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl transition-colors",
-                activePath === 'promo' ? 'text-white' : 'text-slate-500 hover:text-slate-300'
+                "flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl transition-all",
+                activePath === 'promo' ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600'
               )}
             >
-              <Tag className={cn("w-5 h-5 mb-1", activePath === 'promo' ? 'text-blue-400 fill-blue-400/20' : '')} />
-              <span className="text-[10px] font-bold tracking-wider">Promo</span>
+              <Tag className={cn("w-5 h-5 mb-1", activePath === 'promo' ? 'fill-blue-100' : '')} />
+              <span className="text-[10px] font-black tracking-wider uppercase">Promo</span>
             </Link>
 
             <button 
@@ -189,7 +189,7 @@ export default function Header() {
               className="flex flex-col items-center justify-center flex-[1.2] py-2 px-1 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-2xl shadow-lg shadow-[#25D366]/20 transition-all active:scale-95"
             >
               <MessageCircle className="w-5 h-5 mb-1" />
-              <span className="text-[10px] font-bold tracking-wider">Hubungi</span>
+              <span className="text-[10px] font-black tracking-wider uppercase">Hubungi</span>
             </button>
 
           </div>
