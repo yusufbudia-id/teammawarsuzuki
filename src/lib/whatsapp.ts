@@ -1,4 +1,4 @@
-// File: lib/whatsapp.ts
+// File: src/lib/whatsapp.ts (atau lib/whatsapp.ts)
 
 export const waTeam = [
   { nama: 'Yusuf', no: '6282174635218' },
@@ -10,15 +10,35 @@ export const waTeam = [
   { nama: 'Indah', no: '6282135245314' }
 ];
 
-// Fungsi untuk mendapatkan nomor acak dari tim
-export const getRandomWANumber = () => {
-  const randomIndex = Math.floor(Math.random() * waTeam.length);
-  return waTeam[randomIndex].no;
+export const getFairWANumber = () => {
+  // Memastikan kode hanya berjalan di sisi Klien (Browser)
+  if (typeof window !== 'undefined') {
+    // 1. Cek apakah pengunjung ini sudah punya "Sales Pegangan" di memori browsernya
+    const savedIndex = localStorage.getItem('assignedSalesIndex');
+
+    // Jika sudah ada dan tim tidak dikurangi/dihapus (index aman)
+    if (savedIndex !== null && parseInt(savedIndex) < waTeam.length) {
+      return waTeam[parseInt(savedIndex)].no;
+    }
+
+    // 2. JIKA PENGUNJUNG BARU:
+    // Gunakan mili-detik waktu saat ini dibagi jumlah tim.
+    // Ini menjamin rotasi (Round-Robin) yang sangat adil secara statistik.
+    const newIndex = Date.now() % waTeam.length;
+    
+    // Simpan nomor index sales ini di memori browser pelanggan
+    localStorage.setItem('assignedSalesIndex', newIndex.toString());
+    
+    return waTeam[newIndex].no;
+  }
+  
+  // Fallback aman untuk Server-Side
+  return waTeam[0].no;
 };
 
-// Fungsi bantuan untuk langsung membuat link WhatsApp beserta pesannya
+// Fungsi utama yang dipanggil oleh semua tombol di website
 export const openWhatsApp = (message: string) => {
-  const randomNo = getRandomWANumber();
+  const fairNo = getFairWANumber();
   const encodedMessage = encodeURIComponent(message);
-  window.open(`https://wa.me/${randomNo}?text=${encodedMessage}`, '_blank');
+  window.open(`https://wa.me/${fairNo}?text=${encodedMessage}`, '_blank');
 };
