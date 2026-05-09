@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const footerNavItems = [
   { id: 'home', label: 'Beranda', href: '/' },
@@ -13,23 +14,10 @@ const footerNavItems = [
   { id: 'kontak', label: 'Hubungi Sales', href: '/kontak' },
 ];
 
-const waTeam = [
-  { nama: 'Yusuf', no: '6282174635218' },
-  { nama: 'Egy', no: '6281327260515' },
-  { nama: 'Bima', no: '6289637144539' },
-  { nama: 'Kafi', no: '6281329095557' },
-  { nama: 'Nabila', no: '6283103278381' },
-  { nama: 'Alma', no: '6282134148101' },
-  { nama: 'Indah', no: '6282135245314' }
-];
-
 export default function Footer() {
   const handleChatWA = () => {
-    const randomIndex = Math.floor(Math.random() * waTeam.length);
-    const selectedContact = waTeam[randomIndex];
-    
-    const message = encodeURIComponent(`*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`);
-    window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
+    const message = `*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`;
+    openWhatsApp(message);
   };
 
   return (

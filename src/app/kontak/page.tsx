@@ -7,36 +7,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowRight, Phone, Mail, MapPin, Sparkles, MessageSquare, Clock, Map } from 'lucide-react';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 export default function KontakPage() {
-  const waTeam = [
-    { nama: 'Yusuf', no: '6282174635218' },
-    { nama: 'Egy', no: '6281327260515' },
-    { nama: 'Bima', no: '6289637144539' },
-    { nama: 'Kafi', no: '6281329095557' },
-    { nama: 'Nabila', no: '6283103278381' },
-    { nama: 'Alma', no: '6282134148101' },
-    { nama: 'Indah', no: '6282135245314' }
-  ];
-  
   const defaultMessage = 'Halo admin Suzuki 👋 saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..';
   const [formData, setFormData] = useState({ name: '', email: '', message: defaultMessage });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const getRandomWANumber = () => {
-    const randomIndex = Math.floor(Math.random() * waTeam.length);
-    return waTeam[randomIndex].no;
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const fullMessage = `Halo admin Suzuki!!\n\n${formData.message}`;
-    const encodedMessage = encodeURIComponent(fullMessage);
-    
-    const randomNo = getRandomWANumber();
-    window.open(`https://wa.me/${randomNo}?text=${encodedMessage}`, '_blank');
+    const fullMessage = `Halo admin Suzuki!!\n\nNama: ${formData.name}\nEmail: ${formData.email}\n\nPesan:\n${formData.message}`;
+    openWhatsApp(fullMessage);
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -45,9 +28,7 @@ export default function KontakPage() {
   };
 
   const handleDirectChat = () => {
-    const randomNo = getRandomWANumber();
-    const message = encodeURIComponent(defaultMessage);
-    window.open(`https://wa.me/${randomNo}?text=${message}`, '_blank');
+    openWhatsApp(defaultMessage);
   };
 
   return (
@@ -59,8 +40,8 @@ export default function KontakPage() {
         {/* HERO SECTION - Playful Corporate Style */}
         <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 bg-white rounded-b-[3rem] lg:rounded-b-[5rem] shadow-sm z-20 overflow-hidden">
           {/* Latar Belakang Shape Ceria */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50 rounded-full blur-3xl opacity-60 translate-y-1/3 -translate-x-1/3"></div>
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50 rounded-full blur-3xl opacity-60 translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
@@ -167,7 +148,7 @@ export default function KontakPage() {
                 
                 {/* Info Card */}
                 <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-10 text-white relative overflow-hidden shadow-2xl flex-1">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                   
                   <div className="relative z-10">
                     <h3 className="text-2xl font-black mb-8 tracking-tight">Informasi Kontak</h3>
@@ -251,7 +232,7 @@ export default function KontakPage() {
               <div className="bg-slate-100 rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl shadow-slate-200/50 h-[400px] md:h-[500px] relative">
                 <iframe
                   title="Lokasi Suzuki Mlati Sumber Baru Mobil"
-                  src="https://maps.google.com/maps?q=Suzuki+Mlati+Sumber+Baru+Mobil+Yogyakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.308722421371!2d110.3585098750058!3d-7.756994992261541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f4a7cd2543%3A0xc07949bd00c8227b!2sSuzuki%20Sleman%20-%20Sumber%20Baru%20Mobil!5e0!3m2!1sen!2sid!4v1716301234567!5m2!1sen!2sid"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

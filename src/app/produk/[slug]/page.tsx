@@ -15,6 +15,7 @@ import {
   MessageCircle, Sparkles
 } from 'lucide-react';
 import { products, getProductBySlug } from '@/lib/products-data';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const leasingPartners = [
   { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
@@ -33,21 +34,6 @@ export default function ProductDetailPage() {
   
   const slug = params.slug as string; 
   const product = getProductBySlug(slug);
-
-  const waTeam = [
-    { nama: 'Yusuf', no: '6282174635218' },
-    { nama: 'Egy', no: '6281327260515' },
-    { nama: 'Bima', no: '6289637144539' },
-    { nama: 'Kafi', no: '6281329095557' },
-    { nama: 'Nabila', no: '6283103278381' },
-    { nama: 'Alma', no: '6282134148101' },
-    { nama: 'Indah', no: '6282135245314' }
-  ];
-
-  const getRandomWANumber = () => {
-    const randomIndex = Math.floor(Math.random() * waTeam.length);
-    return waTeam[randomIndex].no;
-  };
 
   useEffect(() => {
     if (!product) {
@@ -73,14 +59,14 @@ export default function ProductDetailPage() {
 
   const handleTestDrive = () => {
       const message = `Halo admin Suzuki!!\n\nSaya ingin memesan Test Drive untuk *${product.name}*. Mohon info jadwal dan lokasinya ya..`;
-      window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
+      openWhatsApp(message);
   };
 
   const handleAjukanKredit = (variantName?: string, region?: string) => {
     const regionText = region ? ` (${region})` : '';
     const targetName = variantName ? `${product.name} - ${variantName}${regionText}` : product.name;
     const message = `Halo admin Suzuki!!\n\nSaya tertarik untuk mengajukan kredit untuk unit *${targetName}*. Mohon info simulasi kredit dan penawaran terbaiknya ya..`;
-    window.open(`https://wa.me/${getRandomWANumber()}?text=${encodeURIComponent(message)}`, '_blank');
+    openWhatsApp(message);
   };
 
   const getSavings = (otr: string, nett: string) => {

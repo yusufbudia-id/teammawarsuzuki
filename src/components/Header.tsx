@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,22 +33,9 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const waTeam = [
-    { nama: 'Yusuf', no: '6282174635218' },
-    { nama: 'Egy', no: '6281327260515' },
-    { nama: 'Bima', no: '6289637144539' },
-    { nama: 'Kafi', no: '6281329095557' },
-    { nama: 'Nabila', no: '6283103278381' },
-    { nama: 'Alma', no: '6282134148101' },
-    { nama: 'Indah', no: '6282135245314' }
-  ];
-
   const handleHubungiKami = () => {
-    const randomIndex = Math.floor(Math.random() * waTeam.length);
-    const selectedContact = waTeam[randomIndex];
-    
-    const message = encodeURIComponent(`*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`);
-    window.open(`https://wa.me/${selectedContact.no}?text=${message}`, '_blank');
+    const message = `*Halo* admin Suzuki!! Saya dari website, mau tanya promo terbaik hari ini. Bisa dibantu ya..`;
+    openWhatsApp(message);
   }
 
   const activePath = pathname === '/' ? 'home' : pathname.slice(1);
