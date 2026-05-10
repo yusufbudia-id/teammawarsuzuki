@@ -14,13 +14,14 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Susunan menu telah diperbarui sesuai permintaan
   const navItems = [
     { id: 'home', label: 'Home', href: '/' },
-    { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
     { id: 'produk', label: 'Katalog', href: '/produk' },
-    { id: 'artikel', label: 'Artikel', href: '/artikel' },
-    { id: 'testimoni', label: 'Testimoni', href: '/testimoni' },
     { id: 'promo', label: 'Promo', href: '/promo' },
+    { id: 'testimoni', label: 'Testimoni', href: '/testimoni' },
+    { id: 'artikel', label: 'Artikel', href: '/artikel' },
+    { id: 'tentang-kami', label: 'Tentang Kami', href: '/tentang-kami' },
     { id: 'kontak', label: 'Kontak', href: '/kontak' },
   ];
 
@@ -109,9 +110,9 @@ export default function Header() {
                     {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[350px] rounded-l-[2rem] border-l-0">
+                <SheetContent side="right" className="w-[300px] sm:w-[350px] rounded-l-[2rem] border-l-0 overflow-y-auto">
                   <SheetTitle className="sr-only">Menu Navigasi Suzuki</SheetTitle>
-                  <nav className="flex flex-col space-y-2 mt-12">
+                  <nav className="flex flex-col space-y-2 mt-12 pb-6">
                     {navItems.map((item) => (
                       <Link
                         key={item.id}
