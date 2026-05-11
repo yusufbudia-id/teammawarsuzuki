@@ -9,10 +9,13 @@ import { Button } from '@/components/ui/button';
 
 // Data Foto (Judul disesuaikan dengan konteks Dealer Mobil)
 const photos = [
-  { id: 1, src: '/images/galeri/galeri-1.jpg', title: 'Serah Terima XL7 Hybrid' },
-  { id: 2, src: '/images/galeri/galeri-2.jpg', title: 'Delivery Ertiga Keluarga Baru' },
-  { id: 3, src: '/images/galeri/galeri-3.jpg', title: 'Grand Vitara Sampai Tujuan' },
-  { id: 4, src: '/images/galeri/galeri-4.jpg', title: 'Sahabat Usaha Carry Pick Up' },
+  { id: 1, src: '/images/galeri/galeri-1.jpg', title: 'Serah Terima Suzuki Fronx' },
+  { id: 2, src: '/images/galeri/galeri-2.jpg', title: 'Delivery Fronx Keluarga Baru' },
+  { id: 3, src: '/images/galeri/galeri-3.jpg', title: 'XL7 Hybrid Sampai Tujuan' },
+  { id: 4, src: '/images/galeri/galeri-4.jpg', title: 'Sahabat Suzuki Fronx' },
+  { id: 5, src: '/images/galeri/galeri-5.jpg', title: 'Sahabat Usaha Carry Pick Up' },
+  { id: 6, src: '/images/galeri/galeri-6.jpg', title: 'Menunjang MBG dengan APV Blindvan' },
+  { id: 7, src: '/images/galeri/galeri-7.jpg', title: 'Meluncur bersama Carry Pick Up' },
 ];
 
 // Data Dummy Testimoni Pelanggan
