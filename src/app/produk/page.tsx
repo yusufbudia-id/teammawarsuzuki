@@ -2,12 +2,13 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Heart, ArrowRight, Sparkles, Calculator } from 'lucide-react';
+import { Heart, ArrowRight, Sparkles, Calculator, MessageCircle } from 'lucide-react';
 import { products } from '@/lib/products-data';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const leasingPartners = [
   { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
@@ -31,6 +32,10 @@ export default function ProdukPage() {
     }
   };
 
+  const handleTanyaPromo = (productName: string) => {
+    openWhatsApp(`Halo admin Suzuki!!\n\nPesan dari Katalog: Saya tertarik dengan *Suzuki ${productName}*. Tolong infokan rincian harganya ya.`);
+  };
+
   const categories = ['Semua', ...Array.from(new Set(products.map(p => p.category)))];
 
   const filteredProducts = activeCategory === 'Semua'
@@ -40,8 +45,8 @@ export default function ProdukPage() {
   const getPromoInfo = (productName: string) => {
     const name = productName.toLowerCase();
     
-    if (name.includes('fronx')) return { label: 'Diskon', value: '16 Jt' };
-    if (name.includes('xl7')) return { label: 'Diskon', value: '33 Jt' };
+    if (name.includes('fronx')) return { label: 'Diskon', value: '14 Jt' };
+    if (name.includes('xl7')) return { label: 'Diskon', value: '21 Jt' };
     if (name.includes('carry')) return { label: 'Diskon', value: '34 Jt' };
     if (name.includes('vitara')) return { label: 'Diskon', value: '43 Jt' };
     if (name.includes('presso')) return { label: 'Diskon', value: '16 Jt' };
@@ -162,17 +167,29 @@ export default function ProdukPage() {
                           </div>
                         </div>
 
-                        <div className="mt-auto flex items-center gap-3">
-                          <Link href="/kontak" className="flex-1">
-                            <Button className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 transition-all shadow-md shadow-blue-600/20 group-hover:shadow-blue-600/40">
-                              Hitung DP
-                            </Button>
-                          </Link>
-                          <Link href={productUrl}>
-                            <Button variant="outline" size="icon" className="w-12 h-12 rounded-xl border-slate-200 text-slate-600 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all group/btn">
-                              <ArrowRight className="w-5 h-5 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-300" />
-                            </Button>
-                          </Link>
+                        {/* Tombol Aksi - Layout Asimetris Modern */}
+                        <div className="mt-auto flex flex-col gap-3">
+                          <div className="flex items-center gap-3">
+                            <Link href="/simulasi-kredit" className="flex-1">
+                              <Button className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 transition-all shadow-md shadow-blue-600/20 group-hover:shadow-blue-600/40">
+                                Simulasi Kredit
+                              </Button>
+                            </Link>
+                            <Link href={productUrl}>
+                              <Button variant="outline" size="icon" className="w-12 h-12 rounded-xl border-slate-200 text-slate-600 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all group/btn">
+                                <ArrowRight className="w-5 h-5 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-300" />
+                              </Button>
+                            </Link>
+                          </div>
+                          
+                          {/* Tombol WA Cepat (Opsional) */}
+                          <Button 
+                            onClick={() => handleTanyaPromo(product.name)}
+                            variant="outline"
+                            className="w-full rounded-xl border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-bold h-10 transition-all bg-transparent"
+                          >
+                            <MessageCircle className="w-4 h-4 mr-2" /> Tanya Promo
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -202,7 +219,7 @@ export default function ProdukPage() {
           </div>
         </section>
 
-        {/* LEASING PARTNER SECTION - Diperbarui jarak bawahnya (pb-40 lg:pb-52) & z-index agar Footer menyatu */}
+        {/* LEASING PARTNER SECTION */}
         <section className="pt-20 pb-40 lg:pb-52 bg-white rounded-t-[3rem] lg:rounded-t-[5rem] border-t border-slate-100 mt-12 relative z-0">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 animate-fade-in">
