@@ -16,10 +16,17 @@ import { Calculator, Car, CreditCard, Clock, MessageCircle, Sparkles, Info } fro
 import { products } from '@/lib/products-data';
 import { openWhatsApp } from '@/lib/whatsapp';
 
+const leasingPartners = [
+  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
+  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
+  { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
+  { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
+];
+
 export default function SimulasiKreditPage() {
   const [selectedModel, setSelectedModel] = useState<string>('');
   const [selectedVariant, setSelectedVariant] = useState<string>('');
-  const [dpAmount, setDp) = useState<string>('');
+  const [dpAmount, setDp] = useState<string>(''); // <-- INI YANG DIPERBAIKI (kurung siku)
   const [tenure, setTenure] = useState<string>('60'); // Default 5 tahun
 
   // 1. Ambil data mobil yang dipilih
@@ -232,10 +239,3 @@ export default function SimulasiKreditPage() {
     </div>
   );
 }
-
-const leasingPartners = [
-  { name: 'Suzuki Finance', src: '/images/leasing/sufi.webp' },
-  { name: 'BCA Finance', src: '/images/leasing/bca.webp' },
-  { name: 'Mandiri Tunas Finance', src: '/images/leasing/mtf.webp' },
-  { name: 'Adira Finance', src: '/images/leasing/adira.webp' },
-];
