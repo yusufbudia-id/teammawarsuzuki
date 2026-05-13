@@ -9,6 +9,7 @@ const footerNavItems = [
   { id: 'home', label: 'Beranda', href: '/' },
   { id: 'tentang-kami', label: 'Profil Dealer', href: '/tentang-kami' },
   { id: 'produk', label: 'Katalog Kendaraan', href: '/produk' },
+  { id: 'simulasi-kredit', label: 'Simulasi Kredit', href: '/simulasi-kredit' }, // <-- Menu Baru Ditambahkan
   { id: 'testimoni', label: 'Testimoni Klien', href: '/testimoni' },
   { id: 'promo', label: 'Promo Spesial', href: '/promo' },
   { id: 'kontak', label: 'Hubungi Sales', href: '/kontak' },

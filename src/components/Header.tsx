@@ -14,10 +14,11 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Susunan menu telah diperbarui sesuai permintaan
+  // Susunan menu telah diperbarui dengan penambahan Simulasi Kredit
   const navItems = [
     { id: 'home', label: 'Home', href: '/' },
     { id: 'produk', label: 'Katalog', href: '/produk' },
+    { id: 'simulasi-kredit', label: 'Simulasi Kredit', href: '/simulasi-kredit' }, // Menu Baru Ditambahkan
     { id: 'promo', label: 'Promo', href: '/promo' },
     { id: 'testimoni', label: 'Testimoni', href: '/testimoni' },
     { id: 'artikel', label: 'Artikel', href: '/artikel' },
