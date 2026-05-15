@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "Harga Suzuki XL7", "Harga Suzuki Carry", "Harga Suzuki Fronx", 
     "Suzuki Jogja", "Kredit Mobil Suzuki Jogja"
   ],
-  authors: [{ name: "Yusuf Suzuki Dealer Jogja" }], // Update Author ke nama kamu
+  authors: [{ name: "Yusuf Suzuki Dealer Jogja" }], 
   creator: "Yusuf Suzuki Dealer Jogja",
   publisher: "Suzuki Dealer Jogja",
   
@@ -99,7 +99,6 @@ export default function RootLayout({
       "addressRegion": "DI Yogyakarta",
       "addressCountry": "ID"
     },
-    // Nomor WA sudah diupdate sesuai profil kamu
     "telephone": "+6282174635218", 
     "openingHoursSpecification": [
       {
@@ -124,7 +123,7 @@ export default function RootLayout({
       {/* Font akan di-trigger oleh konfigurasi Tailwind font-sans yang merujuk pada CSS variabel */}
       <body
         className="antialiased bg-background text-foreground no-js font-sans"
-        suppHydrationWarning
+        suppressHydrationWarning
       >
         <Script
           id="remove-no-js"
@@ -133,24 +132,31 @@ export default function RootLayout({
           {`document.body.classList.remove('no-js');`}
         </Script>
 
-        {/* --- GOOGLE ADS TAG MULAI DI SINI --- */}
+        {/* --- GOOGLE ADS & ANALYTICS TAG MULAI DI SINI --- */}
         <Script 
           strategy="afterInteractive" 
           src="https://www.googletagmanager.com/gtag/js?id=AW-18062500429" 
         />
         <Script 
-          id="google-ads-tag" 
+          id="google-ads-analytics-tag" 
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
+              
+              /* Google Ads */
               gtag('config', 'AW-18062500429');
+              
+              /* Google Analytics (GA4) - Ganti dengan ID Anda */
+              gtag('config', 'G-0MVNVVTYL8', {
+                page_path: window.location.pathname,
+              });
             `,
           }}
         />
-        {/* --- GOOGLE ADS TAG SELESAI --- */}
+        {/* --- GOOGLE ADS & ANALYTICS TAG SELESAI --- */}
 
         <ClientBodyProvider>
           {children}
