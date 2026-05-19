@@ -9,7 +9,7 @@ const footerNavItems = [
   { id: 'home', label: 'Beranda', href: '/' },
   { id: 'tentang-kami', label: 'Profil Dealer', href: '/tentang-kami' },
   { id: 'produk', label: 'Katalog Kendaraan', href: '/produk' },
-  { id: 'simulasi-kredit', label: 'Simulasi Kredit', href: '/simulasi-kredit' }, // <-- Menu Baru Ditambahkan
+  { id: 'simulasi-kredit', label: 'Simulasi Kredit', href: '/simulasi-kredit' },
   { id: 'testimoni', label: 'Testimoni Klien', href: '/testimoni' },
   { id: 'promo', label: 'Promo Spesial', href: '/promo' },
   { id: 'kontak', label: 'Hubungi Sales', href: '/kontak' },
@@ -109,16 +109,24 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-slate-800 mt-16 pt-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-medium text-sm">
-            © {new Date().getFullYear()} Suzuki Jogja Official. Hak Cipta Dilindungi.
-          </p>
+        {/* Copyright & Backlink */}
+        <div className="border-t border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-left flex flex-col gap-1.5">
+            <p className="font-medium text-sm text-slate-300">
+              © {new Date().getFullYear()} Suzuki Jogja Official. Hak Cipta Dilindungi.
+            </p>
+            {/* Backlink SEO Natural dengan Personal Branding */}
+            <p className="text-xs text-slate-500 font-medium">
+              Managed by <a href="https://www.suzukiautojogja.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors underline decoration-slate-700 underline-offset-4 font-bold">Yusuf Suzuki</a>
+            </p>
+          </div>
+          
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="#" className="hover:text-white">Syarat & Ketentuan</Link>
             <Link href="#" className="hover:text-white">Kebijakan Privasi</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );
