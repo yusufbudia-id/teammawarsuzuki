@@ -43,7 +43,7 @@ export const products: ProductType[] = [
     slug: 'suzuki-fronx-jogja',
     name: 'Fronx',
     category: 'SUV',
-    priceText: '252',
+    priceText: '253', // Diupdate mengikuti nett terendah baru
     description: 'Suzuki Fronx hadir sebagai SUV crossover yang memadukan desain tangguh, gaya modern, dan performa lincah untuk jalanan perkotaan. Dilengkapi dengan teknologi Mild Hybrid yang efisien dan fitur keselamatan terkini, Fronx adalah pilihan tepat bagi Anda yang berjiwa muda. Dapatkan kemudahan memiliki mobil baru dengan simulasi cicilan Suzuki Fronx yang terjangkau, DP ringan, serta syarat kredit mobil baru yang mudah hanya di Dealer Suzuki Jogja.',
     features: ['Mesin 1.5L', 'Desain Modern', 'Mild Hybrid'],
     advantages: ['Sunroof panoramic', '360-degree camera', 'Mild hybrid'],
@@ -65,7 +65,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 266.300.000', priceNett: 'Rp 252.300.000' },
+        priceAB: { priceOtr: 'Rp 267.300.000', priceNett: 'Rp 253.300.000' }, // UPDATE (Diskon 14jt)
         priceAAR: { priceOtr: 'Rp 274.000.000', priceNett: 'Rp 260.000.000' },
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
@@ -74,7 +74,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 277.300.000', priceNett: 'Rp 263.300.000' },
+        priceAB: { priceOtr: 'Rp 278.300.000', priceNett: 'Rp 264.300.000' }, // UPDATE (Diskon 14jt)
         priceAAR: { priceOtr: 'Rp 285.400.000', priceNett: 'Rp 271.400.000' },
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
@@ -83,7 +83,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 288.700.000', priceNett: 'Rp 280.700.000' },
+        priceAB: { priceOtr: 'Rp 289.700.000', priceNett: 'Rp 281.700.000' }, // UPDATE (Diskon 8jt)
         priceAAR: { priceOtr: 'Rp 297.000.000', priceNett: 'Rp 289.000.000' },
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
@@ -92,7 +92,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 307.100.000', priceNett: 'Rp 299.100.000' },
+        priceAB: { priceOtr: 'Rp 308.100.000', priceNett: 'Rp 300.100.000' }, // UPDATE (Diskon 8jt)
         priceAAR: { priceOtr: 'Rp 315.700.000', priceNett: 'Rp 307.700.000' },
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
@@ -101,7 +101,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 333.200.000', priceNett: 'Rp 325.200.000' },
+        priceAB: { priceOtr: 'Rp 334.200.000', priceNett: 'Rp 326.200.000' }, // UPDATE (Diskon 8jt)
         priceAAR: { priceOtr: 'Rp 342.200.000', priceNett: 'Rp 334.200.000' },
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       },
@@ -110,7 +110,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 335.200.000', priceNett: 'Rp 327.200.000' },
+        priceAB: { priceOtr: 'Rp 336.200.000', priceNett: 'Rp 328.200.000' }, // UPDATE (Diskon 8jt)
         priceAAR: { priceOtr: 'Rp 344.200.000', priceNett: 'Rp 336.200.000' },
         bonus: 'Suzuki NEX* (GL Only) / Apple Watch 11 Series* (GX & SGX Only), Potongan Harga 100 SPK Pertama, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai & Mesin'
       }
@@ -143,7 +143,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 274.000.000', priceNett: 'Rp 253.000.000' },
+        priceAB: { priceOtr: 'Rp 274.000.000', priceNett: 'Rp 253.000.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 285.350.000', priceNett: 'Rp 264.350.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -152,7 +152,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 285.000.000', priceNett: 'Rp 264.000.000' },
+        priceAB: { priceOtr: 'Rp 285.000.000', priceNett: 'Rp 264.000.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 296.800.000', priceNett: 'Rp 275.800.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -161,7 +161,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 301.500.000', priceNett: 'Rp 280.500.000' },
+        priceAB: { priceOtr: 'Rp 301.500.000', priceNett: 'Rp 280.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 313.700.000', priceNett: 'Rp 292.700.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -170,7 +170,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 312.500.000', priceNett: 'Rp 291.500.000' },
+        priceAB: { priceOtr: 'Rp 312.500.000', priceNett: 'Rp 291.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 325.300.000', priceNett: 'Rp 304.300.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -179,7 +179,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 312.500.000', priceNett: 'Rp 291.500.000' },
+        priceAB: { priceOtr: 'Rp 312.500.000', priceNett: 'Rp 291.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 324.900.000', priceNett: 'Rp 303.900.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -188,7 +188,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 314.500.000', priceNett: 'Rp 293.500.000' },
+        priceAB: { priceOtr: 'Rp 314.500.000', priceNett: 'Rp 293.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 326.900.000', priceNett: 'Rp 305.900.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -197,7 +197,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 323.500.000', priceNett: 'Rp 302.500.000' },
+        priceAB: { priceOtr: 'Rp 323.500.000', priceNett: 'Rp 302.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 336.500.000', priceNett: 'Rp 315.500.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -206,7 +206,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 325.500.000', priceNett: 'Rp 304.500.000' },
+        priceAB: { priceOtr: 'Rp 325.500.000', priceNett: 'Rp 304.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 338.500.000', priceNett: 'Rp 317.500.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -215,7 +215,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 327.500.000', priceNett: 'Rp 306.500.000' },
+        priceAB: { priceOtr: 'Rp 327.500.000', priceNett: 'Rp 306.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 340.500.000', priceNett: 'Rp 319.500.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -224,7 +224,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 329.500.000', priceNett: 'Rp 308.500.000' },
+        priceAB: { priceOtr: 'Rp 329.500.000', priceNett: 'Rp 308.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 342.500.000', priceNett: 'Rp 321.500.000' },
         bonus: 'Suzuki Nex* + Free Keur*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       }
@@ -263,7 +263,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 181.250.000', priceNett: 'Rp 147.250.000' },
+        priceAB: { priceOtr: 'Rp 181.250.000', priceNett: 'Rp 147.250.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 187.000.000', priceNett: 'Rp 153.000.000' },
         bonus: 'Suzuki Burgman* + Free Keur*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -272,7 +272,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 182.350.000', priceNett: 'Rp 148.350.000' },
+        priceAB: { priceOtr: 'Rp 182.350.000', priceNett: 'Rp 148.350.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 188.100.000', priceNett: 'Rp 154.100.000' },
         bonus: 'Suzuki Burgman* + Free Keur*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -281,7 +281,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 189.250.000', priceNett: 'Rp 155.250.000' },
+        priceAB: { priceOtr: 'Rp 189.250.000', priceNett: 'Rp 155.250.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 195.300.000', priceNett: 'Rp 161.300.000' },
         bonus: 'Suzuki Burgman* + Free Keur*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -290,7 +290,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 190.150.000', priceNett: 'Rp 156.150.000' },
+        priceAB: { priceOtr: 'Rp 190.150.000', priceNett: 'Rp 156.150.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 196.200.000', priceNett: 'Rp 162.200.000' },
         bonus: 'Suzuki Burgman* + Free Keur*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       }
@@ -328,7 +328,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '998 cc',
-        priceAB: { priceOtr: 'Rp 182.500.000', priceNett: 'Rp 166.500.000' },
+        priceAB: { priceOtr: 'Rp 182.500.000', priceNett: 'Rp 166.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 188.900.000', priceNett: 'Rp 172.900.000' },
         bonus: 'E-Money / MAP Rp 2.000.000*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -337,7 +337,7 @@ export const products: ProductType[] = [
         transmission: 'AGS (Auto Gear Shift)',
         fuel: 'Bensin',
         engine: '998 cc',
-        priceAB: { priceOtr: 'Rp 193.800.000', priceNett: 'Rp 177.800.000' },
+        priceAB: { priceOtr: 'Rp 193.800.000', priceNett: 'Rp 177.800.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 199.400.000', priceNett: 'Rp 183.400.000' },
         bonus: 'E-Money / MAP Rp 2.000.000*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       }
@@ -370,7 +370,7 @@ export const products: ProductType[] = [
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.5L Hybrid',
-        priceAB: { priceOtr: 'Rp 427.400.000', priceNett: 'Rp 384.400.000' },
+        priceAB: { priceOtr: 'Rp 427.400.000', priceNett: 'Rp 384.400.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 445.000.000', priceNett: 'Rp 402.000.000' },
         bonus: 'Suzuki Burgman* + KF 3 M*, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -379,7 +379,7 @@ export const products: ProductType[] = [
         transmission: '6-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.5L Hybrid',
-        priceAB: { priceOtr: 'Rp 430.400.000', priceNett: 'Rp 387.400.000' },
+        priceAB: { priceOtr: 'Rp 430.400.000', priceNett: 'Rp 387.400.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 448.000.000', priceNett: 'Rp 405.000.000' },
         bonus: 'Suzuki Burgman* + KF 3 M*, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       }
@@ -412,7 +412,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 186.000.000', priceNett: 'Rp 183.000.000' },
+        priceAB: { priceOtr: 'Rp 186.000.000', priceNett: 'Rp 183.000.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 192.000.000', priceNett: 'Rp 189.000.000' },
         bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -421,7 +421,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 227.500.000', priceNett: 'Rp 224.500.000' },
+        priceAB: { priceOtr: 'Rp 227.500.000', priceNett: 'Rp 224.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 235.000.000', priceNett: 'Rp 232.000.000' },
         bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -430,7 +430,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 235.500.000', priceNett: 'Rp 232.500.000' },
+        priceAB: { priceOtr: 'Rp 235.500.000', priceNett: 'Rp 232.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 243.000.000', priceNett: 'Rp 240.000.000' },
         bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -439,7 +439,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 249.500.000', priceNett: 'Rp 246.500.000' },
+        priceAB: { priceOtr: 'Rp 249.500.000', priceNett: 'Rp 246.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 257.000.000', priceNett: 'Rp 254.000.000' },
         bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -448,7 +448,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.492 cc',
-        priceAB: { priceOtr: 'Rp 253.000.000', priceNett: 'Rp 250.000.000' },
+        priceAB: { priceOtr: 'Rp 253.000.000', priceNett: 'Rp 250.000.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 260.500.000', priceNett: 'Rp 257.500.000' },
         bonus: 'Logam Mulia*, Gratis Ganti Oli/Filter/Jasa s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       }
@@ -481,7 +481,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 477.400.000', priceNett: 'Rp 467.400.000' },
+        priceAB: { priceOtr: 'Rp 477.400.000', priceNett: 'Rp 467.400.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 496.200.000', priceNett: 'Rp 486.200.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
@@ -490,7 +490,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 491.100.000', priceNett: 'Rp 481.100.000' },
+        priceAB: { priceOtr: 'Rp 491.100.000', priceNett: 'Rp 481.100.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 510.400.000', priceNett: 'Rp 500.400.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
@@ -499,7 +499,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 480.400.000', priceNett: 'Rp 470.400.000' },
+        priceAB: { priceOtr: 'Rp 480.400.000', priceNett: 'Rp 470.400.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 499.200.000', priceNett: 'Rp 489.200.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
@@ -508,7 +508,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 494.100.000', priceNett: 'Rp 484.100.000' },
+        priceAB: { priceOtr: 'Rp 494.100.000', priceNett: 'Rp 484.100.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 513.500.000', priceNett: 'Rp 503.500.000' },
         bonus: 'Free KF V-Kool (8 Jt) / iPad Air 11 (10 Jt) / Voucher MAP (20 Jt)'
       },
@@ -517,7 +517,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 491.800.000', priceNett: 'Rp 481.800.000' },
+        priceAB: { priceOtr: 'Rp 491.800.000', priceNett: 'Rp 481.800.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 511.900.000', priceNett: 'Rp 501.900.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       },
@@ -526,7 +526,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 505.500.000', priceNett: 'Rp 495.500.000' },
+        priceAB: { priceOtr: 'Rp 505.500.000', priceNett: 'Rp 495.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 526.300.000', priceNett: 'Rp 516.300.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       },
@@ -535,7 +535,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 494.800.000', priceNett: 'Rp 484.800.000' },
+        priceAB: { priceOtr: 'Rp 494.800.000', priceNett: 'Rp 484.800.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 514.900.000', priceNett: 'Rp 504.900.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       },
@@ -544,7 +544,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 498.500.000' },
+        priceAB: { priceOtr: 'Rp 508.500.000', priceNett: 'Rp 498.500.000' }, // Tetap
         priceAAR: { priceOtr: 'Rp 529.300.000', priceNett: 'Rp 519.300.000' },
         bonus: 'Pilihan: Free KF V-Kool (8 Juta) / iPad Air 11\" (10 Juta) / Voucher MAP (20 Juta)'
       }
@@ -577,7 +577,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 268.150.000', priceNett: 'Rp 242.150.000' },
+        priceAB: { priceOtr: 'Rp 268.500.000', priceNett: 'Rp 242.500.000' }, // UPDATE (Diskon 26jt)
         priceAAR: { priceOtr: 'Rp 279.000.000', priceNett: 'Rp 253.000.000' },
         bonus: 'Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -586,7 +586,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 279.200.000', priceNett: 'Rp 253.200.000' },
+        priceAB: { priceOtr: 'Rp 279.500.000', priceNett: 'Rp 253.500.000' }, // UPDATE (Diskon 26jt)
         priceAAR: { priceOtr: 'Rp 290.700.000', priceNett: 'Rp 264.700.000' },
         bonus: 'Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -595,7 +595,7 @@ export const products: ProductType[] = [
         transmission: '5-Speed Manual',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 283.250.000', priceNett: 'Rp 257.250.000' },
+        priceAB: { priceOtr: 'Rp 283.250.000', priceNett: 'Rp 257.250.000' }, // Tetap (Tidak ada di data baru)
         priceAAR: { priceOtr: 'Rp 293.200.000', priceNett: 'Rp 267.200.000' },
         bonus: 'Logam Mulia*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       },
@@ -604,7 +604,7 @@ export const products: ProductType[] = [
         transmission: '4-Speed Automatic',
         fuel: 'Bensin',
         engine: '1.462 cc',
-        priceAB: { priceOtr: 'Rp 294.400.000', priceNett: 'Rp 268.400.000' },
+        priceAB: { priceOtr: 'Rp 294.400.000', priceNett: 'Rp 268.400.000' }, // Tetap (Tidak ada di data baru)
         priceAAR: { priceOtr: 'Rp 304.800.000', priceNett: 'Rp 278.800.000' },
         bonus: 'Logam Mulia*, Free Service/Oli/Sparepart s/d 50.000KM/30 Bln, Garansi Baterai Lithium 8 Thn/160.000Km, Garansi Mesin 3 Thn/100.000KM'
       }
